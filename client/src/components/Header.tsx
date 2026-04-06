@@ -24,7 +24,7 @@ export default function Header() {
             <img
               src="https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/Logo_internet_MAIS_9b6aefe1.png"
               alt="InternetMais Logo"
-              className="h-10"
+              className="h-16 md:h-20"
             />
           </div>
 
