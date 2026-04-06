@@ -1,4 +1,4 @@
-import { Package, RotateCcw, Signal } from 'lucide-react';
+import { Package, RotateCcw, Signal, MessageCircle } from 'lucide-react';
 
 export default function Bloco5G() {
   return (
@@ -37,8 +37,9 @@ export default function Bloco5G() {
             href="https://wa.me/556730272500?text=Olá!%20Quero%20meu%20Chip%205G%20InternetMais"
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-white inline-flex items-center justify-center gap-2 mb-12"
+            className="bg-white text-[#3DD93D] font-black py-4 px-8 rounded-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 inline-flex items-center justify-center gap-2 mb-12"
           >
+            <MessageCircle size={20} />
             Quero meu Chip 5G agora
           </a>
 

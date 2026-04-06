@@ -7,12 +7,11 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           {/* Logo Section */}
           <div>
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 bg-[#3DD93D] rounded-lg flex items-center justify-center">
-                <span className="text-white font-black text-lg">IM</span>
-              </div>
-              <span className="text-xl font-black">InternetMais</span>
-            </div>
+            <img
+              src="https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/Logo_internet_MAIS_9b6aefe1.png"
+              alt="InternetMais Logo"
+              className="h-12 mb-4"
+            />
             <p className="text-gray-400 text-sm">
               Fibra óptica de alta velocidade e operadora de celular 5G em Campo Grande.
             </p>
@@ -93,7 +92,7 @@ export default function Footer() {
                 href="https://wa.me/556730272500"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-[#3DD93D] transition-colors"
+                className="text-gray-400 hover:text-[#25D366] transition-colors"
               >
                 <MessageCircle size={24} />
               </a>

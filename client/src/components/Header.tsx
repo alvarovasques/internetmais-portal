@@ -1,4 +1,4 @@
-import { Menu, X } from 'lucide-react';
+import { Menu, X, MessageCircle } from 'lucide-react';
 import { useState } from 'react';
 
 export default function Header() {
@@ -20,11 +20,12 @@ export default function Header() {
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <div className="flex items-center gap-2">
-            <div className="w-10 h-10 bg-[#3DD93D] rounded-lg flex items-center justify-center">
-              <span className="text-white font-black text-lg">IM</span>
-            </div>
-            <span className="text-xl font-black text-[#0D1B3E] hidden sm:inline">InternetMais</span>
+          <div className="flex items-center gap-3">
+            <img
+              src="https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/Logo_internet_MAIS_9b6aefe1.png"
+              alt="InternetMais Logo"
+              className="h-10"
+            />
           </div>
 
           {/* Desktop Navigation */}
@@ -45,9 +46,10 @@ export default function Header() {
             href="https://wa.me/556730272500?text=Olá!%20Quero%20conhecer%20os%20planos%20da%20InternetMais"
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden sm:flex items-center gap-2 bg-[#3DD93D] text-white font-bold py-2 px-4 rounded-full hover:shadow-lg hover:scale-105 transition-all duration-300"
+            className="hidden sm:flex items-center gap-2 bg-[#25D366] text-white font-bold py-2 px-4 rounded-full hover:bg-[#20ba5a] hover:shadow-lg hover:scale-105 transition-all duration-300"
           >
-            <span>📲 WhatsApp</span>
+            <MessageCircle size={18} />
+            <span>WhatsApp</span>
           </a>
 
           {/* Mobile Menu Button */}
@@ -76,9 +78,10 @@ export default function Header() {
               href="https://wa.me/556730272500?text=Olá!%20Quero%20conhecer%20os%20planos%20da%20InternetMais"
               target="_blank"
               rel="noopener noreferrer"
-              className="block mt-4 w-full bg-[#3DD93D] text-white font-bold py-2 px-4 rounded-full text-center hover:shadow-lg transition-all"
+              className="block mt-4 w-full bg-[#25D366] text-white font-bold py-2 px-4 rounded-full text-center hover:bg-[#20ba5a] hover:shadow-lg transition-all flex items-center justify-center gap-2"
             >
-              📲 WhatsApp
+              <MessageCircle size={18} />
+              WhatsApp
             </a>
           </nav>
         )}

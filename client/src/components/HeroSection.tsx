@@ -1,4 +1,4 @@
-import { CheckCircle2 } from 'lucide-react';
+import { CheckCircle2, MessageCircle } from 'lucide-react';
 
 export default function HeroSection() {
   return (
@@ -33,9 +33,10 @@ export default function HeroSection() {
               href="https://wa.me/556730272500?text=Olá!%20Quero%20contratar%20a%20InternetMais"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-primary inline-flex items-center justify-center gap-2"
+              className="bg-[#3DD93D] text-white font-bold py-3 px-6 rounded-xl hover:shadow-lg hover:scale-105 transition-all duration-300 inline-flex items-center justify-center gap-2"
             >
-              🟢 Quero Contratar Agora
+              <MessageCircle size={20} />
+              Quero Contratar Agora
             </a>
             <a
               href="#planos-residenciais"

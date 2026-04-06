@@ -1,3 +1,5 @@
+import { MessageCircle } from 'lucide-react';
+
 export default function BannerCTAFinal() {
   return (
     <section className="relative py-20 md:py-32 overflow-hidden">
@@ -26,7 +28,8 @@ export default function BannerCTAFinal() {
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center gap-2 bg-white text-[#3DD93D] font-black py-4 px-8 rounded-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 text-lg"
           >
-            📲 Contratar pelo WhatsApp
+            <MessageCircle size={24} />
+            Contratar pelo WhatsApp
           </a>
         </div>
       </div>
