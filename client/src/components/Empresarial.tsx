@@ -18,7 +18,7 @@ export default function Empresarial() {
           alt="Escritório moderno"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-white/85"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-[#3DD93D]/85 via-[#3DD93D]/70 to-white/50"></div>
       </div>
 
       {/* Content */}

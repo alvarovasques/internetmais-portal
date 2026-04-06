@@ -12,7 +12,7 @@ export default function HeroSection() {
           alt="Jovem com smartphone"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0D1B3E]/95 via-[#0D1B3E]/85 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-[#3DD93D]/90 via-[#3DD93D]/70 to-transparent"></div>
       </div>
 
       {/* Content */}

@@ -20,7 +20,7 @@ export default function Planos5G() {
           alt="Jovem com 5G"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0D1B3E]/90 via-[#0D1B3E]/75 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-[#3DD93D]/90 via-[#3DD93D]/70 to-transparent"></div>
       </div>
 
       {/* Content */}

@@ -12,7 +12,7 @@ export default function Bloco5G() {
           alt="Chip 5G"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0D1B3E]/90 via-[#0D1B3E]/75 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-[#3DD93D]/85 via-[#3DD93D]/65 to-transparent"></div>
       </div>
 
       {/* Content */}
