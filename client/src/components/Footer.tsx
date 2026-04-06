@@ -22,10 +22,10 @@ export default function Footer() {
           <div>
             <h4 className="font-bold text-lg mb-4">Links Rápidos</h4>
             <ul className="space-y-2">
-              {['Planos', 'Empresarial', 'Chip 5G', 'Lojas', 'Privacidade'].map((link) => (
+              {['Planos', 'Empresarial', 'Chip 5G', 'Cobertura', 'Central do Assinante', 'Lojas', 'Privacidade'].map((link) => (
                 <li key={link}>
                   <a
-                    href={`#${link.toLowerCase()}`}
+                    href={`#${link.toLowerCase().replace(/ /g, '-')}`}
                     className="text-gray-400 hover:text-[#3DD93D] transition-colors"
                   >
                     {link}

@@ -9,6 +9,8 @@ export default function Header() {
     { label: 'Empresarial', href: '#empresarial' },
     { label: 'Chip 5G', href: '#chip-5g' },
     { label: 'Aplicativos', href: '#aplicativos' },
+    { label: 'Cobertura', href: '#cobertura' },
+    { label: 'Central do Assinante', href: '#area-assinante' },
     { label: 'Lojas', href: '#lojas' },
     { label: 'Contato', href: '#contato' },
   ];

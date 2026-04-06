@@ -5,6 +5,8 @@ import Diferenciais from '@/components/Diferenciais';
 import PlanosResidenciais from '@/components/PlanosResidenciais';
 import Planos5G from '@/components/Planos5G';
 import Aplicativos from '@/components/Aplicativos';
+import Cobertura from '@/components/Cobertura';
+import AreaAssinante from '@/components/AreaAssinante';
 import Empresarial from '@/components/Empresarial';
 import Adicionais from '@/components/Adicionais';
 import Lojas from '@/components/Lojas';
@@ -33,6 +35,8 @@ export default function Home() {
         <PlanosResidenciais />
         <Planos5G />
         <Aplicativos />
+        <Cobertura />
+        <AreaAssinante />
         <Empresarial />
         <Adicionais />
         <Lojas />
