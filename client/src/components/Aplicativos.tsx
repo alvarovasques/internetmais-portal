@@ -1,6 +1,8 @@
 import { Tv, Star, Film, Music, Play, Dumbbell, Trophy, Zap } from 'lucide-react';
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 export default function Aplicativos() {
+  const ref = useScrollAnimation();
   const apps = [
     { icon: Tv, name: 'MaisTV', category: '+100 canais ao vivo' },
     { icon: Star, name: 'Play Kids', category: 'Infantil' },
@@ -17,7 +19,7 @@ export default function Aplicativos() {
   ];
 
   return (
-    <section id="aplicativos" className="py-20 md:py-32 bg-[#0D1B3E]">
+    <section ref={ref} id="aplicativos" className="py-20 md:py-32 bg-[#0D1B3E] opacity-0">
       <div className="container mx-auto px-4">
         {/* Title */}
         <h2 className="text-3xl md:text-4xl font-black text-white mb-4 text-center">

@@ -1,6 +1,8 @@
 import { Star } from 'lucide-react';
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 export default function ProvaSocial() {
+  const ref = useScrollAnimation();
   const depoimentos = [
     {
       nome: 'Carlos Silva',
@@ -23,7 +25,7 @@ export default function ProvaSocial() {
   ];
 
   return (
-    <section className="py-20 md:py-32 bg-[#3DD93D]">
+    <section ref={ref} className="py-20 md:py-32 bg-[#3DD93D] opacity-0">
       <div className="container mx-auto px-4">
         {/* Title */}
         <h2 className="text-3xl md:text-4xl font-black text-white mb-4 text-center">

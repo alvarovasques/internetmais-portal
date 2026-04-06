@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { Tv, BookOpen, Lock, Tag } from 'lucide-react';
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 export default function PlanosResidenciais() {
+  const ref = useScrollAnimation();
   const [activeTab, setActiveTab] = useState('velocidade');
 
   const planos = {
@@ -29,7 +31,7 @@ export default function PlanosResidenciais() {
   ];
 
   return (
-    <section id="planos-residenciais" className="py-20 md:py-32 bg-[#F4F4F4]">
+    <section ref={ref} id="planos-residenciais" className="py-20 md:py-32 bg-[#F4F4F4] opacity-0">
       <div className="container mx-auto px-4">
         {/* Background Image */}
         <div className="absolute inset-0 opacity-10 pointer-events-none">

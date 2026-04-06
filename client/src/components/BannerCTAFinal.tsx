@@ -1,8 +1,10 @@
 import { MessageCircle } from 'lucide-react';
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 export default function BannerCTAFinal() {
+  const ref = useScrollAnimation();
   return (
-    <section className="relative py-20 md:py-32 overflow-hidden">
+    <section ref={ref} className="relative py-20 md:py-32 overflow-hidden opacity-0">
       {/* Background Gradient */}
       <div className="absolute inset-0 gradient-green-navy"></div>
 

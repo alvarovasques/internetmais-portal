@@ -1,6 +1,8 @@
 import { Package, RotateCcw, MessageCircle, Navigation, MapPin } from 'lucide-react';
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 export default function Planos5G() {
+  const ref = useScrollAnimation();
   const planos = [
     { gb: '1GB', preco: 'R$ 24,99/mês', bonus: '—', popular: false },
     { gb: '3GB', preco: 'R$ 39,99/mês', bonus: '+2GB', popular: false },
@@ -10,7 +12,7 @@ export default function Planos5G() {
   ];
 
   return (
-    <section id="chip-5g" className="relative py-20 md:py-32 overflow-hidden">
+    <section ref={ref} id="chip-5g" className="relative py-20 md:py-32 overflow-hidden opacity-0">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0">
         <img

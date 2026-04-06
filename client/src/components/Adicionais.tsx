@@ -1,6 +1,8 @@
 import { Radio, Phone, Percent } from 'lucide-react';
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 export default function Adicionais() {
+  const ref = useScrollAnimation();
   const adicionais = [
     {
       icon: Radio,
@@ -25,7 +27,7 @@ export default function Adicionais() {
   ];
 
   return (
-    <section className="py-20 md:py-32 bg-[#F4F4F4]">
+    <section ref={ref} className="py-20 md:py-32 bg-[#F4F4F4] opacity-0">
       <div className="container mx-auto px-4">
         {/* Title */}
         <h2 className="text-3xl md:text-4xl font-black text-[#0D1B3E] mb-4 text-center">

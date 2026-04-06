@@ -1,6 +1,8 @@
 import { MapPin } from 'lucide-react';
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 export default function Lojas() {
+  const ref = useScrollAnimation();
   const lojas = [
     'Moreninhas',
     'Aero Rancho',
@@ -10,7 +12,7 @@ export default function Lojas() {
   ];
 
   return (
-    <section id="lojas" className="py-20 md:py-32 bg-white">
+    <section ref={ref} id="lojas" className="py-20 md:py-32 bg-white opacity-0">
       <div className="container mx-auto px-4">
         {/* Title */}
         <h2 className="text-3xl md:text-4xl font-black text-[#0D1B3E] mb-4 text-center">

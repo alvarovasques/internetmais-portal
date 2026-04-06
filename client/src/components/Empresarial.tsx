@@ -1,6 +1,8 @@
 import { Wifi, Clock, Network } from 'lucide-react';
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 export default function Empresarial() {
+  const ref = useScrollAnimation();
   const planos = [
     { velocidade: '400 Mega', preco: 'R$ 229,90/mês' },
     { velocidade: '600 Mega', preco: 'R$ 249,90/mês' },
@@ -8,7 +10,7 @@ export default function Empresarial() {
   ];
 
   return (
-    <section id="empresarial" className="relative py-20 md:py-32 overflow-hidden">
+    <section ref={ref} id="empresarial" className="relative py-20 md:py-32 overflow-hidden opacity-0">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0">
         <img

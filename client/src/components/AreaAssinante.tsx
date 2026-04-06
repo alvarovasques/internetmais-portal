@@ -1,6 +1,8 @@
 import { LogIn, FileText, CreditCard, Headphones } from 'lucide-react';
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 export default function AreaAssinante() {
+  const ref = useScrollAnimation();
   const features = [
     {
       icon: LogIn,
@@ -25,7 +27,7 @@ export default function AreaAssinante() {
   ];
 
   return (
-    <section id="area-assinante" className="py-20 md:py-32 bg-[#F4F4F4]">
+    <section ref={ref} id="area-assinante" className="py-20 md:py-32 bg-[#F4F4F4] opacity-0">
       <div className="container mx-auto px-4">
         {/* Title */}
         <h2 className="text-3xl md:text-4xl font-black text-[#0D1B3E] mb-4 text-center">
