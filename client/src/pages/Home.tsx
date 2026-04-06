@@ -1,25 +1,45 @@
-import { Button } from "@/components/ui/button";
-import { Loader2 } from "lucide-react";
-import { Streamdown } from 'streamdown';
+import Header from '@/components/Header';
+import HeroSection from '@/components/HeroSection';
+import Bloco5G from '@/components/Bloco5G';
+import Diferenciais from '@/components/Diferenciais';
+import PlanosResidenciais from '@/components/PlanosResidenciais';
+import Planos5G from '@/components/Planos5G';
+import Aplicativos from '@/components/Aplicativos';
+import Empresarial from '@/components/Empresarial';
+import Adicionais from '@/components/Adicionais';
+import Lojas from '@/components/Lojas';
+import ProvaSocial from '@/components/ProvaSocial';
+import BannerCTAFinal from '@/components/BannerCTAFinal';
+import Footer from '@/components/Footer';
 
 /**
- * All content in this page are only for example, replace with your own feature implementation
- * When building pages, remember your instructions in Frontend Best Practices, Design Guide and Common Pitfalls
+ * Home Page - InternetMais Portal
+ * 
+ * Design Philosophy: Modern Tech Minimalism
+ * - Verde vibrante (#3DD93D) como cor primária
+ * - Azul navy (#0D1B3E) para fundos escuros
+ * - Tipografia Poppins bold e moderna
+ * - Animações suaves ao scroll
+ * - Responsivo mobile-first
  */
 export default function Home() {
-  // If theme is switchable in App.tsx, we can implement theme toggling like this:
-  // const { theme, toggleTheme } = useTheme();
-
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-white">
+      <Header />
       <main>
-        {/* Example: lucide-react for icons */}
-        <Loader2 className="animate-spin" />
-        Example Page
-        {/* Example: Streamdown for markdown rendering */}
-        <Streamdown>Any **markdown** content</Streamdown>
-        <Button variant="default">Example Button</Button>
+        <HeroSection />
+        <Bloco5G />
+        <Diferenciais />
+        <PlanosResidenciais />
+        <Planos5G />
+        <Aplicativos />
+        <Empresarial />
+        <Adicionais />
+        <Lojas />
+        <ProvaSocial />
+        <BannerCTAFinal />
       </main>
+      <Footer />
     </div>
   );
 }
