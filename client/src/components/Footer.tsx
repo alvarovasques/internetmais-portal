@@ -10,7 +10,7 @@ export default function Footer() {
             <img
               src="https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/Logo_internet_MAIS_9b6aefe1.png"
               alt="InternetMais Logo"
-              className="h-24 md:h-28 mb-6"
+              className="h-32 md:h-40 mb-6"
             />
             <p className="text-gray-400 text-sm">
               Fibra óptica de alta velocidade e operadora de celular 5G em Campo Grande.
