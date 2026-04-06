@@ -1,8 +1,10 @@
 import { CheckCircle2, MessageCircle } from 'lucide-react';
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 export default function HeroSection() {
+  const ref = useScrollAnimation();
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden">
+    <section ref={ref} className="relative min-h-screen flex items-center overflow-hidden opacity-0">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0">
         <img
@@ -10,25 +12,25 @@ export default function HeroSection() {
           alt="Jovem com smartphone"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0D1B3E]/80 via-[#0D1B3E]/60 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0D1B3E]/95 via-[#0D1B3E]/85 to-transparent"></div>
       </div>
 
       {/* Content */}
       <div className="container mx-auto px-4 relative z-10 py-20">
         <div className="max-w-2xl">
-          {/* Main Headline */}
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 leading-tight">
-            Fibra Óptica + Chip 5G.
-            <span className="text-[#F5C518]"> Tudo o que você precisa</span> em um só lugar.
+          {/* Title */}
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 leading-tight animate-fade-in-down animate-delay-100">
+            Fibra Optica + Chip 5G.
+            <span className="text-[#F5C518]"> Tudo o que voce precisa</span> em um so lugar.
           </h1>
 
           {/* Subtitle */}
-          <p className="text-lg md:text-xl text-gray-100 mb-8 leading-relaxed">
-            Mais de 20 mil clientes em Campo Grande. 100% fibra óptica, sem oscilação. E agora, somos também sua operadora de celular 5G.
+          <p className="text-lg md:text-xl text-gray-100 mb-8 leading-relaxed animate-fade-in-left animate-delay-200">
+            Mais de 20 mil clientes em Campo Grande. 100% fibra optica, sem oscilacao. E agora, somos tambem sua operadora de celular 5G.
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 mb-12">
+          <div className="flex flex-col sm:flex-row gap-4 mb-12 animate-fade-in-right animate-delay-300">
             <a
               href="https://wa.me/556730272500?text=Olá!%20Quero%20contratar%20a%20InternetMais"
               target="_blank"
@@ -46,17 +48,21 @@ export default function HeroSection() {
             </a>
           </div>
 
-          {/* Badges */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          {/* Benefits */}
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 animate-fade-in-up animate-delay-400">
             {[
-              '✅ 100% Fibra Óptica',
-              '✅ Instalação Grátis*',
+              '✅ 100% Fibra Optica',
+              '✅ Instalacao Gratis*',
               '✅ +20 mil clientes',
-              '✅ Chip 5G disponível',
-            ].map((badge, i) => (
-              <div key={i} className="flex items-center gap-2 text-white font-semibold">
-                <CheckCircle2 size={20} className="text-[#3DD93D]" />
-                <span className="text-sm md:text-base">{badge.replace('✅ ', '')}</span>
+              '✅ Chip 5G disponivel',
+            ].map((benefit, i) => (
+              <div
+                key={i}
+                className="flex items-center gap-3 text-white animate-scale-in"
+                style={{ animationDelay: `${0.5 + i * 0.1}s` }}
+              >
+                <CheckCircle2 size={20} className="text-[#3DD93D] flex-shrink-0" />
+                <span className="font-semibold">{benefit}</span>
               </div>
             ))}
           </div>

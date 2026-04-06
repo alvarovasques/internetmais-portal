@@ -69,7 +69,7 @@ export default function AreaAssinante() {
             Acesse sua Central do Assinante para gerenciar sua conta
           </p>
           <a
-            href="https://wa.me/556730272500?text=Olá!%20Preciso%20acessar%20minha%20Central%20do%20Assinante"
+            href="https://sistema.freewaynet.com.br/central_assinante_web/login"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center gap-2 bg-white text-[#3DD93D] font-bold py-3 px-8 rounded-xl hover:shadow-lg hover:scale-105 transition-all duration-300"
@@ -89,7 +89,7 @@ export default function AreaAssinante() {
               Nossa equipe de suporte está pronta para ajudar você com qualquer problema técnico.
             </p>
             <a
-              href="https://wa.me/556730272500?text=Olá!%20Estou%20com%20problema%20na%20conexão"
+              href="https://sistema.freewaynet.com.br/central_assinante_web/login"
               target="_blank"
               rel="noopener noreferrer"
               className="text-[#3DD93D] font-bold hover:underline"
@@ -106,7 +106,7 @@ export default function AreaAssinante() {
               Consulte suas faturas, histórico de pagamentos e outras informações importantes.
             </p>
             <a
-              href="https://wa.me/556730272500?text=Olá!%20Tenho%20dúvidas%20sobre%20minha%20fatura"
+              href="https://sistema.freewaynet.com.br/central_assinante_web/login"
               target="_blank"
               rel="noopener noreferrer"
               className="text-[#1A5BA6] font-bold hover:underline"
