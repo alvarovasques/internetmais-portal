@@ -12,6 +12,7 @@ export default function PlanosResidenciais() {
         velocidade: '400 Mega',
         preco: 'R$ 109,90',
         popular: false,
+        desconto: '20% de desconto por pontualidade',
         features: ['400 Mbps de velocidade', 'Instalação grátis*', 'Roteador Wi-Fi 6', 'Suporte 24/7']
       },
       {
@@ -24,6 +25,7 @@ export default function PlanosResidenciais() {
         velocidade: '800 Mega',
         preco: 'R$ 149,90',
         popular: false,
+        desconto: '20% de desconto por pontualidade',
         features: ['800 Mbps de velocidade', 'Instalação grátis*', 'Roteador Wi-Fi 6', 'Suporte 24/7']
       },
     ],
@@ -32,6 +34,7 @@ export default function PlanosResidenciais() {
         velocidade: '400 Mega',
         preco: 'R$ 129,90',
         popular: false,
+        desconto: '20% de desconto por pontualidade',
         apps: ['MaisTV (100+ canais)', 'Ubook', 'Kaspersky', 'Play Kids', 'Looke', 'Deezer'],
         features: ['400 Mbps de velocidade', 'Apps Standart inclusos', 'Instalação grátis*', 'Roteador Wi-Fi 6']
       },
@@ -46,6 +49,7 @@ export default function PlanosResidenciais() {
         velocidade: '800 Mega',
         preco: 'R$ 169,90',
         popular: false,
+        desconto: '20% de desconto por pontualidade',
         apps: ['MaisTV (100+ canais)', 'Ubook', 'Kaspersky', 'Play Kids', 'Looke', 'Deezer', 'Disney+', 'HBO Max', 'Sky Light'],
         features: ['800 Mbps de velocidade', 'Apps Standart + Premium', 'Instalação grátis*', 'Roteador Wi-Fi 6']
       },
@@ -148,6 +152,14 @@ export default function PlanosResidenciais() {
                   </p>
                 </div>
 
+                {/* Desconto Badge */}
+                {(plano as any).desconto && (
+                  <div className="mb-4 inline-block">
+                    <span className="bg-[#3DD93D] text-white text-xs font-bold px-3 py-1 rounded-full">
+                      {(plano as any).desconto}
+                    </span>
+                  </div>
+                )}
                 {/* Features */}
                 <div className="mb-8 space-y-3">
                   {plano.features.map((feature, j) => (
