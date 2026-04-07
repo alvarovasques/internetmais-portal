@@ -94,7 +94,7 @@ export default function Cobertura() {
             Não encontrou seu bairro? Fale com nosso time!
           </p>
           <a
-            href="https://wa.me/556730272500?text=Olá!%20Gostaria%20de%20saber%20se%20meu%20bairro%20tem%20cobertura"
+            href="https://wa.me/556730272500?text=Ol%C3%A1!%20Gostaria%20de%20falar%20com%20um%20representante%20para%20verificar%20se%20meu%20bairro%20tem%20cobertura%20da%20InternetMais."
             target="_blank"
             rel="noopener noreferrer"
             className="btn-primary inline-flex items-center justify-center gap-2"

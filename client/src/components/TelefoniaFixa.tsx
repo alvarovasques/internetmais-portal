@@ -56,7 +56,7 @@ export default function TelefoniaFixa() {
 
             {/* CTA Button */}
             <a
-              href="https://wa.me/556730272500?text=Olá!%20Quero%20contratar%20a%20Telefonia%20Fixa"
+              href="https://wa.me/556730272500?text=Ol%C3%A1!%20Gostaria%20de%20falar%20com%20um%20representante%20sobre%20a%20Telefonia%20Fixa%20da%20InternetMais."
               target="_blank"
               rel="noopener noreferrer"
               className="w-full flex items-center justify-center gap-2 bg-white text-[#3DD93D] font-bold py-4 px-6 rounded-xl hover:shadow-lg hover:scale-105 transition-all duration-300"

@@ -66,7 +66,7 @@ export default function Empresarial() {
 
               {/* CTA */}
               <a
-                href="https://wa.me/556730272500?text=Olá!%20Preciso%20de%20internet%20empresarial"
+                href={`https://wa.me/556730272500?text=Ol%C3%A1!%20Gostaria%20de%20falar%20com%20um%20representante%20sobre%20o%20plano%20${plano.velocidade}%20de%20internet%20empresarial%20da%20InternetMais.`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full btn-primary block text-center"

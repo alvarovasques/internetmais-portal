@@ -63,7 +63,7 @@ export default function Adicionais() {
         {/* CTA */}
         <div className="text-center">
           <a
-            href="https://wa.me/556730272500?text=Olá!%20Quero%20montar%20meu%20combo"
+            href="https://wa.me/556730272500?text=Ol%C3%A1!%20Gostaria%20de%20falar%20com%20um%20representante%20para%20montar%20meu%20combo%20com%20adicionais%20e%20aproveitar%20os%20descontos."
             target="_blank"
             rel="noopener noreferrer"
             className="btn-primary inline-flex items-center justify-center gap-2"
