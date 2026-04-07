@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Tv, BookOpen, Lock, Tag } from 'lucide-react';
+import { Zap, Tv, Lock, Tag, Check, MessageCircle } from 'lucide-react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 export default function PlanosResidenciais() {
@@ -8,141 +8,222 @@ export default function PlanosResidenciais() {
 
   const planos = {
     velocidade: [
-      { velocidade: '400 Mega', preco: 'R$ 109,90/mês', popular: false },
-      { velocidade: '600 Mega', preco: 'R$ 119,90/mês', popular: true },
-      { velocidade: '800 Mega', preco: 'R$ 149,90/mês', popular: false },
+      {
+        velocidade: '400 Mega',
+        preco: 'R$ 109,90',
+        popular: false,
+        features: ['400 Mbps de velocidade', 'Instalação grátis*', 'Roteador Wi-Fi 6', 'Suporte 24/7']
+      },
+      {
+        velocidade: '600 Mega',
+        preco: 'R$ 119,90',
+        popular: true,
+        features: ['600 Mbps de velocidade', 'Instalação grátis*', 'Roteador Wi-Fi 6', 'Suporte 24/7', '+Desconto por pontualidade']
+      },
+      {
+        velocidade: '800 Mega',
+        preco: 'R$ 149,90',
+        popular: false,
+        features: ['800 Mbps de velocidade', 'Instalação grátis*', 'Roteador Wi-Fi 6', 'Suporte 24/7']
+      },
     ],
     aplicativos: [
-      { velocidade: '400 Mega + App Standart', preco: 'R$ 129,90/mês', popular: false },
-      { velocidade: '600 Mega + App Standart e Premium', preco: 'R$ 149,90/mês', popular: true },
-      { velocidade: '800 Mega + App Standart e Premium', preco: 'R$ 169,90/mês', popular: false },
+      {
+        velocidade: '400 Mega',
+        preco: 'R$ 129,90',
+        popular: false,
+        apps: ['MaisTV (100+ canais)', 'Ubook', 'Kaspersky', 'Play Kids', 'Looke', 'Deezer'],
+        features: ['400 Mbps de velocidade', 'Apps Standart inclusos', 'Instalação grátis*', 'Roteador Wi-Fi 6']
+      },
+      {
+        velocidade: '600 Mega',
+        preco: 'R$ 149,90',
+        popular: true,
+        apps: ['MaisTV (100+ canais)', 'Ubook', 'Kaspersky', 'Play Kids', 'Looke', 'Deezer', 'Disney+', 'HBO Max', 'Sky Light'],
+        features: ['600 Mbps de velocidade', 'Apps Standart + Premium', 'Instalação grátis*', 'Roteador Wi-Fi 6']
+      },
+      {
+        velocidade: '800 Mega',
+        preco: 'R$ 169,90',
+        popular: false,
+        apps: ['MaisTV (100+ canais)', 'Ubook', 'Kaspersky', 'Play Kids', 'Looke', 'Deezer', 'Disney+', 'HBO Max', 'Sky Light'],
+        features: ['800 Mbps de velocidade', 'Apps Standart + Premium', 'Instalação grátis*', 'Roteador Wi-Fi 6']
+      },
     ],
     globoplay: [
-      { velocidade: '400 Mega Basic', preco: 'R$ 129,90/mês', popular: false },
-      { velocidade: '600 Mega Premium', preco: 'R$ 159,90/mês', popular: true },
-      { velocidade: '800 Mega Premium', preco: 'R$ 179,90/mês', popular: false },
+      {
+        velocidade: '400 Mega',
+        preco: 'R$ 129,90',
+        popular: false,
+        apps: ['Globo Play Basic', 'MaisTV (100+ canais)'],
+        features: ['400 Mbps de velocidade', 'Globo Play Basic', 'Instalação grátis*', 'Roteador Wi-Fi 6']
+      },
+      {
+        velocidade: '600 Mega',
+        preco: 'R$ 149,90',
+        popular: true,
+        apps: ['Globo Play Basic', 'MaisTV (100+ canais)'],
+        features: ['600 Mbps de velocidade', 'Globo Play Basic', 'Instalação grátis*', 'Roteador Wi-Fi 6']
+      },
+      {
+        velocidade: '800 Mega',
+        preco: 'R$ 169,90',
+        popular: false,
+        apps: ['Globo Play Premium', 'MaisTV (100+ canais)'],
+        features: ['800 Mbps de velocidade', 'Globo Play Premium', 'Instalação grátis*', 'Roteador Wi-Fi 6']
+      },
     ],
   };
 
   const tabs = [
-    { id: 'velocidade', label: 'Internet Mais Velocidade' },
-    { id: 'aplicativos', label: 'Internet Mais Aplicativos' },
-    { id: 'globoplay', label: 'Internet Mais Globo Play' },
+    { id: 'velocidade', label: 'Internet Velocidade', icon: Zap },
+    { id: 'aplicativos', label: 'Internet + Aplicativos', icon: Tv },
+    { id: 'globoplay', label: 'Internet + Globo Play', icon: Tag },
   ];
+
+  const currentPlanos = planos[activeTab as keyof typeof planos];
 
   return (
     <section ref={ref} id="planos-residenciais" className="py-20 md:py-32 bg-[#F4F4F4] opacity-0">
       <div className="container mx-auto px-4">
-        {/* Background Image */}
-        <div className="absolute inset-0 opacity-10 pointer-events-none">
-          <img
-            src="https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/family-connected-6LLg3Aruk6uCij7bV7bpJX.webp"
-            alt="Família conectada"
-            className="w-full h-full object-cover"
-          />
+        {/* Title */}
+        <div className="text-center mb-16 animate-fade-in-down animate-delay-100">
+          <h2 className="text-3xl md:text-4xl font-black text-[#0D1B3E] mb-4">
+            Planos Residenciais
+          </h2>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Escolha o plano perfeito para suas necessidades de conectividade
+          </p>
         </div>
 
-        <div className="relative z-10">
-          {/* Title */}
-          <h2 className="text-3xl md:text-4xl font-black text-[#0D1B3E] mb-3 text-center">
-            Escolha seu plano e comece hoje
-          </h2>
-          <p className="text-lg text-gray-700 text-center mb-12 max-w-2xl mx-auto">
-            Todos os planos incluem MaisTV com +100 canais e instalação grátis no plano fidelidade
-          </p>
+        {/* Tabs */}
+        <div className="flex flex-wrap justify-center gap-3 mb-12 animate-fade-in-up animate-delay-200">
+          {tabs.map((tab) => (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id)}
+              className={`flex items-center gap-2 px-6 py-3 rounded-full font-bold transition-all duration-300 ${
+                activeTab === tab.id
+                  ? 'bg-[#3DD93D] text-white shadow-lg scale-105'
+                  : 'bg-white text-[#0D1B3E] border-2 border-gray-200 hover:border-[#3DD93D]'
+              }`}
+            >
+              <tab.icon size={18} />
+              {tab.label}
+            </button>
+          ))}
+        </div>
 
-          {/* Tabs */}
-          <div className="flex flex-col sm:flex-row gap-4 mb-12 justify-center">
-            {tabs.map((tab) => (
-              <button
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
-                className={`px-6 py-3 rounded-xl font-bold transition-all duration-300 ${
-                  activeTab === tab.id
-                    ? 'bg-[#3DD93D] text-white shadow-lg'
-                    : 'bg-white text-[#0D1B3E] border-2 border-gray-200 hover:border-[#3DD93D]'
-                }`}
-              >
-                {tab.label}
-              </button>
-            ))}
-          </div>
-
-          {/* Plans Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {planos[activeTab as keyof typeof planos].map((plano, i) => (
-              <div
-                key={i}
-                className={`relative rounded-2xl overflow-hidden transition-all duration-300 ${
-                  plano.popular
-                    ? 'md:scale-105 shadow-2xl'
-                    : 'shadow-lg hover:shadow-xl'
-                }`}
-              >
-                {/* Card Background */}
-                <div className="bg-white p-8">
-                  {/* Popular Badge */}
-                  {plano.popular && (
-                    <div className="absolute top-0 left-0 right-0 bg-[#3DD93D] text-white font-bold py-2 px-4 text-center">
-                      ⭐ MAIS POPULAR
-                    </div>
-                  )}
-
-                  <div className={plano.popular ? 'mt-8' : ''}>
-                    {/* Velocidade */}
-                    <h3 className="text-3xl font-black text-[#0D1B3E] mb-6">
-                      {plano.velocidade.split(' ')[0]}
-                      <span className="text-lg text-gray-600 ml-2">Mega</span>
-                    </h3>
-
-                    {/* Preço */}
-                    <p className="text-2xl font-bold text-[#3DD93D] mb-8">
-                      {plano.preco}
-                    </p>
-
-                    {/* Benefícios */}
-                    <div className="space-y-4 mb-8">
-                      <div className="flex items-center gap-3">
-                        <Tv size={20} className="text-[#3DD93D]" />
-                        <span className="text-gray-700">MaisTV (+100 canais)</span>
-                      </div>
-                      <div className="flex items-center gap-3">
-                        <BookOpen size={20} className="text-[#3DD93D]" />
-                        <span className="text-gray-700">Ubook</span>
-                      </div>
-                      <div className="flex items-center gap-3">
-                        <Lock size={20} className="text-[#3DD93D]" />
-                        <span className="text-gray-700">Kaspersky</span>
-                      </div>
-                    </div>
-
-                    {/* Desconto */}
-                    <div className="bg-[#3DD93D]/10 border-l-4 border-[#3DD93D] p-4 mb-8 rounded">
-                      <div className="flex items-center gap-2 text-[#3DD93D] font-bold">
-                        <Tag size={18} />
-                        <span>Desconto de R$20 por pontualidade já incluso</span>
-                      </div>
-                    </div>
-
-                    {/* CTA */}
-                    <a
-                      href="https://wa.me/556730272500?text=Olá!%20Quero%20contratar%20o%20plano%20InternetMais"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-full btn-primary block text-center"
-                    >
-                      Contratar pelo WhatsApp
-                    </a>
-                  </div>
+        {/* Plans Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 animate-fade-in-up animate-delay-300">
+          {currentPlanos.map((plano, i) => (
+            <div
+              key={i}
+              className={`relative rounded-2xl overflow-hidden transition-all duration-300 animate-scale-in ${
+                plano.popular ? 'md:scale-105 shadow-2xl' : 'shadow-lg'
+              }`}
+              style={{ animationDelay: `${0.4 + i * 0.1}s` }}
+            >
+              {/* Popular Badge */}
+              {plano.popular && (
+                <div className="absolute top-0 right-0 bg-[#3DD93D] text-white px-4 py-2 rounded-bl-2xl font-bold text-sm">
+                  MAIS POPULAR
                 </div>
-              </div>
-            ))}
-          </div>
+              )}
 
-          {/* Footer Note */}
-          <p className="text-center text-sm text-gray-600 mt-12">
-            *Instalação gratuita para contratos com fidelidade de 12 meses. Sem fidelidade: R$ 300,00.
-          </p>
+              {/* Card Background */}
+              <div className={`p-8 h-full ${plano.popular ? 'bg-gradient-to-br from-[#3DD93D] to-[#2BA82A]' : 'bg-white'}`}>
+                {/* Velocity */}
+                <h3 className={`text-3xl font-black mb-2 ${plano.popular ? 'text-white' : 'text-[#0D1B3E]'}`}>
+                  {plano.velocidade}
+                </h3>
+
+                {/* Price */}
+                <div className="mb-6">
+                  <p className={`text-4xl font-black ${plano.popular ? 'text-white' : 'text-[#3DD93D]'}`}>
+                    {plano.preco}
+                  </p>
+                  <p className={`text-sm ${plano.popular ? 'text-white/80' : 'text-gray-600'}`}>
+                    por mês
+                  </p>
+                </div>
+
+                {/* Features */}
+                <div className="mb-8 space-y-3">
+                  {plano.features.map((feature, j) => (
+                    <div key={j} className="flex items-start gap-3">
+                      <Check size={20} className={plano.popular ? 'text-white' : 'text-[#3DD93D]'} />
+                      <span className={`text-sm font-semibold ${plano.popular ? 'text-white' : 'text-gray-700'}`}>
+                        {feature}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Apps (if applicable) */}
+                {(plano as any).apps && (
+                  <div className="mb-8 pb-8 border-t border-current border-opacity-20">
+                    <p className={`text-xs font-bold mb-3 ${plano.popular ? 'text-white/80' : 'text-gray-600'}`}>
+                      APLICATIVOS INCLUSOS:
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {(plano as any).apps.map((app: string, j: number) => (
+                        <span
+                          key={j}
+                          className={`text-xs px-3 py-1 rounded-full font-bold ${
+                            plano.popular
+                              ? 'bg-white/20 text-white'
+                              : 'bg-[#3DD93D]/10 text-[#3DD93D]'
+                          }`}
+                        >
+                          {app}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* CTA Button */}
+                <a
+                  href="https://wa.me/556730272500?text=Olá!%20Quero%20contratar%20este%20plano"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl font-bold transition-all duration-300 ${
+                    plano.popular
+                      ? 'bg-white text-[#3DD93D] hover:shadow-lg hover:scale-105'
+                      : 'bg-[#3DD93D] text-white hover:shadow-lg hover:scale-105'
+                  }`}
+                >
+                  <MessageCircle size={18} />
+                  Contratar Agora
+                </a>
+
+                {/* Discount Note */}
+                <p className={`text-xs text-center mt-4 ${plano.popular ? 'text-white/70' : 'text-gray-500'}`}>
+                  *Instalação grátis com fidelidade de 12 meses
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Additional Info */}
+        <div className="mt-16 bg-white rounded-2xl p-8 animate-fade-in-up animate-delay-400">
+          <h3 className="text-xl font-bold text-[#0D1B3E] mb-4">Informações Importantes</h3>
+          <ul className="space-y-2 text-gray-700">
+            <li className="flex items-start gap-3">
+              <Check size={20} className="text-[#3DD93D] flex-shrink-0 mt-1" />
+              <span>Taxa de instalação: R$ 300,00 (isenta com fidelidade de 12 meses)</span>
+            </li>
+            <li className="flex items-start gap-3">
+              <Check size={20} className="text-[#3DD93D] flex-shrink-0 mt-1" />
+              <span>Desconto de R$ 20,00 por pontualidade em todos os planos</span>
+            </li>
+            <li className="flex items-start gap-3">
+              <Check size={20} className="text-[#3DD93D] flex-shrink-0 mt-1" />
+              <span>100% fibra óptica - sem oscilação, sem travamento</span>
+            </li>
+          </ul>
         </div>
       </div>
     </section>
