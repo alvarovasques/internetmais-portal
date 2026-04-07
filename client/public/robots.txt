@@ -1,0 +1,11 @@
+# InternetMais Robots.txt
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /private/
+
+# Sitemap
+Sitemap: https://internetmais-qrzsp3m6.manus.space/sitemap.xml
+
+# Crawl delay
+Crawl-delay: 1
