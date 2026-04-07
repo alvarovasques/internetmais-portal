@@ -106,10 +106,10 @@ export default function HeroSection() {
               className="w-full h-full object-cover"
             />
 
-            {/* Overlay Gradient - Azul para primeiro slide, Verde para outros */}
+            {/* Overlay Gradient - Alternar entre Azul e Verde */}
             <div
               className={`absolute inset-0 ${
-                index === 0
+                index % 2 === 0
                   ? 'bg-gradient-to-r from-[#0D1B3E]/90 via-[#0D1B3E]/60 to-transparent'
                   : 'bg-gradient-to-r from-[#3DD93D]/80 via-[#3DD93D]/50 to-transparent'
               }`}
