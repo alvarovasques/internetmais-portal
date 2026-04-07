@@ -8,7 +8,7 @@ import Planos5G from '@/components/Planos5G';
 import TelefoniaFixa from '@/components/TelefoniaFixa';
 import Aplicativos from '@/components/Aplicativos';
 import Empresarial from '@/components/Empresarial';
-import Adicionais from '@/components/Adicionais';
+import AreaAssinante from '@/components/AreaAssinante';
 import Lojas from '@/components/Lojas';
 import ProvaSocial from '@/components/ProvaSocial';
 import BannerCTAFinal from '@/components/BannerCTAFinal';
@@ -36,7 +36,7 @@ export default function Home() {
         <TelefoniaFixa />
         <Aplicativos />
         <Empresarial />
-        <Adicionais />
+        <AreaAssinante />
         <Lojas />
         <ProvaSocial />
         <BannerCTAFinal />
