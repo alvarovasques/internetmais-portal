@@ -1,7 +1,8 @@
+import { useEffect } from "react";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/NotFound";
-import { Route, Switch } from "wouter";
+import { Route, Switch, useLocation } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
@@ -9,9 +10,21 @@ import SobreNos from "./pages/SobreNos";
 
 
 function Router() {
+  const [location] = useLocation();
+
+  useEffect(() => {
+    // Definir títulos dinâmicos por página
+    const titles: Record<string, string> = {
+      '/': 'InternetMais - Fibra Óptica, 5G e Internet Empresarial',
+      '/sobre-nos': 'Sobre Nós - InternetMais | Missão, Visão e Valores',
+    };
+    document.title = titles[location] || 'InternetMais';
+  }, [location]);
+
   return (
     <Switch>
-      <Route path={"/"} component={Home} />      <Route path={"/sobre-nos"} component={SobreNos} />
+      <Route path={"/"} component={Home} />
+      <Route path={"/sobre-nos"} component={SobreNos} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />
