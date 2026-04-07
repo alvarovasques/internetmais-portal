@@ -1,18 +1,48 @@
-import { Menu, X, MessageCircle } from 'lucide-react';
 import { useState } from 'react';
+import { Menu, X, MessageCircle, ChevronDown } from 'lucide-react';
+import { Link } from 'wouter';
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [openSubmenu, setOpenSubmenu] = useState<string | null>(null);
 
   const navItems = [
-    { label: 'Planos Residenciais', href: '#planos-residenciais' },
-    { label: 'Empresarial', href: '#empresarial' },
-    { label: 'Chip 5G', href: '#chip-5g' },
-    { label: 'Aplicativos', href: '#aplicativos' },
-    { label: 'Cobertura', href: '#cobertura' },
-    { label: 'Central do Assinante', href: '#area-assinante' },
-    { label: 'Lojas', href: '#lojas' },
-    { label: 'Contato', href: '#contato' },
+    {
+      label: 'Residencial',
+      href: '/',
+      submenu: [
+        { label: 'Planos de Velocidade', href: '#planos-residenciais' },
+        { label: 'Planos com Aplicativos', href: '#planos-residenciais' },
+        { label: 'Diferenciais', href: '#diferenciais' },
+      ]
+    },
+    {
+      label: 'Empresarial',
+      href: '#empresarial',
+      submenu: []
+    },
+    {
+      label: 'Telefonia',
+      href: '/',
+      submenu: [
+        { label: 'Chip 5G', href: '#chip-5g' },
+        { label: 'Telefonia Fixa', href: '#telefonia-fixa' },
+      ]
+    },
+    {
+      label: 'Central do Assinante',
+      href: 'https://sistema.freewaynet.com.br/central_assinante_web/login',
+      external: true
+    },
+    {
+      label: 'Sobre Nós',
+      href: '/sobre-nos',
+      submenu: [
+        { label: 'Missão, Visão e Valores', href: '/sobre-nos' },
+        { label: 'Nossas Lojas', href: '/sobre-nos' },
+        { label: 'Cobertura', href: '#cobertura' },
+      ]
+    },
   ];
 
   return (
@@ -20,24 +50,47 @@ export default function Header() {
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <div className="flex items-center gap-3">
-            <img
-              src="https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/Logo_internet_MAIS_9b6aefe1.png"
-              alt="InternetMais Logo"
-              className="h-24 md:h-32"
-            />
-          </div>
+          <Link href="/">
+            <a className="flex items-center gap-3 cursor-pointer">
+              <img
+                src="https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/Logo_internet_MAIS_9b6aefe1.png"
+                alt="InternetMais Logo"
+                className="h-24 md:h-32"
+              />
+            </a>
+          </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden md:flex items-center gap-1">
             {navItems.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                className="text-sm font-semibold text-[#0D1B3E] hover:text-[#3DD93D] transition-colors"
-              >
-                {item.label}
-              </a>
+              <div key={item.label} className="relative group">
+                <a
+                  href={item.href}
+                  target={item.external ? '_blank' : undefined}
+                  rel={item.external ? 'noopener noreferrer' : undefined}
+                  className="text-sm font-semibold text-[#0D1B3E] hover:text-[#3DD93D] transition-colors px-3 py-2 rounded-lg flex items-center gap-1"
+                >
+                  {item.label}
+                  {item.submenu && item.submenu.length > 0 && (
+                    <ChevronDown size={16} className="group-hover:rotate-180 transition-transform" />
+                  )}
+                </a>
+
+                {/* Desktop Submenu */}
+                {item.submenu && item.submenu.length > 0 && (
+                  <div className="absolute left-0 mt-0 w-48 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 py-2">
+                    {item.submenu.map((subitem) => (
+                      <a
+                        key={subitem.label}
+                        href={subitem.href}
+                        className="block px-4 py-2 text-sm text-[#0D1B3E] hover:bg-[#3DD93D]/10 hover:text-[#3DD93D] transition-colors"
+                      >
+                        {subitem.label}
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </div>
             ))}
           </nav>
 
@@ -65,23 +118,69 @@ export default function Header() {
         {mobileMenuOpen && (
           <nav className="md:hidden mt-4 pb-4 border-t border-gray-200">
             {navItems.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                className="block py-2 text-sm font-semibold text-[#0D1B3E] hover:text-[#3DD93D] transition-colors"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                {item.label}
-              </a>
+              <div key={item.label}>
+                <button
+                  onClick={() => setOpenSubmenu(openSubmenu === item.label ? null : item.label)}
+                  className="w-full text-left py-2 text-sm font-semibold text-[#0D1B3E] hover:text-[#3DD93D] transition-colors flex items-center justify-between"
+                >
+                  {item.label}
+                  {item.submenu && item.submenu.length > 0 && (
+                    <ChevronDown
+                      size={16}
+                      className={`transition-transform ${openSubmenu === item.label ? 'rotate-180' : ''}`}
+                    />
+                  )}
+                </button>
+
+                {/* Mobile Submenu */}
+                {item.submenu && item.submenu.length > 0 && openSubmenu === item.label && (
+                  <div className="bg-gray-50 rounded-lg mt-2 py-2">
+                    {item.submenu.map((subitem) => (
+                      <a
+                        key={subitem.label}
+                        href={subitem.href}
+                        className="block px-4 py-2 text-xs text-[#0D1B3E] hover:text-[#3DD93D] transition-colors"
+                        onClick={() => setMobileMenuOpen(false)}
+                      >
+                        {subitem.label}
+                      </a>
+                    ))}
+                  </div>
+                )}
+
+                {/* External Link */}
+                {item.external && (
+                  <a
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block py-2 text-sm font-semibold text-[#0D1B3E] hover:text-[#3DD93D] transition-colors"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {item.label}
+                  </a>
+                )}
+
+                {/* Regular Link */}
+                {!item.external && !item.submenu?.length && (
+                  <a
+                    href={item.href}
+                    className="block py-2 text-sm font-semibold text-[#0D1B3E] hover:text-[#3DD93D] transition-colors"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {item.label}
+                  </a>
+                )}
+              </div>
             ))}
             <a
               href="https://wa.me/556730272500?text=Olá!%20Quero%20conhecer%20os%20planos%20da%20InternetMais"
               target="_blank"
               rel="noopener noreferrer"
-              className="block mt-4 w-full bg-[#25D366] text-white font-bold py-2 px-4 rounded-full text-center hover:bg-[#20ba5a] hover:shadow-lg transition-all flex items-center justify-center gap-2"
+              className="mt-4 flex items-center justify-center gap-2 bg-[#25D366] text-white font-bold py-2 px-4 rounded-full hover:bg-[#20ba5a] transition-all duration-300 w-full"
             >
               <MessageCircle size={18} />
-              WhatsApp
+              <span>WhatsApp</span>
             </a>
           </nav>
         )}

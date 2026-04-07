@@ -1,4 +1,5 @@
 import { Instagram, Facebook, MessageCircle } from 'lucide-react';
+import { Link } from 'wouter';
 
 export default function Footer() {
   return (
@@ -21,16 +22,27 @@ export default function Footer() {
           <div>
             <h4 className="font-bold text-lg mb-4">Links Rápidos</h4>
             <ul className="space-y-2">
-              {['Planos', 'Empresarial', 'Chip 5G', 'Cobertura', 'Central do Assinante', 'Lojas', 'Privacidade'].map((link) => (
-                <li key={link}>
-                  <a
-                    href={`#${link.toLowerCase().replace(/ /g, '-')}`}
-                    className="text-gray-400 hover:text-[#3DD93D] transition-colors"
-                  >
-                    {link}
-                  </a>
-                </li>
-              ))}
+              <li>
+                <Link href="/">
+                  <a className="text-gray-400 hover:text-[#3DD93D] transition-colors">Residencial</a>
+                </Link>
+              </li>
+              <li>
+                <a href="#empresarial" className="text-gray-400 hover:text-[#3DD93D] transition-colors">Empresarial</a>
+              </li>
+              <li>
+                <a href="#chip-5g" className="text-gray-400 hover:text-[#3DD93D] transition-colors">Telefonia</a>
+              </li>
+              <li>
+                <Link href="/sobre-nos">
+                  <a className="text-gray-400 hover:text-[#3DD93D] transition-colors">Sobre Nós</a>
+                </Link>
+              </li>
+              <li>
+                <Link href="/sobre-nos">
+                  <a className="text-gray-400 hover:text-[#3DD93D] transition-colors">Nossas Lojas</a>
+                </Link>
+              </li>
             </ul>
           </div>
 

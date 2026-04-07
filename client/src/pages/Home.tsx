@@ -2,7 +2,7 @@ import Header from '@/components/Header';
 import HeroSection from '@/components/HeroSection';
 import Bloco5G from '@/components/Bloco5G';
 import Diferenciais from '@/components/Diferenciais';
-import MissaoVisaoValores from '@/components/MissaoVisaoValores';
+
 import PlanosResidenciais from '@/components/PlanosResidenciais';
 import Planos5G from '@/components/Planos5G';
 import TelefoniaFixa from '@/components/TelefoniaFixa';
@@ -34,7 +34,6 @@ export default function Home() {
         <HeroSection />
         <Bloco5G />
         <Diferenciais />
-        <MissaoVisaoValores />
         <PlanosResidenciais />
         <Planos5G />
         <TelefoniaFixa />
