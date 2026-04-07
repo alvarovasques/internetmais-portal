@@ -77,7 +77,7 @@ export default function Lojas() {
             className="inline-flex items-center justify-center gap-2 bg-[#25D366] text-white font-bold py-3 px-6 rounded-full hover:bg-[#20ba5a] hover:shadow-lg hover:scale-105 transition-all duration-300 animate-scale-in"
           >
             <MessageCircle size={20} />
-            Falar com a loja mais próxima
+            Falar com um Especialista
           </a>
         </div>
       </div>
