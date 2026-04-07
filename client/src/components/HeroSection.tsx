@@ -4,6 +4,7 @@ import { ChevronLeft, ChevronRight, MessageCircle } from 'lucide-react';
 export default function HeroSection() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [autoplay, setAutoplay] = useState(true);
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
   const slides = [
     {
@@ -66,23 +67,39 @@ export default function HeroSection() {
   useEffect(() => {
     if (!autoplay) return;
     const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
+      setIsTransitioning(true);
+      setTimeout(() => {
+        setCurrentSlide((prev) => (prev + 1) % slides.length);
+        setIsTransitioning(false);
+      }, 300);
     }, 6000);
     return () => clearInterval(interval);
   }, [autoplay, slides.length]);
 
   const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % slides.length);
+    setIsTransitioning(true);
+    setTimeout(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+      setIsTransitioning(false);
+    }, 300);
     setAutoplay(false);
   };
 
   const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+    setIsTransitioning(true);
+    setTimeout(() => {
+      setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+      setIsTransitioning(false);
+    }, 300);
     setAutoplay(false);
   };
 
   const goToSlide = (index: number) => {
-    setCurrentSlide(index);
+    setIsTransitioning(true);
+    setTimeout(() => {
+      setCurrentSlide(index);
+      setIsTransitioning(false);
+    }, 300);
     setAutoplay(false);
   };
 
@@ -118,26 +135,50 @@ export default function HeroSection() {
             {/* Content */}
             <div className="absolute inset-0 flex items-center">
               <div className="container mx-auto px-4 md:px-8">
-                <div className="max-w-2xl animate-fade-in-up">
+                <div className="max-w-2xl">
                   {/* Badge */}
-                  <div className="inline-block mb-4">
+                  <div
+                    className={`inline-block mb-4 transition-all duration-700 ${
+                      index === currentSlide && !isTransitioning
+                        ? 'opacity-100 translate-y-0'
+                        : 'opacity-0 translate-y-4'
+                    }`}
+                  >
                     <span className="bg-white text-[#0D1B3E] px-4 py-2 rounded-full text-xs md:text-sm font-bold">
                       {s.badge}
                     </span>
                   </div>
 
                   {/* Title */}
-                  <h1 className="text-3xl md:text-5xl lg:text-6xl font-black text-white mb-4 leading-tight">
+                  <h1
+                    className={`text-3xl md:text-5xl lg:text-6xl font-black text-white mb-4 leading-tight transition-all duration-700 delay-100 ${
+                      index === currentSlide && !isTransitioning
+                        ? 'opacity-100 translate-y-0'
+                        : 'opacity-0 translate-y-4'
+                    }`}
+                  >
                     {s.title}
                   </h1>
 
                   {/* Description */}
-                  <p className="text-base md:text-lg text-white/90 mb-8 max-w-xl leading-relaxed">
+                  <p
+                    className={`text-base md:text-lg text-white/90 mb-8 max-w-xl leading-relaxed transition-all duration-700 delay-200 ${
+                      index === currentSlide && !isTransitioning
+                        ? 'opacity-100 translate-y-0'
+                        : 'opacity-0 translate-y-4'
+                    }`}
+                  >
                     {s.description}
                   </p>
 
                   {/* CTA Buttons */}
-                  <div className="flex flex-col sm:flex-row gap-4">
+                  <div
+                    className={`flex flex-col sm:flex-row gap-4 transition-all duration-700 delay-300 ${
+                      index === currentSlide && !isTransitioning
+                        ? 'opacity-100 translate-y-0'
+                        : 'opacity-0 translate-y-4'
+                    }`}
+                  >
                     <a
                       href={`https://wa.me/556730272500?text=${encodeURIComponent(s.ctaMessage)}`}
                       target="_blank"
