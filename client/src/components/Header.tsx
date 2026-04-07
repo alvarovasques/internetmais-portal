@@ -7,6 +7,15 @@ export default function Header() {
 
   const navItems = [
     {
+      label: 'Sobre Nós',
+      href: '/sobre-nos',
+      submenu: [
+        { label: 'Missão, Visão e Valores', href: '/sobre-nos' },
+        { label: 'Nossas Lojas', href: '/sobre-nos' },
+        { label: 'Cobertura', href: '#cobertura' },
+      ]
+    },
+    {
       label: 'Residencial',
       href: '/',
       submenu: [
@@ -32,15 +41,6 @@ export default function Header() {
       label: 'Central do Assinante',
       href: 'https://sistema.freewaynet.com.br/central_assinante_web/login',
       external: true
-    },
-    {
-      label: 'Sobre Nós',
-      href: '/sobre-nos',
-      submenu: [
-        { label: 'Missão, Visão e Valores', href: '/sobre-nos' },
-        { label: 'Nossas Lojas', href: '/sobre-nos' },
-        { label: 'Cobertura', href: '#cobertura' },
-      ]
     },
   ];
 
