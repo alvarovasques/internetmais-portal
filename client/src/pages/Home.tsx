@@ -30,12 +30,12 @@ export default function Home() {
       <Header />
       <main>
         <HeroSection />
-        <Diferenciais />
         <PlanosResidenciais />
+        <Empresarial />
+        <Diferenciais />
         <Planos5G />
         <TelefoniaFixa />
         <Aplicativos />
-        <Empresarial />
         <AreaAssinante />
         <Lojas />
         <ProvaSocial />
