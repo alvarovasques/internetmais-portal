@@ -1,5 +1,4 @@
 import { Instagram, Facebook, MessageCircle } from 'lucide-react';
-import { Link } from 'wouter';
 
 export default function Footer() {
   return (
@@ -23,9 +22,7 @@ export default function Footer() {
             <h4 className="font-bold text-lg mb-4">Links Rápidos</h4>
             <ul className="space-y-2">
               <li>
-                <Link href="/">
-                  <a className="text-gray-400 hover:text-[#3DD93D] transition-colors">Residencial</a>
-                </Link>
+                <a href="/" className="text-gray-400 hover:text-[#3DD93D] transition-colors">Residencial</a>
               </li>
               <li>
                 <a href="#empresarial" className="text-gray-400 hover:text-[#3DD93D] transition-colors">Empresarial</a>
@@ -34,14 +31,10 @@ export default function Footer() {
                 <a href="#chip-5g" className="text-gray-400 hover:text-[#3DD93D] transition-colors">Telefonia</a>
               </li>
               <li>
-                <Link href="/sobre-nos">
-                  <a className="text-gray-400 hover:text-[#3DD93D] transition-colors">Sobre Nós</a>
-                </Link>
+                <a href="/sobre-nos" className="text-gray-400 hover:text-[#3DD93D] transition-colors">Sobre Nós</a>
               </li>
               <li>
-                <Link href="/sobre-nos">
-                  <a className="text-gray-400 hover:text-[#3DD93D] transition-colors">Nossas Lojas</a>
-                </Link>
+                <a href="/sobre-nos" className="text-gray-400 hover:text-[#3DD93D] transition-colors">Nossas Lojas</a>
               </li>
             </ul>
           </div>

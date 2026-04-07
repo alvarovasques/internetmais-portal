@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Menu, X, MessageCircle, ChevronDown } from 'lucide-react';
-import { Link } from 'wouter';
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -50,15 +49,13 @@ export default function Header() {
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link href="/">
-            <a className="flex items-center gap-3 cursor-pointer">
-              <img
-                src="https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/Logo_internet_MAIS_9b6aefe1.png"
-                alt="InternetMais Logo"
-                className="h-24 md:h-32"
-              />
-            </a>
-          </Link>
+          <a href="/" className="flex items-center gap-3 cursor-pointer">
+            <img
+              src="https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/Logo_internet_MAIS_9b6aefe1.png"
+              alt="InternetMais Logo"
+              className="h-24 md:h-32"
+            />
+          </a>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-1">
