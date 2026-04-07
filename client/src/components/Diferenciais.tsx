@@ -31,7 +31,7 @@ export default function Diferenciais() {
       <div className="container mx-auto px-4">
         {/* Title */}
         <h2 className="text-3xl md:text-4xl font-black text-[#0D1B3E] mb-4 text-center animate-fade-in-down animate-delay-100">
-          Por que a InternetMais é diferente?
+          Por que a Internet Mais é diferente?
         </h2>
         <p className="text-lg text-gray-600 text-center mb-16 max-w-2xl mx-auto animate-fade-in-up animate-delay-200">
           Conheça os diferenciais que nos fazem ser a melhor escolha para sua conexão
