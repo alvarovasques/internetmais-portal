@@ -1,72 +1,193 @@
-import { CheckCircle2, MessageCircle } from 'lucide-react';
-import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+import { useState, useEffect } from 'react';
+import { ChevronLeft, ChevronRight, MessageCircle } from 'lucide-react';
 
 export default function HeroSection() {
-  const ref = useScrollAnimation();
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [autoplay, setAutoplay] = useState(true);
+
+  const slides = [
+    {
+      id: 1,
+      image: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/hero-person-smartphone-Rpr8kr2PaxPu6YGvVXmiU6.webp',
+      badge: 'FIBRA ÓPTICA + CHIP 5G',
+      title: 'Fibra Óptica + Chip 5G. Tudo o que você precisa em um só lugar.',
+      description: 'Mais de 20 mil clientes em Campo Grande. 100% fibra óptica, sem oscilação. E agora, somos também sua operadora de celular 5G.',
+      cta: 'Quero Contratar Agora',
+      ctaMessage: 'Olá! Gostaria de falar com um representante sobre os planos de internet'
+    },
+    {
+      id: 2,
+      image: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/carousel-velocidade-oBDuwux95MV7uvpUTagvTQ.webp',
+      badge: 'MÁXIMA VELOCIDADE',
+      title: 'Internet Mais Velocidade',
+      description: 'Navegue, trabalhe e jogue com a velocidade máxima. Fibra óptica dedicada com latência ultra-baixa para a melhor experiência.',
+      cta: 'Conhecer Planos',
+      ctaMessage: 'Gostaria de falar com um representante sobre os planos de internet de alta velocidade'
+    },
+    {
+      id: 3,
+      image: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/carousel-aplicativos-7WdoKoYAqGqz7gVWf9MGZ2.webp',
+      badge: 'TEMPO EM FAMÍLIA',
+      title: 'Internet Mais Aplicativos',
+      description: 'Aproveite os melhores aplicativos e serviços de streaming com sua família. Qualidade 4K, sem travamentos, sem limites.',
+      cta: 'Ver Aplicativos',
+      ctaMessage: 'Gostaria de saber mais sobre os aplicativos inclusos em cada plano'
+    },
+    {
+      id: 4,
+      image: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/carousel-5g-i9MU3z53kdLKWTBtBNhKrk.webp',
+      badge: 'OPERADORA 5G',
+      title: 'Telefonia com Chip 5G',
+      description: 'Conectividade móvel de próxima geração. Velocidade ultra-rápida, cobertura confiável e planos flexíveis para você.',
+      cta: 'Contratar Chip 5G',
+      ctaMessage: 'Gostaria de falar com um representante sobre os planos de Chip 5G'
+    },
+    {
+      id: 5,
+      image: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/carousel-empresarial-59j7VzkmoLVCgHYY7e6JQF.webp',
+      badge: 'PARA EMPRESAS',
+      title: 'Internet Empresarial',
+      description: 'WiFi 6, suporte especializado 24/7, estabilidade garantida. Soluções robustas para impulsionar seu negócio.',
+      cta: 'Solicitar Orçamento',
+      ctaMessage: 'Gostaria de falar com um representante sobre soluções de internet empresarial'
+    }
+  ];
+
+  // Auto-play carousel
+  useEffect(() => {
+    if (!autoplay) return;
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 6000);
+    return () => clearInterval(interval);
+  }, [autoplay, slides.length]);
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % slides.length);
+    setAutoplay(false);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+    setAutoplay(false);
+  };
+
+  const goToSlide = (index: number) => {
+    setCurrentSlide(index);
+    setAutoplay(false);
+  };
+
+  const slide = slides[currentSlide];
+
   return (
-    <section ref={ref} className="relative min-h-screen flex items-center overflow-hidden opacity-0">
-      {/* Background Image with Overlay */}
-      <div className="absolute inset-0">
-        <img
-          src="https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/hero-person-smartphone-Rpr8kr2PaxPu6YGvVXmiU6.webp"
-          alt="Jovem com smartphone"
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0D1B3E]/95 via-[#0D1B3E]/85 to-transparent"></div>
+    <section className="relative w-full h-screen md:h-[600px] overflow-hidden bg-[#0D1B3E]">
+      {/* Slides Container */}
+      <div className="relative w-full h-full">
+        {slides.map((s, index) => (
+          <div
+            key={s.id}
+            className={`absolute inset-0 transition-opacity duration-1000 ${
+              index === currentSlide ? 'opacity-100' : 'opacity-0'
+            }`}
+          >
+            {/* Background Image */}
+            <img
+              src={s.image}
+              alt={s.title}
+              className="w-full h-full object-cover"
+            />
+
+            {/* Overlay Gradient - Azul para primeiro slide, Verde para outros */}
+            <div
+              className={`absolute inset-0 ${
+                index === 0
+                  ? 'bg-gradient-to-r from-[#0D1B3E]/90 via-[#0D1B3E]/60 to-transparent'
+                  : 'bg-gradient-to-r from-[#3DD93D]/80 via-[#3DD93D]/50 to-transparent'
+              }`}
+            />
+
+            {/* Content */}
+            <div className="absolute inset-0 flex items-center">
+              <div className="container mx-auto px-4 md:px-8">
+                <div className="max-w-2xl animate-fade-in-up">
+                  {/* Badge */}
+                  <div className="inline-block mb-4">
+                    <span className="bg-white text-[#0D1B3E] px-4 py-2 rounded-full text-xs md:text-sm font-bold">
+                      {s.badge}
+                    </span>
+                  </div>
+
+                  {/* Title */}
+                  <h1 className="text-3xl md:text-5xl lg:text-6xl font-black text-white mb-4 leading-tight">
+                    {s.title}
+                  </h1>
+
+                  {/* Description */}
+                  <p className="text-base md:text-lg text-white/90 mb-8 max-w-xl leading-relaxed">
+                    {s.description}
+                  </p>
+
+                  {/* CTA Buttons */}
+                  <div className="flex flex-col sm:flex-row gap-4">
+                    <a
+                      href={`https://wa.me/556730272500?text=${encodeURIComponent(s.ctaMessage)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center gap-2 bg-[#25D366] text-white font-bold py-3 px-6 rounded-full hover:bg-[#20ba5a] hover:shadow-lg hover:scale-105 transition-all duration-300"
+                    >
+                      <MessageCircle size={20} />
+                      {s.cta}
+                    </a>
+                    <button
+                      onClick={() => setAutoplay(true)}
+                      className="inline-flex items-center justify-center gap-2 border-2 border-white text-white font-bold py-3 px-6 rounded-full hover:bg-white/10 transition-all duration-300"
+                    >
+                      Ver Planos
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
 
-      {/* Content */}
-      <div className="container mx-auto px-4 relative z-10 py-20">
-        <div className="max-w-2xl">
-          {/* Title */}
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 leading-tight animate-fade-in-down animate-delay-100">
-            Fibra Optica + Chip 5G.
-            <span className="text-[#F5C518]"> Tudo o que voce precisa</span> em um so lugar.
-          </h1>
+      {/* Navigation Arrows */}
+      <button
+        onClick={prevSlide}
+        className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/40 text-white p-3 rounded-full transition-all duration-300 group"
+      >
+        <ChevronLeft size={24} className="group-hover:scale-110 transition-transform" />
+      </button>
 
-          {/* Subtitle */}
-          <p className="text-lg md:text-xl text-gray-100 mb-8 leading-relaxed animate-fade-in-left animate-delay-200">
-            Mais de 20 mil clientes em Campo Grande. 100% fibra optica, sem oscilacao. E agora, somos tambem sua operadora de celular 5G.
-          </p>
+      <button
+        onClick={nextSlide}
+        className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/40 text-white p-3 rounded-full transition-all duration-300 group"
+      >
+        <ChevronRight size={24} className="group-hover:scale-110 transition-transform" />
+      </button>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 mb-12 animate-fade-in-right animate-delay-300">
-            <a
-              href="https://wa.me/556730272500?text=Olá!%20Gostaria%20de%20falar%20com%20um%20representante%20sobre%20os%20planos%20de%20internet%20da%20InternetMais."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-[#3DD93D] text-white font-bold py-3 px-6 rounded-xl hover:shadow-lg hover:scale-105 transition-all duration-300 inline-flex items-center justify-center gap-2"
-            >
-              <MessageCircle size={20} />
-              Quero Contratar Agora
-            </a>
-            <a
-              href="#planos-residenciais"
-              className="btn-secondary inline-flex items-center justify-center gap-2"
-            >
-              ⚪ Ver Planos
-            </a>
-          </div>
+      {/* Slide Indicators (Dots) */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-2">
+        {slides.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => goToSlide(index)}
+            className={`transition-all duration-300 rounded-full ${
+              index === currentSlide
+                ? 'bg-white w-8 h-3'
+                : 'bg-white/50 w-3 h-3 hover:bg-white/70'
+            }`}
+            aria-label={`Go to slide ${index + 1}`}
+          />
+        ))}
+      </div>
 
-          {/* Benefits */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 animate-fade-in-up animate-delay-400">
-            {[
-              '✅ 100% Fibra Optica',
-              '✅ Instalacao Gratis*',
-              '✅ +20 mil clientes',
-              '✅ Chip 5G disponivel',
-            ].map((benefit, i) => (
-              <div
-                key={i}
-                className="flex items-center gap-3 text-white animate-scale-in"
-                style={{ animationDelay: `${0.5 + i * 0.1}s` }}
-              >
-                <CheckCircle2 size={20} className="text-[#3DD93D] flex-shrink-0" />
-                <span className="font-semibold">{benefit}</span>
-              </div>
-            ))}
-          </div>
-        </div>
+      {/* Slide Counter */}
+      <div className="absolute top-8 right-8 z-20 text-white font-bold text-sm md:text-base">
+        <span className="bg-white/20 px-4 py-2 rounded-full backdrop-blur-sm">
+          {currentSlide + 1} / {slides.length}
+        </span>
       </div>
     </section>
   );
