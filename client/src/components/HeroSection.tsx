@@ -50,6 +50,15 @@ export default function HeroSection() {
       description: 'WiFi 6, suporte especializado 24/7, estabilidade garantida. Soluções robustas para impulsionar seu negócio.',
       cta: 'Solicitar Orçamento',
       ctaMessage: 'Gostaria de falar com um representante sobre soluções de internet empresarial'
+    },
+    {
+      id: 6,
+      image: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/chip-5g-mockup-nKczXnR3D6rQvEQ4DTpnEm.webp',
+      badge: 'SOMOS UMA OPERADORA 5G',
+      title: 'Seu celular merece o melhor sinal. Conheça o Chip InternetMais 5G.',
+      description: 'Planos a partir de R$ 24,99/mês com apps ilimitados e bônus ao trazer sua portabilidade.',
+      cta: 'Quero meu Chip 5G agora',
+      ctaMessage: 'Gostaria de falar com um representante sobre os planos de Chip 5G da InternetMais.'
     }
   ];
 

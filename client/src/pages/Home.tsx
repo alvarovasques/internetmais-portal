@@ -1,6 +1,6 @@
 import Header from '@/components/Header';
 import HeroSection from '@/components/HeroSection';
-import Bloco5G from '@/components/Bloco5G';
+
 import Diferenciais from '@/components/Diferenciais';
 
 import PlanosResidenciais from '@/components/PlanosResidenciais';
@@ -13,8 +13,6 @@ import Lojas from '@/components/Lojas';
 import ProvaSocial from '@/components/ProvaSocial';
 import BannerCTAFinal from '@/components/BannerCTAFinal';
 import Footer from '@/components/Footer';
-import Cobertura from '@/components/Cobertura';
-import AreaAssinante from '@/components/AreaAssinante';
 
 /**
  * Home Page - InternetMais Portal
@@ -32,7 +30,6 @@ export default function Home() {
       <Header />
       <main>
         <HeroSection />
-        <Bloco5G />
         <Diferenciais />
         <PlanosResidenciais />
         <Planos5G />
@@ -40,8 +37,6 @@ export default function Home() {
         <Aplicativos />
         <Empresarial />
         <Adicionais />
-        <Cobertura />
-        <AreaAssinante />
         <Lojas />
         <ProvaSocial />
         <BannerCTAFinal />
