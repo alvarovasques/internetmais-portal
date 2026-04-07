@@ -12,6 +12,7 @@ import AreaAssinante from '@/components/AreaAssinante';
 import Lojas from '@/components/Lojas';
 import ProvaSocial from '@/components/ProvaSocial';
 import BannerCTAFinal from '@/components/BannerCTAFinal';
+import FAQ from '@/components/FAQ';
 import Footer from '@/components/Footer';
 
 /**
@@ -39,6 +40,7 @@ export default function Home() {
         <AreaAssinante />
         <Lojas />
         <ProvaSocial />
+        <FAQ />
         <BannerCTAFinal />
       </main>
       <Footer />
