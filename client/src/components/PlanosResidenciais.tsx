@@ -80,7 +80,7 @@ export default function PlanosResidenciais() {
   };
 
   const tabs = [
-    { id: 'velocidade', label: 'Internet Velocidade', icon: Zap },
+    { id: 'velocidade', label: 'Internet + Velocidade', icon: Zap },
     { id: 'aplicativos', label: 'Internet + Aplicativos', icon: Tv },
     { id: 'globoplay', label: 'Internet + Globo Play', icon: Tag },
   ];
@@ -229,7 +229,7 @@ export default function PlanosResidenciais() {
             </li>
             <li className="flex items-start gap-3">
               <Check size={20} className="text-[#3DD93D] flex-shrink-0 mt-1" />
-              <span>Desconto de R$ 20,00 por pontualidade em todos os planos</span>
+              <span>Desconto de R$ 20,00 por pontualidade nos planos Internet + Velocidade e Internet  + Aplicativos</span>
             </li>
             <li className="flex items-start gap-3">
               <Check size={20} className="text-[#3DD93D] flex-shrink-0 mt-1" />
