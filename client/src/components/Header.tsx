@@ -38,6 +38,11 @@ export default function Header() {
       ]
     },
     {
+      label: 'Aplicativos',
+      href: 'https://www.portaldoassinante.com/internetmais/login',
+      external: true
+    },
+    {
       label: 'Central do Assinante',
       href: 'https://sistema.freewaynet.com.br/central_assinante_web/login',
       external: true

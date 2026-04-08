@@ -31,6 +31,12 @@ export default function Footer() {
                 <a href="#chip-5g" className="text-gray-400 hover:text-[#3DD93D] transition-colors">Telefonia</a>
               </li>
               <li>
+                <a href="https://www.portaldoassinante.com/internetmais/login" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#3DD93D] transition-colors">Aplicativos</a>
+              </li>
+              <li>
+                <a href="https://sistema.freewaynet.com.br/central_assinante_web/login" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#3DD93D] transition-colors">Central do Assinante</a>
+              </li>
+              <li>
                 <a href="/sobre-nos" className="text-gray-400 hover:text-[#3DD93D] transition-colors">Sobre Nós</a>
               </li>
               <li>
