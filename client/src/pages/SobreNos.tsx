@@ -42,13 +42,18 @@ export default function SobreNos() {
       horario: 'Seg-Sex: 8h-18h | Sab: 8h-12h'
     },
     {
-      nome: 'Loja Los Angeles',
-      endereco: 'Rua Campo Nobre, 654',
+      nome: 'Loja União',
+      endereco: 'Avenida Petrópolis, 1109',
       horario: 'Seg-Sex: 8h-18h | Sab: 8h-12h'
     },
     {
-      nome: 'Loja União',
-      endereco: 'Avenida Petrópolis, 1109',
+      nome: 'Loja Julio de Castilho',
+      endereco: 'Avenida Julio de Castilho, 1666',
+      horario: 'Seg-Sex: 8h-18h | Sab: 8h-12h'
+    },
+    {
+      nome: 'Loja Cafezais',
+      endereco: 'Av. dos Cafezais, 1985 - Loja 06',
       horario: 'Seg-Sex: 8h-18h | Sab: 8h-12h'
     },
   ];

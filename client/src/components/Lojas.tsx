@@ -21,13 +21,18 @@ export default function Lojas() {
       horario: 'Seg-Sex: 8h-18h | Sab: 8h-12h'
     },
     {
-      nome: 'Loja Los Angeles',
-      endereco: 'Rua Campo Nobre, 654',
+      nome: 'Loja União',
+      endereco: 'Avenida Petrópolis, 1109',
       horario: 'Seg-Sex: 8h-18h | Sab: 8h-12h'
     },
     {
-      nome: 'Loja União',
-      endereco: 'Avenida Petrópolis, 1109',
+      nome: 'Loja Julio de Castilho',
+      endereco: 'Avenida Julio de Castilho, 1666',
+      horario: 'Seg-Sex: 8h-18h | Sab: 8h-12h'
+    },
+    {
+      nome: 'Loja Cafezais',
+      endereco: 'Av. dos Cafezais, 1985 - Loja 06',
       horario: 'Seg-Sex: 8h-18h | Sab: 8h-12h'
     },
   ];
@@ -40,7 +45,7 @@ export default function Lojas() {
           Visite Nossas Lojas
         </h2>
         <p className="text-lg text-gray-700 text-center mb-16 max-w-2xl mx-auto animate-fade-in-up">
-          Atendimento presencial em 5 lojas em Campo Grande. Suporte técnico, contratação e atendimento humanizado.
+          Atendimento presencial em 6 lojas em Campo Grande. Suporte técnico, contratação e atendimento humanizado.
         </p>
 
         {/* Lojas Grid */}
