@@ -12,13 +12,17 @@ interface Plano {
   popular: boolean;
   desconto?: string;
   features: string[];
-  appsStandard?: string[];
-  appsPremium?: string[];
+  appsStandard?: number;
+  appsPremium?: number;
 }
 
 export default function PlanosResidenciais() {
   const ref = useScrollAnimation();
   const [activeTab, setActiveTab] = useState<'velocidade' | 'aplicativos' | 'globoplay'>('velocidade');
+
+  // URLs das imagens de apps
+  const appsStandardImage = 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/pasted_file_40eNqp_image_9237b9bb.png';
+  const appsPremiumImage = 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/pasted_file_hMK2Tw_image_b3f62a3f.png';
 
   const planosVelocidade: Plano[] = [
     {
@@ -57,8 +61,8 @@ export default function PlanosResidenciais() {
       temDesconto: true,
       popular: false,
       desconto: '20% de desconto por pontualidade',
-      appsStandard: ['MaisTV (100+ canais)', 'Ubook', 'Kaspersky', 'Play Kids', 'Looke', 'Deezer', 'Social Comics', 'Qnutri', 'Revistaría', 'Fluid'],
-      features: ['400 Mbps de velocidade', '1 App Standard incluso', 'Instalação grátis*', 'Roteador Wi-Fi 6', 'Suporte 24/7']
+      appsStandard: 1,
+      features: ['400 Mbps de velocidade', 'Escolha 1 App Standard', 'Instalação grátis*', 'Roteador Wi-Fi 6', 'Suporte 24/7']
     },
     {
       velocidade: '600 Mega',
@@ -66,9 +70,9 @@ export default function PlanosResidenciais() {
       precoComDesconto: 'R$ 129,90',
       temDesconto: true,
       popular: true,
-      appsStandard: ['MaisTV (100+ canais)', 'Ubook', 'Kaspersky', 'Play Kids', 'Looke', 'Deezer', 'Social Comics', 'Qnutri', 'Revistaría', 'Fluid'],
-      appsPremium: ['Smart Content', 'Ritual Fit', 'Kaspersky Plus (5 lic.)', 'Docway', 'HotGo', 'Queima Diária', 'HBO Max', 'Disney+ Padrão'],
-      features: ['600 Mbps de velocidade', '1 App Standard + 1 Premium', 'Instalação grátis*', 'Roteador Wi-Fi 6', 'Suporte 24/7']
+      appsStandard: 1,
+      appsPremium: 1,
+      features: ['600 Mbps de velocidade', 'Escolha 1 App Standard + 1 Premium', 'Instalação grátis*', 'Roteador Wi-Fi 6', 'Suporte 24/7']
     },
     {
       velocidade: '800 Mega',
@@ -77,9 +81,9 @@ export default function PlanosResidenciais() {
       temDesconto: true,
       popular: false,
       desconto: '20% de desconto por pontualidade',
-      appsStandard: ['MaisTV (100+ canais)', 'Ubook', 'Kaspersky', 'Play Kids', 'Looke', 'Deezer', 'Social Comics', 'Qnutri', 'Revistaría', 'Fluid'],
-      appsPremium: ['Smart Content', 'Ritual Fit', 'Kaspersky Plus (5 lic.)', 'Docway', 'HotGo', 'Queima Diária', 'HBO Max', 'Disney+ Padrão'],
-      features: ['800 Mbps de velocidade', '1 App Standard + 1 Premium', 'Instalação grátis*', 'Roteador Wi-Fi 6', 'Suporte 24/7']
+      appsStandard: 1,
+      appsPremium: 1,
+      features: ['800 Mbps de velocidade', 'Escolha 1 App Standard + 1 Premium', 'Instalação grátis*', 'Roteador Wi-Fi 6', 'Suporte 24/7']
     },
   ];
 
@@ -250,30 +254,26 @@ export default function PlanosResidenciais() {
                   <div className="mb-8 space-y-4 border-t border-opacity-20 border-white pt-4">
                     {plano.appsStandard && (
                       <div>
-                        <p className={`text-xs font-bold mb-2 ${plano.popular ? 'text-white' : 'text-[#3DD93D]'}`}>
-                          APPS STANDARD DISPONÍVEIS
+                        <p className={`text-xs font-bold mb-3 ${plano.popular ? 'text-white' : 'text-[#3DD93D]'}`}>
+                          ESCOLHA {plano.appsStandard} APP STANDARD
                         </p>
-                        <div className="grid grid-cols-2 gap-2">
-                          {plano.appsStandard.slice(0, 4).map((app, idx) => (
-                            <div key={idx} className={`text-xs font-semibold p-2 rounded text-center ${plano.popular ? 'bg-white bg-opacity-20 text-white' : 'bg-gray-100 text-gray-800'}`}>
-                              {app}
-                            </div>
-                          ))}
-                        </div>
+                        <img 
+                          src={appsStandardImage} 
+                          alt="Apps Standard Disponíveis" 
+                          className="w-full rounded-lg"
+                        />
                       </div>
                     )}
                     {plano.appsPremium && (
                       <div>
-                        <p className={`text-xs font-bold mb-2 ${plano.popular ? 'text-white' : 'text-[#3DD93D]'}`}>
-                          APPS PREMIUM DISPONÍVEIS
+                        <p className={`text-xs font-bold mb-3 ${plano.popular ? 'text-white' : 'text-[#3DD93D]'}`}>
+                          ESCOLHA {plano.appsPremium} APP PREMIUM
                         </p>
-                        <div className="grid grid-cols-2 gap-2">
-                          {plano.appsPremium.slice(0, 4).map((app, idx) => (
-                            <div key={idx} className={`text-xs font-semibold p-2 rounded text-center ${plano.popular ? 'bg-white bg-opacity-20 text-white' : 'bg-gray-100 text-gray-800'}`}>
-                              {app}
-                            </div>
-                          ))}
-                        </div>
+                        <img 
+                          src={appsPremiumImage} 
+                          alt="Apps Premium Disponíveis" 
+                          className="w-full rounded-lg"
+                        />
                       </div>
                     )}
                   </div>
