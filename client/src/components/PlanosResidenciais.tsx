@@ -1,116 +1,136 @@
 import { useState } from 'react';
-import { Zap, Tv, Lock, Tag, Check, MessageCircle, TrendingDown } from 'lucide-react';
+import { Zap, Tv, Tag, Check, MessageCircle, TrendingDown } from 'lucide-react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+
+interface Plano {
+  velocidade: string;
+  preco: string;
+  precoComDesconto?: string;
+  temDesconto?: boolean;
+  popular: boolean;
+  desconto?: string;
+  features: string[];
+  apps?: string[];
+}
 
 export default function PlanosResidenciais() {
   const ref = useScrollAnimation();
-  const [activeTab, setActiveTab] = useState('velocidade');
+  const [activeTab, setActiveTab] = useState<'velocidade' | 'aplicativos' | 'globoplay'>('velocidade');
 
-  const planos = {
-    velocidade: [
-      {
-        velocidade: '400 Mega',
-        preco: 'R$ 109,90',
-        precoComDesconto: 'R$ 89,90',
-        temDesconto: true,
-        popular: false,
-        desconto: '20% de desconto por pontualidade',
-        features: ['400 Mbps de velocidade', 'Instalação grátis*', 'Roteador Wi-Fi 6', 'Suporte 24/7']
-      },
-      {
-        velocidade: '600 Mega',
-        preco: 'R$ 119,90',
-        precoComDesconto: 'R$ 99,90',
-        temDesconto: true,
-        popular: true,
-        features: ['600 Mbps de velocidade', 'Instalação grátis*', 'Roteador Wi-Fi 6', 'Suporte 24/7', '+Desconto por pontualidade']
-      },
-      {
-        velocidade: '800 Mega',
-        preco: 'R$ 149,90',
-        precoComDesconto: 'R$ 129,90',
-        temDesconto: true,
-        popular: false,
-        desconto: '20% de desconto por pontualidade',
-        features: ['800 Mbps de velocidade', 'Instalação grátis*', 'Roteador Wi-Fi 6', 'Suporte 24/7']
-      },
-    ],
-    aplicativos: [
-      {
-        velocidade: '400 Mega',
-        preco: 'R$ 129,90',
-        precoComDesconto: 'R$ 109,90',
-        temDesconto: true,
-        popular: false,
-        desconto: '20% de desconto por pontualidade',
-        apps: ['MaisTV (100+ canais)', 'Ubook', 'Kaspersky', 'Play Kids', 'Looke', 'Deezer'],
-        features: ['400 Mbps de velocidade', 'Apps Standart inclusos', 'Instalação grátis*', 'Roteador Wi-Fi 6']
-      },
-      {
-        velocidade: '600 Mega',
-        preco: 'R$ 149,90',
-        precoComDesconto: 'R$ 129,90',
-        temDesconto: true,
-        popular: true,
-        apps: ['MaisTV (100+ canais)', 'Ubook', 'Kaspersky', 'Play Kids', 'Looke', 'Deezer', 'Disney+', 'HBO Max', 'Sky Light'],
-        features: ['600 Mbps de velocidade', 'Apps Standart + Premium', 'Instalação grátis*', 'Roteador Wi-Fi 6']
-      },
-      {
-        velocidade: '800 Mega',
-        preco: 'R$ 169,90',
-        precoComDesconto: 'R$ 149,90',
-        temDesconto: true,
-        popular: false,
-        desconto: '20% de desconto por pontualidade',
-        apps: ['MaisTV (100+ canais)', 'Ubook', 'Kaspersky', 'Play Kids', 'Looke', 'Deezer', 'Disney+', 'HBO Max', 'Sky Light'],
-        features: ['800 Mbps de velocidade', 'Apps Standart + Premium', 'Instalação grátis*', 'Roteador Wi-Fi 6']
-      },
-    ],
-    globoplay: [
-      {
-        velocidade: '400 Mega',
-        preco: 'R$ 129,90',
-        popular: false,
-        apps: ['Globo Play Basic', 'MaisTV (100+ canais)'],
-        features: ['400 Mbps de velocidade', 'Globo Play Basic', 'Instalação grátis*', 'Roteador Wi-Fi 6']
-      },
-      {
-        velocidade: '600 Mega',
-        preco: 'R$ 149,90',
-        popular: true,
-        apps: ['Globo Play Basic', 'MaisTV (100+ canais)'],
-        features: ['600 Mbps de velocidade', 'Globo Play Basic', 'Instalação grátis*', 'Roteador Wi-Fi 6']
-      },
-      {
-        velocidade: '800 Mega',
-        preco: 'R$ 169,90',
-        popular: false,
-        apps: ['Globo Play Premium', 'MaisTV (100+ canais)'],
-        features: ['800 Mbps de velocidade', 'Globo Play Premium', 'Instalação grátis*', 'Roteador Wi-Fi 6']
-      },
-    ],
-  };
-
-  const tabs = [
-    { id: 'velocidade', label: 'Internet + Velocidade', icon: Zap },
-    { id: 'aplicativos', label: 'Internet + Aplicativos', icon: Tv },
-    { id: 'globoplay', label: 'Internet + Globo Play', icon: Tag },
+  const planosVelocidade: Plano[] = [
+    {
+      velocidade: '400 Mega',
+      preco: 'R$ 109,90',
+      precoComDesconto: 'R$ 89,90',
+      temDesconto: true,
+      popular: false,
+      desconto: '20% de desconto por pontualidade',
+      features: ['400 Mbps de velocidade', 'Instalação grátis*', 'Roteador Wi-Fi 6', 'Suporte 24/7']
+    },
+    {
+      velocidade: '600 Mega',
+      preco: 'R$ 119,90',
+      precoComDesconto: 'R$ 99,90',
+      temDesconto: true,
+      popular: true,
+      features: ['600 Mbps de velocidade', 'Instalação grátis*', 'Roteador Wi-Fi 6', 'Suporte 24/7', '+Desconto por pontualidade']
+    },
+    {
+      velocidade: '800 Mega',
+      preco: 'R$ 149,90',
+      precoComDesconto: 'R$ 129,90',
+      temDesconto: true,
+      popular: false,
+      desconto: '20% de desconto por pontualidade',
+      features: ['800 Mbps de velocidade', 'Instalação grátis*', 'Roteador Wi-Fi 6', 'Suporte 24/7']
+    },
   ];
 
-  const currentPlanos = planos[activeTab as keyof typeof planos];
+  const planosAplicativos: Plano[] = [
+    {
+      velocidade: '400 Mega',
+      preco: 'R$ 129,90',
+      precoComDesconto: 'R$ 109,90',
+      temDesconto: true,
+      popular: false,
+      desconto: '20% de desconto por pontualidade',
+      apps: ['MaisTV (100+ canais)', 'Ubook', 'Kaspersky', 'Play Kids', 'Looke', 'Deezer'],
+      features: ['400 Mbps de velocidade', 'Apps Standart inclusos', 'Instalação grátis*', 'Roteador Wi-Fi 6']
+    },
+    {
+      velocidade: '600 Mega',
+      preco: 'R$ 149,90',
+      precoComDesconto: 'R$ 129,90',
+      temDesconto: true,
+      popular: true,
+      apps: ['MaisTV (100+ canais)', 'Ubook', 'Kaspersky', 'Play Kids', 'Looke', 'Deezer', 'Disney+', 'HBO Max', 'Sky Light'],
+      features: ['600 Mbps de velocidade', 'Apps Standart + Premium', 'Instalação grátis*', 'Roteador Wi-Fi 6']
+    },
+    {
+      velocidade: '800 Mega',
+      preco: 'R$ 169,90',
+      precoComDesconto: 'R$ 149,90',
+      temDesconto: true,
+      popular: false,
+      desconto: '20% de desconto por pontualidade',
+      apps: ['MaisTV (100+ canais)', 'Ubook', 'Kaspersky', 'Play Kids', 'Looke', 'Deezer', 'Disney+', 'HBO Max', 'Sky Light'],
+      features: ['800 Mbps de velocidade', 'Apps Standart + Premium', 'Instalação grátis*', 'Roteador Wi-Fi 6']
+    },
+  ];
 
-  // Cores de fundo para cada aba
-  const bgColors = {
-    velocidade: 'bg-gradient-to-br from-[#E8F9E8] via-[#F4F4F4] to-[#E3F2FD]',
-    aplicativos: 'bg-gradient-to-br from-[#FFF8E1] via-[#F4F4F4] to-[#E8F9E8]',
-    globoplay: 'bg-gradient-to-br from-[#E3F2FD] via-[#F4F4F4] to-[#FFF8E1]'
+  const planosGloboPlay: Plano[] = [
+    {
+      velocidade: '400 Mega',
+      preco: 'R$ 129,90',
+      popular: false,
+      apps: ['Globo Play Basic', 'MaisTV (100+ canais)'],
+      features: ['400 Mbps de velocidade', 'Globo Play Basic', 'Instalação grátis*', 'Roteador Wi-Fi 6']
+    },
+    {
+      velocidade: '600 Mega',
+      preco: 'R$ 149,90',
+      popular: true,
+      apps: ['Globo Play Basic', 'MaisTV (100+ canais)'],
+      features: ['600 Mbps de velocidade', 'Globo Play Basic', 'Instalação grátis*', 'Roteador Wi-Fi 6']
+    },
+    {
+      velocidade: '800 Mega',
+      preco: 'R$ 169,90',
+      popular: false,
+      apps: ['Globo Play Premium', 'MaisTV (100+ canais)'],
+      features: ['800 Mbps de velocidade', 'Globo Play Premium', 'Instalação grátis*', 'Roteador Wi-Fi 6']
+    },
+  ];
+
+  const getPlanos = () => {
+    switch (activeTab) {
+      case 'aplicativos':
+        return planosAplicativos;
+      case 'globoplay':
+        return planosGloboPlay;
+      default:
+        return planosVelocidade;
+    }
   };
+
+  const getBgColor = () => {
+    switch (activeTab) {
+      case 'aplicativos':
+        return 'bg-gradient-to-br from-[#FFF8E1] via-[#F4F4F4] to-[#E8F9E8]';
+      case 'globoplay':
+        return 'bg-gradient-to-br from-[#E3F2FD] via-[#F4F4F4] to-[#FFF8E1]';
+      default:
+        return 'bg-gradient-to-br from-[#E8F9E8] via-[#F4F4F4] to-[#E3F2FD]';
+    }
+  };
+
+  const currentPlanos = getPlanos();
 
   return (
     <section 
       ref={ref} 
       id="planos-residenciais" 
-      className={`py-20 md:py-32 opacity-0 transition-all duration-700 ${bgColors[activeTab as keyof typeof bgColors]}`}
+      className={`py-20 md:py-32 opacity-0 transition-all duration-700 ${getBgColor()}`}
     >
       <div className="container mx-auto px-4">
         {/* Title */}
@@ -125,27 +145,46 @@ export default function PlanosResidenciais() {
 
         {/* Tabs */}
         <div className="flex flex-wrap justify-center gap-3 mb-12 animate-fade-in-up animate-delay-200">
-          {tabs.map((tab) => (
-            <button
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
-              className={`flex items-center gap-2 px-6 py-3 rounded-full font-bold transition-all duration-500 transform ${
-                activeTab === tab.id
-                  ? 'bg-[#3DD93D] text-white shadow-xl scale-110 animate-pulse'
-                  : 'bg-white text-[#0D1B3E] border-2 border-gray-200 hover:border-[#3DD93D] hover:shadow-md'
-              }`}
-            >
-              <tab.icon size={18} />
-              {tab.label}
-            </button>
-          ))}
+          <button
+            onClick={() => setActiveTab('velocidade')}
+            className={`flex items-center gap-2 px-6 py-3 rounded-full font-bold transition-all duration-500 transform ${
+              activeTab === 'velocidade'
+                ? 'bg-[#3DD93D] text-white shadow-xl scale-110 animate-pulse'
+                : 'bg-white text-[#0D1B3E] border-2 border-gray-200 hover:border-[#3DD93D] hover:shadow-md'
+            }`}
+          >
+            <Zap size={18} />
+            Internet + Velocidade
+          </button>
+          <button
+            onClick={() => setActiveTab('aplicativos')}
+            className={`flex items-center gap-2 px-6 py-3 rounded-full font-bold transition-all duration-500 transform ${
+              activeTab === 'aplicativos'
+                ? 'bg-[#3DD93D] text-white shadow-xl scale-110 animate-pulse'
+                : 'bg-white text-[#0D1B3E] border-2 border-gray-200 hover:border-[#3DD93D] hover:shadow-md'
+            }`}
+          >
+            <Tv size={18} />
+            Internet + Aplicativos
+          </button>
+          <button
+            onClick={() => setActiveTab('globoplay')}
+            className={`flex items-center gap-2 px-6 py-3 rounded-full font-bold transition-all duration-500 transform ${
+              activeTab === 'globoplay'
+                ? 'bg-[#3DD93D] text-white shadow-xl scale-110 animate-pulse'
+                : 'bg-white text-[#0D1B3E] border-2 border-gray-200 hover:border-[#3DD93D] hover:shadow-md'
+            }`}
+          >
+            <Tag size={18} />
+            Internet + Globo Play
+          </button>
         </div>
 
         {/* Plans Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 animate-fade-in-up animate-delay-300">
-          {currentPlanos && currentPlanos.length > 0 ? currentPlanos.map((plano, i) => (
+          {currentPlanos.map((plano, i) => (
             <div
-              key={i}
+              key={`${activeTab}-${i}`}
               className={`relative rounded-2xl overflow-hidden transition-all duration-500 transform animate-scale-in hover:shadow-2xl hover:scale-105 ${
                 plano.popular ? 'md:scale-105 shadow-2xl' : 'shadow-lg'
               }`}
@@ -167,7 +206,7 @@ export default function PlanosResidenciais() {
 
                 {/* Price */}
                 <div className="mb-6">
-                  {(plano as any).temDesconto ? (
+                  {plano.temDesconto ? (
                     <div className="space-y-2">
                       <div className="flex items-center gap-2">
                         <p className={`text-sm line-through opacity-60 ${plano.popular ? 'text-white' : 'text-gray-500'}`}>
@@ -179,7 +218,7 @@ export default function PlanosResidenciais() {
                         </div>
                       </div>
                       <p className={`text-4xl font-black ${plano.popular ? 'text-white' : 'text-[#3DD93D]'}`}>
-                        {(plano as any).precoComDesconto}
+                        {plano.precoComDesconto}
                       </p>
                       <p className={`text-xs font-semibold ${plano.popular ? 'text-white/80' : 'text-[#3DD93D]'}`}>
                         ✓ Já com desconto de pontualidade
@@ -198,10 +237,10 @@ export default function PlanosResidenciais() {
                 </div>
 
                 {/* Desconto Badge */}
-                {(plano as any).desconto && (
+                {plano.desconto && (
                   <div className="mb-4 inline-block">
                     <span className="bg-[#3DD93D] text-white text-xs font-bold px-3 py-1 rounded-full">
-                      {(plano as any).desconto}
+                      {plano.desconto}
                     </span>
                   </div>
                 )}
@@ -219,13 +258,13 @@ export default function PlanosResidenciais() {
                 </div>
 
                 {/* Apps (if applicable) */}
-                {(plano as any).apps && (
+                {plano.apps && (
                   <div className="mb-8 pb-8 border-t border-current border-opacity-20">
                     <p className={`text-xs font-bold mb-3 ${plano.popular ? 'text-white/80' : 'text-gray-600'}`}>
                       APLICATIVOS INCLUSOS:
                     </p>
                     <div className="flex flex-wrap gap-2">
-                      {(plano as any).apps.map((app: string, j: number) => (
+                      {plano.apps.map((app, j) => (
                         <span
                           key={j}
                           className={`text-xs px-3 py-1 rounded-full font-bold ${
@@ -262,7 +301,7 @@ export default function PlanosResidenciais() {
                 </p>
               </div>
             </div>
-          )) : <div className="col-span-full text-center py-8">Carregando planos...</div>}
+          ))}
         </div>
 
         {/* Additional Info */}
