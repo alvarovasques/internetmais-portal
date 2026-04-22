@@ -181,8 +181,8 @@ export default function HeroSection() {
                   <div
                     className={`flex flex-col sm:flex-row gap-4 transition-all duration-700 delay-300 ${
                       index === currentSlide && !isTransitioning
-                        ? 'opacity-100 translate-y-0'
-                        : 'opacity-0 translate-y-4'
+                        ? 'opacity-100 translate-y-0 pointer-events-auto'
+                        : 'opacity-0 translate-y-4 pointer-events-none'
                     }`}
                   >
                     <a
@@ -198,7 +198,14 @@ export default function HeroSection() {
                     </a>
                     <a
                       href={s.viewPlansLink}
-                      onClick={() => setAutoplay(true)}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setAutoplay(true);
+                        setTimeout(() => {
+                          const element = document.querySelector(s.viewPlansLink);
+                          if (element) element.scrollIntoView({ behavior: 'smooth' });
+                        }, 100);
+                      }}
                       className="inline-flex items-center justify-center gap-2 border-2 border-white text-white font-bold py-3 px-6 rounded-full hover:bg-white/10 transition-all duration-300"
                     >
                       Ver Planos
