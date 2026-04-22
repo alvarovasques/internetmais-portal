@@ -13,13 +13,17 @@ export default function Aplicativos() {
 
   const apps: AppWithPlan[] = [
     // Apps Standard
-    { name: 'Ubook Plus', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/ubook_plus_50536d2a.png', type: 'standard', plans: ['400MB', '600MB', '800MB'] },
-    { name: 'Zen', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/zen_836e97dc.png', type: 'standard', plans: ['400MB', '600MB', '800MB'] },
-    { name: 'Leitura 360', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/leitura-360_3b7cd0c8.png', type: 'standard', plans: ['400MB', '600MB', '800MB'] },
-    { name: 'Estuda', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/estuda_1b6b23ea.png', type: 'standard', plans: ['400MB', '600MB', '800MB'] },
-    { name: 'Pequenos Leitores', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/pequenos-leitores_08202ef5.png', type: 'standard', plans: ['400MB', '600MB', '800MB'] },
-    { name: 'Playlist', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/playlist_4a584bda.png', type: 'standard', plans: ['400MB', '600MB', '800MB'] },
-    { name: 'Jornalista', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/jornalista_a4f9c11d.png', type: 'standard', plans: ['400MB', '600MB', '800MB'] },
+    { name: 'Ubook Plus', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/ubook_plus_5f17af0a.png', type: 'standard', plans: ['400MB', '600MB', '800MB'] },
+    { name: 'Zen', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/zen_138e27e2.png', type: 'standard', plans: ['400MB', '600MB', '800MB'] },
+    { name: 'Leitura 360', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/leitura_360_8c1041e7.png', type: 'standard', plans: ['400MB', '600MB', '800MB'] },
+    { name: 'Estuda+', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/estuda_03e9d421.png', type: 'standard', plans: ['400MB', '600MB', '800MB'] },
+    { name: 'Pequenos Leitores', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/pequenos_leitores_c18758bb.png', type: 'standard', plans: ['400MB', '600MB', '800MB'] },
+    { name: 'O Jornalista', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/jornalista_220d0f5c.png', type: 'standard', plans: ['400MB', '600MB', '800MB'] },
+    { name: 'Playlist', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/playlist_6a7e81d9.png', type: 'standard', plans: ['400MB', '600MB', '800MB'] },
+    { name: 'Kiddle Pass', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/kiddle_pass_39a76e91.png', type: 'standard', plans: ['400MB', '600MB', '800MB'] },
+    { name: 'PlayKids+', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/playkids_8f1b6091.png', type: 'standard', plans: ['400MB', '600MB', '800MB'] },
+    { name: 'Sky+ Light SVA', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/sky_light_bee2183c.png', type: 'standard', plans: ['400MB', '600MB', '800MB'] },
+    { name: 'Deezer', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/deezer_c2c216c5.png', type: 'standard', plans: ['400MB', '600MB', '800MB'] },
 
     // Apps Premium
     { name: 'Smart Content', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/smart-content_369ea140.png', type: 'premium', plans: ['600MB', '800MB'] },
@@ -60,7 +64,7 @@ export default function Aplicativos() {
               <span className="w-2 h-2 bg-[#3DD93D] rounded-full"></span>
               Apps Standard (Escolha 1 em 400MB | Escolha 1 em 600MB e 800MB)
             </h3>
-            <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-4">
+            <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
               {standardApps.map((app, i) => (
                 <div
                   key={i}
@@ -84,7 +88,7 @@ export default function Aplicativos() {
               <span className="w-2 h-2 bg-[#FF1744] rounded-full"></span>
               Apps Premium (Escolha 1 em 600MB e 800MB)
             </h3>
-            <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+            <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-4">
               {premiumApps.map((app, i) => (
                 <div
                   key={i}
