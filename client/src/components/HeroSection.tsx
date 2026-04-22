@@ -14,7 +14,8 @@ export default function HeroSection() {
       title: 'Fibra Óptica + Chip 5G. Tudo o que você precisa em um só lugar.',
       description: 'Mais de 20 mil clientes em Campo Grande. 100% fibra óptica, sem oscilação. E agora, somos também sua operadora de celular 5G.',
       cta: 'Quero Contratar Agora',
-      ctaMessage: 'Olá! Gostaria de falar com um representante sobre os planos de internet'
+      ctaMessage: 'Olá! Gostaria de contratar um plano de Fibra Óptica + Chip 5G da InternetMais.',
+      viewPlansLink: '#residencial'
     },
     {
       id: 2,
@@ -23,7 +24,8 @@ export default function HeroSection() {
       title: 'Internet Mais Velocidade',
       description: 'Navegue, trabalhe e jogue com a velocidade máxima. Fibra óptica dedicada com latência ultra-baixa para a melhor experiência.',
       cta: 'Conhecer Planos',
-      ctaMessage: 'Gostaria de falar com um representante sobre os planos de internet de alta velocidade'
+      ctaMessage: 'Olá! Gostaria de saber mais sobre os planos de Internet Mais Velocidade.',
+      viewPlansLink: '#residencial'
     },
     {
       id: 3,
@@ -32,7 +34,8 @@ export default function HeroSection() {
       title: 'Internet Mais Aplicativos',
       description: 'Aproveite os melhores aplicativos e serviços de streaming com sua família. Qualidade 4K, sem travamentos, sem limites.',
       cta: 'Ver Aplicativos',
-      ctaMessage: 'Gostaria de saber mais sobre os aplicativos inclusos em cada plano'
+      ctaMessage: 'Olá! Gostaria de contratar Internet Mais Aplicativos com meus apps favoritos.',
+      viewPlansLink: '#aplicativos'
     },
     {
       id: 4,
@@ -41,7 +44,8 @@ export default function HeroSection() {
       title: 'Telefonia com Chip 5G',
       description: 'Conectividade móvel de próxima geração. Velocidade ultra-rápida, cobertura confiável e planos flexíveis para você.',
       cta: 'Contratar Chip 5G',
-      ctaMessage: 'Gostaria de falar com um representante sobre os planos de Chip 5G'
+      ctaMessage: 'Olá! Gostaria de falar com um representante sobre os planos de Chip 5G da InternetMais.',
+      viewPlansLink: '#telefoniacomchip'
     },
     {
       id: 5,
@@ -50,7 +54,8 @@ export default function HeroSection() {
       title: 'Internet Empresarial',
       description: 'WiFi 6, suporte especializado 24/7, estabilidade garantida. Soluções robustas para impulsionar seu negócio.',
       cta: 'Solicitar Orçamento',
-      ctaMessage: 'Gostaria de falar com um representante sobre soluções de internet empresarial'
+      ctaMessage: 'Olá! Gostaria de falar com um representante sobre soluções de internet empresarial.',
+      viewPlansLink: '#empresarial'
     },
     {
       id: 6,
@@ -59,7 +64,8 @@ export default function HeroSection() {
       title: 'Seu celular merece o melhor sinal. Conheça o Chip InternetMais 5G.',
       description: 'Planos a partir de R$ 24,99/mês com apps ilimitados e bônus ao trazer sua portabilidade.',
       cta: 'Quero meu Chip 5G agora',
-      ctaMessage: 'Gostaria de falar com um representante sobre os planos de Chip 5G da InternetMais.'
+      ctaMessage: 'Olá! Gostaria de contratar um plano de Chip 5G da InternetMais.',
+      viewPlansLink: '#telefoniacomchip'
     }
   ];
 
@@ -189,7 +195,7 @@ export default function HeroSection() {
                       {s.cta}
                     </a>
                     <a
-                      href="#residencial"
+                      href={s.viewPlansLink}
                       onClick={() => setAutoplay(true)}
                       className="inline-flex items-center justify-center gap-2 border-2 border-white text-white font-bold py-3 px-6 rounded-full hover:bg-white/10 transition-all duration-300"
                     >
