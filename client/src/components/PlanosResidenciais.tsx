@@ -275,7 +275,7 @@ export default function PlanosResidenciais() {
                     {plano.appsStandard && (
                       <div>
                         <p className={`text-xs font-bold mb-3 ${plano.popular ? 'text-white' : 'text-[#3DD93D]'}`}>
-                          1 em mais de 15 opções
+                          Escolha 1 em mais de 15 opções
                         </p>
                         <div className="grid grid-cols-5 gap-2">
                           {appsStandard.map((app, idx) => (
@@ -301,7 +301,7 @@ export default function PlanosResidenciais() {
                     {plano.appsPremium && (
                       <div>
                         <p className={`text-xs font-bold mb-3 ${plano.popular ? 'text-white' : 'text-[#3DD93D]'}`}>
-                          1 em mais de 10 opções
+                          Escolha 1 em mais de 10 opções
                         </p>
                         <div className="grid grid-cols-5 gap-2">
                           {appsPremium.map((app, idx) => (
