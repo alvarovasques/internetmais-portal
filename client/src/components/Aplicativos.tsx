@@ -1,4 +1,4 @@
-import { MessageCircle } from 'lucide-react';
+import { MessageCircle, Tv } from 'lucide-react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 interface AppWithPlan {
@@ -29,7 +29,9 @@ export default function Aplicativos() {
     { name: 'Kaspersky', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/kaspersky_a4e6e712.png', type: 'premium', plans: ['600MB', '800MB'] },
 
     // Apps Inclusos
-    { name: 'MaisTV', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/ubook_bdab405a.png', type: 'incluso', plans: ['Todos'] },
+    { name: 'Ubook Go', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/ubook_97728dfb.png', type: 'incluso', plans: ['Todos'] },
+    { name: 'Kaspersky', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/kaspersky_a4e6e712.png', type: 'incluso', plans: ['Todos'] },
+    { name: 'MaisTV', logo: '', type: 'incluso', plans: ['Todos'] },
   ];
 
   const standardApps = apps.filter(app => app.type === 'standard');
@@ -107,18 +109,22 @@ export default function Aplicativos() {
               <span className="w-2 h-2 bg-[#4CAF50] rounded-full"></span>
               Apps Inclusos em Todos os Planos
             </h3>
-            <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-2 gap-4">
+            <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-3 gap-4">
               {inclusoApps.map((app, i) => (
                 <div
                   key={i}
                   className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-4 text-center hover:bg-white/20 hover:border-[#4CAF50] transition-all duration-300 hover:scale-110"
                   title={app.name}
                 >
-                  <img
-                    src={app.logo}
-                    alt={app.name}
-                    className="h-12 w-12 object-contain mx-auto mb-2"
-                  />
+                  {app.name === 'MaisTV' ? (
+                    <Tv size={48} className="text-[#4CAF50] mx-auto mb-2" />
+                  ) : (
+                    <img
+                      src={app.logo}
+                      alt={app.name}
+                      className="h-12 w-12 object-contain mx-auto mb-2"
+                    />
+                  )}
                   <p className="text-white font-semibold text-xs">{app.name}</p>
                 </div>
               ))}
