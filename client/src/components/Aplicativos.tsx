@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { MessageCircle, Tv } from 'lucide-react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
@@ -10,6 +11,7 @@ interface AppWithPlan {
 
 export default function Aplicativos() {
   const ref = useScrollAnimation();
+  const [selectedApp, setSelectedApp] = useState<string | null>(null);
 
   const apps: AppWithPlan[] = [
     // Apps Standard
@@ -78,9 +80,12 @@ export default function Aplicativos() {
             </h3>
             <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
               {standardApps.map((app, i) => (
-                <div
+                <button
                   key={i}
-                  className="bg-white border-2 border-gray-300 rounded-lg p-1 text-center hover:shadow-lg transition-all duration-300 hover:scale-110 flex flex-col items-center justify-center min-h-[140px]"
+                  onClick={() => setSelectedApp(app.name)}
+                  className={`bg-white border-2 rounded-lg p-1 text-center hover:shadow-lg transition-all duration-300 hover:scale-110 flex flex-col items-center justify-center min-h-[140px] cursor-pointer ${
+                    selectedApp === app.name ? 'border-[#3DD93D] ring-2 ring-[#3DD93D]' : 'border-gray-300'
+                  }`}
                   title={app.name}
                 >
                   <img
@@ -89,7 +94,7 @@ export default function Aplicativos() {
                     className="h-24 w-24 object-contain mx-auto mb-1"
                   />
                   <p className="text-black font-semibold text-xs text-center line-clamp-2">{app.name}</p>
-                </div>
+                </button>
               ))}
             </div>
           </div>
@@ -102,9 +107,12 @@ export default function Aplicativos() {
             </h3>
             <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-8 gap-4">
               {premiumApps.map((app, i) => (
-                <div
+                <button
                   key={i}
-                  className="bg-white border-2 border-gray-300 rounded-lg p-1 text-center hover:shadow-lg transition-all duration-300 hover:scale-110 flex flex-col items-center justify-center min-h-[140px]"
+                  onClick={() => setSelectedApp(app.name)}
+                  className={`bg-white border-2 rounded-lg p-1 text-center hover:shadow-lg transition-all duration-300 hover:scale-110 flex flex-col items-center justify-center min-h-[140px] cursor-pointer ${
+                    selectedApp === app.name ? 'border-[#FF1744] ring-2 ring-[#FF1744]' : 'border-gray-300'
+                  }`}
                   title={app.name}
                 >
                   <img
@@ -113,7 +121,7 @@ export default function Aplicativos() {
                     className="h-24 w-24 object-contain mx-auto mb-1"
                   />
                   <p className="text-black font-semibold text-xs text-center line-clamp-2">{app.name}</p>
-                </div>
+                </button>
               ))}
             </div>
           </div>
@@ -150,13 +158,17 @@ export default function Aplicativos() {
         {/* CTA */}
         <div className="text-center animate-fade-in-up animate-delay-400">
           <a
-            href="https://wa.me/556730272500?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20os%20planos%20com%20aplicativos%20inclusos%20e%20escolher%20meus%20apps%20favoritos."
+            href={`https://wa.me/556730272500?text=${encodeURIComponent(
+              selectedApp
+                ? `Olá! Gostaria de contratar um plano com o app ${selectedApp} incluso.`
+                : 'Olá! Gostaria de saber mais sobre os planos com aplicativos inclusos.'
+            )}`}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center gap-2 bg-[#3DD93D] hover:bg-[#2BA82A] text-white font-bold py-4 px-8 rounded-full transition-all duration-300 hover:shadow-lg hover:scale-105"
           >
             <MessageCircle size={20} />
-            Assine Agora
+            Assine Agora {selectedApp && `- ${selectedApp}`}
           </a>
         </div>
       </div>

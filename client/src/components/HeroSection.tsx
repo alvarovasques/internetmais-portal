@@ -188,12 +188,13 @@ export default function HeroSection() {
                       <MessageCircle size={20} />
                       {s.cta}
                     </a>
-                    <button
+                    <a
+                      href="#residencial"
                       onClick={() => setAutoplay(true)}
                       className="inline-flex items-center justify-center gap-2 border-2 border-white text-white font-bold py-3 px-6 rounded-full hover:bg-white/10 transition-all duration-300"
                     >
                       Ver Planos
-                    </button>
+                    </a>
                   </div>
                 </div>
               </div>
