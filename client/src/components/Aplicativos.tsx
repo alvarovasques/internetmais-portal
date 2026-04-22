@@ -35,9 +35,13 @@ export default function Aplicativos() {
 
     // Apps Premium
     { name: 'Smart Content', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/smart_content_881ac999.png', type: 'premium', plans: ['600MB', '800MB'] },
+    { name: 'Ritual Fit', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/ritual_fit_229a350c.png', type: 'premium', plans: ['600MB', '800MB'] },
+    { name: 'Kaspersky Plus (5 licenças)', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/kaspersky_plus_83f4dd88.png', type: 'premium', plans: ['600MB', '800MB'] },
+    { name: 'Docway', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/docway_27238b63.png', type: 'premium', plans: ['600MB', '800MB'] },
+    { name: 'HotGo', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/hotgo_bc8647a1.png', type: 'premium', plans: ['600MB', '800MB'] },
+    { name: 'Queima Diária', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/queima_diaria_cb855ce4.png', type: 'premium', plans: ['600MB', '800MB'] },
     { name: 'HBO Max', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/hbo-max_8983f5f2.png', type: 'premium', plans: ['600MB', '800MB'] },
     { name: 'Disney+', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/disney-plus_e2b45e97.png', type: 'premium', plans: ['600MB', '800MB'] },
-    { name: 'Kaspersky Plus (5 licenças)', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/kaspersky_plus_83f4dd88.png', type: 'premium', plans: ['600MB', '800MB'] },
 
     // Apps Inclusos
     { name: 'Ubook Go', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/ubook_97728dfb.png', type: 'incluso', plans: ['Todos'] },
@@ -96,7 +100,7 @@ export default function Aplicativos() {
               <span className="w-2 h-2 bg-[#FF1744] rounded-full"></span>
               Apps Premium (Escolha 1 em 600MB e 800MB)
             </h3>
-            <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-8 gap-4">
               {premiumApps.map((app, i) => (
                 <div
                   key={i}
