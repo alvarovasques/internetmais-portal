@@ -144,7 +144,7 @@ export default function PlanosResidenciais() {
       case 'aplicativos':
         return 'bg-gradient-to-br from-[#FFF8E1] via-[#F4F4F4] to-[#E8F9E8]';
       case 'globoplay':
-        return 'bg-gradient-to-br from-[#FF1744] via-[#FF5252] to-[#FF6E40]';
+        return 'bg-gradient-to-br from-[#E3F2FD] via-[#F4F4F4] to-[#FFF8E1]';
       default:
         return 'bg-gradient-to-br from-[#E8F9E8] via-[#F4F4F4] to-[#E3F2FD]';
     }
@@ -284,9 +284,9 @@ export default function PlanosResidenciais() {
                         }`}
                       >
                         <img
-                          src="https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/globoplay_f68bb013.png"
+                          src="https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/globoplay-hq_5eefcb22.png"
                           alt="Globo Play"
-                          className="h-16 w-16 object-contain mb-2"
+                          className="h-20 w-20 object-contain mb-2"
                         />
                         <p className={`text-sm font-bold ${plano.popular ? 'text-white' : 'text-white'}`}>
                           Globo Play
