@@ -237,13 +237,7 @@ export default function PlanosResidenciais() {
                 </div>
 
                 {/* Desconto Badge */}
-                {plano.desconto && (
-                  <div className="mb-4 inline-block">
-                    <span className="bg-[#3DD93D] text-white text-xs font-bold px-3 py-1 rounded-full">
-                      {plano.desconto}
-                    </span>
-                  </div>
-                )}
+
                 
                 {/* Features */}
                 <div className="mb-8 space-y-3">
