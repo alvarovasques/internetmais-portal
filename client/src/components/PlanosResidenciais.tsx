@@ -274,27 +274,25 @@ export default function PlanosResidenciais() {
                   <div className="mb-8 space-y-6 border-t border-opacity-20 border-white pt-6">
                     {plano.appsStandard && (
                       <div>
-                        <p className={`text-xs font-bold mb-4 ${plano.popular ? 'text-white' : 'text-[#3DD93D]'}`}>
-                          ESCOLHA {plano.appsStandard} APP STANDARD
+                        <p className={`text-xs font-bold mb-3 ${plano.popular ? 'text-white' : 'text-[#3DD93D]'}`}>
+                          Você pode escolher + de 15 opções
                         </p>
-                        <div className="grid grid-cols-2 gap-3">
+                        <div className="grid grid-cols-5 gap-2">
                           {appsStandard.map((app, idx) => (
                             <div
                               key={idx}
-                              className={`flex flex-col items-center justify-center p-3 rounded-lg transition-all duration-300 hover:scale-110 cursor-pointer ${
+                              className={`flex flex-col items-center justify-center p-2 rounded-lg transition-all duration-300 hover:scale-110 cursor-pointer ${
                                 plano.popular
                                   ? 'bg-white bg-opacity-10 hover:bg-opacity-20'
                                   : 'bg-gray-100 hover:bg-gray-200'
                               }`}
+                              title={app.name}
                             >
                               <img
                                 src={app.logo}
                                 alt={app.name}
-                                className="h-12 w-12 object-contain mb-2"
+                                className="h-10 w-10 object-contain"
                               />
-                              <p className={`text-xs text-center font-semibold ${plano.popular ? 'text-white' : 'text-gray-700'}`}>
-                                {app.name}
-                              </p>
                             </div>
                           ))}
                         </div>
@@ -302,27 +300,25 @@ export default function PlanosResidenciais() {
                     )}
                     {plano.appsPremium && (
                       <div>
-                        <p className={`text-xs font-bold mb-4 ${plano.popular ? 'text-white' : 'text-[#3DD93D]'}`}>
-                          ESCOLHA {plano.appsPremium} APP PREMIUM
+                        <p className={`text-xs font-bold mb-3 ${plano.popular ? 'text-white' : 'text-[#3DD93D]'}`}>
+                          Você pode escolher + de 10 opções
                         </p>
-                        <div className="grid grid-cols-2 gap-3">
+                        <div className="grid grid-cols-5 gap-2">
                           {appsPremium.map((app, idx) => (
                             <div
                               key={idx}
-                              className={`flex flex-col items-center justify-center p-3 rounded-lg transition-all duration-300 hover:scale-110 cursor-pointer ${
+                              className={`flex flex-col items-center justify-center p-2 rounded-lg transition-all duration-300 hover:scale-110 cursor-pointer ${
                                 plano.popular
                                   ? 'bg-white bg-opacity-10 hover:bg-opacity-20'
                                   : 'bg-gray-100 hover:bg-gray-200'
                               }`}
+                              title={app.name}
                             >
                               <img
                                 src={app.logo}
                                 alt={app.name}
-                                className="h-12 w-12 object-contain mb-2"
+                                className="h-10 w-10 object-contain"
                               />
-                              <p className={`text-xs text-center font-semibold ${plano.popular ? 'text-white' : 'text-gray-700'}`}>
-                                {app.name}
-                              </p>
                             </div>
                           ))}
                         </div>
