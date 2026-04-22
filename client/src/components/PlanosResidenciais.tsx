@@ -33,7 +33,7 @@ export default function PlanosResidenciais() {
       precoComDesconto: 'R$ 99,90',
       temDesconto: true,
       popular: true,
-      features: ['600 Mbps de velocidade', 'Instalação grátis*', 'Roteador Wi-Fi 6', 'Suporte 24/7', '+Desconto por pontualidade']
+      features: ['600 Mbps de velocidade', 'Instalação grátis*', 'Roteador Wi-Fi 6', 'Suporte 24/7']
     },
     {
       velocidade: '800 Mega',
