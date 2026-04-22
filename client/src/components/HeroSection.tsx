@@ -15,7 +15,7 @@ export default function HeroSection() {
       description: 'Mais de 20 mil clientes em Campo Grande. 100% fibra óptica, sem oscilação. E agora, somos também sua operadora de celular 5G.',
       cta: 'Quero Contratar Agora',
       ctaMessage: 'Olá! Gostaria de contratar um plano de Fibra Óptica + Chip 5G da InternetMais.',
-      viewPlansLink: '#residencial'
+      viewPlansLink: '#planos-residenciais'
     },
     {
       id: 2,
@@ -25,7 +25,7 @@ export default function HeroSection() {
       description: 'Navegue, trabalhe e jogue com a velocidade máxima. Fibra óptica dedicada com latência ultra-baixa para a melhor experiência.',
       cta: 'Conhecer Planos',
       ctaMessage: 'Olá! Gostaria de saber mais sobre os planos de Internet Mais Velocidade.',
-      viewPlansLink: '#residencial'
+      viewPlansLink: '#planos-residenciais'
     },
     {
       id: 3,
@@ -45,7 +45,7 @@ export default function HeroSection() {
       description: 'Conectividade móvel de próxima geração. Velocidade ultra-rápida, cobertura confiável e planos flexíveis para você.',
       cta: 'Contratar Chip 5G',
       ctaMessage: 'Olá! Gostaria de falar com um representante sobre os planos de Chip 5G da InternetMais.',
-      viewPlansLink: '#telefoniacomchip'
+      viewPlansLink: '#telefonia-com-chip'
     },
     {
       id: 5,
@@ -65,7 +65,7 @@ export default function HeroSection() {
       description: 'Planos a partir de R$ 24,99/mês com apps ilimitados e bônus ao trazer sua portabilidade.',
       cta: 'Quero meu Chip 5G agora',
       ctaMessage: 'Olá! Gostaria de contratar um plano de Chip 5G da InternetMais.',
-      viewPlansLink: '#telefoniacomchip'
+      viewPlansLink: '#telefonia-com-chip'
     }
   ];
 
@@ -119,7 +119,7 @@ export default function HeroSection() {
           <div
             key={`slide-${index}`}
             className={`absolute inset-0 transition-opacity duration-1000 ${
-              index === currentSlide ? 'opacity-100' : 'opacity-0'
+              index === currentSlide ? 'opacity-100 pointer-events-auto z-10' : 'opacity-0 pointer-events-none z-0'
             }`}
           >
             {/* Background Image */}
@@ -201,11 +201,10 @@ export default function HeroSection() {
                       onClick={(e) => {
                         e.preventDefault();
                         setAutoplay(true);
-                        window.location.hash = s.viewPlansLink;
-                        setTimeout(() => {
-                          const element = document.querySelector(s.viewPlansLink);
-                          if (element) element.scrollIntoView({ behavior: 'smooth' });
-                        }, 50);
+                        const element = document.querySelector(s.viewPlansLink);
+                        if (element) {
+                          element.scrollIntoView({ behavior: 'smooth' });
+                        }
                       }}
                       className="inline-flex items-center justify-center gap-2 border-2 border-white text-white font-bold py-3 px-6 rounded-full hover:bg-white/10 transition-all duration-300"
                     >
