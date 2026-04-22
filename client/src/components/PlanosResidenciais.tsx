@@ -112,19 +112,19 @@ export default function PlanosResidenciais() {
       velocidade: '400 Mega',
       preco: 'R$ 129,90',
       popular: false,
-      features: ['400 Mbps de velocidade', 'Globo Play Basic', 'Instalação grátis*', 'Roteador Wi-Fi 6', 'MaisTV (100+ canais)', 'Ubook', 'Kaspersky']
+      features: ['400 Mbps de velocidade', 'Instalação grátis*', 'Roteador Wi-Fi 6', 'MaisTV (100+ canais)', 'Ubook', 'Kaspersky']
     },
     {
       velocidade: '600 Mega',
       preco: 'R$ 149,90',
       popular: true,
-      features: ['600 Mbps de velocidade', 'Globo Play Basic', 'Instalação grátis*', 'Roteador Wi-Fi 6', 'MaisTV (100+ canais)', 'Ubook', 'Kaspersky']
+      features: ['600 Mbps de velocidade', 'Instalação grátis*', 'Roteador Wi-Fi 6', 'MaisTV (100+ canais)', 'Ubook', 'Kaspersky']
     },
     {
       velocidade: '800 Mega',
       preco: 'R$ 169,90',
       popular: false,
-      features: ['800 Mbps de velocidade', 'Globo Play Premium', 'Instalação grátis*', 'Roteador Wi-Fi 6', 'MaisTV (100+ canais)', 'Ubook', 'Kaspersky']
+      features: ['800 Mbps de velocidade', 'Instalação grátis*', 'Roteador Wi-Fi 6', 'MaisTV (100+ canais)', 'Ubook', 'Kaspersky']
     },
   ];
 
@@ -144,7 +144,7 @@ export default function PlanosResidenciais() {
       case 'aplicativos':
         return 'bg-gradient-to-br from-[#FFF8E1] via-[#F4F4F4] to-[#E8F9E8]';
       case 'globoplay':
-        return 'bg-gradient-to-br from-[#E3F2FD] via-[#F4F4F4] to-[#FFF8E1]';
+        return 'bg-gradient-to-br from-[#FF1744] via-[#FF5252] to-[#FF6E40]';
       default:
         return 'bg-gradient-to-br from-[#E8F9E8] via-[#F4F4F4] to-[#E3F2FD]';
     }
@@ -268,6 +268,33 @@ export default function PlanosResidenciais() {
                     </div>
                   ))}
                 </div>
+
+                {/* Globo Play Section */}
+                {activeTab === 'globoplay' && (
+                  <div className="mb-8 border-t border-opacity-20 border-white pt-6">
+                    <p className={`text-xs font-bold mb-4 ${plano.popular ? 'text-white' : 'text-[#FF1744]'}`}>
+                      APLICATIVO INCLUSO
+                    </p>
+                    <div className="flex justify-center">
+                      <div
+                        className={`flex flex-col items-center justify-center p-4 rounded-lg transition-all duration-300 ${
+                          plano.popular
+                            ? 'bg-white bg-opacity-20'
+                            : 'bg-white bg-opacity-10'
+                        }`}
+                      >
+                        <img
+                          src="https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/globoplay_f68bb013.png"
+                          alt="Globo Play"
+                          className="h-16 w-16 object-contain mb-2"
+                        />
+                        <p className={`text-sm font-bold ${plano.popular ? 'text-white' : 'text-white'}`}>
+                          Globo Play
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                )}
 
                 {/* Apps Section for Aplicativos Tab */}
                 {activeTab === 'aplicativos' && (plano.appsStandard || plano.appsPremium) && (
