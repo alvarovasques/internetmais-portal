@@ -45,7 +45,7 @@ export default function HeroSection() {
       description: 'Conectividade móvel de próxima geração. Velocidade ultra-rápida, cobertura confiável e planos flexíveis para você.',
       cta: 'Contratar Chip 5G',
       ctaMessage: 'Olá! Gostaria de falar com um representante sobre os planos de Chip 5G da InternetMais.',
-      viewPlansLink: '#telefonia-com-chip'
+      viewPlansLink: '#chip-5g'
     },
     {
       id: 5,
@@ -65,7 +65,7 @@ export default function HeroSection() {
       description: 'Planos a partir de R$ 24,99/mês com apps ilimitados e bônus ao trazer sua portabilidade.',
       cta: 'Quero meu Chip 5G agora',
       ctaMessage: 'Olá! Gostaria de contratar um plano de Chip 5G da InternetMais.',
-      viewPlansLink: '#telefonia-com-chip'
+      viewPlansLink: '#chip-5g'
     }
   ];
 
