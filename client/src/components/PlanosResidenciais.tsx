@@ -276,19 +276,13 @@ export default function PlanosResidenciais() {
                       APLICATIVO INCLUSO
                     </p>
                     <div className="flex justify-center">
-                      <div
-                        className={`flex flex-col items-center justify-center p-4 rounded-lg transition-all duration-300 ${
-                          plano.popular
-                            ? 'bg-white bg-opacity-20'
-                            : 'bg-white bg-opacity-10'
-                        }`}
-                      >
+                      <div className="bg-white rounded-2xl p-6 flex flex-col items-center justify-center">
                         <img
                           src="https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/globoplay-hq_5eefcb22.png"
                           alt="Globo Play"
                           className="h-20 w-20 object-contain mb-2"
                         />
-                        <p className={`text-sm font-bold ${plano.popular ? 'text-white' : 'text-white'}`}>
+                        <p className="text-sm font-bold text-gray-800">
                           Globo Play
                         </p>
                       </div>
