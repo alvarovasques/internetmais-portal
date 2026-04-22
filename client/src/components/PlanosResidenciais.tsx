@@ -143,7 +143,7 @@ export default function PlanosResidenciais() {
 
         {/* Plans Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 animate-fade-in-up animate-delay-300">
-          {currentPlanos.map((plano, i) => (
+          {currentPlanos && currentPlanos.length > 0 ? currentPlanos.map((plano, i) => (
             <div
               key={i}
               className={`relative rounded-2xl overflow-hidden transition-all duration-500 transform animate-scale-in hover:shadow-2xl hover:scale-105 ${
@@ -262,7 +262,7 @@ export default function PlanosResidenciais() {
                 </p>
               </div>
             </div>
-          ))}
+          )) : <div className="col-span-full text-center py-8">Carregando planos...</div>}
         </div>
 
         {/* Additional Info */}
