@@ -90,8 +90,9 @@ export default function Aplicativos() {
                 >
                   <img
                     src={app.logo}
-                    alt={app.name}
+                    alt={`${app.name} - App incluso em planos InternetMais`}
                     className="h-24 w-24 object-contain mx-auto mb-1"
+                    loading="lazy"
                   />
                   <p className="text-black font-semibold text-xs text-center line-clamp-2">{app.name}</p>
                 </button>
@@ -117,8 +118,9 @@ export default function Aplicativos() {
                 >
                   <img
                     src={app.logo}
-                    alt={app.name}
+                    alt={`${app.name} - App incluso em planos InternetMais`}
                     className="h-24 w-24 object-contain mx-auto mb-1"
+                    loading="lazy"
                   />
                   <p className="text-black font-semibold text-xs text-center line-clamp-2">{app.name}</p>
                 </button>

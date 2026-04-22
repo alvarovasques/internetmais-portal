@@ -182,6 +182,9 @@ export default function PlanosResidenciais() {
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             Escolha o plano perfeito para suas necessidades de conectividade
           </p>
+          <p className="text-sm text-gray-500 mt-4">
+            Todos os planos incluem WiFi 6. Interessado em <a href="#empresarial" className="text-[#3DD93D] hover:text-[#2BA82A] font-semibold">planos empresariais</a>? Veja nossas soluções corporativas.
+          </p>
         </div>
 
         {/* Tabs */}

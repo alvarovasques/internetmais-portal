@@ -47,8 +47,9 @@ export default function Planos5G() {
       <div className="absolute inset-0">
         <img
           src="https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/young-urban-5g-cNg49canYigBkfq88ooW3Z.webp"
-          alt="Jovem com 5G"
+          alt="Chip 5G InternetMais com conectividade móvel de próxima geração em Campo Grande"
           className="w-full h-full object-cover"
+          loading="lazy"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[#3DD93D]/90 via-[#3DD93D]/70 to-transparent"></div>
       </div>

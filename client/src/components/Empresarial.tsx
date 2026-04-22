@@ -15,8 +15,9 @@ export default function Empresarial() {
       <div className="absolute inset-0">
         <img
           src="https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/office-modern-GoVmZvh4HUoGCEAR78yU97.webp"
-          alt="Escritório moderno"
+          alt="Internet empresarial com WiFi 6 e suporte especializado para negócios em Campo Grande"
           className="w-full h-full object-cover"
+          loading="lazy"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[#3DD93D]/85 via-[#3DD93D]/70 to-white/50"></div>
       </div>
@@ -27,8 +28,11 @@ export default function Empresarial() {
         <h2 className="text-3xl md:text-4xl font-black text-[#0D1B3E] mb-4 text-center">
           Sua empresa merece uma conexão à altura
         </h2>
-        <p className="text-lg text-gray-700 text-center mb-16 max-w-2xl mx-auto">
+        <p className="text-lg text-gray-700 text-center mb-4 max-w-2xl mx-auto">
           Planos corporativos com Wi-Fi 6, suporte especializado de 12h e estabilidade para o seu negócio.
+        </p>
+        <p className="text-sm text-gray-600 text-center mb-16 max-w-2xl mx-auto">
+          Procurando por <a href="#planos-residenciais" className="text-[#3DD93D] hover:text-[#2BA82A] font-semibold">planos residenciais</a>? Temos opções para todos os perfis de uso.
         </p>
 
         {/* Plans Grid */}

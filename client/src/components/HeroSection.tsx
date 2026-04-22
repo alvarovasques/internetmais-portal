@@ -10,6 +10,7 @@ export default function HeroSection() {
     {
       id: 1,
       image: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/hero-person-smartphone-Rpr8kr2PaxPu6YGvVXmiU6.webp',
+      imageAlt: 'Pessoa segurando smartphone com fibra óptica 100% pura e chip 5G em Campo Grande',
       badge: 'FIBRA ÓPTICA + CHIP 5G',
       title: 'Fibra Óptica + Chip 5G. Tudo o que você precisa em um só lugar.',
       description: 'Mais de 20 mil clientes em Campo Grande. 100% fibra óptica, sem oscilação. E agora, somos também sua operadora de celular 5G.',
@@ -20,6 +21,7 @@ export default function HeroSection() {
     {
       id: 2,
       image: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/carousel-velocidade-oBDuwux95MV7uvpUTagvTQ.webp',
+      imageAlt: 'Internet fibra óptica de máxima velocidade com latência ultra-baixa em Campo Grande',
       badge: 'MÁXIMA VELOCIDADE',
       title: 'Internet Mais Velocidade',
       description: 'Navegue, trabalhe e jogue com a velocidade máxima. Fibra óptica dedicada com latência ultra-baixa para a melhor experiência.',
@@ -30,6 +32,7 @@ export default function HeroSection() {
     {
       id: 3,
       image: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/carousel-aplicativos-7WdoKoYAqGqz7gVWf9MGZ2.webp',
+      imageAlt: 'Família assistindo streaming com internet fibra e aplicativos inclusos InternetMais',
       badge: 'TEMPO EM FAMÍLIA',
       title: 'Internet Mais Aplicativos',
       description: 'Aproveite os melhores aplicativos e serviços de streaming com sua família. Qualidade 4K, sem travamentos, sem limites.',
@@ -40,6 +43,7 @@ export default function HeroSection() {
     {
       id: 4,
       image: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/carousel-5g-i9MU3z53kdLKWTBtBNhKrk.webp',
+      imageAlt: 'Chip 5G InternetMais com conectividade móvel de próxima geração em Campo Grande',
       badge: 'OPERADORA 5G',
       title: 'Telefonia com Chip 5G',
       description: 'Conectividade móvel de próxima geração. Velocidade ultra-rápida, cobertura confiável e planos flexíveis para você.',
@@ -50,6 +54,7 @@ export default function HeroSection() {
     {
       id: 5,
       image: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/carousel-empresarial-59j7VzkmoLVCgHYY7e6JQF.webp',
+      imageAlt: 'Internet empresarial com WiFi 6 e estabilidade garantida para negócios em Campo Grande',
       badge: 'PARA EMPRESAS',
       title: 'Internet Empresarial',
       description: 'WiFi 6, estabilidade garantida. Soluções robustas para impulsionar seu negócio.',
@@ -60,6 +65,7 @@ export default function HeroSection() {
     {
       id: 6,
       image: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/chip-5g-mockup-nKczXnR3D6rQvEQ4DTpnEm.webp',
+      imageAlt: 'Chip 5G InternetMais com melhor sinal e cobertura confiável em Campo Grande MS',
       badge: 'SOMOS UMA OPERADORA 5G',
       title: 'Seu celular merece o melhor sinal. Conheça o Chip InternetMais 5G.',
       description: 'Planos a partir de R$ 24,99/mês com apps ilimitados e bônus ao trazer sua portabilidade.',
@@ -125,7 +131,8 @@ export default function HeroSection() {
             {/* Background Image */}
             <img
               src={s.image}
-              alt={s.title}
+              alt={s.imageAlt || s.title}
+              loading="lazy"
               className="w-full h-full object-cover"
             />
 
