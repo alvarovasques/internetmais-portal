@@ -76,13 +76,13 @@ export default function Aplicativos() {
               {standardApps.map((app, i) => (
                 <div
                   key={i}
-                  className="bg-white border border-gray-200 rounded-xl p-2 text-center hover:shadow-lg transition-all duration-300 hover:scale-110 flex flex-col items-center justify-center min-h-[140px]"
+                  className="bg-white border-2 border-gray-300 rounded-lg p-1 text-center hover:shadow-lg transition-all duration-300 hover:scale-110 flex flex-col items-center justify-center min-h-[140px]"
                   title={app.name}
                 >
                   <img
                     src={app.logo}
                     alt={app.name}
-                    className="h-20 w-20 object-contain mx-auto mb-2"
+                    className="h-24 w-24 object-contain mx-auto mb-1"
                   />
                   <p className="text-black font-semibold text-xs text-center line-clamp-2">{app.name}</p>
                 </div>
@@ -100,13 +100,13 @@ export default function Aplicativos() {
               {premiumApps.map((app, i) => (
                 <div
                   key={i}
-                  className="bg-white border border-gray-200 rounded-xl p-2 text-center hover:shadow-lg transition-all duration-300 hover:scale-110 flex flex-col items-center justify-center min-h-[140px]"
+                  className="bg-white border-2 border-gray-300 rounded-lg p-1 text-center hover:shadow-lg transition-all duration-300 hover:scale-110 flex flex-col items-center justify-center min-h-[140px]"
                   title={app.name}
                 >
                   <img
                     src={app.logo}
                     alt={app.name}
-                    className="h-20 w-20 object-contain mx-auto mb-2"
+                    className="h-24 w-24 object-contain mx-auto mb-1"
                   />
                   <p className="text-black font-semibold text-xs text-center line-clamp-2">{app.name}</p>
                 </div>
@@ -124,16 +124,16 @@ export default function Aplicativos() {
               {inclusoApps.map((app, i) => (
                 <div
                   key={i}
-                  className="bg-white border border-gray-200 rounded-xl p-2 text-center hover:shadow-lg transition-all duration-300 hover:scale-110 flex flex-col items-center justify-center min-h-[140px]"
+                  className="bg-white border-2 border-gray-300 rounded-lg p-1 text-center hover:shadow-lg transition-all duration-300 hover:scale-110 flex flex-col items-center justify-center min-h-[140px]"
                   title={app.name}
                 >
                   {app.name === 'MaisTV' ? (
-                    <Tv size={48} className="text-[#3DD93D] mx-auto mb-2" />
+                    <Tv size={56} className="text-[#3DD93D] mx-auto mb-1" />
                   ) : (
                     <img
                       src={app.logo}
                       alt={app.name}
-                      className="h-20 w-20 object-contain mx-auto mb-2"
+                      className="h-24 w-24 object-contain mx-auto mb-1"
                     />
                   )}
                   <p className="text-black font-semibold text-xs text-center line-clamp-2">{app.name}</p>
