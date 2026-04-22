@@ -130,7 +130,7 @@ export default function PlanosResidenciais() {
     <section 
       ref={ref} 
       id="planos-residenciais" 
-      className={`py-20 md:py-32 opacity-0 transition-all duration-700 ${getBgColor()}`}
+      className={`py-20 md:py-32 transition-all duration-700 ${getBgColor()}`}
     >
       <div className="container mx-auto px-4">
         {/* Title */}
