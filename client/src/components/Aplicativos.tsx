@@ -24,6 +24,14 @@ export default function Aplicativos() {
     { name: 'PlayKids+', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/playkids_8f1b6091.png', type: 'standard', plans: ['400MB', '600MB', '800MB'] },
     { name: 'Sky+ Light SVA', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/sky_light_bee2183c.png', type: 'standard', plans: ['400MB', '600MB', '800MB'] },
     { name: 'Deezer', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/deezer_c2c216c5.png', type: 'standard', plans: ['400MB', '600MB', '800MB'] },
+    { name: 'Social Comics', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/social_comics_6d990661.png', type: 'standard', plans: ['400MB', '600MB', '800MB'] },
+    { name: 'Kaspersky Standard (3 lic.)', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/kaspersky_standard_c1d27346.png', type: 'standard', plans: ['400MB', '600MB', '800MB'] },
+    { name: 'Qnutri', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/qnutri_af38111d.png', type: 'standard', plans: ['400MB', '600MB', '800MB'] },
+    { name: 'Looke', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/looke_52bd0fdb.png', type: 'standard', plans: ['400MB', '600MB', '800MB'] },
+    { name: 'Curtaon', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/curtaon_053ed573.png', type: 'standard', plans: ['400MB', '600MB', '800MB'] },
+    { name: 'Revistaria', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/revistaria_083ab58e.png', type: 'standard', plans: ['400MB', '600MB', '800MB'] },
+    { name: 'Fluid', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/fluid_d0cef7d4.png', type: 'standard', plans: ['400MB', '600MB', '800MB'] },
+    { name: 'Hub Vantagens', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/hub_vantagens_da4ccf8a.png', type: 'standard', plans: ['400MB', '600MB', '800MB'] },
 
     // Apps Premium
     { name: 'Smart Content', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/smart-content_369ea140.png', type: 'premium', plans: ['600MB', '800MB'] },
@@ -64,19 +72,19 @@ export default function Aplicativos() {
               <span className="w-2 h-2 bg-[#3DD93D] rounded-full"></span>
               Apps Standard (Escolha 1 em 400MB | Escolha 1 em 600MB e 800MB)
             </h3>
-            <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+            <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
               {standardApps.map((app, i) => (
                 <div
                   key={i}
-                  className="bg-white border border-gray-200 rounded-xl p-4 text-center hover:shadow-lg transition-all duration-300 hover:scale-110"
+                  className="bg-white border border-gray-200 rounded-xl p-2 text-center hover:shadow-lg transition-all duration-300 hover:scale-110 flex flex-col items-center justify-center min-h-[140px]"
                   title={app.name}
                 >
                   <img
                     src={app.logo}
                     alt={app.name}
-                    className="h-12 w-12 object-contain mx-auto mb-2"
+                    className="h-20 w-20 object-contain mx-auto mb-2"
                   />
-                  <p className="text-black font-semibold text-xs">{app.name}</p>
+                  <p className="text-black font-semibold text-xs text-center line-clamp-2">{app.name}</p>
                 </div>
               ))}
             </div>
@@ -92,15 +100,15 @@ export default function Aplicativos() {
               {premiumApps.map((app, i) => (
                 <div
                   key={i}
-                  className="bg-white border border-gray-200 rounded-xl p-4 text-center hover:shadow-lg transition-all duration-300 hover:scale-110"
+                  className="bg-white border border-gray-200 rounded-xl p-2 text-center hover:shadow-lg transition-all duration-300 hover:scale-110 flex flex-col items-center justify-center min-h-[140px]"
                   title={app.name}
                 >
                   <img
                     src={app.logo}
                     alt={app.name}
-                    className="h-12 w-12 object-contain mx-auto mb-2"
+                    className="h-20 w-20 object-contain mx-auto mb-2"
                   />
-                  <p className="text-black font-semibold text-xs">{app.name}</p>
+                  <p className="text-black font-semibold text-xs text-center line-clamp-2">{app.name}</p>
                 </div>
               ))}
             </div>
@@ -116,7 +124,7 @@ export default function Aplicativos() {
               {inclusoApps.map((app, i) => (
                 <div
                   key={i}
-                  className="bg-white border border-gray-200 rounded-xl p-4 text-center hover:shadow-lg transition-all duration-300 hover:scale-110"
+                  className="bg-white border border-gray-200 rounded-xl p-2 text-center hover:shadow-lg transition-all duration-300 hover:scale-110 flex flex-col items-center justify-center min-h-[140px]"
                   title={app.name}
                 >
                   {app.name === 'MaisTV' ? (
@@ -125,10 +133,10 @@ export default function Aplicativos() {
                     <img
                       src={app.logo}
                       alt={app.name}
-                      className="h-12 w-12 object-contain mx-auto mb-2"
+                      className="h-20 w-20 object-contain mx-auto mb-2"
                     />
                   )}
-                  <p className="text-black font-semibold text-xs">{app.name}</p>
+                  <p className="text-black font-semibold text-xs text-center line-clamp-2">{app.name}</p>
                 </div>
               ))}
             </div>
