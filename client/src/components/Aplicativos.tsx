@@ -13,7 +13,7 @@ export default function Aplicativos() {
 
   const apps: AppWithPlan[] = [
     // Apps Standard
-    { name: 'Ubook', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/ubook_bdab405a.png', type: 'standard', plans: ['400MB', '600MB', '800MB'] },
+    { name: 'Ubook', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/ubook_97728dfb.png', type: 'standard', plans: ['400MB', '600MB', '800MB'] },
     { name: 'Zen', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/zen_836e97dc.png', type: 'standard', plans: ['400MB', '600MB', '800MB'] },
     { name: 'Leitura 360', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/leitura-360_3b7cd0c8.png', type: 'standard', plans: ['400MB', '600MB', '800MB'] },
     { name: 'Estuda', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/estuda_1b6b23ea.png', type: 'standard', plans: ['400MB', '600MB', '800MB'] },
