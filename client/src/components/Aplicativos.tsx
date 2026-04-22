@@ -13,7 +13,7 @@ export default function Aplicativos() {
 
   const apps: AppWithPlan[] = [
     // Apps Standard
-    { name: 'Ubook', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/ubook_97728dfb.png', type: 'standard', plans: ['400MB', '600MB', '800MB'] },
+    { name: 'Ubook Plus', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/ubook_97728dfb.png', type: 'standard', plans: ['400MB', '600MB', '800MB'] },
     { name: 'Zen', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/zen_836e97dc.png', type: 'standard', plans: ['400MB', '600MB', '800MB'] },
     { name: 'Leitura 360', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/leitura-360_3b7cd0c8.png', type: 'standard', plans: ['400MB', '600MB', '800MB'] },
     { name: 'Estuda', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/estuda_1b6b23ea.png', type: 'standard', plans: ['400MB', '600MB', '800MB'] },
@@ -65,7 +65,7 @@ export default function Aplicativos() {
               {standardApps.map((app, i) => (
                 <div
                   key={i}
-                  className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-4 text-center hover:bg-white/20 hover:border-[#3DD93D] transition-all duration-300 hover:scale-110"
+                  className="bg-white border border-gray-200 rounded-xl p-4 text-center hover:shadow-lg transition-all duration-300 hover:scale-110"
                   title={app.name}
                 >
                   <img
@@ -73,7 +73,7 @@ export default function Aplicativos() {
                     alt={app.name}
                     className="h-12 w-12 object-contain mx-auto mb-2"
                   />
-                  <p className="text-white font-semibold text-xs">{app.name}</p>
+                  <p className="text-black font-semibold text-xs">{app.name}</p>
                 </div>
               ))}
             </div>
@@ -89,7 +89,7 @@ export default function Aplicativos() {
               {premiumApps.map((app, i) => (
                 <div
                   key={i}
-                  className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-4 text-center hover:bg-white/20 hover:border-[#FF1744] transition-all duration-300 hover:scale-110"
+                  className="bg-white border border-gray-200 rounded-xl p-4 text-center hover:shadow-lg transition-all duration-300 hover:scale-110"
                   title={app.name}
                 >
                   <img
@@ -97,7 +97,7 @@ export default function Aplicativos() {
                     alt={app.name}
                     className="h-12 w-12 object-contain mx-auto mb-2"
                   />
-                  <p className="text-white font-semibold text-xs">{app.name}</p>
+                  <p className="text-black font-semibold text-xs">{app.name}</p>
                 </div>
               ))}
             </div>
@@ -113,11 +113,11 @@ export default function Aplicativos() {
               {inclusoApps.map((app, i) => (
                 <div
                   key={i}
-                  className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-4 text-center hover:bg-white/20 hover:border-[#4CAF50] transition-all duration-300 hover:scale-110"
+                  className="bg-white border border-gray-200 rounded-xl p-4 text-center hover:shadow-lg transition-all duration-300 hover:scale-110"
                   title={app.name}
                 >
                   {app.name === 'MaisTV' ? (
-                    <Tv size={48} className="text-[#4CAF50] mx-auto mb-2" />
+                    <Tv size={48} className="text-[#3DD93D] mx-auto mb-2" />
                   ) : (
                     <img
                       src={app.logo}
@@ -125,7 +125,7 @@ export default function Aplicativos() {
                       className="h-12 w-12 object-contain mx-auto mb-2"
                     />
                   )}
-                  <p className="text-white font-semibold text-xs">{app.name}</p>
+                  <p className="text-black font-semibold text-xs">{app.name}</p>
                 </div>
               ))}
             </div>
