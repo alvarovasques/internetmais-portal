@@ -4,6 +4,11 @@ import { useState } from 'react';
 import { Zap, Tv, Tag, Check, MessageCircle, TrendingDown } from 'lucide-react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
+interface App {
+  name: string;
+  logo: string;
+}
+
 interface Plano {
   velocidade: string;
   preco: string;
@@ -20,9 +25,24 @@ export default function PlanosResidenciais() {
   const ref = useScrollAnimation();
   const [activeTab, setActiveTab] = useState<'velocidade' | 'aplicativos' | 'globoplay'>('velocidade');
 
-  // URLs das imagens de apps
-  const appsStandardImage = 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/pasted_file_40eNqp_image_9237b9bb.png';
-  const appsPremiumImage = 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/pasted_file_hMK2Tw_image_b3f62a3f.png';
+  // Apps disponíveis
+  const appsStandard: App[] = [
+    { name: 'Ubook', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/ubook_bdab405a.png' },
+    { name: 'Zen', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/zen_836e97dc.png' },
+    { name: 'Leitura 360', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/leitura-360_3b7cd0c8.png' },
+    { name: 'Estuda', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/estuda_1b6b23ea.png' },
+    { name: 'Pequenos Leitores', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/pequenos-leitores_08202ef5.png' },
+    { name: 'Playlist', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/playlist_4a584bda.png' },
+    { name: 'Jornalista', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/jornalista_a4f9c11d.png' },
+  ];
+
+  const appsPremium: App[] = [
+    { name: 'Smart Content', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/smart-content_369ea140.png' },
+    { name: 'HBO Max', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/hbo-max_8983f5f2.png' },
+    { name: 'Disney+', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/disney-plus_e2b45e97.png' },
+    { name: 'Globo Play', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/globoplay_f68bb013.png' },
+    { name: 'Kaspersky', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/kaspersky_a4e6e712.png' },
+  ];
 
   const planosVelocidade: Plano[] = [
     {
@@ -251,29 +271,61 @@ export default function PlanosResidenciais() {
 
                 {/* Apps Section for Aplicativos Tab */}
                 {activeTab === 'aplicativos' && (plano.appsStandard || plano.appsPremium) && (
-                  <div className="mb-8 space-y-4 border-t border-opacity-20 border-white pt-4">
+                  <div className="mb-8 space-y-6 border-t border-opacity-20 border-white pt-6">
                     {plano.appsStandard && (
                       <div>
-                        <p className={`text-xs font-bold mb-3 ${plano.popular ? 'text-white' : 'text-[#3DD93D]'}`}>
+                        <p className={`text-xs font-bold mb-4 ${plano.popular ? 'text-white' : 'text-[#3DD93D]'}`}>
                           ESCOLHA {plano.appsStandard} APP STANDARD
                         </p>
-                        <img 
-                          src={appsStandardImage} 
-                          alt="Apps Standard Disponíveis" 
-                          className="w-full rounded-lg"
-                        />
+                        <div className="grid grid-cols-2 gap-3">
+                          {appsStandard.map((app, idx) => (
+                            <div
+                              key={idx}
+                              className={`flex flex-col items-center justify-center p-3 rounded-lg transition-all duration-300 hover:scale-110 cursor-pointer ${
+                                plano.popular
+                                  ? 'bg-white bg-opacity-10 hover:bg-opacity-20'
+                                  : 'bg-gray-100 hover:bg-gray-200'
+                              }`}
+                            >
+                              <img
+                                src={app.logo}
+                                alt={app.name}
+                                className="h-12 w-12 object-contain mb-2"
+                              />
+                              <p className={`text-xs text-center font-semibold ${plano.popular ? 'text-white' : 'text-gray-700'}`}>
+                                {app.name}
+                              </p>
+                            </div>
+                          ))}
+                        </div>
                       </div>
                     )}
                     {plano.appsPremium && (
                       <div>
-                        <p className={`text-xs font-bold mb-3 ${plano.popular ? 'text-white' : 'text-[#3DD93D]'}`}>
+                        <p className={`text-xs font-bold mb-4 ${plano.popular ? 'text-white' : 'text-[#3DD93D]'}`}>
                           ESCOLHA {plano.appsPremium} APP PREMIUM
                         </p>
-                        <img 
-                          src={appsPremiumImage} 
-                          alt="Apps Premium Disponíveis" 
-                          className="w-full rounded-lg"
-                        />
+                        <div className="grid grid-cols-2 gap-3">
+                          {appsPremium.map((app, idx) => (
+                            <div
+                              key={idx}
+                              className={`flex flex-col items-center justify-center p-3 rounded-lg transition-all duration-300 hover:scale-110 cursor-pointer ${
+                                plano.popular
+                                  ? 'bg-white bg-opacity-10 hover:bg-opacity-20'
+                                  : 'bg-gray-100 hover:bg-gray-200'
+                              }`}
+                            >
+                              <img
+                                src={app.logo}
+                                alt={app.name}
+                                className="h-12 w-12 object-contain mb-2"
+                              />
+                              <p className={`text-xs text-center font-semibold ${plano.popular ? 'text-white' : 'text-gray-700'}`}>
+                                {app.name}
+                              </p>
+                            </div>
+                          ))}
+                        </div>
                       </div>
                     )}
                   </div>
