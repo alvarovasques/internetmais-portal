@@ -43,10 +43,7 @@ export default function TelefoniaFixa() {
                 <Check size={24} className="text-[#3DD93D] flex-shrink-0" />
                 <span className="font-semibold">Identificador de chamadas</span>
               </div>
-              <div className="flex items-start gap-3">
-                <Check size={24} className="text-[#3DD93D] flex-shrink-0" />
-                <span className="font-semibold">Suporte técnico 24/7</span>
-              </div>
+
             </div>
 
             {/* Note */}

@@ -67,7 +67,7 @@ export default function PlanosResidenciais() {
       temDesconto: true,
       popular: false,
       desconto: '20% de desconto por pontualidade',
-      features: ['400 Mbps de velocidade', 'Instalação grátis*', 'Roteador Wi-Fi 6', 'Suporte 24/7', 'MaisTV (100+ canais)', 'Ubook', 'Kaspersky']
+      features: ['400 Mbps de velocidade', 'Instalação grátis*', 'Roteador Wi-Fi 6', 'MaisTV (100+ canais)', 'Ubook', 'Kaspersky']
     },
     {
       velocidade: '600 Mega',
@@ -75,7 +75,7 @@ export default function PlanosResidenciais() {
       precoComDesconto: 'R$ 99,90',
       temDesconto: true,
       popular: true,
-      features: ['600 Mbps de velocidade', 'Instalação grátis*', 'Roteador Wi-Fi 6', 'Suporte 24/7', 'MaisTV (100+ canais)', 'Ubook', 'Kaspersky']
+      features: ['600 Mbps de velocidade', 'Instalação grátis*', 'Roteador Wi-Fi 6', 'MaisTV (100+ canais)', 'Ubook', 'Kaspersky']
     },
     {
       velocidade: '800 Mega',
@@ -84,7 +84,7 @@ export default function PlanosResidenciais() {
       temDesconto: true,
       popular: false,
       desconto: '20% de desconto por pontualidade',
-      features: ['800 Mbps de velocidade', 'Instalação grátis*', 'Roteador Wi-Fi 6', 'Suporte 24/7', 'MaisTV (100+ canais)', 'Ubook', 'Kaspersky']
+      features: ['800 Mbps de velocidade', 'Instalação grátis*', 'Roteador Wi-Fi 6', 'MaisTV (100+ canais)', 'Ubook', 'Kaspersky']
     },
   ];
 
@@ -97,7 +97,7 @@ export default function PlanosResidenciais() {
       popular: false,
       desconto: '20% de desconto por pontualidade',
       appsStandard: 1,
-      features: ['400 Mbps de velocidade', 'Escolha 1 App Standard', 'Instalação grátis*', 'Roteador Wi-Fi 6', 'Suporte 24/7']
+      features: ['400 Mbps de velocidade', 'Escolha 1 App Standard', 'Instalação grátis*', 'Roteador Wi-Fi 6']
     },
     {
       velocidade: '600 Mega',
@@ -107,7 +107,7 @@ export default function PlanosResidenciais() {
       popular: true,
       appsStandard: 1,
       appsPremium: 1,
-      features: ['600 Mbps de velocidade', 'Escolha 1 App Standard + 1 Premium', 'Instalação grátis*', 'Roteador Wi-Fi 6', 'Suporte 24/7']
+      features: ['600 Mbps de velocidade', 'Escolha 1 App Standard + 1 Premium', 'Instalação grátis*', 'Roteador Wi-Fi 6']
     },
     {
       velocidade: '800 Mega',
@@ -118,7 +118,7 @@ export default function PlanosResidenciais() {
       desconto: '20% de desconto por pontualidade',
       appsStandard: 1,
       appsPremium: 1,
-      features: ['800 Mbps de velocidade', 'Escolha 1 App Standard + 1 Premium', 'Instalação grátis*', 'Roteador Wi-Fi 6', 'Suporte 24/7']
+      features: ['800 Mbps de velocidade', 'Escolha 1 App Standard + 1 Premium', 'Instalação grátis*', 'Roteador Wi-Fi 6']
     },
   ];
 

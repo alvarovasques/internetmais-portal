@@ -52,7 +52,7 @@ export default function HeroSection() {
       image: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/carousel-empresarial-59j7VzkmoLVCgHYY7e6JQF.webp',
       badge: 'PARA EMPRESAS',
       title: 'Internet Empresarial',
-      description: 'WiFi 6, suporte especializado 24/7, estabilidade garantida. Soluções robustas para impulsionar seu negócio.',
+      description: 'WiFi 6, estabilidade garantida. Soluções robustas para impulsionar seu negócio.',
       cta: 'Solicitar Orçamento',
       ctaMessage: 'Olá! Gostaria de falar com um representante sobre soluções de internet empresarial.',
       viewPlansLink: '#empresarial'
