@@ -117,7 +117,7 @@ export default function HeroSection() {
       <div className="relative w-full h-full">
         {slides.map((s, index) => (
           <div
-            key={s.id}
+            key={`slide-${index}`}
             className={`absolute inset-0 transition-opacity duration-1000 ${
               index === currentSlide ? 'opacity-100' : 'opacity-0'
             }`}
@@ -186,9 +186,11 @@ export default function HeroSection() {
                     }`}
                   >
                     <a
-                      href={`https://wa.me/556730272500?text=${encodeURIComponent(s.ctaMessage)}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      href="#"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        window.open(`https://wa.me/556730272500?text=${encodeURIComponent(s.ctaMessage)}`, '_blank');
+                      }}
                       className="inline-flex items-center justify-center gap-2 bg-[#25D366] text-white font-bold py-3 px-6 rounded-full hover:bg-[#20ba5a] hover:shadow-lg hover:scale-105 transition-all duration-300"
                     >
                       <MessageCircle size={20} />
