@@ -111,7 +111,7 @@ export default function SobreNos() {
         <Cobertura />
 
         {/* Lojas */}
-        <section className="py-12 md:py-16 bg-[#F4F4F4]">
+        <section id="lojas" className="py-12 md:py-16 bg-[#F4F4F4]">
           <div className="container mx-auto px-4">
             <h2 className="text-3xl md:text-4xl font-black text-[#0D1B3E] mb-3 text-center">
               Visite Nossas Lojas
