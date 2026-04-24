@@ -80,13 +80,11 @@ export default function Planos5G() {
         </div>
 
         {/* Plans Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 animate-fade-in-up animate-delay-200">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 animate-fade-in-up animate-delay-200">
           {planos.map((plano, i) => (
             <div
               key={i}
-              className={`relative rounded-2xl overflow-hidden transition-all duration-300 animate-scale-in ${
-                plano.popular ? 'lg:col-span-1 lg:row-span-2 lg:scale-110 shadow-2xl' : 'shadow-lg'
-              }`}
+              className={`relative rounded-2xl overflow-hidden transition-all duration-300 animate-scale-in shadow-lg hover:shadow-xl`}
               style={{ animationDelay: `${0.3 + i * 0.08}s` }}
             >
               {/* Popular Badge */}
