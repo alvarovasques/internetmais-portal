@@ -9,35 +9,42 @@ export default function Planos5G() {
       preco: 'R$ 24,99',
       bonus: '—',
       popular: false,
-      features: ['1GB de dados', '100 min de voz', '100 SMS', 'Chip: R$ 10,00']
+      features: ['1GB de dados', '100 min de voz', '100 SMS', 'Chip: R$ 8,00']
     },
     {
       gb: '3GB',
       preco: 'R$ 39,99',
       bonus: '+2GB',
       popular: false,
-      features: ['3GB + 2GB (portabilidade)', '1000 min de voz', '100 SMS', 'WhatsApp, Waze, Maps ilimitados', 'Chip: R$ 10,00']
+      features: ['3GB + 2GB (portabilidade)', '1000 min de voz', '100 SMS', 'WhatsApp, Waze, Maps ilimitados', 'Chip: R$ 8,00']
     },
     {
       gb: '5GB',
       preco: 'R$ 49,99',
       bonus: '+3GB',
       popular: true,
-      features: ['5GB + 3GB (portabilidade)', '1000 min de voz', '100 SMS', 'WhatsApp, Waze, Maps ilimitados', 'Chip: R$ 10,00']
+      features: ['5GB + 3GB (portabilidade)', '1000 min de voz', '100 SMS', 'WhatsApp, Waze, Maps ilimitados', 'Chip: R$ 8,00']
     },
     {
       gb: '10GB',
       preco: 'R$ 59,99',
       bonus: '+5GB',
       popular: false,
-      features: ['10GB + 5GB (portabilidade)', '1000 min de voz', '100 SMS', 'WhatsApp, Waze, Maps ilimitados', 'Chip: R$ 10,00']
+      features: ['10GB + 5GB (portabilidade)', '1000 min de voz', '100 SMS', 'WhatsApp, Waze, Maps ilimitados', 'Chip: R$ 8,00']
+    },
+    {
+      gb: '15GB',
+      preco: 'R$ 64,99',
+      bonus: '+5GB',
+      popular: false,
+      features: ['15GB + 5GB (portabilidade)', '1000 min de voz', '100 SMS', 'WhatsApp, Waze, Maps ilimitados', 'Chip: R$ 8,00']
     },
     {
       gb: '25GB',
       preco: 'R$ 89,99',
       bonus: '+5GB',
       popular: false,
-      features: ['25GB + 5GB (portabilidade)', '1000 min de voz', '100 SMS', 'WhatsApp, Waze, Maps ilimitados', 'Chip: R$ 10,00']
+      features: ['25GB + 5GB (portabilidade)', '1000 min de voz', '100 SMS', 'WhatsApp, Waze, Maps ilimitados', 'Chip: R$ 8,00']
     },
   ];
 
