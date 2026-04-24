@@ -17,12 +17,8 @@ export default function Header() {
     },
     {
       label: 'Residencial',
-      href: '/',
-      submenu: [
-        { label: 'Planos de Velocidade', href: '#planos-residenciais' },
-        { label: 'Planos com Aplicativos', href: '#planos-residenciais' },
-        { label: 'Diferenciais', href: '#diferenciais' },
-      ]
+      href: '#planos-residenciais',
+      submenu: []
     },
     {
       label: 'Empresarial',
