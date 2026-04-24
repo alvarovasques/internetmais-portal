@@ -13,7 +13,7 @@ export default function HeroSection() {
       imageAlt: 'Pessoa segurando smartphone com fibra óptica 100% pura e chip 5G em Campo Grande',
       badge: 'FIBRA ÓPTICA + CHIP 5G',
       title: 'Fibra Óptica + Chip 5G. Tudo o que você precisa em um só lugar.',
-      description: 'Mais de 20 mil clientes em Campo Grande. 100% fibra óptica, sem oscilação. E agora, somos também sua operadora de celular 5G.',
+      description: 'Mais de 20 mil clientes em Campo Grande. 100% fibra óptica com rede própria, infraestrutura e suporte local. E agora, somos também sua operadora de celular 5G.',
       cta: 'Quero Contratar Agora',
       ctaMessage: 'Olá! Gostaria de contratar um plano de Fibra Óptica + Chip 5G da InternetMais.',
       viewPlansLink: '#planos-residenciais'

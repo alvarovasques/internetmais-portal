@@ -155,7 +155,7 @@ export default function Planos5G() {
             </div>
             <div>
               <h4 className="font-bold text-[#0D1B3E] mb-2">Rede 5G</h4>
-              <p className="text-sm text-gray-600">Navegue com a velocidade mais rápida do mercado</p>
+              <p className="text-sm text-gray-600">Navegue com a velocidade mais rápida do mercado com cobertura nacional.</p>
             </div>
           </div>
         </div>

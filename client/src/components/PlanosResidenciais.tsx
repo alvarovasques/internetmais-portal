@@ -387,7 +387,7 @@ export default function PlanosResidenciais() {
 
         {/* Info */}
         <div className="mt-16 text-center text-gray-600 text-sm">
-          <p>* Instalação grátis para clientes novos. Consulte condições.</p>
+          <p>*Sem taxa de instalação. Consulte condições.</p>
         </div>
       </div>
     </section>
