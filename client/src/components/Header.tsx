@@ -12,25 +12,25 @@ export default function Header() {
       submenu: [
         { label: 'Missão, Visão e Valores', href: '/sobre-nos' },
         { label: 'Nossas Lojas', href: '/sobre-nos#lojas' },
-        { label: 'Cobertura', href: '#cobertura' },
+        { label: 'Cobertura', href: '/#cobertura' },
       ]
     },
     {
       label: 'Residencial',
-      href: '#planos-residenciais',
+      href: '/#planos-residenciais',
       submenu: []
     },
     {
       label: 'Empresarial',
-      href: '#empresarial',
+      href: '/#empresarial',
       submenu: []
     },
     {
       label: 'Telefonia',
       href: '/',
       submenu: [
-        { label: 'Chip 5G', href: '#chip-5g' },
-        { label: 'Telefonia Fixa', href: '#telefonia-fixa' },
+        { label: 'Chip 5G', href: '/#chip-5g' },
+        { label: 'Telefonia Fixa', href: '/#telefonia-fixa' },
       ]
     },
     {
