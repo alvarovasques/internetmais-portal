@@ -5,8 +5,8 @@ export default function Empresarial() {
   const ref = useScrollAnimation();
   const planos = [
     { velocidade: '400 Mega', preco: 'R$ 229,90/mês' },
-    { velocidade: '600 Mega', preco: 'R$ 249,90/mês' },
-    { velocidade: '800 Mega', preco: 'R$ 269,90/mês' },
+    { velocidade: '600 Mega', preco: 'R$ 269,90/mês' },
+    { velocidade: '800 Mega', preco: 'R$ 309,90/mês' },
   ];
 
   return (
