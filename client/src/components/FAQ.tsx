@@ -20,7 +20,7 @@ const faqItems: FAQItem[] = [
     id: 'planos-2',
     category: 'planos',
     question: 'Posso mudar de plano depois de contratar?',
-    answer: 'Sim! Você pode fazer upgrade ou downgrade de plano a qualquer momento. Basta entrar em contato conosco via WhatsApp ou acessar sua Central do Assinante para solicitar a mudança.',
+    answer: 'Sim! Você pode fazer upgrade ou downgrade de plano consulte as condições a qualquer momento. Basta entrar em contato conosco via WhatsApp ou acessar sua Central do Assinante para solicitar a mudança.',
   },
   {
     id: 'planos-3',
