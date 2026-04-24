@@ -78,12 +78,7 @@ const faqItems: FAQItem[] = [
     question: 'Qual é o tempo médio de resposta do suporte?',
     answer: 'Nosso suporte técnico responde em até 2 horas durante o horário comercial. Para emergências fora do horário, deixe uma mensagem que retornaremos assim que possível.',
   },
-  {
-    id: 'suporte-4',
-    category: 'suporte',
-    question: 'Há cobertura de Wi-Fi 6 em todos os planos?',
-    answer: 'Sim! Todos os nossos planos incluem roteador Wi-Fi 6 com cobertura otimizada. Para planos empresariais, oferecemos suporte especializado e configuração avançada.',
-  },
+
 ];
 
 export default function FAQ() {
