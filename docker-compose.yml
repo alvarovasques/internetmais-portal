@@ -20,13 +20,13 @@ services:
     # Labels para Traefik
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.internetmais.rule=Host(`internetmais.seu-dominio.com`)"
+      - "traefik.http.routers.internetmais.rule=Host(`internetmais.net`)"
       - "traefik.http.routers.internetmais.entrypoints=websecure"
       - "traefik.http.routers.internetmais.tls=true"
       - "traefik.http.routers.internetmais.tls.certresolver=letsencrypt"
       - "traefik.http.services.internetmais.loadbalancer.server.port=3000"
       - "traefik.http.middlewares.internetmais-redirect.redirectscheme.scheme=https"
-      - "traefik.http.routers.internetmais-http.rule=Host(`internetmais.seu-dominio.com`)"
+      - "traefik.http.routers.internetmais-http.rule=Host(`internetmais.net`)"
       - "traefik.http.routers.internetmais-http.entrypoints=web"
       - "traefik.http.routers.internetmais-http.middlewares=internetmais-redirect"
     
@@ -71,10 +71,8 @@ services:
       start_period: 40s
     
     networks:
-      - traefik-network
+      - di4e
 
 networks:
-  traefik-network:
-    driver: overlay
-    driver_opts:
-      com.docker.network.driver.overlay.vxlanid: "4096"
+  di4e:
+    external: true
