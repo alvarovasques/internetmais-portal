@@ -76,7 +76,7 @@ export default function Aplicativos() {
           <div className="animate-fade-in-up animate-delay-100">
             <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
               <span className="w-2 h-2 bg-[#3DD93D] rounded-full"></span>
-              Apps Standard (Escolha 1 em 400MB | Escolha 1 em 600MB e 800MB)
+              Apps Standard (1 app incluso nos planos "Internet + Aplicativos" de 400MB, 600MB e 800MB)
             </h3>
             <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
               {standardApps.map((app, i) => (
@@ -104,7 +104,7 @@ export default function Aplicativos() {
           <div className="animate-fade-in-up animate-delay-200">
             <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
               <span className="w-2 h-2 bg-[#FF1744] rounded-full"></span>
-              Apps Premium (Escolha 1 em 600MB e 800MB)
+              Apps Premium (Apps exclusivos para planos "Internet + Aplicativos" de 600MB e 800MB)
             </h3>
             <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-8 gap-4">
               {premiumApps.map((app, i) => (
