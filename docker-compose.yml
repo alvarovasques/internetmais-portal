@@ -1,0 +1,80 @@
+version: '3.8'
+
+services:
+  internetmais:
+    image: ghcr.io/alvarovasques/internetmais-portal:latest
+    # Se preferir usar Docker Hub, use: alvarovasques/internetmais-portal:latest
+    
+    container_name: internetmais-portal
+    
+    ports:
+      - "3000:3000"
+    
+    environment:
+      - NODE_ENV=production
+      - VITE_APP_TITLE=InternetMais - Fibra Óptica, 5G e Internet Empresarial
+      - VITE_APP_ID=internetmais-portal
+    
+    restart: unless-stopped
+    
+    # Labels para Traefik
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.internetmais.rule=Host(`internetmais.seu-dominio.com`)"
+      - "traefik.http.routers.internetmais.entrypoints=websecure"
+      - "traefik.http.routers.internetmais.tls=true"
+      - "traefik.http.routers.internetmais.tls.certresolver=letsencrypt"
+      - "traefik.http.services.internetmais.loadbalancer.server.port=3000"
+      - "traefik.http.middlewares.internetmais-redirect.redirectscheme.scheme=https"
+      - "traefik.http.routers.internetmais-http.rule=Host(`internetmais.seu-dominio.com`)"
+      - "traefik.http.routers.internetmais-http.entrypoints=web"
+      - "traefik.http.routers.internetmais-http.middlewares=internetmais-redirect"
+    
+    # Deploy para Docker Swarm
+    deploy:
+      mode: replicated
+      replicas: 2
+      
+      # Política de atualização
+      update_config:
+        parallelism: 1
+        delay: 10s
+        failure_action: rollback
+      
+      # Política de reinício
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+      
+      # Recursos
+      resources:
+        limits:
+          cpus: '1'
+          memory: 512M
+        reservations:
+          cpus: '0.5'
+          memory: 256M
+      
+      # Placement (opcional - especifique nós se necessário)
+      # placement:
+      #   constraints:
+      #     - node.role == worker
+    
+    # Health check
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:3000/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    
+    networks:
+      - traefik-network
+
+networks:
+  traefik-network:
+    driver: overlay
+    driver_opts:
+      com.docker.network.driver.overlay.vxlanid: "4096"
