@@ -118,37 +118,38 @@ export default function Header() {
           <nav className="md:hidden mt-4 pb-4 border-t border-gray-200">
             {navItems.map((item) => (
               <div key={item.label}>
-                <button
-                  onClick={() => setOpenSubmenu(openSubmenu === item.label ? null : item.label)}
-                  className="w-full text-left py-2 text-sm font-semibold text-[#0D1B3E] hover:text-[#3DD93D] transition-colors flex items-center justify-between"
-                >
-                  {item.label}
-                  {item.submenu && item.submenu.length > 0 && (
-                    <ChevronDown
-                      size={16}
-                      className={`transition-transform ${openSubmenu === item.label ? 'rotate-180' : ''}`}
-                    />
-                  )}
-                </button>
+                {/* Items with submenu - render as button */}
+                {item.submenu && item.submenu.length > 0 ? (
+                  <>
+                    <button
+                      onClick={() => setOpenSubmenu(openSubmenu === item.label ? null : item.label)}
+                      className="w-full text-left py-2 text-sm font-semibold text-[#0D1B3E] hover:text-[#3DD93D] transition-colors flex items-center justify-between"
+                    >
+                      {item.label}
+                      <ChevronDown
+                        size={16}
+                        className={`transition-transform ${openSubmenu === item.label ? 'rotate-180' : ''}`}
+                      />
+                    </button>
 
-                {/* Mobile Submenu */}
-                {item.submenu && item.submenu.length > 0 && openSubmenu === item.label && (
-                  <div className="bg-gray-50 rounded-lg mt-2 py-2">
-                    {item.submenu.map((subitem) => (
-                      <a
-                        key={subitem.label}
-                        href={subitem.href}
-                        className="block px-4 py-2 text-xs text-[#0D1B3E] hover:text-[#3DD93D] transition-colors"
-                        onClick={() => setMobileMenuOpen(false)}
-                      >
-                        {subitem.label}
-                      </a>
-                    ))}
-                  </div>
-                )}
-
-                {/* External Link or Regular Link (but not both) */}
-                {item.external ? (
+                    {/* Mobile Submenu */}
+                    {openSubmenu === item.label && (
+                      <div className="bg-gray-50 rounded-lg mt-2 py-2">
+                        {item.submenu.map((subitem) => (
+                          <a
+                            key={subitem.label}
+                            href={subitem.href}
+                            className="block px-4 py-2 text-xs text-[#0D1B3E] hover:text-[#3DD93D] transition-colors"
+                            onClick={() => setMobileMenuOpen(false)}
+                          >
+                            {subitem.label}
+                          </a>
+                        ))}
+                      </div>
+                    )}
+                  </>
+                ) : item.external ? (
+                  /* External link */
                   <a
                     href={item.href}
                     target="_blank"
@@ -158,7 +159,8 @@ export default function Header() {
                   >
                     {item.label}
                   </a>
-                ) : item.submenu?.length === 0 ? (
+                ) : (
+                  /* Regular link */
                   <a
                     href={item.href}
                     className="block py-2 text-sm font-semibold text-[#0D1B3E] hover:text-[#3DD93D] transition-colors"
@@ -166,7 +168,7 @@ export default function Header() {
                   >
                     {item.label}
                   </a>
-                ) : null}
+                )}
               </div>
             ))}
             <a
