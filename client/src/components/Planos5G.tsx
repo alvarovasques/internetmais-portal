@@ -164,7 +164,7 @@ export default function Planos5G() {
             </div>
           </div>
           <div className="mt-6 pt-6 border-t border-gray-200">
-            <p className="text-xs text-gray-600"><span className="font-bold">*Apps Ilimitados:</span> WhatsApp e Waze sem consumo de dados. Requer saldo ativo no chip.</p>
+            <p className="text-xs text-gray-600"><span className="font-bold">*Apps Ilimitados:</span> WhatsApp, Waze e Maps sem consumo de dados. Requer saldo ativo no chip.</p>
           </div>
         </div>
       </div>
