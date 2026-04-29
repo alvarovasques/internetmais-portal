@@ -25,7 +25,7 @@ const faqItems: FAQItem[] = [
   {
     id: 'planos-3',
     category: 'planos',
-    question: 'O desconto de 20% para novos clientes por pontualidade é automático?',
+    question: 'O desconto de R$20 para novos clientes por pontualidade é automático?',
     answer: 'Sim, o desconto é aplicado automaticamente na sua fatura quando você paga em dia. Ele é válido para os planos Internet + Velocidade e Internet + Aplicativos.',
   },
   {
