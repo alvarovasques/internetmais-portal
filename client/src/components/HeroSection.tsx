@@ -54,10 +54,10 @@ export default function HeroSection() {
     {
       id: 5,
       image: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/carousel-empresarial-59j7VzkmoLVCgHYY7e6JQF.webp',
-      imageAlt: 'Internet empresarial com WiFi 6 e estabilidade garantida para negócios em Campo Grande',
+      imageAlt: 'Internet empresarial com estabilidade garantida para negócios em Campo Grande',
       badge: 'PARA EMPRESAS',
       title: 'Internet Empresarial',
-      description: 'WiFi 6, estabilidade garantida. Soluções robustas para impulsionar seu negócio.',
+      description: 'Estabilidade garantida. Soluções robustas para impulsionar seu negócio.',
       cta: 'Solicitar Orçamento',
       ctaMessage: 'Olá! Gostaria de falar com um representante sobre soluções de internet empresarial.',
       viewPlansLink: '#empresarial'

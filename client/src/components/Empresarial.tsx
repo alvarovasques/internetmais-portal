@@ -29,7 +29,7 @@ export default function Empresarial() {
           Sua empresa merece uma conexão à altura
         </h2>
         <p className="text-lg text-gray-700 text-center mb-4 max-w-2xl mx-auto">
-          Planos corporativos com Wi-Fi 6, suporte especializado de 12h e estabilidade para o seu negócio.
+          Planos corporativos, suporte especializado de 12h e estabilidade para o seu negócio.
         </p>
         <p className="text-sm text-gray-600 text-center mb-16 max-w-2xl mx-auto">
           Procurando por <a href="#planos-residenciais" className="text-[#3DD93D] hover:text-[#2BA82A] font-semibold">planos residenciais</a>? Temos opções para todos os perfis de uso.
