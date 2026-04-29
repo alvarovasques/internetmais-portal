@@ -9,11 +9,7 @@ export default function Adicionais() {
       name: 'Extensor Wi-Fi 5',
       preco: 'R$ 19,90/mês',
     },
-    {
-      icon: Radio,
-      name: 'Extensor Wi-Fi 6',
-      preco: 'R$ 29,90/mês',
-    },
+
     {
       icon: Phone,
       name: 'Linha Fixa Ilimitada (fixo para fixo)',

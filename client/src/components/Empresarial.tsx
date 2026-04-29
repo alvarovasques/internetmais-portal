@@ -15,7 +15,7 @@ export default function Empresarial() {
       <div className="absolute inset-0">
         <img
           src="https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/office-modern-GoVmZvh4HUoGCEAR78yU97.webp"
-          alt="Internet empresarial com WiFi 6 e suporte especializado para negócios em Campo Grande"
+          alt="Internet empresarial com suporte especializado para negócios em Campo Grande"
           className="w-full h-full object-cover"
           loading="lazy"
         />
@@ -54,10 +54,6 @@ export default function Empresarial() {
 
               {/* Benefícios */}
               <div className="space-y-4 mb-8">
-                <div className="flex items-center gap-3">
-                  <Wifi size={20} className="text-[#3DD93D]" />
-                  <span className="text-gray-700 font-semibold">Wi-Fi 6 incluso</span>
-                </div>
                 <div className="flex items-center gap-3">
                   <Clock size={20} className="text-[#3DD93D]" />
                   <span className="text-gray-700 font-semibold">Suporte empresarial 12h</span>
