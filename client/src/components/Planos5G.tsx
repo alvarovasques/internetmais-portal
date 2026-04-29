@@ -151,7 +151,7 @@ export default function Planos5G() {
         <div className="mt-16 bg-white/95 backdrop-blur-sm rounded-2xl p-8 animate-fade-in-up animate-delay-300">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
-              <h4 className="font-bold text-[#0D1B3E] mb-2">Apps Ilimitados</h4>
+              <h4 className="font-bold text-[#0D1B3E] mb-2">Apps Ilimitados*</h4>
               <p className="text-sm text-gray-600">WhatsApp, Waze e Maps com tráfego ilimitado</p>
             </div>
             <div>
