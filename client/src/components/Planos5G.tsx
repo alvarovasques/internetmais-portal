@@ -104,7 +104,7 @@ export default function Planos5G() {
                 {/* Bonus */}
                 {plano.bonus !== '—' && (
                   <p className="text-xs font-bold text-[#3DD93D] mb-4">
-                    + {plano.bonus} bônus (portabilidade)
+                    {plano.bonus} bônus (portabilidade)
                   </p>
                 )}
 
