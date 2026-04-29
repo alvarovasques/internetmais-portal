@@ -164,7 +164,7 @@ export default function Planos5G() {
             </div>
           </div>
           <div className="mt-6 pt-6 border-t border-gray-200">
-            <p className="text-xs text-gray-600"><span className="font-bold">*Ilimitado enquanto houver saldo disponível.</span> O uso do WhatsApp (mensagens de texto e voz) e do Waze ocorre normalmente, sem desconto do plano, mas precisa ter saldo.</p>
+            <p className="text-xs text-gray-600"><span className="font-bold">*Apps Ilimitados:</span> WhatsApp e Waze sem consumo de dados. Requer saldo ativo no chip.</p>
           </div>
         </div>
       </div>
