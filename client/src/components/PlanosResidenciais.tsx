@@ -340,7 +340,7 @@ export default function PlanosResidenciais() {
                     {plano.appsPremium && (
                       <div>
                         <p className={`text-xs font-bold mb-3 ${plano.popular ? 'text-white' : 'text-[#3DD93D]'}`}>
-                          Escolha 1 em mais de 10 opções
+                          Escolha 1 em mais de 5 opções
                         </p>
                         <div className="grid grid-cols-5 gap-2">
                           {appsPremium.map((app, idx) => (
