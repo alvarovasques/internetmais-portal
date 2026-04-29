@@ -147,8 +147,8 @@ export default function Header() {
                   </div>
                 )}
 
-                {/* External Link */}
-                {item.external && (
+                {/* External Link or Regular Link (but not both) */}
+                {item.external ? (
                   <a
                     href={item.href}
                     target="_blank"
@@ -158,10 +158,7 @@ export default function Header() {
                   >
                     {item.label}
                   </a>
-                )}
-
-                {/* Regular Link */}
-                {!item.external && !item.submenu?.length && (
+                ) : item.submenu?.length === 0 ? (
                   <a
                     href={item.href}
                     className="block py-2 text-sm font-semibold text-[#0D1B3E] hover:text-[#3DD93D] transition-colors"
@@ -169,7 +166,7 @@ export default function Header() {
                   >
                     {item.label}
                   </a>
-                )}
+                ) : null}
               </div>
             ))}
             <a
