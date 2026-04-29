@@ -20,15 +20,35 @@ services:
     # Labels para Traefik
     labels:
       - "traefik.enable=true"
+      
+      # Router para domínio (HTTPS)
       - "traefik.http.routers.internetmais.rule=Host(`internetmais.net`)"
       - "traefik.http.routers.internetmais.entrypoints=websecure"
       - "traefik.http.routers.internetmais.tls=true"
       - "traefik.http.routers.internetmais.tls.certresolver=letsencrypt"
+      
+      # Router para IP com path (HTTPS)
+      - "traefik.http.routers.internetmais-ip.rule=Host(`179.124.8.187`) && PathPrefix(`/internetmais`)"
+      - "traefik.http.routers.internetmais-ip.entrypoints=websecure"
+      - "traefik.http.routers.internetmais-ip.tls=true"
+      - "traefik.http.routers.internetmais-ip.tls.certresolver=letsencrypt"
+      - "traefik.http.middlewares.internetmais-ip-strip.stripprefix.prefixes=/internetmais"
+      - "traefik.http.routers.internetmais-ip.middlewares=internetmais-ip-strip"
+      
+      # Service
       - "traefik.http.services.internetmais.loadbalancer.server.port=3000"
+      
+      # Redirect HTTP para HTTPS (domínio)
       - "traefik.http.middlewares.internetmais-redirect.redirectscheme.scheme=https"
       - "traefik.http.routers.internetmais-http.rule=Host(`internetmais.net`)"
       - "traefik.http.routers.internetmais-http.entrypoints=web"
       - "traefik.http.routers.internetmais-http.middlewares=internetmais-redirect"
+      
+      # Redirect HTTP para HTTPS (IP)
+      - "traefik.http.routers.internetmais-ip-http.rule=Host(`179.124.8.187`) && PathPrefix(`/internetmais`)"
+      - "traefik.http.routers.internetmais-ip-http.entrypoints=web"
+      - "traefik.http.routers.internetmais-ip-http.middlewares=internetmais-redirect-ip"
+      - "traefik.http.middlewares.internetmais-redirect-ip.redirectscheme.scheme=https"
     
     # Deploy para Docker Swarm
     deploy:
