@@ -61,9 +61,9 @@ export default function Aplicativos() {
         {/* Title */}
         <div className="text-center mb-16 animate-fade-in-down">
           <h2 className="text-3xl md:text-4xl font-black text-white mb-4">
-            Muito além da internet.
+            Muito além da internet
             <br />
-            <span className="text-[#3DD93D]">Um mundo de conteúdo</span> no seu plano.
+            <span className="text-[#3DD93D]">Um mundo de conteúdo</span> no seu plano
           </h2>
           <p className="text-lg text-gray-300 max-w-2xl mx-auto">
             Escolha seus apps favoritos e aproveite conteúdo premium inclusos em todos os planos
