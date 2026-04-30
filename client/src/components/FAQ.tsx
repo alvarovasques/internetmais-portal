@@ -32,7 +32,7 @@ const faqItems: FAQItem[] = [
     id: 'planos-4',
     category: 'planos',
     question: 'Quais aplicativos estão inclusos no plano Internet + Aplicativos?',
-    answer: 'O plano inclui acesso ilimitado a plataformas de streaming como Globo Play, além de outros aplicativos parceiros. Consulte nossa seção de Aplicativos para a lista completa.',
+    answer: 'O plano inclui acesso ilimitado a plataformas de streaming como GloboPlay, além de outros aplicativos parceiros. Consulte nossa seção de Aplicativos para a lista completa.',
   },
   // Instalação
   {

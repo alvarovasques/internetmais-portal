@@ -220,7 +220,7 @@ export default function PlanosResidenciais() {
             }`}
           >
             <Tv size={18} />
-            Internet + Globo Play
+            Internet + GloboPlay
           </button>
         </div>
 
@@ -287,7 +287,7 @@ export default function PlanosResidenciais() {
                   ))}
                 </div>
 
-                {/* Globo Play Section */}
+                {/* GloboPlay Section */}
                 {activeTab === 'globoplay' && (
                   <div className="mb-8 border-t border-opacity-20 border-white pt-6">
                     <p className={`text-xs font-bold mb-4 ${plano.popular ? 'text-white' : 'text-[#FF1744]'}`}>
@@ -297,11 +297,11 @@ export default function PlanosResidenciais() {
                       <div className="bg-white rounded-2xl p-6 flex flex-col items-center justify-center">
                         <img
                           src="https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/globoplay-hq_5eefcb22.png"
-                          alt="Globo Play"
+                          alt="GloboPlay"
                           className="h-20 w-20 object-contain mb-2"
                         />
                         <p className="text-sm font-bold text-gray-800">
-                          Globo Play
+                          GloboPlay
                         </p>
                       </div>
                     </div>
