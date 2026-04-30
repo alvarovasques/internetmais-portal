@@ -32,7 +32,7 @@ export default function Empresarial() {
           Planos corporativos, suporte especializado de 12h e estabilidade para o seu negócio.
         </p>
         <p className="text-sm text-gray-600 text-center mb-16 max-w-2xl mx-auto">
-          Procurando por <a href="#planos-residenciais" className="text-[#3DD93D] hover:text-[#2BA82A] font-semibold">planos residenciais</a>? Temos opções para todos os perfis de uso.
+          Procurando por <a href="#planos-residenciais" className="text-[#3DD93D] hover:text-[#2BA82A] font-semibold" style={{color: '#000000'}}>planos residenciais</a>? Temos opções para todos os perfis de uso.
         </p>
 
         {/* Plans Grid */}
