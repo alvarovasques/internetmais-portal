@@ -29,7 +29,7 @@ export default function Empresarial() {
           Sua empresa merece uma conexão à altura
         </h2>
         <p className="text-lg text-gray-700 text-center mb-4 max-w-2xl mx-auto">
-          Planos corporativos, suporte especializado de 12h e estabilidade para o seu negócio.
+          Planos corporativos, Suporte Técnico até 12h e estabilidade para o seu negócio.
         </p>
         <p className="text-sm text-gray-600 text-center mb-16 max-w-2xl mx-auto">
           Procurando por <a href="#planos-residenciais" className="text-[#3DD93D] hover:text-[#2BA82A] font-semibold" style={{color: '#000000'}}>planos residenciais</a>? Temos opções para todos os perfis de uso.
@@ -56,7 +56,7 @@ export default function Empresarial() {
               <div className="space-y-4 mb-8">
                 <div className="flex items-center gap-3">
                   <Clock size={20} className="text-[#3DD93D]" />
-                  <span className="text-gray-700 font-semibold">Suporte empresarial 12h</span>
+                  <span className="text-gray-700 font-semibold">Suporte Técnico até 12h</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <Network size={20} className="text-[#3DD93D]" />
