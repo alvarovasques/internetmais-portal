@@ -39,21 +39,6 @@ services:
       - "traefik.http.routers.internetmais-http.rule=Host(`internetmais.net`)"
       - "traefik.http.routers.internetmais-http.entrypoints=web"
       - "traefik.http.routers.internetmais-http.middlewares=internetmais-redirect"
-<<<<<<< Updated upstream
-=======
-      
-      # Redirect HTTP para HTTPS (IP) - Desabilitado para evitar loop
-      # - "traefik.http.routers.internetmais-ip-http.rule=Host(`179.124.8.187`) && PathPrefix(`/internetmais`)"
-      # - "traefik.http.routers.internetmais-ip-http.entrypoints=web"
-      # - "traefik.http.routers.internetmais-ip-http.middlewares=internetmais-redirect-ip"
-      # - "traefik.http.middlewares.internetmais-redirect-ip.redirectscheme.scheme=https"
-      
-      # Router HTTP para IP (sem redirect)
-      - "traefik.http.routers.internetmais-ip-http.rule=Host(`179.124.8.187`) && PathPrefix(`/internetmais`)"
-      - "traefik.http.routers.internetmais-ip-http.entrypoints=web"
-      - "traefik.http.routers.internetmais-ip-http.middlewares=internetmais-ip-strip"
-      - "traefik.http.services.internetmais.loadbalancer.server.port=3000"
->>>>>>> Stashed changes
     
     deploy:
       mode: replicated
