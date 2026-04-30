@@ -45,7 +45,7 @@ export default function Lojas() {
           Visite Nossas Lojas
         </h2>
         <p className="text-lg text-gray-700 text-center mb-16 max-w-2xl mx-auto animate-fade-in-up">
-          Atendimento presencial em 6 lojas em Campo Grande. Suporte técnico, contratação e atendimento humanizado.
+          Estamos presentes em 6 unidades em Campo Grande. Faça pagamentos, contrate planos e solicite atendimento com praticidade e suporte humanizado.
         </p>
 
         {/* Lojas Grid */}
