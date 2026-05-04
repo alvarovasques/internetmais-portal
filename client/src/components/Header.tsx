@@ -98,6 +98,14 @@ export default function Header() {
             href="https://wa.me/556730272500?text=Olá!%20Quero%20conhecer%20os%20planos%20da%20InternetMais"
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => {
+              if (typeof window !== 'undefined' && (window as any).dataLayer) {
+                (window as any).dataLayer.push({
+                  'event': 'Click_Whatsapp',
+                  'button_location': 'Header - Desktop'
+                });
+              }
+            }}
             className="hidden sm:flex items-center gap-2 bg-[#25D366] text-white font-bold py-2 px-4 rounded-full hover:bg-[#20ba5a] hover:shadow-lg hover:scale-105 transition-all duration-300"
           >
             <MessageCircle size={18} />
@@ -175,6 +183,14 @@ export default function Header() {
               href="https://wa.me/556730272500?text=Olá!%20Quero%20conhecer%20os%20planos%20da%20InternetMais"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => {
+                if (typeof window !== 'undefined' && (window as any).dataLayer) {
+                  (window as any).dataLayer.push({
+                    'event': 'Click_Whatsapp',
+                    'button_location': 'Header - Mobile'
+                  });
+                }
+              }}
               className="mt-4 flex items-center justify-center gap-2 bg-[#25D366] text-white font-bold py-2 px-4 rounded-full hover:bg-[#20ba5a] transition-all duration-300 w-full"
             >
               <MessageCircle size={18} />

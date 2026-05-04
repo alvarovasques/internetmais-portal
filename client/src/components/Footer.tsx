@@ -71,6 +71,14 @@ export default function Footer() {
                   href="https://wa.me/556730272500"
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => {
+                    if (typeof window !== 'undefined' && (window as any).dataLayer) {
+                      (window as any).dataLayer.push({
+                        'event': 'Click_Whatsapp',
+                        'button_location': 'Footer - Contato'
+                      });
+                    }
+                  }}
                   className="inline-flex items-center gap-2 hover:text-[#3DD93D] transition-colors"
                 >
                   <MessageCircle size={18} />
@@ -104,6 +112,14 @@ export default function Footer() {
                 href="https://wa.me/556730272500"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => {
+                  if (typeof window !== 'undefined' && (window as any).dataLayer) {
+                    (window as any).dataLayer.push({
+                      'event': 'Click_Whatsapp',
+                      'button_location': 'Footer - Redes Sociais'
+                    });
+                  }
+                }}
                 className="text-gray-400 hover:text-[#25D366] transition-colors"
               >
                 <MessageCircle size={24} />

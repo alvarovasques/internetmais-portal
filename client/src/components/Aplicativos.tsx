@@ -167,6 +167,14 @@ export default function Aplicativos() {
             )}`}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => {
+              if (typeof window !== 'undefined' && (window as any).dataLayer) {
+                (window as any).dataLayer.push({
+                  'event': 'Click_Whatsapp',
+                  'button_location': 'Aplicativos'
+                });
+              }
+            }}
             className="inline-flex items-center justify-center gap-2 bg-[#3DD93D] hover:bg-[#2BA82A] text-white font-bold py-4 px-8 rounded-full transition-all duration-300 hover:shadow-lg hover:scale-105"
           >
             <MessageCircle size={20} />

@@ -371,6 +371,14 @@ export default function PlanosResidenciais() {
                   href={`https://wa.me/556730272500?text=Ol%C3%A1!%20Gostaria%20de%20falar%20com%20um%20representante%20sobre%20o%20plano%20${plano.velocidade}%20de%20${activeTab === 'velocidade' ? 'Internet%20%2B%20Velocidade' : activeTab === 'aplicativos' ? 'Internet%20%2B%20Aplicativos' : 'Internet%20%2B%20Globo%20Play'}.`}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => {
+                    if (typeof window !== 'undefined' && (window as any).dataLayer) {
+                      (window as any).dataLayer.push({
+                        'event': 'Click_Whatsapp',
+                        'button_location': `PlanosResidenciais - ${plano.velocidade}`
+                      });
+                    }
+                  }}
                   className={`w-full inline-flex items-center justify-center gap-2 font-bold py-3 px-6 rounded-full transition-all duration-300 hover:shadow-lg hover:scale-105 ${
                     plano.popular
                       ? 'bg-white text-[#3DD93D] hover:bg-gray-100'

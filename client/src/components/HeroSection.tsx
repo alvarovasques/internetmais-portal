@@ -196,6 +196,12 @@ export default function HeroSection() {
                       href="#"
                       onClick={(e) => {
                         e.preventDefault();
+                        if (typeof window !== 'undefined' && (window as any).dataLayer) {
+                          (window as any).dataLayer.push({
+                            'event': 'Click_Whatsapp',
+                            'button_location': `HeroSection - Slide ${index + 1}`
+                          });
+                        }
                         window.open(`https://wa.me/556730272500?text=${encodeURIComponent(s.ctaMessage)}`, '_blank');
                       }}
                       className="inline-flex items-center justify-center gap-2 bg-[#25D366] text-white font-bold py-3 px-6 rounded-full hover:bg-[#20ba5a] hover:shadow-lg hover:scale-105 transition-all duration-300"

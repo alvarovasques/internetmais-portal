@@ -133,6 +133,14 @@ export default function Planos5G() {
                   href={`https://wa.me/556730272500?text=Ol%C3%A1!%20Gostaria%20de%20falar%20com%20um%20representante%20sobre%20o%20plano%20de%20${plano.gb}%20de%20dados%20do%20Chip%205G%20da%20InternetMais.`}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => {
+                    if (typeof window !== 'undefined' && (window as any).dataLayer) {
+                      (window as any).dataLayer.push({
+                        'event': 'Click_Whatsapp',
+                        'button_location': `Planos5G - ${plano.gb}GB`
+                      });
+                    }
+                  }}
                   className={`w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl font-bold transition-all duration-300 text-sm ${
                     plano.popular
                       ? 'bg-gradient-to-r from-[#3DD93D] to-[#2BA82A] text-white hover:shadow-lg hover:scale-105'

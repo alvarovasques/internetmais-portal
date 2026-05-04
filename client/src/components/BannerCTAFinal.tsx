@@ -30,6 +30,14 @@ export default function BannerCTAFinal() {
             )}`}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => {
+              if (typeof window !== 'undefined' && (window as any).dataLayer) {
+                (window as any).dataLayer.push({
+                  'event': 'Click_Whatsapp',
+                  'button_location': 'BannerCTAFinal'
+                });
+              }
+            }}
             className="inline-flex items-center justify-center gap-2 bg-white text-[#3DD93D] font-black py-4 px-8 rounded-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 text-lg"
           >
             <MessageCircle size={24} />

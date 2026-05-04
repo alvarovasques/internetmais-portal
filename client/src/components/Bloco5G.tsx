@@ -40,6 +40,14 @@ export default function Bloco5G() {
           href="https://wa.me/556730272500?text=Olá!%20Gostaria%20de%20falar%20com%20um%20representante%20sobre%20os%20planos%20de%20Chip%205G%20da%20InternetMais."
           target="_blank"
           rel="noopener noreferrer"
+          onClick={() => {
+            if (typeof window !== 'undefined' && (window as any).dataLayer) {
+              (window as any).dataLayer.push({
+                'event': 'Click_Whatsapp',
+                'button_location': 'Bloco5G'
+              });
+            }
+          }}
           className="bg-white text-[#3DD93D] font-black py-4 px-8 rounded-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 inline-flex items-center justify-center gap-2 mb-12 animate-scale-in animate-delay-400"
         >
           <MessageCircle size={20} />
