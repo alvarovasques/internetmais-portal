@@ -29,7 +29,7 @@ export default function TelefoniaFixa() {
 
             {/* Price */}
             <div className="mb-8 pb-8 border-b-2 border-white/20">
-              <p className="text-5xl font-black text-[#3DD93D]">R$ 59,90</p>
+              <p className="text-5xl font-black text-[#3DD93D]">R$ 50,00</p>
               <p className="text-white/80">por mês</p>
             </div>
 
