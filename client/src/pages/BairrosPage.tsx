@@ -23,7 +23,7 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiaW50ZXJuZXRtYWlzIiwiYSI6ImNtb3N3ZXVpODAzcWMyc
 export default function BairrosPage() {
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredBairros, setFilteredBairros] = useState<[string, BairroInfo][]>([]);
-  const [mapMode, setMapMode] = useState<'neighborhoods' | 'stores'>('neighborhoods');
+  const [mapMode] = useState<'neighborhoods' | 'stores'>('stores');
   const mapContainer = useRef<HTMLDivElement>(null);
   const map = useRef<mapboxgl.Map | null>(null);
   const markersRef = useRef<mapboxgl.Marker[]>([]);
@@ -101,7 +101,9 @@ export default function BairrosPage() {
       container: mapContainer.current,
       style: 'mapbox://styles/mapbox/streets-v12',
       center: [-55.4944, -20.4697],
-      zoom: 13,
+      zoom: 12,
+      pitch: 0,
+      bearing: 0
     });
 
     map.current.addControl(new mapboxgl.NavigationControl(), 'top-right');
@@ -122,28 +124,8 @@ export default function BairrosPage() {
     markersRef.current = [];
 
     if (mapMode === 'neighborhoods') {
-      locationsData.bairros.forEach(bairro => {
-        const el = document.createElement('div');
-        el.style.width = '40px';
-        el.style.height = '40px';
-        el.style.backgroundColor = '#0D1B3E';
-        el.style.borderRadius = '50%';
-        el.style.display = 'flex';
-        el.style.alignItems = 'center';
-        el.style.justifyContent = 'center';
-        el.style.fontSize = '20px';
-        el.style.cursor = 'pointer';
-        el.style.boxShadow = '0 2px 8px rgba(0,0,0,0.2)';
-        el.textContent = '📍';
-
-        const popup = new mapboxgl.Popup({ offset: 25 }).setText(bairro.name);
-        const marker = new mapboxgl.Marker({ element: el })
-          .setLngLat([bairro.lng, bairro.lat])
-          .setPopup(popup)
-          .addTo(map.current!);
-        
-        markersRef.current.push(marker);
-      });
+      // Apenas mostrar o mapa sem pins de bairros
+      markersRef.current = [];
     } else {
       locationsData.lojas.forEach(loja => {
         const el = document.createElement('div');
@@ -178,8 +160,8 @@ export default function BairrosPage() {
     window.location.href = 'https://wa.me/556730272500?text=Olá! Gostaria de informações sobre internet em Campo Grande';
   }, []);
 
-  const toggleMapMode = useCallback((mode: 'neighborhoods' | 'stores') => {
-    setMapMode(mode);
+  const toggleMapMode = useCallback(() => {
+    // Map mode is always 'stores'
   }, []);
 
   return (
@@ -221,26 +203,7 @@ export default function BairrosPage() {
           <div className="mb-16">
             <h2 className="text-3xl font-bold mb-4">Mapa Interativo</h2>
             <div className="flex gap-4 mb-4">
-              <Button
-                onClick={() => toggleMapMode('neighborhoods')}
-                className={`${
-                  mapMode === 'neighborhoods'
-                    ? 'bg-[#3DD93D] text-black hover:bg-[#2ba82a]'
-                    : 'bg-gray-200 text-gray-900 hover:bg-gray-300'
-                }`}
-              >
-                📍 Bairros
-              </Button>
-              <Button
-                onClick={() => toggleMapMode('stores')}
-                className={`${
-                  mapMode === 'stores'
-                    ? 'bg-[#3DD93D] text-black hover:bg-[#2ba82a]'
-                    : 'bg-gray-200 text-gray-900 hover:bg-gray-300'
-                }`}
-              >
-                🏪 Lojas
-              </Button>
+              <p className="text-gray-600 font-semibold">🏪 Nossas Lojas em Campo Grande</p>
             </div>
             <div className="rounded-lg overflow-hidden shadow-lg h-[500px]">
               <div ref={mapContainer} className="w-full h-full" />
