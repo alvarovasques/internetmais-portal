@@ -93,9 +93,11 @@ export default function Cobertura() {
 
         {/* CTA */}
         <div className="text-center">
-          <p className="text-gray-700 mb-6">
-            Quer conhecer mais detalhes sobre cada bairro? <Link href="/bairros"><a className="text-[#3DD93D] font-bold hover:text-[#2ba82a]">Visite nossa página de bairros</a></Link>
-          </p>
+          <Link href="/bairros">
+            <a className="text-gray-700 mb-6 inline-block">
+              Quer conhecer mais detalhes sobre cada bairro? <span className="text-[#3DD93D] font-bold hover:text-[#2ba82a]">Visite nossa página de bairros</span>
+            </a>
+          </Link>
           <p className="text-gray-700 mb-6">
             Não encontrou seu bairro? Fale com nosso time!
           </p>
