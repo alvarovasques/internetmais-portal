@@ -42,7 +42,7 @@ export default function BairrosPage() {
       meta.content = content;
     };
 
-    updateMeta('description', 'Conheça todos os 39 bairros atendidos pela InternetMais em Campo Grande. Fibra óptica 100% pura, chip 5G e suporte especializado.');
+    updateMeta('description', 'Conheça todos os bairros atendidos pela InternetMais em Campo Grande. Fibra óptica 100% pura, chip 5G e suporte especializado.');
     updateMeta('keywords', 'internet campo grande, fibra óptica bairros, chip 5g campo grande, internet por bairro');
 
     // Add JSON-LD schema
@@ -100,8 +100,8 @@ export default function BairrosPage() {
     map.current = new mapboxgl.Map({
       container: mapContainer.current,
       style: 'mapbox://styles/mapbox/streets-v12',
-      center: [-55.4944, -20.4697],
-      zoom: 12,
+      center: [-54.6, -20.45],
+      zoom: 11,
       pitch: 0,
       bearing: 0
     });
@@ -177,10 +177,10 @@ export default function BairrosPage() {
               <span>Bairros</span>
             </div>
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              Bairros Atendidos
+              Internet Fibra nos Bairros
             </h1>
             <p className="text-lg text-blue-100 mb-8">
-              Conheça todos os 39 bairros de Campo Grande onde a InternetMais oferece fibra óptica 100% pura, chip 5G e suporte especializado.
+              Conheça todos os bairros de Campo Grande onde a InternetMais oferece fibra óptica 100% pura, chip 5G e suporte especializado.
             </p>
             
             {/* Search Bar */}
@@ -213,7 +213,7 @@ export default function BairrosPage() {
           {/* Stats */}
           <div className="grid md:grid-cols-2 gap-8 mb-16">
             <div className="bg-white p-6 rounded-lg shadow-md border-l-4 border-[#3DD93D]">
-              <div className="text-4xl font-bold text-[#3DD93D] mb-2">39<span className="text-2xl">+</span></div>
+              <div className="text-4xl font-bold text-[#3DD93D] mb-2">+39</div>
               <p className="text-gray-600">Bairros Atendidos</p>
             </div>
             <div className="bg-white p-6 rounded-lg shadow-md border-l-4 border-[#3DD93D]">
