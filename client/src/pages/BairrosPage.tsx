@@ -211,18 +211,14 @@ export default function BairrosPage() {
           </div>
 
           {/* Stats */}
-          <div className="grid md:grid-cols-3 gap-8 mb-16">
+          <div className="grid md:grid-cols-2 gap-8 mb-16">
             <div className="bg-white p-6 rounded-lg shadow-md border-l-4 border-[#3DD93D]">
-              <div className="text-4xl font-bold text-[#3DD93D] mb-2">39</div>
+              <div className="text-4xl font-bold text-[#3DD93D] mb-2">39<span className="text-2xl">+</span></div>
               <p className="text-gray-600">Bairros Atendidos</p>
             </div>
             <div className="bg-white p-6 rounded-lg shadow-md border-l-4 border-[#3DD93D]">
               <div className="text-4xl font-bold text-[#3DD93D] mb-2">100%</div>
               <p className="text-gray-600">Fibra Óptica Pura</p>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-md border-l-4 border-[#3DD93D]">
-              <div className="text-4xl font-bold text-[#3DD93D] mb-2">24/7</div>
-              <p className="text-gray-600">Suporte Técnico</p>
             </div>
           </div>
 
