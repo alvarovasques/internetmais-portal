@@ -1,0 +1,353 @@
+{
+  "Aero Rancho": {
+    "slug": "aero-rancho",
+    "keywords": ["internet fibra aero rancho", "5G aero rancho", "internet rápida aero rancho"],
+    "description": "Internet de fibra óptica em Aero Rancho, Campo Grande. Conexão 100% pura com velocidades de até 1Gbps.",
+    "faq": [
+      {"q": "Qual é a melhor internet em Aero Rancho?", "a": "A InternetMais oferece fibra óptica 100% pura com velocidades até 1Gbps em Aero Rancho."},
+      {"q": "Qual é o preço da internet em Aero Rancho?", "a": "Oferecemos planos a partir de R$ 99,90 com fibra óptica de alta velocidade."}
+    ]
+  },
+  "Alves Pereira": {
+    "slug": "alves-pereira",
+    "keywords": ["internet fibra alves pereira", "5G alves pereira", "internet rápida alves pereira"],
+    "description": "Internet de fibra óptica em Alves Pereira, Campo Grande. Conexão 100% pura com velocidades de até 1Gbps.",
+    "faq": [
+      {"q": "Qual é a melhor internet em Alves Pereira?", "a": "A InternetMais oferece fibra óptica 100% pura com velocidades até 1Gbps em Alves Pereira."},
+      {"q": "Qual é o preço da internet em Alves Pereira?", "a": "Oferecemos planos a partir de R$ 99,90 com fibra óptica de alta velocidade."}
+    ]
+  },
+  "Bandeirantes": {
+    "slug": "bandeirantes",
+    "keywords": ["internet fibra bandeirantes", "5G bandeirantes", "internet rápida bandeirantes"],
+    "description": "Internet de fibra óptica em Bandeirantes, Campo Grande. Conexão 100% pura com velocidades de até 1Gbps.",
+    "faq": [
+      {"q": "Qual é a melhor internet em Bandeirantes?", "a": "A InternetMais oferece fibra óptica 100% pura com velocidades até 1Gbps em Bandeirantes."},
+      {"q": "Qual é o preço da internet em Bandeirantes?", "a": "Oferecemos planos a partir de R$ 99,90 com fibra óptica de alta velocidade."}
+    ]
+  },
+  "Batistão": {
+    "slug": "batistao",
+    "keywords": ["internet fibra batistão", "5G batistão", "internet rápida batistão"],
+    "description": "Internet de fibra óptica em Batistão, Campo Grande. Conexão 100% pura com velocidades de até 1Gbps.",
+    "faq": [
+      {"q": "Qual é a melhor internet em Batistão?", "a": "A InternetMais oferece fibra óptica 100% pura com velocidades até 1Gbps em Batistão."},
+      {"q": "Qual é o preço da internet em Batistão?", "a": "Oferecemos planos a partir de R$ 99,90 com fibra óptica de alta velocidade."}
+    ]
+  },
+  "Caiçara": {
+    "slug": "caicara",
+    "keywords": ["internet fibra caiçara", "5G caiçara", "internet rápida caiçara"],
+    "description": "Internet de fibra óptica em Caiçara, Campo Grande. Conexão 100% pura com velocidades de até 1Gbps.",
+    "faq": [
+      {"q": "Qual é a melhor internet em Caiçara?", "a": "A InternetMais oferece fibra óptica 100% pura com velocidades até 1Gbps em Caiçara."},
+      {"q": "Qual é o preço da internet em Caiçara?", "a": "Oferecemos planos a partir de R$ 99,90 com fibra óptica de alta velocidade."}
+    ]
+  },
+  "Caiobá": {
+    "slug": "caioba",
+    "keywords": ["internet fibra caiobá", "5G caiobá", "internet rápida caiobá"],
+    "description": "Internet de fibra óptica em Caiobá, Campo Grande. Conexão 100% pura com velocidades de até 1Gbps.",
+    "faq": [
+      {"q": "Qual é a melhor internet em Caiobá?", "a": "A InternetMais oferece fibra óptica 100% pura com velocidades até 1Gbps em Caiobá."},
+      {"q": "Qual é o preço da internet em Caiobá?", "a": "Oferecemos planos a partir de R$ 99,90 com fibra óptica de alta velocidade."}
+    ]
+  },
+  "Carvalho": {
+    "slug": "carvalho",
+    "keywords": ["internet fibra carvalho", "5G carvalho", "internet rápida carvalho"],
+    "description": "Internet de fibra óptica em Carvalho, Campo Grande. Conexão 100% pura com velocidades de até 1Gbps.",
+    "faq": [
+      {"q": "Qual é a melhor internet em Carvalho?", "a": "A InternetMais oferece fibra óptica 100% pura com velocidades até 1Gbps em Carvalho."},
+      {"q": "Qual é o preço da internet em Carvalho?", "a": "Oferecemos planos a partir de R$ 99,90 com fibra óptica de alta velocidade."}
+    ]
+  },
+  "Centenário": {
+    "slug": "centenario",
+    "keywords": ["internet fibra centenário", "5G centenário", "internet rápida centenário"],
+    "description": "Internet de fibra óptica em Centenário, Campo Grande. Conexão 100% pura com velocidades de até 1Gbps.",
+    "faq": [
+      {"q": "Qual é a melhor internet em Centenário?", "a": "A InternetMais oferece fibra óptica 100% pura com velocidades até 1Gbps em Centenário."},
+      {"q": "Qual é o preço da internet em Centenário?", "a": "Oferecemos planos a partir de R$ 99,90 com fibra óptica de alta velocidade."}
+    ]
+  },
+  "Centro": {
+    "slug": "centro",
+    "keywords": ["internet fibra centro", "5G centro", "internet rápida centro", "melhor internet centro campo grande"],
+    "description": "Internet de fibra óptica no Centro de Campo Grande. Conexão 100% pura com velocidades de até 1Gbps.",
+    "faq": [
+      {"q": "Qual é a melhor internet no Centro?", "a": "A InternetMais oferece fibra óptica 100% pura com velocidades até 1Gbps no Centro."},
+      {"q": "Qual é o preço da internet no Centro?", "a": "Oferecemos planos a partir de R$ 99,90 com fibra óptica de alta velocidade."}
+    ]
+  },
+  "Centro Oeste": {
+    "slug": "centro-oeste",
+    "keywords": ["internet fibra centro oeste", "5G centro oeste", "internet rápida centro oeste"],
+    "description": "Internet de fibra óptica em Centro Oeste, Campo Grande. Conexão 100% pura com velocidades de até 1Gbps.",
+    "faq": [
+      {"q": "Qual é a melhor internet em Centro Oeste?", "a": "A InternetMais oferece fibra óptica 100% pura com velocidades até 1Gbps em Centro Oeste."},
+      {"q": "Qual é o preço da internet em Centro Oeste?", "a": "Oferecemos planos a partir de R$ 99,90 com fibra óptica de alta velocidade."}
+    ]
+  },
+  "Cophavila II": {
+    "slug": "cophavila-ii",
+    "keywords": ["internet fibra cophavila", "5G cophavila", "internet rápida cophavila"],
+    "description": "Internet de fibra óptica em Cophavila II, Campo Grande. Conexão 100% pura com velocidades de até 1Gbps.",
+    "faq": [
+      {"q": "Qual é a melhor internet em Cophavila?", "a": "A InternetMais oferece fibra óptica 100% pura com velocidades até 1Gbps em Cophavila."},
+      {"q": "Qual é o preço da internet em Cophavila?", "a": "Oferecemos planos a partir de R$ 99,90 com fibra óptica de alta velocidade."}
+    ]
+  },
+  "Cruzeiro": {
+    "slug": "cruzeiro",
+    "keywords": ["internet fibra cruzeiro", "5G cruzeiro", "internet rápida cruzeiro"],
+    "description": "Internet de fibra óptica em Cruzeiro, Campo Grande. Conexão 100% pura com velocidades de até 1Gbps.",
+    "faq": [
+      {"q": "Qual é a melhor internet em Cruzeiro?", "a": "A InternetMais oferece fibra óptica 100% pura com velocidades até 1Gbps em Cruzeiro."},
+      {"q": "Qual é o preço da internet em Cruzeiro?", "a": "Oferecemos planos a partir de R$ 99,90 com fibra óptica de alta velocidade."}
+    ]
+  },
+  "Guanandi": {
+    "slug": "guanandi",
+    "keywords": ["internet fibra guanandi", "5G guanandi", "internet rápida guanandi"],
+    "description": "Internet de fibra óptica em Guanandi, Campo Grande. Conexão 100% pura com velocidades de até 1Gbps.",
+    "faq": [
+      {"q": "Qual é a melhor internet em Guanandi?", "a": "A InternetMais oferece fibra óptica 100% pura com velocidades até 1Gbps em Guanandi."},
+      {"q": "Qual é o preço da internet em Guanandi?", "a": "Oferecemos planos a partir de R$ 99,90 com fibra óptica de alta velocidade."}
+    ]
+  },
+  "Jacy": {
+    "slug": "jacy",
+    "keywords": ["internet fibra jacy", "5G jacy", "internet rápida jacy"],
+    "description": "Internet de fibra óptica em Jacy, Campo Grande. Conexão 100% pura com velocidades de até 1Gbps.",
+    "faq": [
+      {"q": "Qual é a melhor internet em Jacy?", "a": "A InternetMais oferece fibra óptica 100% pura com velocidades até 1Gbps em Jacy."},
+      {"q": "Qual é o preço da internet em Jacy?", "a": "Oferecemos planos a partir de R$ 99,90 com fibra óptica de alta velocidade."}
+    ]
+  },
+  "Jardim dos Estados": {
+    "slug": "jardim-dos-estados",
+    "keywords": ["internet fibra jardim dos estados", "5G jardim dos estados", "internet rápida jardim dos estados"],
+    "description": "Internet de fibra óptica em Jardim dos Estados, Campo Grande. Conexão 100% pura com velocidades de até 1Gbps.",
+    "faq": [
+      {"q": "Qual é a melhor internet em Jardim dos Estados?", "a": "A InternetMais oferece fibra óptica 100% pura com velocidades até 1Gbps em Jardim dos Estados."},
+      {"q": "Qual é o preço da internet em Jardim dos Estados?", "a": "Oferecemos planos a partir de R$ 99,90 com fibra óptica de alta velocidade."}
+    ]
+  },
+  "Jockey Club": {
+    "slug": "jockey-club",
+    "keywords": ["internet fibra jockey club", "5G jockey club", "internet rápida jockey club"],
+    "description": "Internet de fibra óptica em Jockey Club, Campo Grande. Conexão 100% pura com velocidades de até 1Gbps.",
+    "faq": [
+      {"q": "Qual é a melhor internet em Jockey Club?", "a": "A InternetMais oferece fibra óptica 100% pura com velocidades até 1Gbps em Jockey Club."},
+      {"q": "Qual é o preço da internet em Jockey Club?", "a": "Oferecemos planos a partir de R$ 99,90 com fibra óptica de alta velocidade."}
+    ]
+  },
+  "José Abrão": {
+    "slug": "jose-abrao",
+    "keywords": ["internet fibra josé abrão", "5G josé abrão", "internet rápida josé abrão"],
+    "description": "Internet de fibra óptica em José Abrão, Campo Grande. Conexão 100% pura com velocidades de até 1Gbps.",
+    "faq": [
+      {"q": "Qual é a melhor internet em José Abrão?", "a": "A InternetMais oferece fibra óptica 100% pura com velocidades até 1Gbps em José Abrão."},
+      {"q": "Qual é o preço da internet em José Abrão?", "a": "Oferecemos planos a partir de R$ 99,90 com fibra óptica de alta velocidade."}
+    ]
+  },
+  "Lageado": {
+    "slug": "lageado",
+    "keywords": ["internet fibra lageado", "5G lageado", "internet rápida lageado"],
+    "description": "Internet de fibra óptica em Lageado, Campo Grande. Conexão 100% pura com velocidades de até 1Gbps.",
+    "faq": [
+      {"q": "Qual é a melhor internet em Lageado?", "a": "A InternetMais oferece fibra óptica 100% pura com velocidades até 1Gbps em Lageado."},
+      {"q": "Qual é o preço da internet em Lageado?", "a": "Oferecemos planos a partir de R$ 99,90 com fibra óptica de alta velocidade."}
+    ]
+  },
+  "Leblon": {
+    "slug": "leblon",
+    "keywords": ["internet fibra leblon", "5G leblon", "internet rápida leblon"],
+    "description": "Internet de fibra óptica em Leblon, Campo Grande. Conexão 100% pura com velocidades de até 1Gbps.",
+    "faq": [
+      {"q": "Qual é a melhor internet em Leblon?", "a": "A InternetMais oferece fibra óptica 100% pura com velocidades até 1Gbps em Leblon."},
+      {"q": "Qual é o preço da internet em Leblon?", "a": "Oferecemos planos a partir de R$ 99,90 com fibra óptica de alta velocidade."}
+    ]
+  },
+  "Los Angeles": {
+    "slug": "los-angeles",
+    "keywords": ["internet fibra los angeles", "5G los angeles", "internet rápida los angeles"],
+    "description": "Internet de fibra óptica em Los Angeles, Campo Grande. Conexão 100% pura com velocidades de até 1Gbps.",
+    "faq": [
+      {"q": "Qual é a melhor internet em Los Angeles?", "a": "A InternetMais oferece fibra óptica 100% pura com velocidades até 1Gbps em Los Angeles."},
+      {"q": "Qual é o preço da internet em Los Angeles?", "a": "Oferecemos planos a partir de R$ 99,90 com fibra óptica de alta velocidade."}
+    ]
+  },
+  "Moreninha": {
+    "slug": "moreninha",
+    "keywords": ["internet fibra moreninha", "5G moreninha", "internet rápida moreninha", "melhor internet moreninha"],
+    "description": "Internet de fibra óptica em Moreninha, Campo Grande. Conexão 100% pura com velocidades de até 1Gbps.",
+    "faq": [
+      {"q": "Qual é a melhor internet em Moreninha?", "a": "A InternetMais oferece fibra óptica 100% pura com velocidades até 1Gbps em Moreninha."},
+      {"q": "Qual é o preço da internet em Moreninha?", "a": "Oferecemos planos a partir de R$ 99,90 com fibra óptica de alta velocidade."}
+    ]
+  },
+  "Nasser": {
+    "slug": "nasser",
+    "keywords": ["internet fibra nasser", "5G nasser", "internet rápida nasser"],
+    "description": "Internet de fibra óptica em Nasser, Campo Grande. Conexão 100% pura com velocidades de até 1Gbps.",
+    "faq": [
+      {"q": "Qual é a melhor internet em Nasser?", "a": "A InternetMais oferece fibra óptica 100% pura com velocidades até 1Gbps em Nasser."},
+      {"q": "Qual é o preço da internet em Nasser?", "a": "Oferecemos planos a partir de R$ 99,90 com fibra óptica de alta velocidade."}
+    ]
+  },
+  "Nova Campo Grande": {
+    "slug": "nova-campo-grande",
+    "keywords": ["internet fibra nova campo grande", "5G nova campo grande", "internet rápida nova campo grande"],
+    "description": "Internet de fibra óptica em Nova Campo Grande, Campo Grande. Conexão 100% pura com velocidades de até 1Gbps.",
+    "faq": [
+      {"q": "Qual é a melhor internet em Nova Campo Grande?", "a": "A InternetMais oferece fibra óptica 100% pura com velocidades até 1Gbps em Nova Campo Grande."},
+      {"q": "Qual é o preço da internet em Nova Campo Grande?", "a": "Oferecemos planos a partir de R$ 99,90 com fibra óptica de alta velocidade."}
+    ]
+  },
+  "Núcleo Industrial": {
+    "slug": "nucleo-industrial",
+    "keywords": ["internet fibra núcleo industrial", "5G núcleo industrial", "internet rápida núcleo industrial"],
+    "description": "Internet de fibra óptica em Núcleo Industrial, Campo Grande. Conexão 100% pura com velocidades de até 1Gbps.",
+    "faq": [
+      {"q": "Qual é a melhor internet em Núcleo Industrial?", "a": "A InternetMais oferece fibra óptica 100% pura com velocidades até 1Gbps em Núcleo Industrial."},
+      {"q": "Qual é o preço da internet em Núcleo Industrial?", "a": "Oferecemos planos a partir de R$ 99,90 com fibra óptica de alta velocidade."}
+    ]
+  },
+  "Panamá": {
+    "slug": "panama",
+    "keywords": ["internet fibra panamá", "5G panamá", "internet rápida panamá"],
+    "description": "Internet de fibra óptica em Panamá, Campo Grande. Conexão 100% pura com velocidades de até 1Gbps.",
+    "faq": [
+      {"q": "Qual é a melhor internet em Panamá?", "a": "A InternetMais oferece fibra óptica 100% pura com velocidades até 1Gbps em Panamá."},
+      {"q": "Qual é o preço da internet em Panamá?", "a": "Oferecemos planos a partir de R$ 99,90 com fibra óptica de alta velocidade."}
+    ]
+  },
+  "Popular": {
+    "slug": "popular",
+    "keywords": ["internet fibra popular", "5G popular", "internet rápida popular"],
+    "description": "Internet de fibra óptica em Popular, Campo Grande. Conexão 100% pura com velocidades de até 1Gbps.",
+    "faq": [
+      {"q": "Qual é a melhor internet em Popular?", "a": "A InternetMais oferece fibra óptica 100% pura com velocidades até 1Gbps em Popular."},
+      {"q": "Qual é o preço da internet em Popular?", "a": "Oferecemos planos a partir de R$ 99,90 com fibra óptica de alta velocidade."}
+    ]
+  },
+  "Rita Vieira": {
+    "slug": "rita-vieira",
+    "keywords": ["internet fibra rita vieira", "5G rita vieira", "internet rápida rita vieira"],
+    "description": "Internet de fibra óptica em Rita Vieira, Campo Grande. Conexão 100% pura com velocidades de até 1Gbps.",
+    "faq": [
+      {"q": "Qual é a melhor internet em Rita Vieira?", "a": "A InternetMais oferece fibra óptica 100% pura com velocidades até 1Gbps em Rita Vieira."},
+      {"q": "Qual é o preço da internet em Rita Vieira?", "a": "Oferecemos planos a partir de R$ 99,90 com fibra óptica de alta velocidade."}
+    ]
+  },
+  "Santo Amaro": {
+    "slug": "santo-amaro",
+    "keywords": ["internet fibra santo amaro", "5G santo amaro", "internet rápida santo amaro"],
+    "description": "Internet de fibra óptica em Santo Amaro, Campo Grande. Conexão 100% pura com velocidades de até 1Gbps.",
+    "faq": [
+      {"q": "Qual é a melhor internet em Santo Amaro?", "a": "A InternetMais oferece fibra óptica 100% pura com velocidades até 1Gbps em Santo Amaro."},
+      {"q": "Qual é o preço da internet em Santo Amaro?", "a": "Oferecemos planos a partir de R$ 99,90 com fibra óptica de alta velocidade."}
+    ]
+  },
+  "Santo Antônio": {
+    "slug": "santo-antonio",
+    "keywords": ["internet fibra santo antônio", "5G santo antônio", "internet rápida santo antônio"],
+    "description": "Internet de fibra óptica em Santo Antônio, Campo Grande. Conexão 100% pura com velocidades de até 1Gbps.",
+    "faq": [
+      {"q": "Qual é a melhor internet em Santo Antônio?", "a": "A InternetMais oferece fibra óptica 100% pura com velocidades até 1Gbps em Santo Antônio."},
+      {"q": "Qual é o preço da internet em Santo Antônio?", "a": "Oferecemos planos a partir de R$ 99,90 com fibra óptica de alta velocidade."}
+    ]
+  },
+  "São Conrado": {
+    "slug": "sao-conrado",
+    "keywords": ["internet fibra são conrado", "5G são conrado", "internet rápida são conrado"],
+    "description": "Internet de fibra óptica em São Conrado, Campo Grande. Conexão 100% pura com velocidades de até 1Gbps.",
+    "faq": [
+      {"q": "Qual é a melhor internet em São Conrado?", "a": "A InternetMais oferece fibra óptica 100% pura com velocidades até 1Gbps em São Conrado."},
+      {"q": "Qual é o preço da internet em São Conrado?", "a": "Oferecemos planos a partir de R$ 99,90 com fibra óptica de alta velocidade."}
+    ]
+  },
+  "Seminário": {
+    "slug": "seminario",
+    "keywords": ["internet fibra seminário", "5G seminário", "internet rápida seminário"],
+    "description": "Internet de fibra óptica em Seminário, Campo Grande. Conexão 100% pura com velocidades de até 1Gbps.",
+    "faq": [
+      {"q": "Qual é a melhor internet em Seminário?", "a": "A InternetMais oferece fibra óptica 100% pura com velocidades até 1Gbps em Seminário."},
+      {"q": "Qual é o preço da internet em Seminário?", "a": "Oferecemos planos a partir de R$ 99,90 com fibra óptica de alta velocidade."}
+    ]
+  },
+  "Sobrinho": {
+    "slug": "sobrinho",
+    "keywords": ["internet fibra sobrinho", "5G sobrinho", "internet rápida sobrinho"],
+    "description": "Internet de fibra óptica em Sobrinho, Campo Grande. Conexão 100% pura com velocidades de até 1Gbps.",
+    "faq": [
+      {"q": "Qual é a melhor internet em Sobrinho?", "a": "A InternetMais oferece fibra óptica 100% pura com velocidades até 1Gbps em Sobrinho."},
+      {"q": "Qual é o preço da internet em Sobrinho?", "a": "Oferecemos planos a partir de R$ 99,90 com fibra óptica de alta velocidade."}
+    ]
+  },
+  "Taquarussu": {
+    "slug": "taquarussu",
+    "keywords": ["internet fibra taquarussu", "5G taquarussu", "internet rápida taquarussu"],
+    "description": "Internet de fibra óptica em Taquarussu, Campo Grande. Conexão 100% pura com velocidades de até 1Gbps.",
+    "faq": [
+      {"q": "Qual é a melhor internet em Taquarussu?", "a": "A InternetMais oferece fibra óptica 100% pura com velocidades até 1Gbps em Taquarussu."},
+      {"q": "Qual é o preço da internet em Taquarussu?", "a": "Oferecemos planos a partir de R$ 99,90 com fibra óptica de alta velocidade."}
+    ]
+  },
+  "Tarumã": {
+    "slug": "taruma",
+    "keywords": ["internet fibra tarumã", "5G tarumã", "internet rápida tarumã"],
+    "description": "Internet de fibra óptica em Tarumã, Campo Grande. Conexão 100% pura com velocidades de até 1Gbps.",
+    "faq": [
+      {"q": "Qual é a melhor internet em Tarumã?", "a": "A InternetMais oferece fibra óptica 100% pura com velocidades até 1Gbps em Tarumã."},
+      {"q": "Qual é o preço da internet em Tarumã?", "a": "Oferecemos planos a partir de R$ 99,90 com fibra óptica de alta velocidade."}
+    ]
+  },
+  "Taveiropólis": {
+    "slug": "taveiropolis",
+    "keywords": ["internet fibra taveiropólis", "5G taveiropólis", "internet rápida taveiropólis"],
+    "description": "Internet de fibra óptica em Taveiropólis, Campo Grande. Conexão 100% pura com velocidades de até 1Gbps.",
+    "faq": [
+      {"q": "Qual é a melhor internet em Taveiropólis?", "a": "A InternetMais oferece fibra óptica 100% pura com velocidades até 1Gbps em Taveiropólis."},
+      {"q": "Qual é o preço da internet em Taveiropólis?", "a": "Oferecemos planos a partir de R$ 99,90 com fibra óptica de alta velocidade."}
+    ]
+  },
+  "Tijuca": {
+    "slug": "tijuca",
+    "keywords": ["internet fibra tijuca", "5G tijuca", "internet rápida tijuca"],
+    "description": "Internet de fibra óptica em Tijuca, Campo Grande. Conexão 100% pura com velocidades de até 1Gbps.",
+    "faq": [
+      {"q": "Qual é a melhor internet em Tijuca?", "a": "A InternetMais oferece fibra óptica 100% pura com velocidades até 1Gbps em Tijuca."},
+      {"q": "Qual é o preço da internet em Tijuca?", "a": "Oferecemos planos a partir de R$ 99,90 com fibra óptica de alta velocidade."}
+    ]
+  },
+  "Tiradentes": {
+    "slug": "tiradentes",
+    "keywords": ["internet fibra tiradentes", "5G tiradentes", "internet rápida tiradentes"],
+    "description": "Internet de fibra óptica em Tiradentes, Campo Grande. Conexão 100% pura com velocidades de até 1Gbps.",
+    "faq": [
+      {"q": "Qual é a melhor internet em Tiradentes?", "a": "A InternetMais oferece fibra óptica 100% pura com velocidades até 1Gbps em Tiradentes."},
+      {"q": "Qual é o preço da internet em Tiradentes?", "a": "Oferecemos planos a partir de R$ 99,90 com fibra óptica de alta velocidade."}
+    ]
+  },
+  "União": {
+    "slug": "uniao",
+    "keywords": ["internet fibra união", "5G união", "internet rápida união"],
+    "description": "Internet de fibra óptica em União, Campo Grande. Conexão 100% pura com velocidades de até 1Gbps.",
+    "faq": [
+      {"q": "Qual é a melhor internet em União?", "a": "A InternetMais oferece fibra óptica 100% pura com velocidades até 1Gbps em União."},
+      {"q": "Qual é o preço da internet em União?", "a": "Oferecemos planos a partir de R$ 99,90 com fibra óptica de alta velocidade."}
+    ]
+  },
+  "Universitário": {
+    "slug": "universitario",
+    "keywords": ["internet fibra universitário", "5G universitário", "internet rápida universitário"],
+    "description": "Internet de fibra óptica em Universitário, Campo Grande. Conexão 100% pura com velocidades de até 1Gbps.",
+    "faq": [
+      {"q": "Qual é a melhor internet em Universitário?", "a": "A InternetMais oferece fibra óptica 100% pura com velocidades até 1Gbps em Universitário."},
+      {"q": "Qual é o preço da internet em Universitário?", "a": "Oferecemos planos a partir de R$ 99,90 com fibra óptica de alta velocidade."}
+    ]
+  }
+}

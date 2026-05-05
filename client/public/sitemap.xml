@@ -3,7 +3,7 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <!-- Main Pages -->
   <url>
-    <loc>https://internetmais-qrzsp3m6.manus.space/</loc>
+    <loc>https://internetmais.net/</loc>
     <lastmod>2026-04-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
@@ -13,7 +13,7 @@
     </image:image>
   </url>
   <url>
-    <loc>https://internetmais-qrzsp3m6.manus.space/sobre-nos</loc>
+    <loc>https://internetmais.net/sobre-nos</loc>
     <lastmod>2026-04-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -21,43 +21,43 @@
 
   <!-- Anchor Links (Internal Navigation) -->
   <url>
-    <loc>https://internetmais-qrzsp3m6.manus.space/#planos-residenciais</loc>
+    <loc>https://internetmais.net/#planos-residenciais</loc>
     <lastmod>2026-04-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://internetmais-qrzsp3m6.manus.space/#empresarial</loc>
+    <loc>https://internetmais.net/#empresarial</loc>
     <lastmod>2026-04-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://internetmais-qrzsp3m6.manus.space/#chip-5g</loc>
+    <loc>https://internetmais.net/#chip-5g</loc>
     <lastmod>2026-04-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://internetmais-qrzsp3m6.manus.space/#telefonia-fixa</loc>
+    <loc>https://internetmais.net/#telefonia-fixa</loc>
     <lastmod>2026-04-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://internetmais-qrzsp3m6.manus.space/#aplicativos</loc>
+    <loc>https://internetmais.net/#aplicativos</loc>
     <lastmod>2026-04-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://internetmais-qrzsp3m6.manus.space/#cobertura</loc>
+    <loc>https://internetmais.net/#cobertura</loc>
     <lastmod>2026-04-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://internetmais-qrzsp3m6.manus.space/#diferenciais</loc>
+    <loc>https://internetmais.net/#diferenciais</loc>
     <lastmod>2026-04-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -66,245 +66,244 @@
   <!-- Future Blog Posts (Placeholder URLs for SEO planning) -->
   <!-- These will be populated when blog content is created -->
   <url>
-    <loc>https://internetmais-qrzsp3m6.manus.space/blog</loc>
+    <loc>https://internetmais.net/blog</loc>
     <lastmod>2026-04-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
-  <!-- Future Neighborhood Landing Pages (Placeholder URLs for SEO planning) -->
-  <!-- These will be populated when neighborhood pages are created -->
+  <!-- Neighborhood Landing Pages (SEO Optimized) -->
   <!-- Bairros de Campo Grande -->
   <url>
-    <loc>https://internetmais-qrzsp3m6.manus.space/bairro/centro</loc>
+    <loc>https://internetmais.net/bairro/centro</loc>
     <lastmod>2026-04-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://internetmais-qrzsp3m6.manus.space/bairro/aero-rancho</loc>
+    <loc>https://internetmais.net/bairro/aero-rancho</loc>
     <lastmod>2026-04-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://internetmais-qrzsp3m6.manus.space/bairro/moreninha</loc>
+    <loc>https://internetmais.net/bairro/moreninha</loc>
     <lastmod>2026-04-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://internetmais-qrzsp3m6.manus.space/bairro/uniao</loc>
+    <loc>https://internetmais.net/bairro/uniao</loc>
     <lastmod>2026-04-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://internetmais-qrzsp3m6.manus.space/bairro/jardim-dos-estados</loc>
+    <loc>https://internetmais.net/bairro/jardim-dos-estados</loc>
     <lastmod>2026-04-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://internetmais-qrzsp3m6.manus.space/bairro/alves-pereira</loc>
+    <loc>https://internetmais.net/bairro/alves-pereira</loc>
     <lastmod>2026-04-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://internetmais-qrzsp3m6.manus.space/bairro/bandeirantes</loc>
+    <loc>https://internetmais.net/bairro/bandeirantes</loc>
     <lastmod>2026-04-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://internetmais-qrzsp3m6.manus.space/bairro/batistao</loc>
+    <loc>https://internetmais.net/bairro/batistao</loc>
     <lastmod>2026-04-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://internetmais-qrzsp3m6.manus.space/bairro/caicara</loc>
+    <loc>https://internetmais.net/bairro/caicara</loc>
     <lastmod>2026-04-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://internetmais-qrzsp3m6.manus.space/bairro/caioba</loc>
+    <loc>https://internetmais.net/bairro/caioba</loc>
     <lastmod>2026-04-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://internetmais-qrzsp3m6.manus.space/bairro/carvalho</loc>
+    <loc>https://internetmais.net/bairro/carvalho</loc>
     <lastmod>2026-04-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://internetmais-qrzsp3m6.manus.space/bairro/centenario</loc>
+    <loc>https://internetmais.net/bairro/centenario</loc>
     <lastmod>2026-04-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://internetmais-qrzsp3m6.manus.space/bairro/centro-oeste</loc>
+    <loc>https://internetmais.net/bairro/centro-oeste</loc>
     <lastmod>2026-04-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://internetmais-qrzsp3m6.manus.space/bairro/cophavila-ii</loc>
+    <loc>https://internetmais.net/bairro/cophavila-ii</loc>
     <lastmod>2026-04-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://internetmais-qrzsp3m6.manus.space/bairro/cruzeiro</loc>
+    <loc>https://internetmais.net/bairro/cruzeiro</loc>
     <lastmod>2026-04-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://internetmais-qrzsp3m6.manus.space/bairro/guanandi</loc>
+    <loc>https://internetmais.net/bairro/guanandi</loc>
     <lastmod>2026-04-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://internetmais-qrzsp3m6.manus.space/bairro/jacy</loc>
+    <loc>https://internetmais.net/bairro/jacy</loc>
     <lastmod>2026-04-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://internetmais-qrzsp3m6.manus.space/bairro/jockey-club</loc>
+    <loc>https://internetmais.net/bairro/jockey-club</loc>
     <lastmod>2026-04-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://internetmais-qrzsp3m6.manus.space/bairro/jose-abrao</loc>
+    <loc>https://internetmais.net/bairro/jose-abrao</loc>
     <lastmod>2026-04-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://internetmais-qrzsp3m6.manus.space/bairro/lageado</loc>
+    <loc>https://internetmais.net/bairro/lageado</loc>
     <lastmod>2026-04-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://internetmais-qrzsp3m6.manus.space/bairro/leblon</loc>
+    <loc>https://internetmais.net/bairro/leblon</loc>
     <lastmod>2026-04-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://internetmais-qrzsp3m6.manus.space/bairro/los-angeles</loc>
+    <loc>https://internetmais.net/bairro/los-angeles</loc>
     <lastmod>2026-04-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://internetmais-qrzsp3m6.manus.space/bairro/nasser</loc>
+    <loc>https://internetmais.net/bairro/nasser</loc>
     <lastmod>2026-04-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://internetmais-qrzsp3m6.manus.space/bairro/nova-campo-grande</loc>
+    <loc>https://internetmais.net/bairro/nova-campo-grande</loc>
     <lastmod>2026-04-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://internetmais-qrzsp3m6.manus.space/bairro/nucleo-industrial</loc>
+    <loc>https://internetmais.net/bairro/nucleo-industrial</loc>
     <lastmod>2026-04-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://internetmais-qrzsp3m6.manus.space/bairro/panama</loc>
+    <loc>https://internetmais.net/bairro/panama</loc>
     <lastmod>2026-04-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://internetmais-qrzsp3m6.manus.space/bairro/popular</loc>
+    <loc>https://internetmais.net/bairro/popular</loc>
     <lastmod>2026-04-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://internetmais-qrzsp3m6.manus.space/bairro/rita-vieira</loc>
+    <loc>https://internetmais.net/bairro/rita-vieira</loc>
     <lastmod>2026-04-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://internetmais-qrzsp3m6.manus.space/bairro/santo-amaro</loc>
+    <loc>https://internetmais.net/bairro/santo-amaro</loc>
     <lastmod>2026-04-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://internetmais-qrzsp3m6.manus.space/bairro/santo-antonio</loc>
+    <loc>https://internetmais.net/bairro/santo-antonio</loc>
     <lastmod>2026-04-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://internetmais-qrzsp3m6.manus.space/bairro/sao-conrado</loc>
+    <loc>https://internetmais.net/bairro/sao-conrado</loc>
     <lastmod>2026-04-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://internetmais-qrzsp3m6.manus.space/bairro/seminario</loc>
+    <loc>https://internetmais.net/bairro/seminario</loc>
     <lastmod>2026-04-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://internetmais-qrzsp3m6.manus.space/bairro/sobrinho</loc>
+    <loc>https://internetmais.net/bairro/sobrinho</loc>
     <lastmod>2026-04-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://internetmais-qrzsp3m6.manus.space/bairro/taquarussu</loc>
+    <loc>https://internetmais.net/bairro/taquarussu</loc>
     <lastmod>2026-04-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://internetmais-qrzsp3m6.manus.space/bairro/taruma</loc>
+    <loc>https://internetmais.net/bairro/taruma</loc>
     <lastmod>2026-04-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://internetmais-qrzsp3m6.manus.space/bairro/taveiropolis</loc>
+    <loc>https://internetmais.net/bairro/taveiropolis</loc>
     <lastmod>2026-04-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://internetmais-qrzsp3m6.manus.space/bairro/tijuca</loc>
+    <loc>https://internetmais.net/bairro/tijuca</loc>
     <lastmod>2026-04-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://internetmais-qrzsp3m6.manus.space/bairro/tiradentes</loc>
+    <loc>https://internetmais.net/bairro/tiradentes</loc>
     <lastmod>2026-04-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://internetmais-qrzsp3m6.manus.space/bairro/universitario</loc>
+    <loc>https://internetmais.net/bairro/universitario</loc>
     <lastmod>2026-04-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -312,19 +311,19 @@
 
   <!-- Service Pages -->
   <url>
-    <loc>https://internetmais-qrzsp3m6.manus.space/servicos/internet-residencial</loc>
+    <loc>https://internetmais.net/servicos/internet-residencial</loc>
     <lastmod>2026-04-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://internetmais-qrzsp3m6.manus.space/servicos/internet-empresarial</loc>
+    <loc>https://internetmais.net/servicos/internet-empresarial</loc>
     <lastmod>2026-04-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://internetmais-qrzsp3m6.manus.space/servicos/chip-5g</loc>
+    <loc>https://internetmais.net/servicos/chip-5g</loc>
     <lastmod>2026-04-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
