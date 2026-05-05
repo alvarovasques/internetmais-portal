@@ -33,7 +33,7 @@ export default function BairroPage() {
       event: 'Click_Whatsapp',
       button_location: `Bairro - ${bairroName}`
     });
-    window.location.href = 'https://wa.me/5567999999999?text=Olá! Gostaria de informações sobre internet em ' + bairroName;
+    window.location.href = 'https://wa.me/556730272500?text=Olá! Gostaria de informações sobre internet em ' + bairroName;
   };
 
   useEffect(() => {
@@ -63,7 +63,7 @@ export default function BairroPage() {
       name: `InternetMais - ${bairroName}`,
       description: bairroData.description,
       url: `https://internetmais.net/bairro/${bairroData.slug}`,
-      telephone: '+5567999999999',
+      telephone: '+556730272500',
       address: {
         '@type': 'PostalAddress',
         addressLocality: bairroName,
