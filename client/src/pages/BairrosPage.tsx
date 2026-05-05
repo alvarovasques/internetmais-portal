@@ -233,9 +233,7 @@ export default function BairrosPage() {
           {/* Bairros Grid */}
           <div className="mb-16">
             <h2 className="text-3xl font-bold mb-8">
-              {filteredBairros.length === 0 
-                ? 'Nenhum bairro encontrado' 
-                : `${filteredBairros.length} bairro${filteredBairros.length !== 1 ? 's' : ''} encontrado${filteredBairros.length !== 1 ? 's' : ''}`}
+              Internet Fibra nos Bairros
             </h2>
             
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
