@@ -93,7 +93,7 @@ export default function Footer() {
             <h4 className="font-bold text-lg mb-4">Redes Sociais</h4>
             <div className="flex gap-4">
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/internetmaisms/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-[#3DD93D] transition-colors"
@@ -101,7 +101,7 @@ export default function Footer() {
                 <Instagram size={24} />
               </a>
               <a
-                href="https://facebook.com"
+                href="https://www.facebook.com/InternetMaisMS"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-[#3DD93D] transition-colors"
