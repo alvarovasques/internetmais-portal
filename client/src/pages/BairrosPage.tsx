@@ -1,11 +1,9 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'wouter';
 import bairrosData from '@/data/bairros.json';
-import locationsData from '@/data/locations.json';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { ChevronRight, MapPin, Search } from 'lucide-react';
-import { MapView } from '@/components/Map';
+import { ChevronRight, MapPin, Search, MessageCircle } from 'lucide-react';
 
 interface BairroInfo {
   slug: string;
@@ -17,9 +15,6 @@ interface BairroInfo {
 export default function BairrosPage() {
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredBairros, setFilteredBairros] = useState<[string, BairroInfo][]>([]);
-  const [mapMode, setMapMode] = useState<'neighborhoods' | 'stores'>('neighborhoods');
-  const mapRef = useRef<google.maps.Map | null>(null);
-  const markersRef = useRef<google.maps.marker.AdvancedMarkerElement[]>([]);
 
   useEffect(() => {
     // Update document title and meta tags
@@ -91,73 +86,7 @@ export default function BairrosPage() {
       event: 'Click_Whatsapp',
       button_location: 'Página de Bairros'
     });
-    window.location.href = 'https://wa.me/5567999999999?text=Olá! Gostaria de informações sobre internet em Campo Grande';
-  };
-
-  const handleMapReady = (map: google.maps.Map) => {
-    mapRef.current = map;
-    addMarkers(map, mapMode);
-  };
-
-  const addMarkers = (map: google.maps.Map, mode: 'neighborhoods' | 'stores') => {
-    // Clear existing markers
-    markersRef.current.forEach(marker => marker.remove());
-    markersRef.current = [];
-
-    if (mode === 'neighborhoods') {
-      // Add neighborhood markers
-      locationsData.bairros.forEach(bairro => {
-        if (window.google?.maps?.marker?.AdvancedMarkerElement) {
-          const marker = new window.google.maps.marker.AdvancedMarkerElement({
-            map,
-            position: { lat: bairro.lat, lng: bairro.lng },
-            title: bairro.name,
-            content: createMarkerContent(bairro.name, 'neighborhood'),
-          });
-          markersRef.current.push(marker);
-        }
-      });
-    } else {
-      // Add store markers
-      locationsData.lojas.forEach(loja => {
-        if (window.google?.maps?.marker?.AdvancedMarkerElement) {
-          const marker = new window.google.maps.marker.AdvancedMarkerElement({
-            map,
-            position: { lat: loja.lat, lng: loja.lng },
-            title: loja.name,
-            content: createMarkerContent(loja.name, 'store'),
-          });
-          markersRef.current.push(marker);
-        }
-      });
-    }
-  };
-
-  const createMarkerContent = (name: string, type: 'neighborhood' | 'store') => {
-    const div = document.createElement('div');
-    div.className = `marker-content ${type}`;
-    div.innerHTML = `
-      <div style="
-        background-color: ${type === 'store' ? '#3DD93D' : '#0D1B3E'};
-        color: white;
-        padding: 8px 12px;
-        border-radius: 6px;
-        font-weight: bold;
-        font-size: 12px;
-        white-space: nowrap;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-      ">
-        ${type === 'store' ? '🏪' : '📍'} ${name}
-      </div>
-    `;
-    return div;
-  };
-
-  const toggleMapMode = (mode: 'neighborhoods' | 'stores') => {
-    setMapMode(mode);
-    if (mapRef.current) {
-      addMarkers(mapRef.current, mode);
-    }
+    window.location.href = 'https://wa.me/556730272500?text=Olá! Gostaria de informações sobre internet em Campo Grande';
   };
 
   return (
@@ -193,41 +122,6 @@ export default function BairrosPage() {
 
       {/* Main Content */}
       <div className="max-w-6xl mx-auto px-4 py-16">
-        {/* Map Section */}
-        <div className="mb-16">
-          <h2 className="text-3xl font-bold mb-4">Mapa Interativo</h2>
-          <div className="flex gap-4 mb-4">
-            <Button
-              onClick={() => toggleMapMode('neighborhoods')}
-              className={`${
-                mapMode === 'neighborhoods'
-                  ? 'bg-[#3DD93D] text-black hover:bg-[#2ba82a]'
-                  : 'bg-gray-200 text-gray-900 hover:bg-gray-300'
-              }`}
-            >
-              📍 Bairros
-            </Button>
-            <Button
-              onClick={() => toggleMapMode('stores')}
-              className={`${
-                mapMode === 'stores'
-                  ? 'bg-[#3DD93D] text-black hover:bg-[#2ba82a]'
-                  : 'bg-gray-200 text-gray-900 hover:bg-gray-300'
-              }`}
-            >
-              🏪 Lojas
-            </Button>
-          </div>
-          <div className="rounded-lg overflow-hidden shadow-lg">
-            <MapView
-              initialCenter={{ lat: -20.4697, lng: -55.4944 }}
-              initialZoom={13}
-              onMapReady={handleMapReady}
-              className="h-[500px]"
-            />
-          </div>
-        </div>
-
         {/* Stats */}
         <div className="grid md:grid-cols-3 gap-8 mb-16">
           <div className="bg-white p-6 rounded-lg shadow-md border-l-4 border-[#3DD93D]">
@@ -299,53 +193,18 @@ export default function BairrosPage() {
         {/* CTA Section */}
         <div className="bg-gradient-to-r from-[#0D1B3E] to-[#1a2d5a] text-white p-12 rounded-lg text-center">
           <h2 className="text-3xl font-bold mb-4">
-            Seu bairro não está listado?
+            Não encontrou seu bairro?
           </h2>
-          <p className="text-lg mb-8 text-blue-100">
-            Entre em contato conosco e saiba mais sobre a cobertura em sua região
+          <p className="text-lg text-blue-100 mb-8">
+            Fale com nosso time e descubra se sua região tem cobertura da InternetMais
           </p>
-          <Button 
+          <button
             onClick={handleWhatsAppClick}
-            className="bg-[#3DD93D] hover:bg-[#2ba82a] text-black font-bold text-lg px-8 py-6"
+            className="inline-flex items-center justify-center gap-2 bg-[#25D366] text-white font-bold py-3 px-8 rounded-full hover:bg-[#20ba5a] hover:shadow-lg hover:scale-105 transition-all duration-300"
           >
-            Solicitar Informações
-          </Button>
-        </div>
-
-        {/* FAQ Section */}
-        <div className="mt-16">
-          <h2 className="text-3xl font-bold mb-8">Perguntas Frequentes</h2>
-          <div className="space-y-4">
-            <details className="bg-white p-6 rounded-lg shadow-md cursor-pointer">
-              <summary className="font-bold text-lg flex items-center justify-between">
-                Como verifico se meu bairro é atendido?
-                <ChevronRight size={20} />
-              </summary>
-              <p className="mt-4 text-gray-600">
-                Você pode verificar a disponibilidade do seu bairro consultando nossa lista completa acima ou entrando em contato conosco via WhatsApp. Também pode acessar a página específica do seu bairro para mais informações.
-              </p>
-            </details>
-            
-            <details className="bg-white p-6 rounded-lg shadow-md cursor-pointer">
-              <summary className="font-bold text-lg flex items-center justify-between">
-                Qual é a velocidade de internet em cada bairro?
-                <ChevronRight size={20} />
-              </summary>
-              <p className="mt-4 text-gray-600">
-                A InternetMais oferece planos com velocidades de até 1Gbps em todos os bairros atendidos. A velocidade específica pode variar conforme o plano contratado. Consulte a página do seu bairro para conhecer os planos disponíveis.
-              </p>
-            </details>
-            
-            <details className="bg-white p-6 rounded-lg shadow-md cursor-pointer">
-              <summary className="font-bold text-lg flex items-center justify-between">
-                Há taxa de instalação?
-                <ChevronRight size={20} />
-              </summary>
-              <p className="mt-4 text-gray-600">
-                A taxa de instalação varia conforme o bairro e a complexidade da obra. Entre em contato conosco para receber um orçamento personalizado para sua região.
-              </p>
-            </details>
-          </div>
+            <MessageCircle size={20} />
+            Falar com um Especialista
+          </button>
         </div>
       </div>
     </div>
