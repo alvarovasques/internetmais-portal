@@ -140,12 +140,20 @@ export default function BairrosPage() {
         el.style.cursor = 'pointer';
         el.style.boxShadow = '0 2px 8px rgba(0,0,0,0.2)';
         el.textContent = '🏪';
+        el.title = loja.name;
 
         const popup = new mapboxgl.Popup({ offset: 25 }).setText(loja.name);
         const marker = new mapboxgl.Marker({ element: el })
           .setLngLat([loja.lng, loja.lat])
           .setPopup(popup)
           .addTo(map.current!);
+        
+        el.addEventListener('mouseenter', () => {
+          marker.togglePopup();
+        });
+        el.addEventListener('mouseleave', () => {
+          marker.togglePopup();
+        });
         
         markersRef.current.push(marker);
       });

@@ -2,7 +2,7 @@
   "lojas": [
     {
       "id": "loja-moreninhas",
-      "name": "InternetMais - Moreninha",
+      "name": "Internet Mais - Moreninha",
       "address": "Rua Palmácia, 836 - Moreninha, Campo Grande, MS",
       "phone": "+55 67 3027-2500",
       "whatsapp": "+55 67 3027-2500",
@@ -13,7 +13,7 @@
     },
     {
       "id": "loja-aero-rancho",
-      "name": "InternetMais - Aero Rancho",
+      "name": "Internet Mais - Aero Rancho",
       "address": "Avenida Rachel de Queiroz, 1468 - Aero Rancho, Campo Grande, MS",
       "phone": "+55 67 3027-2500",
       "whatsapp": "+55 67 3027-2500",
@@ -24,7 +24,7 @@
     },
     {
       "id": "loja-nova-lima",
-      "name": "InternetMais - Nova Lima",
+      "name": "Internet Mais - Nova Lima",
       "address": "Rua Zulmira Borba, 510 - Nova Lima, Campo Grande, MS",
       "phone": "+55 67 3027-2500",
       "whatsapp": "+55 67 3027-2500",
@@ -35,7 +35,7 @@
     },
     {
       "id": "loja-uniao",
-      "name": "InternetMais - União",
+      "name": "Internet Mais - União",
       "address": "Avenida Petrópolis, 1109 - União, Campo Grande, MS",
       "phone": "+55 67 3027-2500",
       "whatsapp": "+55 67 3027-2500",
@@ -46,7 +46,7 @@
     },
     {
       "id": "loja-julio-castilho",
-      "name": "InternetMais - Julio de Castilho",
+      "name": "Internet Mais - Julio de Castilho",
       "address": "Avenida Julio de Castilho, 1666 - Centro, Campo Grande, MS",
       "phone": "+55 67 3027-2500",
       "whatsapp": "+55 67 3027-2500",
@@ -57,7 +57,7 @@
     },
     {
       "id": "loja-cafezais",
-      "name": "InternetMais - Cafezais",
+      "name": "Internet Mais - Cafezais",
       "address": "Av. dos Cafezais, 1985 - Loja 06 - Cafezais, Campo Grande, MS",
       "phone": "+55 67 3027-2500",
       "whatsapp": "+55 67 3027-2500",
