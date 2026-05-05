@@ -1,5 +1,6 @@
 import { CheckCircle2 } from 'lucide-react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+import { Link } from 'wouter';
 
 export default function Cobertura() {
   const ref = useScrollAnimation();
@@ -76,20 +77,25 @@ export default function Cobertura() {
         <div className="bg-[#F4F4F4] rounded-2xl p-8 md:p-12 mb-12">
           <h3 className="text-2xl font-bold text-[#0D1B3E] mb-8">Bairros atendidos:</h3>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-            {bairros.map((bairro, i) => (
-              <div
-                key={i}
-                className="flex items-center gap-3 p-4 bg-white rounded-lg border-l-4 border-[#3DD93D] hover:shadow-md transition-all duration-300"
-              >
-                <CheckCircle2 size={20} className="text-[#3DD93D] flex-shrink-0" />
-                <span className="text-gray-700 font-medium text-sm">{bairro}</span>
-              </div>
-            ))}
+            {bairros.map((bairro, i) => {
+              const slug = bairro.toLowerCase().replace(/\s+/g, '-').replace(/[áàâã]/g, 'a').replace(/[éè]/g, 'e').replace(/[ó]/g, 'o').replace(/ç/g, 'c');
+              return (
+                <Link key={i} href={`/bairro/${slug}`}>
+                  <a className="flex items-center gap-3 p-4 bg-white rounded-lg border-l-4 border-[#3DD93D] hover:shadow-md hover:border-[#2ba82a] transition-all duration-300 cursor-pointer">
+                    <CheckCircle2 size={20} className="text-[#3DD93D] flex-shrink-0" />
+                    <span className="text-gray-700 font-medium text-sm hover:text-[#3DD93D]">{bairro}</span>
+                  </a>
+                </Link>
+              );
+            })}
           </div>
         </div>
 
         {/* CTA */}
         <div className="text-center">
+          <p className="text-gray-700 mb-6">
+            Quer conhecer mais detalhes sobre cada bairro? <Link href="/bairros"><a className="text-[#3DD93D] font-bold hover:text-[#2ba82a]">Visite nossa página de bairros</a></Link>
+          </p>
           <p className="text-gray-700 mb-6">
             Não encontrou seu bairro? Fale com nosso time!
           </p>

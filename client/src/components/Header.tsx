@@ -12,7 +12,7 @@ export default function Header() {
       submenu: [
         { label: 'Missão, Visão e Valores', href: '/sobre-nos' },
         { label: 'Nossas Lojas', href: '/sobre-nos#lojas' },
-        { label: 'Cobertura', href: '/sobre-nos#cobertura' },
+        { label: 'Internet nos Bairros', href: '/bairros' },
       ]
     },
     {
@@ -32,6 +32,11 @@ export default function Header() {
         { label: 'Chip 5G', href: '/#chip-5g' },
         { label: 'Telefonia Fixa', href: '/#telefonia-fixa' },
       ]
+    },
+    {
+      label: 'Internet nos Bairros',
+      href: '/bairros',
+      submenu: []
     },
     {
       label: 'Aplicativos',

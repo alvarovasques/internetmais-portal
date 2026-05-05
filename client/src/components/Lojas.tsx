@@ -1,5 +1,6 @@
 import { MapPin, Clock, MessageCircle } from 'lucide-react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+import { Link } from 'wouter';
 
 export default function Lojas() {
   const ref = useScrollAnimation();
@@ -8,32 +9,38 @@ export default function Lojas() {
     {
       nome: 'Loja Moreninhas',
       endereco: 'Rua Palmácia, 836',
-      horario: 'Seg-Sex: 8h-18h | Sab: 8h-12h'
+      horario: 'Seg-Sex: 8h-18h | Sab: 8h-12h',
+      bairro_slug: 'moreninha'
     },
     {
       nome: 'Loja Aero Rancho',
       endereco: 'Avenida Rachel de Queiroz, 1468',
-      horario: 'Seg-Sex: 8h-18h | Sab: 8h-12h'
+      horario: 'Seg-Sex: 8h-18h | Sab: 8h-12h',
+      bairro_slug: 'aero-rancho'
     },
     {
       nome: 'Loja Nova Lima',
       endereco: 'Rua Zulmira Borba, 510',
-      horario: 'Seg-Sex: 8h-18h | Sab: 8h-12h'
+      horario: 'Seg-Sex: 8h-18h | Sab: 8h-12h',
+      bairro_slug: 'nova-campo-grande'
     },
     {
       nome: 'Loja União',
       endereco: 'Avenida Petrópolis, 1109',
-      horario: 'Seg-Sex: 8h-18h | Sab: 8h-12h'
+      horario: 'Seg-Sex: 8h-18h | Sab: 8h-12h',
+      bairro_slug: 'uniao'
     },
     {
       nome: 'Loja Julio de Castilho',
       endereco: 'Avenida Julio de Castilho, 1666',
-      horario: 'Seg-Sex: 8h-18h | Sab: 8h-12h'
+      horario: 'Seg-Sex: 8h-18h | Sab: 8h-12h',
+      bairro_slug: 'centro'
     },
     {
       nome: 'Loja Cafezais',
       endereco: 'Av. dos Cafezais, 1985 - Loja 06',
-      horario: 'Seg-Sex: 8h-18h | Sab: 8h-12h'
+      horario: 'Seg-Sex: 8h-18h | Sab: 8h-12h',
+      bairro_slug: 'cafezais'
     },
   ];
 
@@ -51,30 +58,33 @@ export default function Lojas() {
         {/* Lojas Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 mb-12">
           {lojas.map((loja, i) => (
-            <div
-              key={i}
-              className="bg-white rounded-2xl p-5 shadow-lg hover:shadow-xl border-l-4 border-[#3DD93D] card-hover animate-fade-in-up"
-              style={{ animationDelay: `${0.1 + i * 0.1}s` }}
-            >
-              <MapPin size={28} className="text-[#3DD93D] mb-3" />
-              <h3 className="text-base font-bold text-[#0D1B3E] mb-2">
-                {loja.nome}
-              </h3>
-              <p className="text-xs md:text-sm text-gray-600 mb-3 font-semibold">
-                {loja.endereco}
-              </p>
-              <div className="flex items-start gap-2">
-                <Clock size={14} className="text-[#3DD93D] flex-shrink-0 mt-0.5" />
-                <p className="text-xs text-gray-600">
-                  {loja.horario}
+            <Link key={i} href={`/bairro/${loja.bairro_slug}`}>
+              <a className="bg-white rounded-2xl p-5 shadow-lg hover:shadow-xl border-l-4 border-[#3DD93D] card-hover animate-fade-in-up hover:border-[#2ba82a] transition-all duration-300"
+                style={{ animationDelay: `${0.1 + i * 0.1}s` }}
+              >
+                <MapPin size={28} className="text-[#3DD93D] mb-3" />
+                <h3 className="text-base font-bold text-[#0D1B3E] mb-2 hover:text-[#3DD93D]">
+                  {loja.nome}
+                </h3>
+                <p className="text-xs md:text-sm text-gray-600 mb-3 font-semibold">
+                  {loja.endereco}
                 </p>
-              </div>
-            </div>
+                <div className="flex items-start gap-2">
+                  <Clock size={14} className="text-[#3DD93D] flex-shrink-0 mt-0.5" />
+                  <p className="text-xs text-gray-600">
+                    {loja.horario}
+                  </p>
+                </div>
+              </a>
+            </Link>
           ))}
         </div>
 
         {/* CTA */}
         <div className="text-center">
+          <p className="text-gray-700 mb-6">
+            Visite nosso <Link href="/bairros"><a className="text-[#3DD93D] font-bold hover:text-[#2ba82a]">mapa de bairros</a></Link> para conhecer mais sobre cada região.
+          </p>
           <a
             href="https://wa.me/556730272500?text=Olá!%20Gostaria%20de%20falar%20com%20um%20representante%20sobre%20a%20loja%20mais%20próxima%20e%20agendar%20um%20atendimento."
             target="_blank"
