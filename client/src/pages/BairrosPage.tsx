@@ -236,8 +236,7 @@ export default function BairrosPage() {
             
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {filteredBairros.map(([bairroName, bairroInfo]) => (
-                <Link key={bairroInfo.slug} href={`/bairro/${bairroInfo.slug}`}>
-                  <a className="group bg-white p-6 rounded-lg shadow-md hover:shadow-lg hover:border-[#3DD93D] border-2 border-transparent transition-all duration-300 block">
+                <Link key={bairroInfo.slug} href={`/bairro/${bairroInfo.slug}`} className="group bg-white p-6 rounded-lg shadow-md hover:shadow-lg hover:border-[#3DD93D] border-2 border-transparent transition-all duration-300 block">
                     <div className="flex items-start justify-between mb-4">
                       <div>
                         <h3 className="text-xl font-bold text-gray-900 group-hover:text-[#3DD93D] transition-colors">
@@ -272,7 +271,6 @@ export default function BairrosPage() {
                       Ver Detalhes
                       <ChevronRight size={16} />
                     </div>
-                  </a>
                 </Link>
               ))}
             </div>
