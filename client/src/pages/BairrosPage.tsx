@@ -18,7 +18,7 @@ interface BairroInfo {
 }
 
 // Set Mapbox access token
-mapboxgl.accessToken = 'pk.eyJ1IjoiaW50ZXJuZXRtYWlzIiwiYSI6ImNtb3N3ZXVpODAzcWMycXB1eml4OHNsdGUifQ.LQjeJXcWF45juASHasbIog';
+mapboxgl.accessToken = 'sk.eyJ1IjoiaW50ZXJuZXRtYWlzIiwiYSI6ImNtb3N5Y3VoaDAwM2Uyc3ExMGFiMmJzZGcifQ.GHetnxYQCR-r1huYG479sQ';
 
 export default function BairrosPage() {
   const [searchTerm, setSearchTerm] = useState('');
