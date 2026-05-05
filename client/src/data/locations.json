@@ -1,19 +1,12 @@
 {
   "lojas": [
     {
-      "id": "loja-centro",
-      "name": "InternetMais - Centro",
-      "address": "Av. Afonso Pena, 1000 - Centro, Campo Grande, MS",
-      "phone": "+55 67 3321-1234",
-      "lat": -20.4697,
-      "lng": -55.4944,
-      "type": "store"
-    },
-    {
-      "id": "loja-moreninha",
+      "id": "loja-moreninhas",
       "name": "InternetMais - Moreninha",
-      "address": "Rua das Flores, 500 - Moreninha, Campo Grande, MS",
-      "phone": "+55 67 3321-5678",
+      "address": "Rua Palmácia, 836 - Moreninha, Campo Grande, MS",
+      "phone": "+55 67 3027-2500",
+      "whatsapp": "+55 67 3027-2500",
+      "hours": "Seg-Sex: 8h-18h | Sab: 8h-12h",
       "lat": -20.4850,
       "lng": -55.5200,
       "type": "store"
@@ -21,10 +14,56 @@
     {
       "id": "loja-aero-rancho",
       "name": "InternetMais - Aero Rancho",
-      "address": "Av. Bandeirantes, 2000 - Aero Rancho, Campo Grande, MS",
-      "phone": "+55 67 3321-9012",
+      "address": "Avenida Rachel de Queiroz, 1468 - Aero Rancho, Campo Grande, MS",
+      "phone": "+55 67 3027-2500",
+      "whatsapp": "+55 67 3027-2500",
+      "hours": "Seg-Sex: 8h-18h | Sab: 8h-12h",
       "lat": -20.4500,
       "lng": -55.5100,
+      "type": "store"
+    },
+    {
+      "id": "loja-nova-lima",
+      "name": "InternetMais - Nova Lima",
+      "address": "Rua Zulmira Borba, 510 - Nova Lima, Campo Grande, MS",
+      "phone": "+55 67 3027-2500",
+      "whatsapp": "+55 67 3027-2500",
+      "hours": "Seg-Sex: 8h-18h | Sab: 8h-12h",
+      "lat": -20.4600,
+      "lng": -55.5000,
+      "type": "store"
+    },
+    {
+      "id": "loja-uniao",
+      "name": "InternetMais - União",
+      "address": "Avenida Petrópolis, 1109 - União, Campo Grande, MS",
+      "phone": "+55 67 3027-2500",
+      "whatsapp": "+55 67 3027-2500",
+      "hours": "Seg-Sex: 8h-18h | Sab: 8h-12h",
+      "lat": -20.4600,
+      "lng": -55.5100,
+      "type": "store"
+    },
+    {
+      "id": "loja-julio-castilho",
+      "name": "InternetMais - Julio de Castilho",
+      "address": "Avenida Julio de Castilho, 1666 - Centro, Campo Grande, MS",
+      "phone": "+55 67 3027-2500",
+      "whatsapp": "+55 67 3027-2500",
+      "hours": "Seg-Sex: 8h-18h | Sab: 8h-12h",
+      "lat": -20.4697,
+      "lng": -55.4944,
+      "type": "store"
+    },
+    {
+      "id": "loja-cafezais",
+      "name": "InternetMais - Cafezais",
+      "address": "Av. dos Cafezais, 1985 - Loja 06 - Cafezais, Campo Grande, MS",
+      "phone": "+55 67 3027-2500",
+      "whatsapp": "+55 67 3027-2500",
+      "hours": "Seg-Sex: 8h-18h | Sab: 8h-12h",
+      "lat": -20.4750,
+      "lng": -55.5200,
       "type": "store"
     }
   ],
