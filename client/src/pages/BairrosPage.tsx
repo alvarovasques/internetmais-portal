@@ -1,9 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link } from 'wouter';
 import bairrosData from '@/data/bairros.json';
+import locationsData from '@/data/locations.json';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { ChevronRight, MapPin, Search } from 'lucide-react';
+import { MapView } from '@/components/Map';
 
 interface BairroInfo {
   slug: string;
@@ -15,6 +17,9 @@ interface BairroInfo {
 export default function BairrosPage() {
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredBairros, setFilteredBairros] = useState<[string, BairroInfo][]>([]);
+  const [mapMode, setMapMode] = useState<'neighborhoods' | 'stores'>('neighborhoods');
+  const mapRef = useRef<google.maps.Map | null>(null);
+  const markersRef = useRef<google.maps.marker.AdvancedMarkerElement[]>([]);
 
   useEffect(() => {
     // Update document title and meta tags
@@ -89,6 +94,72 @@ export default function BairrosPage() {
     window.location.href = 'https://wa.me/5567999999999?text=Olá! Gostaria de informações sobre internet em Campo Grande';
   };
 
+  const handleMapReady = (map: google.maps.Map) => {
+    mapRef.current = map;
+    addMarkers(map, mapMode);
+  };
+
+  const addMarkers = (map: google.maps.Map, mode: 'neighborhoods' | 'stores') => {
+    // Clear existing markers
+    markersRef.current.forEach(marker => marker.remove());
+    markersRef.current = [];
+
+    if (mode === 'neighborhoods') {
+      // Add neighborhood markers
+      locationsData.bairros.forEach(bairro => {
+        if (window.google?.maps?.marker?.AdvancedMarkerElement) {
+          const marker = new window.google.maps.marker.AdvancedMarkerElement({
+            map,
+            position: { lat: bairro.lat, lng: bairro.lng },
+            title: bairro.name,
+            content: createMarkerContent(bairro.name, 'neighborhood'),
+          });
+          markersRef.current.push(marker);
+        }
+      });
+    } else {
+      // Add store markers
+      locationsData.lojas.forEach(loja => {
+        if (window.google?.maps?.marker?.AdvancedMarkerElement) {
+          const marker = new window.google.maps.marker.AdvancedMarkerElement({
+            map,
+            position: { lat: loja.lat, lng: loja.lng },
+            title: loja.name,
+            content: createMarkerContent(loja.name, 'store'),
+          });
+          markersRef.current.push(marker);
+        }
+      });
+    }
+  };
+
+  const createMarkerContent = (name: string, type: 'neighborhood' | 'store') => {
+    const div = document.createElement('div');
+    div.className = `marker-content ${type}`;
+    div.innerHTML = `
+      <div style="
+        background-color: ${type === 'store' ? '#3DD93D' : '#0D1B3E'};
+        color: white;
+        padding: 8px 12px;
+        border-radius: 6px;
+        font-weight: bold;
+        font-size: 12px;
+        white-space: nowrap;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      ">
+        ${type === 'store' ? '🏪' : '📍'} ${name}
+      </div>
+    `;
+    return div;
+  };
+
+  const toggleMapMode = (mode: 'neighborhoods' | 'stores') => {
+    setMapMode(mode);
+    if (mapRef.current) {
+      addMarkers(mapRef.current, mode);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
       {/* Header */}
@@ -122,6 +193,41 @@ export default function BairrosPage() {
 
       {/* Main Content */}
       <div className="max-w-6xl mx-auto px-4 py-16">
+        {/* Map Section */}
+        <div className="mb-16">
+          <h2 className="text-3xl font-bold mb-4">Mapa Interativo</h2>
+          <div className="flex gap-4 mb-4">
+            <Button
+              onClick={() => toggleMapMode('neighborhoods')}
+              className={`${
+                mapMode === 'neighborhoods'
+                  ? 'bg-[#3DD93D] text-black hover:bg-[#2ba82a]'
+                  : 'bg-gray-200 text-gray-900 hover:bg-gray-300'
+              }`}
+            >
+              📍 Bairros
+            </Button>
+            <Button
+              onClick={() => toggleMapMode('stores')}
+              className={`${
+                mapMode === 'stores'
+                  ? 'bg-[#3DD93D] text-black hover:bg-[#2ba82a]'
+                  : 'bg-gray-200 text-gray-900 hover:bg-gray-300'
+              }`}
+            >
+              🏪 Lojas
+            </Button>
+          </div>
+          <div className="rounded-lg overflow-hidden shadow-lg">
+            <MapView
+              initialCenter={{ lat: -20.4697, lng: -55.4944 }}
+              initialZoom={13}
+              onMapReady={handleMapReady}
+              className="h-[500px]"
+            />
+          </div>
+        </div>
+
         {/* Stats */}
         <div className="grid md:grid-cols-3 gap-8 mb-16">
           <div className="bg-white p-6 rounded-lg shadow-md border-l-4 border-[#3DD93D]">

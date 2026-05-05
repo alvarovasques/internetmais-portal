@@ -1,0 +1,306 @@
+{
+  "lojas": [
+    {
+      "id": "loja-centro",
+      "name": "InternetMais - Centro",
+      "address": "Av. Afonso Pena, 1000 - Centro, Campo Grande, MS",
+      "phone": "+55 67 3321-1234",
+      "lat": -20.4697,
+      "lng": -55.4944,
+      "type": "store"
+    },
+    {
+      "id": "loja-moreninha",
+      "name": "InternetMais - Moreninha",
+      "address": "Rua das Flores, 500 - Moreninha, Campo Grande, MS",
+      "phone": "+55 67 3321-5678",
+      "lat": -20.4850,
+      "lng": -55.5200,
+      "type": "store"
+    },
+    {
+      "id": "loja-aero-rancho",
+      "name": "InternetMais - Aero Rancho",
+      "address": "Av. Bandeirantes, 2000 - Aero Rancho, Campo Grande, MS",
+      "phone": "+55 67 3321-9012",
+      "lat": -20.4500,
+      "lng": -55.5100,
+      "type": "store"
+    }
+  ],
+  "bairros": [
+    {
+      "slug": "centro",
+      "name": "Centro",
+      "lat": -20.4697,
+      "lng": -55.4944,
+      "type": "neighborhood"
+    },
+    {
+      "slug": "moreninha",
+      "name": "Moreninha",
+      "lat": -20.4850,
+      "lng": -55.5200,
+      "type": "neighborhood"
+    },
+    {
+      "slug": "aero-rancho",
+      "name": "Aero Rancho",
+      "lat": -20.4500,
+      "lng": -55.5100,
+      "type": "neighborhood"
+    },
+    {
+      "slug": "alves-pereira",
+      "name": "Alves Pereira",
+      "lat": -20.4600,
+      "lng": -55.5000,
+      "type": "neighborhood"
+    },
+    {
+      "slug": "bandeirantes",
+      "name": "Bandeirantes",
+      "lat": -20.4550,
+      "lng": -55.5150,
+      "type": "neighborhood"
+    },
+    {
+      "slug": "batistao",
+      "name": "Batistão",
+      "lat": -20.4700,
+      "lng": -55.5050,
+      "type": "neighborhood"
+    },
+    {
+      "slug": "caicara",
+      "name": "Caiçara",
+      "lat": -20.4750,
+      "lng": -55.4950,
+      "type": "neighborhood"
+    },
+    {
+      "slug": "caioba",
+      "name": "Caiobá",
+      "lat": -20.4800,
+      "lng": -55.5100,
+      "type": "neighborhood"
+    },
+    {
+      "slug": "carvalho",
+      "name": "Carvalho",
+      "lat": -20.4650,
+      "lng": -55.5200,
+      "type": "neighborhood"
+    },
+    {
+      "slug": "centenario",
+      "name": "Centenário",
+      "lat": -20.4550,
+      "lng": -55.4900,
+      "type": "neighborhood"
+    },
+    {
+      "slug": "centro-oeste",
+      "name": "Centro-Oeste",
+      "lat": -20.4720,
+      "lng": -55.5050,
+      "type": "neighborhood"
+    },
+    {
+      "slug": "cophavila-ii",
+      "name": "Cophavila II",
+      "lat": -20.4600,
+      "lng": -55.5250,
+      "type": "neighborhood"
+    },
+    {
+      "slug": "cruzeiro",
+      "name": "Cruzeiro",
+      "lat": -20.4700,
+      "lng": -55.5150,
+      "type": "neighborhood"
+    },
+    {
+      "slug": "guanandi",
+      "name": "Guanandi",
+      "lat": -20.4550,
+      "lng": -55.5050,
+      "type": "neighborhood"
+    },
+    {
+      "slug": "jacy",
+      "name": "Jacy",
+      "lat": -20.4650,
+      "lng": -55.4850,
+      "type": "neighborhood"
+    },
+    {
+      "slug": "jardim-dos-estados",
+      "name": "Jardim dos Estados",
+      "lat": -20.4750,
+      "lng": -55.5200,
+      "type": "neighborhood"
+    },
+    {
+      "slug": "jockey-club",
+      "name": "Jockey Club",
+      "lat": -20.4800,
+      "lng": -55.5000,
+      "type": "neighborhood"
+    },
+    {
+      "slug": "jose-abrao",
+      "name": "José Abrão",
+      "lat": -20.4600,
+      "lng": -55.5100,
+      "type": "neighborhood"
+    },
+    {
+      "slug": "lageado",
+      "name": "Lageado",
+      "lat": -20.4700,
+      "lng": -55.4900,
+      "type": "neighborhood"
+    },
+    {
+      "slug": "leblon",
+      "name": "Leblon",
+      "lat": -20.4550,
+      "lng": -55.5200,
+      "type": "neighborhood"
+    },
+    {
+      "slug": "los-angeles",
+      "name": "Los Angeles",
+      "lat": -20.4650,
+      "lng": -55.4950,
+      "type": "neighborhood"
+    },
+    {
+      "slug": "nasser",
+      "name": "Nasser",
+      "lat": -20.4750,
+      "lng": -55.5100,
+      "type": "neighborhood"
+    },
+    {
+      "slug": "nova-campo-grande",
+      "name": "Nova Campo Grande",
+      "lat": -20.4600,
+      "lng": -55.5000,
+      "type": "neighborhood"
+    },
+    {
+      "slug": "nucleo-industrial",
+      "name": "Núcleo Industrial",
+      "lat": -20.4700,
+      "lng": -55.5250,
+      "type": "neighborhood"
+    },
+    {
+      "slug": "panama",
+      "name": "Panamá",
+      "lat": -20.4550,
+      "lng": -55.4850,
+      "type": "neighborhood"
+    },
+    {
+      "slug": "popular",
+      "name": "Popular",
+      "lat": -20.4650,
+      "lng": -55.5150,
+      "type": "neighborhood"
+    },
+    {
+      "slug": "rita-vieira",
+      "name": "Rita Vieira",
+      "lat": -20.4750,
+      "lng": -55.4950,
+      "type": "neighborhood"
+    },
+    {
+      "slug": "santo-amaro",
+      "name": "Santo Amaro",
+      "lat": -20.4600,
+      "lng": -55.5200,
+      "type": "neighborhood"
+    },
+    {
+      "slug": "santo-antonio",
+      "name": "Santo Antônio",
+      "lat": -20.4700,
+      "lng": -55.5050,
+      "type": "neighborhood"
+    },
+    {
+      "slug": "sao-conrado",
+      "name": "São Conrado",
+      "lat": -20.4550,
+      "lng": -55.5100,
+      "type": "neighborhood"
+    },
+    {
+      "slug": "seminario",
+      "name": "Seminário",
+      "lat": -20.4650,
+      "lng": -55.4900,
+      "type": "neighborhood"
+    },
+    {
+      "slug": "sobrinho",
+      "name": "Sobrinho",
+      "lat": -20.4750,
+      "lng": -55.5200,
+      "type": "neighborhood"
+    },
+    {
+      "slug": "taquarussu",
+      "name": "Taquarussu",
+      "lat": -20.4600,
+      "lng": -55.5000,
+      "type": "neighborhood"
+    },
+    {
+      "slug": "taruma",
+      "name": "Tarumã",
+      "lat": -20.4700,
+      "lng": -55.5150,
+      "type": "neighborhood"
+    },
+    {
+      "slug": "taveiropolis",
+      "name": "Taveiropólis",
+      "lat": -20.4550,
+      "lng": -55.4950,
+      "type": "neighborhood"
+    },
+    {
+      "slug": "tijuca",
+      "name": "Tijuca",
+      "lat": -20.4650,
+      "lng": -55.5100,
+      "type": "neighborhood"
+    },
+    {
+      "slug": "tiradentes",
+      "name": "Tiradentes",
+      "lat": -20.4750,
+      "lng": -55.4900,
+      "type": "neighborhood"
+    },
+    {
+      "slug": "uniao",
+      "name": "União",
+      "lat": -20.4600,
+      "lng": -55.5200,
+      "type": "neighborhood"
+    },
+    {
+      "slug": "universitario",
+      "name": "Universitário",
+      "lat": -20.4700,
+      "lng": -55.5050,
+      "type": "neighborhood"
+    }
+  ]
+}
