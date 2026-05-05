@@ -1,11 +1,22 @@
 # InternetMais Robots.txt
+# Allow all crawlers to index the site
 User-agent: *
 Allow: /
 Disallow: /admin/
 Disallow: /private/
+Disallow: /404
 
-# Sitemap
-Sitemap: https://internetmais-qrzsp3m6.manus.space/sitemap.xml
+# Specific rules for search engines
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
 
-# Crawl delay
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# Sitemap location
+Sitemap: https://internetmais.net/sitemap.xml
+
+# General crawl delay
 Crawl-delay: 1
