@@ -58,24 +58,22 @@ export default function Lojas() {
         {/* Lojas Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 mb-12">
           {lojas.map((loja, i) => (
-            <Link key={i} href={`/bairro/${loja.bairro_slug}`}>
-              <a className="bg-white rounded-2xl p-5 shadow-lg hover:shadow-xl border-l-4 border-[#3DD93D] card-hover animate-fade-in-up hover:border-[#2ba82a] transition-all duration-300"
-                style={{ animationDelay: `${0.1 + i * 0.1}s` }}
-              >
-                <MapPin size={28} className="text-[#3DD93D] mb-3" />
-                <h3 className="text-base font-bold text-[#0D1B3E] mb-2 hover:text-[#3DD93D]">
-                  {loja.nome}
-                </h3>
-                <p className="text-xs md:text-sm text-gray-600 mb-3 font-semibold">
-                  {loja.endereco}
+            <Link key={i} href={`/bairro/${loja.bairro_slug}`} className="bg-white rounded-2xl p-5 shadow-lg hover:shadow-xl border-l-4 border-[#3DD93D] card-hover animate-fade-in-up hover:border-[#2ba82a] transition-all duration-300 block"
+              style={{ animationDelay: `${0.1 + i * 0.1}s` }}
+            >
+              <MapPin size={28} className="text-[#3DD93D] mb-3" />
+              <h3 className="text-base font-bold text-[#0D1B3E] mb-2 hover:text-[#3DD93D]">
+                {loja.nome}
+              </h3>
+              <p className="text-xs md:text-sm text-gray-600 mb-3 font-semibold">
+                {loja.endereco}
+              </p>
+              <div className="flex items-start gap-2">
+                <Clock size={14} className="text-[#3DD93D] flex-shrink-0 mt-0.5" />
+                <p className="text-xs text-gray-600">
+                  {loja.horario}
                 </p>
-                <div className="flex items-start gap-2">
-                  <Clock size={14} className="text-[#3DD93D] flex-shrink-0 mt-0.5" />
-                  <p className="text-xs text-gray-600">
-                    {loja.horario}
-                  </p>
-                </div>
-              </a>
+              </div>
             </Link>
           ))}
         </div>

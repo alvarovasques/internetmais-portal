@@ -80,11 +80,9 @@ export default function Cobertura() {
             {bairros.map((bairro, i) => {
               const slug = bairro.toLowerCase().replace(/\s+/g, '-').replace(/[áàâã]/g, 'a').replace(/[éè]/g, 'e').replace(/[ó]/g, 'o').replace(/ç/g, 'c');
               return (
-                <Link key={i} href={`/bairro/${slug}`}>
-                  <a className="flex items-center gap-3 p-4 bg-white rounded-lg border-l-4 border-[#3DD93D] hover:shadow-md hover:border-[#2ba82a] transition-all duration-300 cursor-pointer">
-                    <CheckCircle2 size={20} className="text-[#3DD93D] flex-shrink-0" />
-                    <span className="text-gray-700 font-medium text-sm hover:text-[#3DD93D]">{bairro}</span>
-                  </a>
+                <Link key={i} href={`/bairro/${slug}`} className="flex items-center gap-3 p-4 bg-white rounded-lg border-l-4 border-[#3DD93D] hover:shadow-md hover:border-[#2ba82a] transition-all duration-300 cursor-pointer">
+                  <CheckCircle2 size={20} className="text-[#3DD93D] flex-shrink-0" />
+                  <span className="text-gray-700 font-medium text-sm hover:text-[#3DD93D]">{bairro}</span>
                 </Link>
               );
             })}
