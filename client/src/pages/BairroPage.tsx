@@ -1,5 +1,7 @@
 import { useParams } from 'wouter';
 import { useEffect, useState } from 'react';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 import bairrosData from '@/data/bairros.json';
 import { Button } from '@/components/ui/button';
 import { ChevronRight, MapPin, Zap, Phone } from 'lucide-react';
@@ -146,6 +148,7 @@ export default function BairroPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white" itemScope itemType="https://schema.org/LocalBusiness">
+      <Header />
       {/* Header */}
       <div className="bg-gradient-to-r from-[#0D1B3E] to-[#1a2d5a] text-white py-16 px-4">
         <div className="max-w-4xl mx-auto">
@@ -154,8 +157,8 @@ export default function BairroPage() {
             <ChevronRight size={16} />
             <span>{bairroName}</span>
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold mb-4" itemProp="name">
-            Internet Fibra em {bairroName}
+            <h1 className="text-4xl md:text-5xl font-bold mb-4" itemProp="name">
+            Internet Fibra no {bairroName}
           </h1>
           <p className="text-lg text-blue-100 mb-6">
             {bairroData.description}
@@ -181,11 +184,11 @@ export default function BairroPage() {
           <div className="bg-white p-6 rounded-lg shadow-md border-l-4 border-[#3DD93D]">
             <MapPin className="text-[#3DD93D] mb-4" size={32} />
             <h3 className="font-bold text-lg mb-2">Cobertura Local</h3>
-            <p className="text-gray-600">Atendimento especializado em {bairroName}</p>
+            <p className="text-gray-600">Atendimento especializado no {bairroName}</p>
           </div>
           <div className="bg-white p-6 rounded-lg shadow-md border-l-4 border-[#3DD93D]">
             <Phone className="text-[#3DD93D] mb-4" size={32} />
-            <h3 className="font-bold text-lg mb-2">Suporte 24/7</h3>
+            <h3 className="font-bold text-lg mb-2">Suporte Técnico</h3>
             <p className="text-gray-600">Atendimento humanizado sempre disponível</p>
           </div>
         </div>
@@ -209,7 +212,7 @@ export default function BairroPage() {
         {/* CTA Section */}
         <div className="bg-gradient-to-r from-[#0D1B3E] to-[#1a2d5a] text-white p-12 rounded-lg text-center">
           <h2 className="text-3xl font-bold mb-4">
-            Pronto para ter a melhor internet em {bairroName}?
+            Pronto para ter a melhor internet no {bairroName}?
           </h2>
           <p className="text-lg mb-8 text-blue-100">
             Planos a partir de R$ 99,90 com fibra óptica 100% pura
@@ -222,6 +225,7 @@ export default function BairroPage() {
           </Button>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }
