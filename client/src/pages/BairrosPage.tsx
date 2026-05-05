@@ -1,9 +1,12 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link } from 'wouter';
 import bairrosData from '@/data/bairros.json';
+import locationsData from '@/data/locations.json';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { ChevronRight, MapPin, Search, MessageCircle } from 'lucide-react';
+import { MapboxView, addMapboxMarker } from '@/components/MapboxView';
+import mapboxgl from 'mapbox-gl';
 
 interface BairroInfo {
   slug: string;
@@ -15,6 +18,8 @@ interface BairroInfo {
 export default function BairrosPage() {
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredBairros, setFilteredBairros] = useState<[string, BairroInfo][]>([]);
+  const [mapMode, setMapMode] = useState<'neighborhoods' | 'stores'>('neighborhoods');
+  const mapRef = useRef<mapboxgl.Map | null>(null);
 
   useEffect(() => {
     // Update document title and meta tags
@@ -89,6 +94,42 @@ export default function BairrosPage() {
     window.location.href = 'https://wa.me/556730272500?text=Olá! Gostaria de informações sobre internet em Campo Grande';
   };
 
+  const handleMapReady = (map: mapboxgl.Map) => {
+    mapRef.current = map;
+    addMarkersToMap(map, mapMode);
+  };
+
+  const addMarkersToMap = (map: mapboxgl.Map, mode: 'neighborhoods' | 'stores') => {
+    // Remove existing markers by clearing the map layers
+    const layers = map.getStyle().layers;
+    if (layers) {
+      layers.forEach(layer => {
+        if (layer.id.includes('marker')) {
+          map.removeLayer(layer.id);
+        }
+      });
+    }
+
+    if (mode === 'neighborhoods') {
+      // Add neighborhood markers
+      locationsData.bairros.forEach(bairro => {
+        addMapboxMarker(map, [bairro.lng, bairro.lat], bairro.name, 'neighborhood');
+      });
+    } else {
+      // Add store markers
+      locationsData.lojas.forEach(loja => {
+        addMapboxMarker(map, [loja.lng, loja.lat], loja.name, 'store');
+      });
+    }
+  };
+
+  const toggleMapMode = (mode: 'neighborhoods' | 'stores') => {
+    setMapMode(mode);
+    if (mapRef.current) {
+      addMarkersToMap(mapRef.current, mode);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
       {/* Header */}
@@ -122,6 +163,41 @@ export default function BairrosPage() {
 
       {/* Main Content */}
       <div className="max-w-6xl mx-auto px-4 py-16">
+        {/* Map Section */}
+        <div className="mb-16">
+          <h2 className="text-3xl font-bold mb-4">Mapa Interativo</h2>
+          <div className="flex gap-4 mb-4">
+            <Button
+              onClick={() => toggleMapMode('neighborhoods')}
+              className={`${
+                mapMode === 'neighborhoods'
+                  ? 'bg-[#3DD93D] text-black hover:bg-[#2ba82a]'
+                  : 'bg-gray-200 text-gray-900 hover:bg-gray-300'
+              }`}
+            >
+              📍 Bairros
+            </Button>
+            <Button
+              onClick={() => toggleMapMode('stores')}
+              className={`${
+                mapMode === 'stores'
+                  ? 'bg-[#3DD93D] text-black hover:bg-[#2ba82a]'
+                  : 'bg-gray-200 text-gray-900 hover:bg-gray-300'
+              }`}
+            >
+              🏪 Lojas
+            </Button>
+          </div>
+          <div className="rounded-lg overflow-hidden shadow-lg">
+            <MapboxView
+              initialCenter={[-55.4944, -20.4697]}
+              initialZoom={13}
+              onMapReady={handleMapReady}
+              className="h-[500px]"
+            />
+          </div>
+        </div>
+
         {/* Stats */}
         <div className="grid md:grid-cols-3 gap-8 mb-16">
           <div className="bg-white p-6 rounded-lg shadow-md border-l-4 border-[#3DD93D]">
