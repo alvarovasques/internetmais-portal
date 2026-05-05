@@ -83,7 +83,7 @@ export default function Lojas() {
         {/* CTA */}
         <div className="text-center">
           <p className="text-gray-700 mb-6">
-            Visite nosso <Link href="/bairros"><a className="text-[#3DD93D] font-bold hover:text-[#2ba82a] no-underline">mapa de bairros</a></Link> para conhecer mais sobre cada região.
+            Visite nosso <Link href="/bairros" className="text-[#3DD93D] font-bold hover:text-[#2ba82a]">mapa de bairros</Link> para conhecer mais sobre cada região.
           </p>
           <a
             href="https://wa.me/556730272500?text=Olá!%20Gostaria%20de%20falar%20com%20um%20representante%20sobre%20a%20loja%20mais%20próxima%20e%20agendar%20um%20atendimento."
