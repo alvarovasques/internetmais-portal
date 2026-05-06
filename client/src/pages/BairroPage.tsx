@@ -17,6 +17,50 @@ export default function BairroPage() {
   const { slug } = useParams<{ slug: string }>();
   const [bairroName, setBairroName] = useState<string>('');
   const [bairroData, setBairroData] = useState<BairroData | null>(null);
+  const [artigo, setArtigo] = useState<string>('no');
+
+  // Mapeamento de gênero dos bairros
+  const generoMap: Record<string, string> = {
+    "Aero Rancho": "m",
+    "Alves Pereira": "m",
+    "Bandeirantes": "m",
+    "Batistão": "m",
+    "Caiçara": "m",
+    "Caiobá": "m",
+    "Vila Carvalho": "f",
+    "Centenário": "m",
+    "Centro": "m",
+    "Centro Oeste": "m",
+    "Cophavila II": "f",
+    "Cruzeiro": "m",
+    "Guanandi": "m",
+    "Vila Jacy": "f",
+    "Jardim dos Estados": "m",
+    "Jockey Club": "m",
+    "José Abrão": "m",
+    "Lageado": "m",
+    "Leblon": "m",
+    "Los Angeles": "m",
+    "Moreninha": "f",
+    "Vila Nasser": "f",
+    "Nova Campo Grande": "f",
+    "Núcleo Industrial": "m",
+    "Panamá": "m",
+    "Popular": "f",
+    "Rita Vieira": "m",
+    "Santo Amaro": "m",
+    "Santo Antônio": "m",
+    "São Conrado": "m",
+    "Seminário": "m",
+    "Vila Sobrinho": "f",
+    "Taquarussu": "m",
+    "Tarumã": "m",
+    "Taveiropólis": "m",
+    "Tijuca": "m",
+    "Tiradentes": "m",
+    "União": "m",
+    "Universitário": "m",
+  };
 
   useEffect(() => {
     // Find bairro by slug
@@ -27,8 +71,11 @@ export default function BairroPage() {
     if (found) {
       setBairroName(found[0]);
       setBairroData(found[1] as BairroData);
+      // Atualizar artigo conforme o gênero do bairro
+      const genero = generoMap[found[0]] || 'm';
+      setArtigo(genero === 'f' ? 'na' : 'no');
     }
-  }, [slug]);
+  }, [slug, generoMap]);
 
   const handleWhatsAppClick = () => {
     (window as any).dataLayer?.push({
@@ -184,7 +231,7 @@ export default function BairroPage() {
           <div className="bg-white p-6 rounded-lg shadow-md border-l-4 border-[#3DD93D]">
             <MapPin className="text-[#3DD93D] mb-4" size={32} />
             <h3 className="font-bold text-lg mb-2">Cobertura Local</h3>
-            <p className="text-gray-600">Atendimento especializado no {bairroName}</p>
+            <p className="text-gray-600">Atendimento especializado {artigo} {bairroName}</p>
           </div>
           <div className="bg-white p-6 rounded-lg shadow-md border-l-4 border-[#3DD93D]">
             <Phone className="text-[#3DD93D] mb-4" size={32} />
