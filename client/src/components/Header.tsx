@@ -34,11 +34,6 @@ export default function Header() {
       ]
     },
     {
-      label: 'Internet nos Bairros',
-      href: '/bairros',
-      submenu: []
-    },
-    {
       label: 'Aplicativos',
       href: 'https://www.portaldoassinante.com/internetmais/login',
       external: true
