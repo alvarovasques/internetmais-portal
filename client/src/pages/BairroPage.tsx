@@ -167,7 +167,7 @@ export default function BairroPage() {
             onClick={handleWhatsAppClick}
             className="bg-[#3DD93D] hover:bg-[#2ba82a] text-black font-bold"
           >
-            Solicitar Cobertura
+            Contratar Agora
           </Button>
         </div>
       </div>
