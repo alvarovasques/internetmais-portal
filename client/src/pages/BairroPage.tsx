@@ -158,7 +158,7 @@ export default function BairroPage() {
             <span>{bairroName}</span>
           </div>
             <h1 className="text-4xl md:text-5xl font-bold mb-4" itemProp="name">
-            Internet Fibra no {bairroName}
+            Internet Fibra {bairroName}
           </h1>
           <p className="text-lg text-blue-100 mb-6">
             {bairroData.description}
