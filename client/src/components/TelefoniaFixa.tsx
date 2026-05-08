@@ -24,12 +24,12 @@ export default function TelefoniaFixa() {
             <Phone size={48} className="text-[#3DD93D] mb-6" />
 
             {/* Title */}
-            <h3 className="text-3xl font-black mb-2">Linha Direta</h3>
+            <h3 className="text-3xl font-black mb-2">Telefonia Fixa</h3>
             <p className="text-white/80 mb-8">Comunicação clara e confiável para sua casa ou negócio</p>
 
             {/* Price */}
             <div className="mb-8 pb-8 border-b-2 border-white/20">
-              <p className="text-5xl font-black text-[#3DD93D]">R$ 50,00</p>
+              <p className="text-5xl font-black text-[#3DD93D]">R$ 49,90</p>
               <p className="text-white/80">por mês</p>
             </div>
 
