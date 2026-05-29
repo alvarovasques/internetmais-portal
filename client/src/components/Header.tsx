@@ -18,7 +18,11 @@ export default function Header() {
     {
       label: 'Residencial',
       href: '/#planos-residenciais',
-      submenu: []
+      submenu: [
+        { label: 'Mais Velocidade', href: '/#mais-velocidade' },
+        { label: 'Mais Aplicativos', href: '/#mais-aplicativos' },
+        { label: 'Mais GloboPlay', href: '/#mais-globoplay' },
+      ]
     },
     {
       label: 'Empresarial',

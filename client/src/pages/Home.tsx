@@ -1,6 +1,8 @@
 import Header from '@/components/Header';
 import HeroSection from '@/components/HeroSection';
-
+import MaisVelocidade from '@/components/MaisVelocidade';
+import MaisAplicativos from '@/components/MaisAplicativos';
+import MaisGloboPlay from '@/components/MaisGloboPlay';
 import Diferenciais from '@/components/Diferenciais';
 
 import PlanosResidenciais from '@/components/PlanosResidenciais';
@@ -31,7 +33,9 @@ export default function Home() {
       <Header />
       <main>
         <HeroSection />
-        <PlanosResidenciais />
+        <MaisVelocidade />
+        <MaisAplicativos />
+        <MaisGloboPlay />
         <Empresarial />
         <Diferenciais />
         <Planos5G />
