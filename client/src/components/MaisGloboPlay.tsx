@@ -1,16 +1,13 @@
 'use client';
 
-import { Tv, Check, MessageCircle } from 'lucide-react';
+import { Tv, Check, MessageCircle, TrendingDown } from 'lucide-react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 interface Plano {
   velocidade: string;
   preco: string;
-  precoComDesconto?: string;
-  temDesconto?: boolean;
-  popular: boolean;
-  desconto?: string;
   features: string[];
+  popular: boolean;
 }
 
 export default function MaisGloboPlay() {
@@ -72,14 +69,14 @@ export default function MaisGloboPlay() {
           {planos.map((plano, i) => (
             <div
               key={i}
-              className={`relative rounded-2xl overflow-hidden transition-all duration-500 transform animate-scale-in hover:shadow-2xl hover:scale-105 group ${
+              className={`relative rounded-2xl overflow-hidden transition-all duration-500 transform animate-scale-in hover:shadow-2xl hover:scale-105 ${
                 plano.popular ? 'md:scale-105 shadow-2xl' : 'shadow-lg'
               }`}
               style={{ animationDelay: `${0.4 + i * 0.1}s` }}
             >
               {/* Popular Badge */}
               {plano.popular && (
-                <div className="absolute top-0 right-0 bg-gradient-to-r from-[#FF6B35] to-[#FF8C42] text-white px-4 py-2 rounded-bl-2xl font-bold text-sm animate-bounce z-20">
+                <div className="absolute top-0 right-0 bg-[#3DD93D] text-white px-4 py-2 rounded-bl-2xl font-bold text-sm animate-bounce z-20">
                   MAIS POPULAR
                 </div>
               )}
@@ -87,58 +84,74 @@ export default function MaisGloboPlay() {
               {/* Card Background */}
               <div className={`p-8 h-full flex flex-col ${
                 plano.popular 
-                  ? 'bg-gradient-to-br from-[#D62828] via-[#F77F00] to-[#FCBF49]' 
-                  : 'bg-gradient-to-br from-[#2D1B1B] to-[#3D2B1B]'
+                  ? 'bg-gradient-to-br from-[#3DD93D] to-[#2BA82A]' 
+                  : 'bg-white'
               }`}>
-                {/* TV Icon */}
-                <div className="mb-6">
-                  <div className="relative w-16 h-16 flex items-center justify-center">
-                    <div className="absolute inset-0 bg-gradient-to-r from-[#FF6B35] to-[#FF8C42] rounded-full opacity-20 animate-pulse"></div>
-                    <Tv className="text-[#FF6B35] relative z-10" size={32} />
-                  </div>
-                </div>
-
                 {/* Velocity */}
-                <h3 className="text-3xl font-black text-white mb-2">{plano.velocidade}</h3>
-                <p className="text-white/60 mb-6 text-sm">de velocidade</p>
+                <h3 className={`text-3xl font-black mb-2 ${plano.popular ? 'text-white' : 'text-[#0D1B3E]'}`}>
+                  {plano.velocidade}
+                </h3>
 
                 {/* Price */}
-                <div className="mb-8 pb-8 border-b border-white/20">
-                  <p className="text-4xl font-black text-[#FCBF49]">{plano.preco}</p>
-                  <p className="text-white/60 text-sm mt-2">por mês</p>
+                <div className="mb-6">
+                  <p className={`text-4xl font-black ${plano.popular ? 'text-white' : 'text-[#3DD93D]'}`}>
+                    {plano.preco}
+                  </p>
                 </div>
 
                 {/* Features */}
-                <div className="space-y-4 mb-8 flex-1">
+                <div className="mb-8 space-y-3">
                   {plano.features.map((feature, idx) => (
                     <div key={idx} className="flex items-start gap-3">
-                      <Check size={20} className="text-[#FCBF49] flex-shrink-0 mt-1" />
-                      <span className="text-white/90 font-medium">{feature}</span>
+                      <Check size={20} className={plano.popular ? 'text-white' : 'text-[#3DD93D]'} />
+                      <span className={`text-sm font-semibold ${plano.popular ? 'text-white' : 'text-gray-700'}`}>
+                        {feature}
+                      </span>
                     </div>
                   ))}
                 </div>
 
+                {/* GloboPlay Section */}
+                <div className="mb-8 border-t border-opacity-20 border-white pt-6">
+                  <p className={`text-xs font-bold mb-4 ${plano.popular ? 'text-white' : 'text-[#FF1744]'}`}>
+                    APLICATIVO INCLUSO
+                  </p>
+                  <div className="flex justify-center">
+                    <div className="bg-white rounded-2xl p-6 flex flex-col items-center justify-center">
+                      <img
+                        src="https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/globoplay-hq_5eefcb22.png"
+                        alt="GloboPlay"
+                        className="h-20 w-20 object-contain mb-2"
+                      />
+                      <p className="text-sm font-bold text-gray-800">
+                        GloboPlay
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
                 {/* CTA Button */}
-                <button className={`w-full py-4 rounded-xl font-bold transition-all duration-300 flex items-center justify-center gap-2 group/btn ${
-                  plano.popular
-                    ? 'bg-white text-[#D62828] hover:bg-[#FCBF49] hover:text-[#2D1B1B] shadow-lg'
-                    : 'bg-[#FF6B35] text-white hover:bg-[#FCBF49] hover:text-[#2D1B1B] shadow-lg'
-                }`}>
+                <a
+                  href={`https://wa.me/556730272500?text=Ol%C3%A1!%20Gostaria%20de%20falar%20com%20um%20representante%20sobre%20o%20plano%20${plano.velocidade}%20de%20Internet%20%2B%20Globo%20Play.`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`w-full inline-flex items-center justify-center gap-2 font-bold py-3 px-6 rounded-full transition-all duration-300 hover:shadow-lg hover:scale-105 ${
+                    plano.popular
+                      ? 'bg-white text-[#3DD93D] hover:bg-gray-100'
+                      : 'bg-[#3DD93D] text-white hover:bg-[#2BA82A]'
+                  }`}
+                >
                   <MessageCircle size={18} />
                   Quero Contratar
-                </button>
+                </a>
               </div>
             </div>
           ))}
         </div>
 
-        {/* Bottom CTA */}
-        <div className="mt-16 text-center animate-fade-in-up animate-delay-400">
-          <p className="text-white/80 mb-4">Confira o que tem de novo no GloboPlay</p>
-          <a href="https://wa.me/556730272500" className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-6 py-3 rounded-full text-white font-bold hover:bg-white/20 transition-all border border-white/20">
-            <Tv size={18} />
-            Saiba Mais
-          </a>
+        {/* Info */}
+        <div className="mt-16 text-center text-white/80 text-sm">
+          <p>*Sem taxa de instalação. Consulte condições.</p>
         </div>
       </div>
     </section>

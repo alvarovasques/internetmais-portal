@@ -1,6 +1,6 @@
 'use client';
 
-import { Zap, Check, MessageCircle } from 'lucide-react';
+import { Zap, Check, MessageCircle, TrendingDown } from 'lucide-react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 interface Plano {
@@ -9,7 +9,6 @@ interface Plano {
   precoComDesconto?: string;
   temDesconto?: boolean;
   popular: boolean;
-  desconto?: string;
   features: string[];
 }
 
@@ -23,7 +22,6 @@ export default function MaisVelocidade() {
       precoComDesconto: 'R$ 89,90',
       temDesconto: true,
       popular: false,
-      desconto: '20% de desconto por pontualidade',
       features: ['400 Mbps de velocidade', 'Instalação grátis*', 'MaisTV (100+ canais)', 'Ubook', 'Kaspersky']
     },
     {
@@ -40,7 +38,6 @@ export default function MaisVelocidade() {
       precoComDesconto: 'R$ 129,90',
       temDesconto: true,
       popular: false,
-      desconto: '20% de desconto por pontualidade',
       features: ['800 Mbps de velocidade', 'Instalação grátis*', 'MaisTV (100+ canais)', 'Ubook', 'Kaspersky']
     },
   ];
@@ -80,14 +77,14 @@ export default function MaisVelocidade() {
           {planos.map((plano, i) => (
             <div
               key={i}
-              className={`relative rounded-2xl overflow-hidden transition-all duration-500 transform animate-scale-in hover:shadow-2xl hover:scale-105 group ${
+              className={`relative rounded-2xl overflow-hidden transition-all duration-500 transform animate-scale-in hover:shadow-2xl hover:scale-105 ${
                 plano.popular ? 'md:scale-105 shadow-2xl' : 'shadow-lg'
               }`}
               style={{ animationDelay: `${0.4 + i * 0.1}s` }}
             >
               {/* Popular Badge */}
               {plano.popular && (
-                <div className="absolute top-0 right-0 bg-gradient-to-r from-[#00D9FF] to-[#0099FF] text-white px-4 py-2 rounded-bl-2xl font-bold text-sm animate-bounce z-20">
+                <div className="absolute top-0 right-0 bg-[#3DD93D] text-white px-4 py-2 rounded-bl-2xl font-bold text-sm animate-bounce z-20">
                   MAIS POPULAR
                 </div>
               )}
@@ -95,69 +92,75 @@ export default function MaisVelocidade() {
               {/* Card Background */}
               <div className={`p-8 h-full flex flex-col ${
                 plano.popular 
-                  ? 'bg-gradient-to-br from-[#0099FF] via-[#0066CC] to-[#003D99]' 
-                  : 'bg-gradient-to-br from-[#1A1A2E] to-[#16213E]'
+                  ? 'bg-gradient-to-br from-[#3DD93D] to-[#2BA82A]' 
+                  : 'bg-white'
               }`}>
-                {/* Velocity Icon */}
-                <div className="mb-6">
-                  <div className="relative w-16 h-16 flex items-center justify-center">
-                    <div className="absolute inset-0 bg-gradient-to-r from-[#00D9FF] to-[#0099FF] rounded-full opacity-20 animate-pulse"></div>
-                    <Zap className="text-[#00D9FF] relative z-10" size={32} />
-                  </div>
-                </div>
-
                 {/* Velocity */}
-                <h3 className="text-3xl font-black text-white mb-2">{plano.velocidade}</h3>
-                <p className="text-white/60 mb-6 text-sm">de velocidade</p>
+                <h3 className={`text-3xl font-black mb-2 ${plano.popular ? 'text-white' : 'text-[#0D1B3E]'}`}>
+                  {plano.velocidade}
+                </h3>
 
                 {/* Price */}
-                <div className="mb-8 pb-8 border-b border-white/20">
-                  {plano.temDesconto && plano.precoComDesconto && (
-                    <>
-                      <p className="text-white/60 line-through text-sm mb-2">{plano.preco}</p>
-                      <p className="text-4xl font-black text-[#00D9FF]">{plano.precoComDesconto}</p>
-                    </>
-                  )}
-                  {!plano.temDesconto && (
-                    <p className="text-4xl font-black text-[#00D9FF]">{plano.preco}</p>
-                  )}
-                  <p className="text-white/60 text-sm mt-2">por mês</p>
-                  {plano.desconto && (
-                    <p className="text-[#00D9FF] text-xs mt-3 font-semibold">✓ {plano.desconto}</p>
+                <div className="mb-6">
+                  {plano.temDesconto ? (
+                    <div className="space-y-2">
+                      <div className="flex items-center gap-2">
+                        <p className={`text-sm line-through opacity-60 ${plano.popular ? 'text-white' : 'text-gray-500'}`}>
+                          {plano.preco}
+                        </p>
+                        <div className="flex items-center gap-1 bg-[#FF6B6B] text-white px-2 py-1 rounded-full text-xs font-bold animate-pulse">
+                          <TrendingDown size={12} />
+                          -R$ 20
+                        </div>
+                      </div>
+                      <p className={`text-4xl font-black ${plano.popular ? 'text-white' : 'text-[#3DD93D]'}`}>
+                        {plano.precoComDesconto}
+                      </p>
+                      <p className={`text-xs ${plano.popular ? 'text-white' : 'text-gray-600'}`}>
+                        ✓ Já com desconto de pontualidade
+                      </p>
+                    </div>
+                  ) : (
+                    <p className={`text-4xl font-black ${plano.popular ? 'text-white' : 'text-[#3DD93D]'}`}>
+                      {plano.preco}
+                    </p>
                   )}
                 </div>
 
                 {/* Features */}
-                <div className="space-y-4 mb-8 flex-1">
+                <div className="mb-8 space-y-3 flex-1">
                   {plano.features.map((feature, idx) => (
                     <div key={idx} className="flex items-start gap-3">
-                      <Check size={20} className="text-[#00D9FF] flex-shrink-0 mt-1" />
-                      <span className="text-white/90 font-medium">{feature}</span>
+                      <Check size={20} className={plano.popular ? 'text-white' : 'text-[#3DD93D]'} />
+                      <span className={`text-sm font-semibold ${plano.popular ? 'text-white' : 'text-gray-700'}`}>
+                        {feature}
+                      </span>
                     </div>
                   ))}
                 </div>
 
                 {/* CTA Button */}
-                <button className={`w-full py-4 rounded-xl font-bold transition-all duration-300 flex items-center justify-center gap-2 group/btn ${
-                  plano.popular
-                    ? 'bg-white text-[#0099FF] hover:bg-[#00D9FF] hover:text-[#003D99] shadow-lg'
-                    : 'bg-[#00D9FF] text-[#003D99] hover:bg-white shadow-lg'
-                }`}>
+                <a
+                  href={`https://wa.me/556730272500?text=Ol%C3%A1!%20Gostaria%20de%20falar%20com%20um%20representante%20sobre%20o%20plano%20${plano.velocidade}%20de%20Internet%20%2B%20Velocidade.`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`w-full inline-flex items-center justify-center gap-2 font-bold py-3 px-6 rounded-full transition-all duration-300 hover:shadow-lg hover:scale-105 ${
+                    plano.popular
+                      ? 'bg-white text-[#3DD93D] hover:bg-gray-100'
+                      : 'bg-[#3DD93D] text-white hover:bg-[#2BA82A]'
+                  }`}
+                >
                   <MessageCircle size={18} />
                   Quero Contratar
-                </button>
+                </a>
               </div>
             </div>
           ))}
         </div>
 
-        {/* Bottom CTA */}
-        <div className="mt-16 text-center animate-fade-in-up animate-delay-400">
-          <p className="text-white/80 mb-4">Dúvidas sobre qual plano escolher?</p>
-          <a href="https://wa.me/556730272500" className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-6 py-3 rounded-full text-white font-bold hover:bg-white/20 transition-all border border-white/20">
-            <MessageCircle size={18} />
-            Fale com nosso time
-          </a>
+        {/* Info */}
+        <div className="mt-16 text-center text-white/80 text-sm">
+          <p>*Sem taxa de instalação. Consulte condições.</p>
         </div>
       </div>
     </section>
