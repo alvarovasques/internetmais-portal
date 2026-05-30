@@ -9,8 +9,8 @@ import Home from "./pages/Home";
 import SobreNos from "./pages/SobreNos";
 import BairroPage from "./pages/BairroPage";
 import BairrosPage from "./pages/BairrosPage";
+import Vagas from "./pages/Vagas";
 import { useHashNavigation } from "./hooks/useHashNavigation";
-
 
 function Router() {
   const [location] = useLocation();
