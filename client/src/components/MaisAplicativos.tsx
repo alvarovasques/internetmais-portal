@@ -92,8 +92,16 @@ export default function MaisAplicativos() {
     <section 
       ref={ref} 
       id="mais-aplicativos" 
-      className="relative py-20 md:py-32 overflow-hidden bg-gradient-to-br from-[#1a0533] via-[#2d0a5e] to-[#0D1B3E]"
+      className="relative py-20 md:py-32 overflow-hidden"
+      style={{
+        backgroundImage: `url('https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/mais-aplicativos-bg-eFNqxoPa2NzR9nHLC2aWkm.webp')`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+      }}
     >
+      {/* Dark overlay for readability */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#1a0533]/85 via-[#2d0a5e]/80 to-[#0D1B3E]/85"></div>
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-10 left-10 w-72 h-72 bg-[#FFD700]/10 rounded-full blur-3xl animate-pulse"></div>
