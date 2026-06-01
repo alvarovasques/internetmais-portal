@@ -94,20 +94,14 @@ export default function MaisAplicativos() {
       id="mais-aplicativos" 
       className="relative py-20 md:py-32 overflow-hidden"
       style={{
-        backgroundImage: `url('https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/mais-aplicativos-bg-eFNqxoPa2NzR9nHLC2aWkm.webp')`,
+        backgroundImage: `url('https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/mais-aplicativos-bg-v2-5pL6YVruhpsJN9c3cbApED.webp')`,
         backgroundSize: 'cover',
-        backgroundPosition: 'center',
+        backgroundPosition: 'center 30%',
         backgroundRepeat: 'no-repeat',
       }}
     >
-      {/* Dark overlay for readability */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#1a0533]/85 via-[#2d0a5e]/80 to-[#0D1B3E]/85"></div>
-      {/* Animated background elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-10 left-10 w-72 h-72 bg-[#FFD700]/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-10 right-10 w-96 h-96 bg-[#3DD93D]/10 rounded-full blur-3xl animate-pulse" style={{animationDelay: '1s'}}></div>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl animate-pulse" style={{animationDelay: '2s'}}></div>
-      </div>
+      {/* Overlay leve — deixa a família e os ícones aparecerem */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/40 to-black/65"></div>
 
       <div className="container mx-auto px-4 relative z-10">
         {/* Header */}
