@@ -12,6 +12,8 @@ WORKDIR /app
 COPY --from=builder /app/package.json /app/package-lock.json ./
 COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/client/public ./client/public
-RUN npm install --legacy-peer-deps --prod
+RUN npm install --legacy-peer-deps --omit=dev
 EXPOSE 3000
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
+  CMD node -e "require('http').get('http://localhost:3000', (r) => {if (r.statusCode !== 200) throw new Error(r.statusCode)})"
 CMD ["npm", "start"]
