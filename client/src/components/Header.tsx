@@ -37,10 +37,7 @@ export default function Header() {
         { label: 'Telefonia Fixa', href: '/#telefonia-fixa' },
       ]
     },
-    {
-      label: 'Vagas',
-      href: '/vagas',
-    },
+    // { label: 'Vagas', href: '/vagas' }, // oculto temporariamente
     {
       label: 'Aplicativos',
       href: 'https://www.portaldoassinante.com/internetmais/login',
