@@ -94,7 +94,7 @@ export default function MaisAplicativos() {
       id="mais-aplicativos" 
       className="relative py-20 md:py-32 overflow-hidden"
       style={{
-        backgroundImage: 'url(https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/mais-aplicativos-hero-Z4vN6cHwGTvB7VMNAX47eT.webp)',
+        backgroundImage: 'url(https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/mais-aplicativos-hero-VXvqaDU3CJkXsfjjTGh9GE.webp)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundAttachment: 'fixed'
