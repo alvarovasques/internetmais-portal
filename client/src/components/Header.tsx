@@ -38,6 +38,10 @@ export default function Header() {
       ]
     },
     {
+      label: 'Vagas',
+      href: '/vagas',
+    },
+    {
       label: 'Aplicativos',
       href: 'https://www.portaldoassinante.com/internetmais/login',
       external: true

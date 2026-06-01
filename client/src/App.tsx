@@ -10,6 +10,7 @@ import SobreNos from "./pages/SobreNos";
 import BairroPage from "./pages/BairroPage";
 import BairrosPage from "./pages/BairrosPage";
 import Vagas from "./pages/Vagas";
+import AdminRH from "./pages/AdminRH";
 import { useHashNavigation } from "./hooks/useHashNavigation";
 
 function Router() {
@@ -31,6 +32,8 @@ function Router() {
       <Route path="/sobre-nos" component={SobreNos} />
       <Route path="/bairros" component={BairrosPage} />
       <Route path="/bairro/:slug" component={BairroPage} />
+      <Route path="/vagas" component={Vagas} />
+      <Route path="/admin/rh" component={AdminRH} />
       <Route path="/404" component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />
