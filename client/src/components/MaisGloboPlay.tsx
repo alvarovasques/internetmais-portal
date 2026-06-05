@@ -86,7 +86,8 @@ export default function MaisGloboPlay() {
       preco: 'R$ 139,90',
       popular: false,
       appsStandard: 1,
-      features: ['400 Mbps de velocidade', 'Escolha 1 App Standard', 'Instalação grátis*', 'MaisTV (100+ canais)']
+      appsPremium: 1,
+      features: ['400 Mbps de velocidade', 'Escolha 1 App Standard + 1 Premium', 'Instalação grátis*', 'MaisTV (100+ canais)']
     },
     {
       velocidade: '600 Mega',
@@ -239,6 +240,9 @@ export default function MaisGloboPlay() {
                 <div className="mb-6">
                   <p className={`text-4xl font-black ${plano.popular ? 'text-white' : 'text-[#3DD93D]'}`}>
                     {plano.preco}
+                  </p>
+                  <p className={`text-xs mt-1 ${plano.popular ? 'text-white/90' : 'text-gray-600'}`}>
+                    ✓ Já com desconto de pontualidade
                   </p>
                 </div>
 
