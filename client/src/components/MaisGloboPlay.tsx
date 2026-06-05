@@ -57,7 +57,7 @@ export default function MaisGloboPlay() {
             <span className="text-white font-bold">Mais GloboPlay</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
-            Entretenimento Premium em Família
+            Entretenimento para toda a Família
           </h2>
           <p className="text-xl text-white/80 max-w-2xl mx-auto">
             Acesso a GloboPlay, séries, filmes e esportes ao vivo para toda a família
