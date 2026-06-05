@@ -83,7 +83,7 @@ export default function MaisGloboPlay() {
   const planosPremium: Plano[] = [
     {
       velocidade: '400 Mega',
-      preco: 'R$ 129,90',
+      preco: 'R$ 139,90',
       popular: false,
       appsStandard: 1,
       features: ['400 Mbps de velocidade', 'Escolha 1 App Standard', 'Instalação grátis*', 'MaisTV (100+ canais)']
@@ -307,7 +307,7 @@ export default function MaisGloboPlay() {
                 {/* GloboPlay Section */}
                 <div className={`mb-8 pt-5 ${isPremium ? 'border-t border-opacity-20 border-white' : 'border-t border-opacity-20 border-white pt-6'}`}>
                   <p className={`text-xs font-bold mb-4 ${plano.popular ? 'text-white' : isPremium ? 'text-[#FF8C00]' : 'text-[#FF1744]'}`}>
-                    {isPremium ? '⭐ APP ESTRELA INCLUSO' : 'APLICATIVO INCLUSO'}
+                    {isPremium ? '⭐ INCLUSO' : 'APLICATIVO INCLUSO'}
                   </p>
                   <div className="flex justify-center">
                     <div className={`rounded-2xl p-5 flex flex-col items-center justify-center ${
