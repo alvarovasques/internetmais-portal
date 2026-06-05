@@ -126,6 +126,9 @@ export default function MaisGloboPlay() {
                       <p className="text-sm font-bold text-gray-800">
                         GloboPlay
                       </p>
+                      <p className="text-xs text-gray-500 font-medium">
+                        Básico
+                      </p>
                     </div>
                   </div>
                 </div>
