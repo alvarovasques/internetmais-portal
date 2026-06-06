@@ -81,24 +81,33 @@ export default function MaisGloboPlay() {
     },
   ];
 
+  const diferenciais = [
+    'Todo o conteúdo sem anúncios e a maior cobertura de esportes, shows e entretenimento',
+    'Maior cobertura do esporte no SporTV: Copa do Brasil, Estaduais, NFL, Olimpíadas e mais',
+    'Até 5 perfis — 1 titular + 4 adicionais — cada um com experiência personalizada',
+    'Baixe e assista offline onde quiser',
+    'Assista em até 5 telas simultâneas',
+    'Resolução Full HD e 4K',
+  ];
+
   const planosPremium: Plano[] = [
     {
       velocidade: '400 Mega',
       preco: 'R$ 109,90',
       popular: false,
-      features: ['400 Mbps de velocidade', 'Instalação grátis*', 'MaisTV (100+ canais)', 'Sem anúncios']
+      features: ['400 Mbps de velocidade', 'Instalação grátis*', 'MaisTV (100+ canais)', ...diferenciais]
     },
     {
       velocidade: '600 Mega',
       preco: 'R$ 129,90',
       popular: true,
-      features: ['600 Mbps de velocidade', 'Instalação grátis*', 'MaisTV (100+ canais)', 'Sem anúncios']
+      features: ['600 Mbps de velocidade', 'Instalação grátis*', 'MaisTV (100+ canais)', ...diferenciais]
     },
     {
       velocidade: '800 Mega',
       preco: 'R$ 149,90',
       popular: false,
-      features: ['800 Mbps de velocidade', 'Instalação grátis*', 'MaisTV (100+ canais)', 'Sem anúncios']
+      features: ['800 Mbps de velocidade', 'Instalação grátis*', 'MaisTV (100+ canais)', ...diferenciais]
     },
   ];
 
