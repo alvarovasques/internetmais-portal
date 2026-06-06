@@ -68,7 +68,7 @@ export default function MaisGloboPlay() {
     },
     {
       velocidade: '600 Mega',
-      preco: 'R$ 119,90',
+      preco: 'R$ 129,90',
       popular: true,
       features: ['600 Mbps de velocidade', 'Instalação grátis*', 'MaisTV (100+ canais)', 'Ubook', 'Kaspersky']
     },
