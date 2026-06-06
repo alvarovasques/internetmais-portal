@@ -85,25 +85,19 @@ export default function MaisGloboPlay() {
       velocidade: '400 Mega',
       preco: 'R$ 139,90',
       popular: false,
-      appsStandard: 1,
-      appsPremium: 1,
-      features: ['400 Mbps de velocidade', 'Escolha 1 App Standard + 1 Premium', 'Instalação grátis*', 'MaisTV (100+ canais)']
+      features: ['400 Mbps de velocidade', 'Instalação grátis*', 'MaisTV (100+ canais)']
     },
     {
       velocidade: '600 Mega',
       preco: 'R$ 149,90',
       popular: true,
-      appsStandard: 1,
-      appsPremium: 1,
-      features: ['600 Mbps de velocidade', 'Escolha 1 App Standard + 1 Premium', 'Instalação grátis*', 'MaisTV (100+ canais)']
+      features: ['600 Mbps de velocidade', 'Instalação grátis*', 'MaisTV (100+ canais)']
     },
     {
       velocidade: '800 Mega',
       preco: 'R$ 169,90',
       popular: false,
-      appsStandard: 1,
-      appsPremium: 1,
-      features: ['800 Mbps de velocidade', 'Escolha 1 App Standard + 1 Premium', 'Instalação grátis*', 'MaisTV (100+ canais)']
+      features: ['800 Mbps de velocidade', 'Instalação grátis*', 'MaisTV (100+ canais)']
     },
   ];
 
