@@ -22,7 +22,8 @@ interface Plano {
 
 export default function MaisGloboPlay() {
   const ref = useScrollAnimation();
-  const [abaAtiva, setAbaAtiva] = useState<'basico' | 'premium'>('basico');
+  // Aba Básico oculta provisoriamente — apenas Premium exibido
+  const [abaAtiva, setAbaAtiva] = useState<'basico' | 'premium'>('premium');
 
   // Apps Standard (mesmos do MaisAplicativos)
   const appsStandard: App[] = [
@@ -83,19 +84,19 @@ export default function MaisGloboPlay() {
   const planosPremium: Plano[] = [
     {
       velocidade: '400 Mega',
-      preco: 'R$ 139,90',
+      preco: 'R$ 109,90',
       popular: false,
       features: ['400 Mbps de velocidade', 'Instalação grátis*', 'MaisTV (100+ canais)']
     },
     {
       velocidade: '600 Mega',
-      preco: 'R$ 149,90',
+      preco: 'R$ 129,90',
       popular: true,
       features: ['600 Mbps de velocidade', 'Instalação grátis*', 'MaisTV (100+ canais)']
     },
     {
       velocidade: '800 Mega',
-      preco: 'R$ 169,90',
+      preco: 'R$ 149,90',
       popular: false,
       features: ['800 Mbps de velocidade', 'Instalação grátis*', 'MaisTV (100+ canais)']
     },
@@ -134,67 +135,34 @@ export default function MaisGloboPlay() {
           </p>
         </div>
 
-        {/* Abas */}
-        <div className="flex justify-center mb-12 animate-fade-in-up animate-delay-200">
-          <div className="relative flex bg-white/10 backdrop-blur-md rounded-2xl p-1.5 border border-white/20 gap-1">
-            {/* Aba Básico */}
-            <button
-              onClick={() => setAbaAtiva('basico')}
-              className={`relative flex items-center gap-2 px-8 py-4 rounded-xl font-black text-base transition-all duration-300 ${
-                abaAtiva === 'basico'
-                  ? 'bg-white text-[#0D1B3E] shadow-xl scale-105'
-                  : 'text-white hover:bg-white/10'
-              }`}
-            >
-              <Tv size={18} className={abaAtiva === 'basico' ? 'text-[#FF6B35]' : 'text-white/70'} />
-              <span>Mais GloboPlay</span>
-              <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${
-                abaAtiva === 'basico'
-                  ? 'bg-[#FF6B35] text-white'
-                  : 'bg-white/20 text-white'
-              }`}>
-                BÁSICO
-              </span>
-            </button>
-
-            {/* Aba Premium */}
-            <button
-              onClick={() => setAbaAtiva('premium')}
-              className={`relative flex items-center gap-2 px-8 py-4 rounded-xl font-black text-base transition-all duration-300 ${
-                abaAtiva === 'premium'
-                  ? 'bg-gradient-to-r from-[#FFD700] to-[#FF8C00] text-white shadow-xl scale-105'
-                  : 'text-white hover:bg-white/10'
-              }`}
-            >
-              <Star size={18} className={abaAtiva === 'premium' ? 'text-white' : 'text-yellow-400'} fill={abaAtiva === 'premium' ? 'white' : 'currentColor'} />
-              <span>Mais GloboPlay</span>
-              <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${
-                abaAtiva === 'premium'
-                  ? 'bg-white/30 text-white'
-                  : 'bg-yellow-400/30 text-yellow-300'
-              }`}>
-                PREMIUM
-              </span>
-              {abaAtiva !== 'premium' && (
-                <span className="absolute -top-2 -right-2 bg-yellow-400 text-[#0D1B3E] text-[10px] font-black px-2 py-0.5 rounded-full animate-pulse">
-                  NOVO
-                </span>
-              )}
-            </button>
+        {/* Badge Copa do Mundo — promoção */}
+        <div className="flex justify-center mb-10 animate-fade-in-up animate-delay-200">
+          <div className="relative bg-gradient-to-r from-[#006400] via-[#FFD700] to-[#006400] p-0.5 rounded-2xl shadow-2xl max-w-3xl w-full">
+            <div className="bg-[#0D1B3E]/90 backdrop-blur-md rounded-2xl px-6 py-5 flex flex-col md:flex-row items-center gap-4 text-center md:text-left">
+              <div className="text-5xl">⚽</div>
+              <div className="flex-1">
+                <p className="text-[#FFD700] font-black text-lg md:text-xl leading-tight">
+                  🏆 PROMOÇÃO COPA DO MUNDO
+                </p>
+                <p className="text-white font-bold text-base mt-1">
+                  Assine a InternetMais e ganhe <span className="text-[#FFD700]">GloboPlay Premium</span> no preço do Básico!
+                </p>
+                <p className="text-white/60 text-sm mt-1">
+                  Promoção válida até <span className="text-white font-semibold">31/07/2026</span>. Aproveite e assista à Copa com qualidade máxima.
+                </p>
+              </div>
+              <div className="bg-[#FFD700] text-[#0D1B3E] font-black text-sm px-4 py-2 rounded-full whitespace-nowrap animate-pulse">
+                ATÉ 31/07/2026
+              </div>
+            </div>
           </div>
         </div>
 
-        {/* Badge descritivo da aba */}
+        {/* Badge descritivo */}
         <div className="text-center mb-10">
-          {abaAtiva === 'basico' ? (
-            <p className="text-white/70 text-sm">
-              GloboPlay Básico incluso — filmes, séries e conteúdo ao vivo
-            </p>
-          ) : (
-            <p className="text-yellow-300 text-sm font-semibold">
-              ⭐ GloboPlay Premium incluso + Apps Standard e Premium à sua escolha — tudo em um só plano
-            </p>
-          )}
+          <p className="text-yellow-300 text-sm font-semibold">
+            ⭐ GloboPlay Premium incluso — filmes, séries, esportes ao vivo e conteúdo exclusivo sem anúncios
+          </p>
         </div>
 
         {/* Plans Grid */}
