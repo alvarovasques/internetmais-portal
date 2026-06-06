@@ -86,19 +86,19 @@ export default function MaisGloboPlay() {
       velocidade: '400 Mega',
       preco: 'R$ 109,90',
       popular: false,
-      features: ['400 Mbps de velocidade', 'Instalação grátis*', 'MaisTV (100+ canais)']
+      features: ['400 Mbps de velocidade', 'Instalação grátis*', 'MaisTV (100+ canais)', 'Sem anúncios']
     },
     {
       velocidade: '600 Mega',
       preco: 'R$ 129,90',
       popular: true,
-      features: ['600 Mbps de velocidade', 'Instalação grátis*', 'MaisTV (100+ canais)']
+      features: ['600 Mbps de velocidade', 'Instalação grátis*', 'MaisTV (100+ canais)', 'Sem anúncios']
     },
     {
       velocidade: '800 Mega',
       preco: 'R$ 149,90',
       popular: false,
-      features: ['800 Mbps de velocidade', 'Instalação grátis*', 'MaisTV (100+ canais)']
+      features: ['800 Mbps de velocidade', 'Instalação grátis*', 'MaisTV (100+ canais)', 'Sem anúncios']
     },
   ];
 
