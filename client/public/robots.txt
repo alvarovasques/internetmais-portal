@@ -1,4 +1,4 @@
-# InternetMais Robots.txt
+# Internet Mais Robots.txt
 # Allow all crawlers to index the site
 User-agent: *
 Allow: /

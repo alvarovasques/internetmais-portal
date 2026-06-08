@@ -20,10 +20,10 @@ function Router() {
   useEffect(() => {
     // Definir títulos dinâmicos por página
     const titles: Record<string, string> = {
-      '/': 'InternetMais - Fibra Óptica, 5G e Internet Empresarial',
-      '/sobre-nos': 'Sobre Nós - InternetMais | Missão, Visão e Valores',
+      '/': 'Internet Mais - Fibra Óptica, 5G e Internet Empresarial',
+      '/sobre-nos': 'Sobre Nós - Internet Mais | Missão, Visão e Valores',
     };
-    document.title = titles[location] || 'InternetMais';
+    document.title = titles[location] || 'Internet Mais';
   }, [location]);
 
   return (

@@ -9,7 +9,7 @@ export default function Footer() {
           <div>
             <img
               src="https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/Logo_internet_MAIS_9b6aefe1.png"
-              alt="InternetMais - Provedor de Fibra Óptica e Chip 5G em Campo Grande, MS"
+              alt="Internet Mais - Provedor de Fibra Óptica e Chip 5G em Campo Grande, MS"
               className="h-32 md:h-40 mb-6"
               loading="lazy"
             />
@@ -133,10 +133,10 @@ export default function Footer() {
           {/* Copyright */}
           <div className="text-center text-gray-400 text-sm">
             <p className="mb-2">
-              InternetMais — Grupo Easy Net | Campo Grande/MS
+              Internet Mais — Grupo Easy Net | Campo Grande/MS
             </p>
             <p>
-              © 2026 InternetMais. Todos os direitos reservados.
+              © 2026 Internet Mais. Todos os direitos reservados.
             </p>
           </div>
         </div>
