@@ -322,7 +322,10 @@ export default function MaisGloboPlay() {
                     if (typeof window !== 'undefined' && (window as any).dataLayer) {
                       (window as any).dataLayer.push({
                         'event': 'Click_Whatsapp',
-                        'button_location': `MaisGloboPlay - ${plano.velocidade} ${isPremium ? 'Premium' : 'Básico'}`
+                        'button_location': `MaisGloboPlay - ${plano.velocidade} ${isPremium ? 'Premium' : 'Básico'}`,
+                        'plan_name': plano.velocidade,
+                        'plan_price': plano.precoComDesconto ?? plano.preco,
+                        'plan_type': `Internet + GloboPlay ${isPremium ? 'Premium' : 'Básico'}`
                       });
                     }
                   }}

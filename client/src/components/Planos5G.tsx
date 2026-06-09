@@ -135,11 +135,14 @@ export default function Planos5G() {
                   rel="noopener noreferrer"
                   onClick={() => {
                     if (typeof window !== 'undefined' && (window as any).dataLayer) {
-                      (window as any).dataLayer.push({
-                        'event': 'Click_Whatsapp',
-                        'button_location': `Planos5G - ${plano.gb}GB`
-                      });
-                    }
+                       (window as any).dataLayer.push({
+                         'event': 'Click_Whatsapp',
+                         'button_location': `Planos5G - ${plano.gb}GB`,
+                         'plan_name': `Chip 5G ${plano.gb}`,
+                         'plan_price': plano.preco,
+                         'plan_type': 'Chip 5G'
+                       });
+                     }
                   }}
                   className={`w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl font-bold transition-all duration-300 text-sm ${
                     plano.popular

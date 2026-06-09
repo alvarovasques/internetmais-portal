@@ -148,7 +148,10 @@ export default function MaisVelocidade() {
                     if (typeof window !== 'undefined' && (window as any).dataLayer) {
                       (window as any).dataLayer.push({
                         'event': 'Click_Whatsapp',
-                        'button_location': `MaisVelocidade - ${plano.velocidade}`
+                        'button_location': `MaisVelocidade - ${plano.velocidade}`,
+                        'plan_name': plano.velocidade,
+                        'plan_price': plano.precoComDesconto ?? plano.preco,
+                        'plan_type': 'Internet + Velocidade'
                       });
                     }
                   }}

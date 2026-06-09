@@ -73,7 +73,10 @@ export default function Empresarial() {
                   if (typeof window !== 'undefined' && (window as any).dataLayer) {
                     (window as any).dataLayer.push({
                       'event': 'Click_Whatsapp',
-                      'button_location': `Empresarial - ${plano.velocidade}`
+                      'button_location': `Empresarial - ${plano.velocidade}`,
+                      'plan_name': plano.velocidade,
+                      'plan_price': plano.preco,
+                      'plan_type': 'Internet Empresarial'
                     });
                   }
                 }}

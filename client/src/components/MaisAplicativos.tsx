@@ -252,7 +252,10 @@ export default function MaisAplicativos() {
                     if (typeof window !== 'undefined' && (window as any).dataLayer) {
                       (window as any).dataLayer.push({
                         'event': 'Click_Whatsapp',
-                        'button_location': `MaisAplicativos - ${plano.velocidade}`
+                        'button_location': `MaisAplicativos - ${plano.velocidade}`,
+                        'plan_name': plano.velocidade,
+                        'plan_price': plano.precoComDesconto ?? plano.preco,
+                        'plan_type': 'Internet + Aplicativos'
                       });
                     }
                   }}

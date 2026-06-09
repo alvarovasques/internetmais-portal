@@ -373,9 +373,13 @@ export default function PlanosResidenciais() {
                   rel="noopener noreferrer"
                   onClick={() => {
                     if (typeof window !== 'undefined' && (window as any).dataLayer) {
+                      const planType = activeTab === 'velocidade' ? 'Internet + Velocidade' : activeTab === 'aplicativos' ? 'Internet + Aplicativos' : 'Internet + GloboPlay';
                       (window as any).dataLayer.push({
                         'event': 'Click_Whatsapp',
-                        'button_location': `PlanosResidenciais - ${plano.velocidade}`
+                        'button_location': `PlanosResidenciais - ${plano.velocidade} - ${planType}`,
+                        'plan_name': plano.velocidade,
+                        'plan_price': plano.precoComDesconto ?? plano.preco,
+                        'plan_type': planType
                       });
                     }
                   }}
