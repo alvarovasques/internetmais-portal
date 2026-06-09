@@ -43,10 +43,16 @@ export default function CopaDoMundo() {
   const ref = useScrollAnimation();
 
   const handleWhatsApp = () => {
+    if (typeof window !== 'undefined' && (window as any).dataLayer) {
+      (window as any).dataLayer.push({
+        'event': 'Click_Whatsapp',
+        'button_location': 'CopaDoMundo - GloboPlay Premium R$22,90'
+      });
+    }
     const msg = encodeURIComponent(
-      'Olá! Sou assinante InternetMais e quero adicionar o GloboPlay Premium por R$22,90 para assistir à Copa do Mundo. Podem me ajudar?'
+      'Olá! Sou assinante Internet Mais e quero adicionar o GloboPlay Premium por R$22,90 para assistir à Copa do Mundo. Podem me ajudar?'
     );
-    window.open(`https://wa.me/5521999999999?text=${msg}`, '_blank');
+    window.open(`https://wa.me/556730272500?text=${msg}`, '_blank');
   };
 
   return (
