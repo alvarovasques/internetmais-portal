@@ -2,6 +2,7 @@
 
 import { Tv, Check, MessageCircle, Star, TrendingDown } from 'lucide-react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+import { useViewPlanTracker } from '@/hooks/useViewPlanTracker';
 import { useState } from 'react';
 
 interface App {
@@ -24,6 +25,10 @@ export default function MaisGloboPlay() {
   const ref = useScrollAnimation();
   // Aba Básico oculta provisoriamente — apenas Premium exibido
   const [abaAtiva, setAbaAtiva] = useState<'basico' | 'premium'>('premium');
+  useViewPlanTracker(ref as React.RefObject<HTMLElement>, {
+    section_name: 'MaisGloboPlay',
+    plan_type: 'Internet + GloboPlay',
+  });
 
   // Apps Standard (mesmos do MaisAplicativos)
   const appsStandard: App[] = [

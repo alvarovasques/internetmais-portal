@@ -2,6 +2,7 @@
 
 import { Tag, Check, MessageCircle, TrendingDown } from 'lucide-react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+import { useViewPlanTracker } from '@/hooks/useViewPlanTracker';
 
 interface App {
   name: string;
@@ -21,6 +22,10 @@ interface Plano {
 
 export default function MaisAplicativos() {
   const ref = useScrollAnimation();
+  useViewPlanTracker(ref as React.RefObject<HTMLElement>, {
+    section_name: 'MaisAplicativos',
+    plan_type: 'Internet + Aplicativos',
+  });
 
   // Apps disponíveis
   const appsStandard: App[] = [

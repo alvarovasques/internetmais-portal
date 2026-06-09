@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { Zap, Tv, Tag, Check, MessageCircle, TrendingDown } from 'lucide-react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+import { useViewPlanTracker } from '@/hooks/useViewPlanTracker';
 
 interface App {
   name: string;
@@ -24,6 +25,10 @@ interface Plano {
 export default function PlanosResidenciais() {
   const ref = useScrollAnimation();
   const [activeTab, setActiveTab] = useState<'velocidade' | 'aplicativos' | 'globoplay'>('velocidade');
+  useViewPlanTracker(ref as React.RefObject<HTMLElement>, {
+    section_name: 'PlanosResidenciais',
+    plan_type: 'Planos Residenciais',
+  });
 
   // Apps disponíveis
   const appsStandard: App[] = [

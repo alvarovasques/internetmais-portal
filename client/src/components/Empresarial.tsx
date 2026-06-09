@@ -1,8 +1,13 @@
 import { Wifi, Clock, Network } from 'lucide-react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+import { useViewPlanTracker } from '@/hooks/useViewPlanTracker';
 
 export default function Empresarial() {
   const ref = useScrollAnimation();
+  useViewPlanTracker(ref as React.RefObject<HTMLElement>, {
+    section_name: 'Empresarial',
+    plan_type: 'Internet Empresarial',
+  });
   const planos = [
     { velocidade: '400 Mega', preco: 'R$ 229,90/mês' },
     { velocidade: '600 Mega', preco: 'R$ 269,90/mês' },

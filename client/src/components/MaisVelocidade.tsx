@@ -2,6 +2,7 @@
 
 import { Zap, Check, MessageCircle, TrendingDown } from 'lucide-react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+import { useViewPlanTracker } from '@/hooks/useViewPlanTracker';
 
 interface Plano {
   velocidade: string;
@@ -14,6 +15,10 @@ interface Plano {
 
 export default function MaisVelocidade() {
   const ref = useScrollAnimation();
+  useViewPlanTracker(ref as React.RefObject<HTMLElement>, {
+    section_name: 'MaisVelocidade',
+    plan_type: 'Internet + Velocidade',
+  });
 
   const planos: Plano[] = [
     {

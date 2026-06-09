@@ -1,8 +1,13 @@
 import { MessageCircle, Check, Zap, Smartphone } from 'lucide-react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+import { useViewPlanTracker } from '@/hooks/useViewPlanTracker';
 
 export default function Planos5G() {
   const ref = useScrollAnimation();
+  useViewPlanTracker(ref as React.RefObject<HTMLElement>, {
+    section_name: 'Planos5G',
+    plan_type: 'Chip 5G',
+  });
   const planos = [
     {
       gb: '1GB',
