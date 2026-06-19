@@ -32,49 +32,48 @@ function openWA(location: string, msg?: string) {
   window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`, '_blank');
 }
 
-// Logos reais dos canais da CDN TV
-const BASE = 'https://cdn.tv.br/wp-content/uploads/2026/05/';
+// Logos hospedadas localmente em client/public/canais/ — versionadas no repositório e publicadas na VPS
 const canaisDestaque = [
-  { nome: 'TV Globo', logo: 'https://cdn.tv.br/wp-content/uploads/2026/05/TVGlobo2025.webp' },
-  { nome: 'SBT', logo: BASE + 'sbt-.png' },
-  { nome: 'Record TV', logo: BASE + 'record-tv.png' },
-  { nome: 'Band', logo: BASE + 'band.png' },
-  { nome: 'Rede TV!', logo: BASE + 'rede-tv.png' },
-  { nome: 'TV Brasil', logo: BASE + 'tv-brasil.png' },
-  { nome: 'TV Câmara', logo: BASE + 'tv-camara.png' },
-  { nome: 'TV Senado', logo: BASE + 'tv-senado.png' },
-  { nome: 'TV Justiça', logo: BASE + 'tv-justica.png' },
-  { nome: 'Canal Futura', logo: BASE + 'futura.png' },
-  { nome: 'RBS TV', logo: BASE + 'rbs-tv.png' },
-  { nome: 'Aparecida', logo: BASE + 'aparecida.png' },
-  { nome: 'Rede Vida', logo: BASE + 'rede-vida.png' },
-  { nome: 'Canção Nova', logo: BASE + 'cancao-nova-tv.png' },
-  { nome: 'RIT', logo: BASE + 'rit.png' },
-  { nome: 'Ulbra TV', logo: BASE + 'ulbra-tv.png' },
-  { nome: 'TVE', logo: BASE + 'tve.png' },
-  { nome: 'ChefTV+', logo: BASE + 'CHEFTV.png' },
-  { nome: 'Adesso TV', logo: BASE + 'adesso-tv.png' },
-  { nome: 'Agro+', logo: BASE + 'agro.png' },
-  { nome: 'Agro Canal', logo: BASE + 'agro-canal.png' },
-  { nome: 'Clipstation', logo: BASE + 'CLIPSTATION.png' },
-  { nome: 'Clipstation Rock', logo: BASE + 'CLIPSTATION-ROCK.png' },
-  { nome: 'Clipstation Metal', logo: BASE + 'Clipstation-metal.png' },
-  { nome: 'Clipstation Rádio', logo: BASE + 'Clipstation-radio.png' },
-  { nome: 'Rede CNT', logo: BASE + 'rede-cnt.png' },
-  { nome: 'Al Jazeera', logo: BASE + 'aljazeera.png' },
-  { nome: 'Urban Movies', logo: BASE + 'urban-movies.png' },
-  { nome: 'Urban Series', logo: BASE + 'urban-series.png' },
-  { nome: 'Urban Kids', logo: BASE + 'urban-kids.png' },
-  { nome: 'Urban Docs', logo: BASE + 'urban-docs.png' },
-  { nome: 'Urban Retro', logo: BASE + 'urban-retro.png' },
-  { nome: 'Top Film', logo: BASE + 'top-film.png' },
-  { nome: 'Top Action', logo: BASE + 'top-action.png' },
-  { nome: 'Top Family', logo: BASE + 'top-family.png' },
-  { nome: 'Mundo Animal', logo: BASE + 'Mundo-Animal.png' },
-  { nome: 'Mundo Science', logo: BASE + 'Mundo-Science.png' },
-  { nome: 'PlayTV', logo: BASE + 'PlayTV.png' },
-  { nome: 'Polishop', logo: BASE + 'polishop.png' },
-  { nome: 'Sesc TV', logo: BASE + 'sesc-tv.png' },
+  { nome: 'TV Globo', logo: '/canais/tv-globo.webp' },
+  { nome: 'SBT', logo: '/canais/sbt.png' },
+  { nome: 'Record TV', logo: '/canais/record-tv.png' },
+  { nome: 'Band', logo: '/canais/band.png' },
+  { nome: 'Rede TV!', logo: '/canais/rede-tv.png' },
+  { nome: 'TV Brasil', logo: '/canais/tv-brasil.png' },
+  { nome: 'TV Câmara', logo: '/canais/tv-camara.png' },
+  { nome: 'TV Senado', logo: '/canais/tv-senado.png' },
+  { nome: 'TV Justiça', logo: '/canais/tv-justica.png' },
+  { nome: 'Canal Futura', logo: '/canais/futura.png' },
+  { nome: 'RBS TV', logo: '/canais/rbs-tv.png' },
+  { nome: 'Aparecida', logo: '/canais/aparecida.png' },
+  { nome: 'Rede Vida', logo: '/canais/rede-vida.png' },
+  { nome: 'Canção Nova', logo: '/canais/cancao-nova.png' },
+  { nome: 'RIT', logo: '/canais/rit.png' },
+  { nome: 'Ulbra TV', logo: '/canais/ulbra-tv.png' },
+  { nome: 'TVE', logo: '/canais/tve.png' },
+  { nome: 'ChefTV+', logo: '/canais/cheftv.png' },
+  { nome: 'Adesso TV', logo: '/canais/adesso-tv.png' },
+  { nome: 'Agro+', logo: '/canais/agro.png' },
+  { nome: 'Agro Canal', logo: '/canais/agro-canal.png' },
+  { nome: 'Clipstation', logo: '/canais/clipstation.png' },
+  { nome: 'Clipstation Rock', logo: '/canais/clipstation-rock.png' },
+  { nome: 'Clipstation Metal', logo: '/canais/clipstation-metal.png' },
+  { nome: 'Clipstation Rádio', logo: '/canais/clipstation-radio.png' },
+  { nome: 'Rede CNT', logo: '/canais/rede-cnt.png' },
+  { nome: 'Al Jazeera', logo: '/canais/aljazeera.png' },
+  { nome: 'Urban Movies', logo: '/canais/urban-movies.png' },
+  { nome: 'Urban Series', logo: '/canais/urban-series.png' },
+  { nome: 'Urban Kids', logo: '/canais/urban-kids.png' },
+  { nome: 'Urban Docs', logo: '/canais/urban-docs.png' },
+  { nome: 'Urban Retro', logo: '/canais/urban-retro.png' },
+  { nome: 'Top Film', logo: '/canais/top-film.png' },
+  { nome: 'Top Action', logo: '/canais/top-action.png' },
+  { nome: 'Top Family', logo: '/canais/top-family.png' },
+  { nome: 'Mundo Animal', logo: '/canais/mundo-animal.png' },
+  { nome: 'Mundo Science', logo: '/canais/mundo-science.png' },
+  { nome: 'PlayTV', logo: '/canais/playtv.png' },
+  { nome: 'Polishop', logo: '/canais/polishop.png' },
+  { nome: 'Sesc TV', logo: '/canais/sesc-tv.png' },
 ];
 
 const categorias = [
@@ -155,7 +154,7 @@ export default function MaisTV() {
       {/* ─── HERO ─── */}
       <section
         ref={sectionRef}
-        className="relative h-[90vh] min-h-[600px] max-h-[900px] flex items-center overflow-hidden pt-16 md:pt-20"
+        className="relative w-full h-screen md:h-[600px] flex items-center overflow-hidden"
         style={{ backgroundImage: `url(${HERO_BG})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
       >
         {/* Gradiente da esquerda para cobrir texto */}
