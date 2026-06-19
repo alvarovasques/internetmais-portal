@@ -273,7 +273,7 @@ export default function MaisTV() {
               <div
                 key={canal.nome}
                 title={canal.nome}
-                className="group bg-white/20 border border-white/20 rounded-xl p-2.5 flex items-center justify-center aspect-square hover:border-[#3DD93D]/60 hover:bg-white/30 transition-all duration-200 cursor-default"
+                className="group bg-white/70 border border-white/30 rounded-xl p-2.5 flex items-center justify-center aspect-square hover:border-[#3DD93D]/60 hover:bg-white/90 transition-all duration-200 cursor-default"
               >
                 <img
                   src={canal.logo}
