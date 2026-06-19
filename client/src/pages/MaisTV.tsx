@@ -273,12 +273,12 @@ export default function MaisTV() {
               <div
                 key={canal.nome}
                 title={canal.nome}
-                className="group bg-white/5 border border-white/10 rounded-xl p-2.5 flex items-center justify-center aspect-square hover:border-[#3DD93D]/50 hover:bg-[#3DD93D]/8 transition-all duration-200 cursor-default"
+                className="group bg-white/85 border border-white/20 rounded-xl p-2.5 flex items-center justify-center aspect-square hover:border-[#3DD93D]/60 hover:bg-white transition-all duration-200 cursor-default shadow-sm"
               >
                 <img
                   src={canal.logo}
                   alt={canal.nome}
-                  className="w-full h-full object-contain filter brightness-90 group-hover:brightness-110 transition-all duration-200"
+                  className="w-full h-full object-contain transition-all duration-200"
                   loading="lazy"
                   onError={(e) => {
                     const t = e.currentTarget;
