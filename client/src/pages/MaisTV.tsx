@@ -155,7 +155,7 @@ export default function MaisTV() {
       {/* ─── HERO ─── */}
       <section
         ref={sectionRef}
-        className="relative h-[90vh] min-h-[600px] max-h-[900px] flex items-center overflow-hidden"
+        className="relative h-[90vh] min-h-[600px] max-h-[900px] flex items-center overflow-hidden pt-16 md:pt-20"
         style={{ backgroundImage: `url(${HERO_BG})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
       >
         {/* Gradiente da esquerda para cobrir texto */}
