@@ -298,13 +298,15 @@ export default function MaisTV() {
                 {WA_ICON}
                 Quero assinar agora
               </button>
-              <button
-                onClick={() => setLoginOpen(true)}
+              <a
+                href="https://maistv.internetmais.net/login"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center justify-center gap-2 bg-white/10 border border-white/25 hover:border-[#3DD93D]/60 hover:bg-white/15 text-white font-semibold text-base px-7 py-3.5 rounded-xl transition-all duration-300"
               >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 17l5-5-5-5M15 12H3"/></svg>
                 Já sou assinante
-              </button>
+              </a>
             </div>
 
             {/* Dispositivos chips */}

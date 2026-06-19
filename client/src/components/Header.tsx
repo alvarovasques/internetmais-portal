@@ -194,14 +194,16 @@ export default function Header() {
 
             {/* Right CTAs */}
             <div className="hidden sm:flex items-center gap-2">
-              {/* Botão Já sou assinante - MaisTV */}
-              <button
-                onClick={() => { setLoginOpen(true); setLoginError(''); }}
+              {/* Botão MaisTV - redireciona para login */}
+              <a
+                href="https://maistv.internetmais.net/login"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center gap-2 bg-[#0D1B3E] text-white font-bold py-2 px-4 rounded-full hover:bg-[#1a2d5a] hover:shadow-lg hover:scale-105 transition-all duration-300 text-sm"
               >
                 <TvMinimalPlay size={16} />
                 <span>MaisTV</span>
-              </button>
+              </a>
 
               {/* WhatsApp CTA */}
               <a
@@ -288,7 +290,7 @@ export default function Header() {
 
               {/* Mobile: Já sou assinante */}
               <button
-                onClick={() => { setLoginOpen(true); setLoginError(''); setMobileMenuOpen(false); }}
+                onClick={() => { window.open('https://maistv.internetmais.net/login', '_blank'); setMobileMenuOpen(false); }}
                 className="mt-3 flex items-center justify-center gap-2 bg-[#0D1B3E] text-white font-bold py-2 px-4 rounded-full hover:bg-[#1a2d5a] transition-all duration-300 w-full"
               >
                 <TvMinimalPlay size={16} />
