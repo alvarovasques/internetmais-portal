@@ -366,6 +366,172 @@
       ]
     }
     </script>
+
+    <!-- Schema: Aggregate Rating (avaliações dos clientes) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": "Internet Mais — Planos de Internet Fibra Óptica",
+      "description": "Planos de internet fibra óptica residencial e empresarial em Campo Grande, MS. Velocidades de 400 a 800 Mega com MaisTV incluso.",
+      "brand": { "@type": "Brand", "name": "Internet Mais" },
+      "url": "https://internetmais.net",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "bestRating": "5",
+        "worstRating": "1",
+        "ratingCount": "3",
+        "reviewCount": "3"
+      },
+      "review": [
+        {
+          "@type": "Review",
+          "author": { "@type": "Person", "name": "Carlos Silva", "jobTitle": "Empresário" },
+          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+          "reviewBody": "A velocidade e estabilidade da Internet Mais transformaram meu negócio. Não tenho mais problemas com conexão.",
+          "datePublished": "2026-01-15"
+        },
+        {
+          "@type": "Review",
+          "author": { "@type": "Person", "name": "Maria Santos", "jobTitle": "Professora" },
+          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+          "reviewBody": "Excelente atendimento! O suporte é rápido e eficiente. Recomendo para todos os meus amigos.",
+          "datePublished": "2026-02-10"
+        },
+        {
+          "@type": "Review",
+          "author": { "@type": "Person", "name": "João Costa", "jobTitle": "Desenvolvedor" },
+          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+          "reviewBody": "A fibra óptica 100% dedicada é perfeita para trabalho remoto. Melhor investimento que fiz.",
+          "datePublished": "2026-03-05"
+        }
+      ]
+    }
+    </script>
+
+    <!-- Schema: ItemList de Planos Residenciais -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "Planos de Internet Residencial — Internet Mais",
+      "description": "Planos de fibra óptica residencial com MaisTV incluso em Campo Grande, MS",
+      "url": "https://internetmais.net/#planos-residenciais",
+      "numberOfItems": 3,
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@type": "Offer",
+            "name": "Internet Mais 400 Mega",
+            "description": "400 Mbps de velocidade, MaisTV (100+ canais), Ubook, Kaspersky e instalação grátis.",
+            "price": "89.90",
+            "priceCurrency": "BRL",
+            "priceValidUntil": "2026-12-31",
+            "availability": "https://schema.org/InStock",
+            "url": "https://internetmais.net/#planos-residenciais",
+            "seller": { "@type": "Organization", "name": "Internet Mais" }
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@type": "Offer",
+            "name": "Internet Mais 600 Mega",
+            "description": "600 Mbps de velocidade, MaisTV (100+ canais), Ubook, Kaspersky e instalação grátis.",
+            "price": "99.90",
+            "priceCurrency": "BRL",
+            "priceValidUntil": "2026-12-31",
+            "availability": "https://schema.org/InStock",
+            "url": "https://internetmais.net/#planos-residenciais",
+            "seller": { "@type": "Organization", "name": "Internet Mais" }
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "item": {
+            "@type": "Offer",
+            "name": "Internet Mais 800 Mega",
+            "description": "800 Mbps de velocidade, MaisTV (100+ canais), Ubook, Kaspersky e instalação grátis.",
+            "price": "129.90",
+            "priceCurrency": "BRL",
+            "priceValidUntil": "2026-12-31",
+            "availability": "https://schema.org/InStock",
+            "url": "https://internetmais.net/#planos-residenciais",
+            "seller": { "@type": "Organization", "name": "Internet Mais" }
+          }
+        }
+      ]
+    }
+    </script>
+
+    <!-- Schema: Service — Internet Empresarial -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Internet Empresarial — Internet Mais",
+      "description": "Planos de internet dedicada para empresas em Campo Grande, MS. Fibra óptica com IP fixo, SLA garantido e suporte prioritário.",
+      "provider": { "@type": "Organization", "name": "Internet Mais", "url": "https://internetmais.net" },
+      "areaServed": { "@type": "City", "name": "Campo Grande", "addressRegion": "MS" },
+      "serviceType": "Internet Banda Larga Empresarial",
+      "url": "https://internetmais.net/#empresarial",
+      "offers": {
+        "@type": "AggregateOffer",
+        "priceCurrency": "BRL",
+        "lowPrice": "89.90",
+        "highPrice": "499.90",
+        "offerCount": "6"
+      }
+    }
+    </script>
+
+    <!-- Schema: Service — Chip 5G -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Chip 5G — Internet Mais",
+      "description": "Planos de chip 5G com dados, voz e SMS para Campo Grande, MS. WhatsApp, Waze e Google Maps ilimitados.",
+      "provider": { "@type": "Organization", "name": "Internet Mais", "url": "https://internetmais.net" },
+      "areaServed": { "@type": "City", "name": "Campo Grande", "addressRegion": "MS" },
+      "serviceType": "Telefonia Móvel 5G",
+      "url": "https://internetmais.net/#chip-5g",
+      "offers": {
+        "@type": "AggregateOffer",
+        "priceCurrency": "BRL",
+        "lowPrice": "24.99",
+        "highPrice": "89.99",
+        "offerCount": "6"
+      }
+    }
+    </script>
+
+    <!-- Schema: Service — MaisTV -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "MaisTV — Entretenimento Incluso Internet Mais",
+      "description": "Serviço de TV com +160 canais ao vivo e catálogo de filmes e séries on demand incluso em todos os planos de internet da Internet Mais em Campo Grande, MS.",
+      "provider": { "@type": "Organization", "name": "Internet Mais", "url": "https://internetmais.net" },
+      "areaServed": { "@type": "City", "name": "Campo Grande", "addressRegion": "MS" },
+      "serviceType": "Streaming de TV e VOD",
+      "url": "https://internetmais.net/maistv",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "BRL",
+        "description": "Incluso sem custo adicional em todos os planos de internet",
+        "availability": "https://schema.org/InStock"
+      }
+    }
+    </script>
+
   </head>
 
   <body>
