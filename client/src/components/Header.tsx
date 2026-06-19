@@ -40,8 +40,11 @@ export default function Header() {
     // { label: 'Vagas', href: '/vagas' }, // oculto temporariamente
     {
       label: 'Aplicativos',
-      href: 'https://www.portaldoassinante.com/internetmais/login',
-      external: true
+      href: '#',
+      submenu: [
+        { label: 'Gerenciar Aplicativos', href: 'https://www.portaldoassinante.com/internetmais/login', external: true },
+        { label: 'MaisTV', href: '/maistv' },
+      ]
     },
     {
       label: 'Central do Assinante',
