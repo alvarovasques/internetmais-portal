@@ -19,6 +19,14 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- Landing Pages -->
+  <url>
+    <loc>https://internetmais.net/maistv</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
   <!-- Anchor Links (Internal Navigation) -->
   <url>
     <loc>https://internetmais.net/#planos-residenciais</loc>
