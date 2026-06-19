@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight, MessageCircle } from 'lucide-react';
+import { useLocation } from 'wouter';
+import { ChevronLeft, ChevronRight, MessageCircle, Tv } from 'lucide-react';
 
 export default function HeroSection() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -72,6 +73,17 @@ export default function HeroSection() {
       cta: 'Quero meu Chip 5G agora',
       ctaMessage: 'Olá! Gostaria de contratar um plano de Chip 5G da InternetMais.',
       viewPlansLink: '#chip-5g'
+    },
+    {
+      id: 7,
+      image: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/maistv-hero-bg_d996ba3e.jpg',
+      imageAlt: 'Família assistindo MaisTV com +160 canais ao vivo e filmes inclusos na Internet Mais',
+      badge: 'INCLUSO EM TODOS OS PLANOS',
+      title: 'Assine internet. Ganhe uma TV completa.',
+      description: 'Todos os planos Internet Mais já incluem a MaisTV: +160 canais ao vivo + catálogo de filmes e séries. R$0 adicional.',
+      cta: 'Quero assinar agora',
+      ctaMessage: 'Olá! Gostaria de assinar a Internet Mais e ter acesso à MaisTV com +160 canais ao vivo.',
+      viewPlansLink: '/maistv'
     }
   ];
 
@@ -115,6 +127,7 @@ export default function HeroSection() {
     setAutoplay(false);
   };
 
+  const [, navigate] = useLocation();
   const slide = slides[currentSlide];
 
   return (
@@ -214,14 +227,19 @@ export default function HeroSection() {
                       onClick={(e) => {
                         e.preventDefault();
                         setAutoplay(true);
-                        const element = document.querySelector(s.viewPlansLink);
-                        if (element) {
-                          element.scrollIntoView({ behavior: 'smooth' });
+                        if (s.viewPlansLink.startsWith('/')) {
+                          navigate(s.viewPlansLink);
+                        } else {
+                          const element = document.querySelector(s.viewPlansLink);
+                          if (element) {
+                            element.scrollIntoView({ behavior: 'smooth' });
+                          }
                         }
                       }}
                       className="inline-flex items-center justify-center gap-2 border-2 border-white text-white font-bold py-3 px-6 rounded-full hover:bg-white/10 transition-all duration-300"
                     >
-                      Ver Planos
+                      {s.viewPlansLink.startsWith('/') ? <Tv size={18} /> : null}
+                      {s.viewPlansLink.startsWith('/') ? 'Conhecer a MaisTV' : 'Ver Planos'}
                     </a>
                   </div>
                 </div>
