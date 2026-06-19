@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { useViewPlanTracker } from '@/hooks/useViewPlanTracker';
@@ -137,6 +137,43 @@ export default function MaisTV() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const sectionRef = useRef<HTMLElement>(null);
 
+  // ─── Modal de login MaisTV ───
+  const [loginOpen, setLoginOpen] = useState(false);
+  const [loginUser, setLoginUser] = useState('');
+  const [loginPwd, setLoginPwd] = useState('');
+  const [loginError, setLoginError] = useState('');
+  const [loginLoading, setLoginLoading] = useState(false);
+
+  const handleLoginSubmit = useCallback(async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoginError('');
+    setLoginLoading(true);
+    try {
+      const resp = await fetch('https://maistv.internetmais.net/auth', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          username: loginUser,
+          password: loginPwd,
+          location: { latitude: null, longitude: null },
+        }),
+      });
+      if (resp.ok) {
+        // Login bem-sucedido — redirecionar para a plataforma
+        window.open('https://maistv.internetmais.net', '_blank');
+        setLoginOpen(false);
+        setLoginUser('');
+        setLoginPwd('');
+      } else {
+        setLoginError('Usuário ou senha inválidos. Verifique seus dados e tente novamente.');
+      }
+    } catch {
+      setLoginError('Erro de conexão. Verifique sua internet e tente novamente.');
+    } finally {
+      setLoginLoading(false);
+    }
+  }, [loginUser, loginPwd]);
+
   useViewPlanTracker(sectionRef, 'MaisTV', 'TV Digital Inclusa');
 
   useEffect(() => {
@@ -203,13 +240,13 @@ export default function MaisTV() {
                 {WA_ICON}
                 Quero assinar agora
               </button>
-              <a
-                href="#canais"
-                className="flex items-center justify-center gap-2 border border-white/25 hover:border-[#3DD93D]/60 text-white/80 hover:text-[#3DD93D] font-semibold text-base px-7 py-3.5 rounded-xl transition-all duration-300"
+              <button
+                onClick={() => setLoginOpen(true)}
+                className="flex items-center justify-center gap-2 bg-white/10 border border-white/25 hover:border-[#3DD93D]/60 hover:bg-white/15 text-white font-semibold text-base px-7 py-3.5 rounded-xl transition-all duration-300"
               >
-                Ver o que está incluso
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
-              </a>
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 17l5-5-5-5M15 12H3"/></svg>
+                Já sou assinante
+              </button>
             </div>
 
             {/* Dispositivos chips */}
@@ -537,6 +574,107 @@ export default function MaisTV() {
           </button>
         </div>
       </section>
+
+      {/* ─── MODAL DE LOGIN MAISTV ─── */}
+      {loginOpen && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4"
+          onClick={(e) => { if (e.target === e.currentTarget) { setLoginOpen(false); setLoginError(''); } }}
+        >
+          {/* Overlay */}
+          <div className="absolute inset-0 bg-[#060d1a]/90 backdrop-blur-sm" />
+
+          {/* Modal */}
+          <div className="relative z-10 w-full max-w-sm bg-[#0d1b2e] border border-white/10 rounded-2xl shadow-2xl overflow-hidden">
+            {/* Topo verde decorativo */}
+            <div className="h-1 bg-gradient-to-r from-[#3DD93D] to-[#2bc42b]" />
+
+            <div className="p-7">
+              {/* Cabeçalho */}
+              <div className="flex items-center justify-between mb-6">
+                <div>
+                  <h2 className="text-white font-black text-xl leading-tight">Acessar MaisTV</h2>
+                  <p className="text-white/50 text-xs mt-0.5">Entre com suas credenciais de assinante</p>
+                </div>
+                <button
+                  onClick={() => { setLoginOpen(false); setLoginError(''); }}
+                  className="text-white/40 hover:text-white transition-colors p-1 rounded-lg hover:bg-white/10"
+                  aria-label="Fechar"
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
+                </button>
+              </div>
+
+              {/* Formulário */}
+              <form onSubmit={handleLoginSubmit} className="space-y-4">
+                <div>
+                  <label className="block text-white/70 text-xs font-semibold mb-1.5 uppercase tracking-wide">Usuário</label>
+                  <input
+                    type="text"
+                    value={loginUser}
+                    onChange={(e) => setLoginUser(e.target.value)}
+                    placeholder="Seu usuário ou e-mail"
+                    required
+                    autoComplete="username"
+                    className="w-full bg-white/5 border border-white/15 focus:border-[#3DD93D]/60 focus:outline-none text-white placeholder-white/30 rounded-xl px-4 py-3 text-sm transition-colors"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-white/70 text-xs font-semibold mb-1.5 uppercase tracking-wide">Senha</label>
+                  <input
+                    type="password"
+                    value={loginPwd}
+                    onChange={(e) => setLoginPwd(e.target.value)}
+                    placeholder="Sua senha"
+                    required
+                    autoComplete="current-password"
+                    className="w-full bg-white/5 border border-white/15 focus:border-[#3DD93D]/60 focus:outline-none text-white placeholder-white/30 rounded-xl px-4 py-3 text-sm transition-colors"
+                  />
+                </div>
+
+                {/* Erro */}
+                {loginError && (
+                  <div className="flex items-start gap-2 bg-red-500/10 border border-red-500/30 rounded-xl px-4 py-3">
+                    <svg className="w-4 h-4 text-red-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+                    <p className="text-red-400 text-xs leading-relaxed">{loginError}</p>
+                  </div>
+                )}
+
+                {/* Botão de submit */}
+                <button
+                  type="submit"
+                  disabled={loginLoading}
+                  className="w-full flex items-center justify-center gap-2.5 bg-[#3DD93D] hover:bg-[#2bc42b] disabled:opacity-60 disabled:cursor-not-allowed text-[#060d1a] font-black text-base py-3.5 rounded-xl transition-all duration-300 shadow-lg shadow-[#3DD93D]/25"
+                >
+                  {loginLoading ? (
+                    <>
+                      <svg className="w-4 h-4 animate-spin" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" opacity=".25"/><path d="M21 12a9 9 0 00-9-9"/></svg>
+                      Entrando...
+                    </>
+                  ) : (
+                    <>
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 17l5-5-5-5M15 12H3"/></svg>
+                      Entrar na MaisTV
+                    </>
+                  )}
+                </button>
+              </form>
+
+              {/* Rodapé do modal */}
+              <p className="text-center text-white/35 text-xs mt-5">
+                Não tem acesso ainda?{' '}
+                <button
+                  onClick={() => { setLoginOpen(false); openWA('Modal Login', 'Olá! Quero assinar a Internet Mais e ter acesso à MaisTV inclusa.'); }}
+                  className="text-[#3DD93D] hover:underline font-semibold"
+                >
+                  Assine agora pelo WhatsApp
+                </button>
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
 
       <Footer />
     </div>
