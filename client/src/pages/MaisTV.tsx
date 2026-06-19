@@ -158,17 +158,80 @@ export default function MaisTV() {
           location: { latitude: null, longitude: null },
         }),
       });
-      if (resp.ok) {
-        // Login bem-sucedido — redirecionar para a plataforma
-        window.open('https://maistv.internetmais.net', '_blank');
+
+      if (!resp.ok) {
+        setLoginError('Usuário ou senha inválidos. Verifique seus dados e tente novamente.');
+        return;
+      }
+
+      const data = await resp.json();
+
+      // Gravar o token no localStorage do domínio maistv.internetmais.net
+      // usando um iframe oculto (o domínio não bloqueia iframes)
+      await new Promise<void>((resolve, reject) => {
+        // Remover iframe anterior se existir
+        const existing = document.getElementById('maistv-auth-bridge');
+        if (existing) existing.remove();
+
+        const iframe = document.createElement('iframe');
+        iframe.id = 'maistv-auth-bridge';
+        iframe.src = 'https://maistv.internetmais.net/';
+        iframe.style.cssText = 'position:fixed;width:0;height:0;border:0;opacity:0;pointer-events:none;';
+        document.body.appendChild(iframe);
+
+        const timeout = setTimeout(() => {
+          iframe.remove();
+          reject(new Error('TIMEOUT'));
+        }, 15000);
+
+        iframe.onload = () => {
+          try {
+            const ls = iframe.contentWindow!.localStorage;
+            // Gravar todos os campos retornados pela API
+            ls.setItem('token', data.token);
+            ls.setItem('rtoken', data.rtoken);
+            ls.setItem('expire', String(data.expire * 1000));
+            ls.setItem('user', data.username);
+            ls.setItem('svod', String(data.svod ?? false));
+            if (data.email) ls.setItem('email', data.email);
+            if (data.parpass) ls.setItem('parpass', data.parpass);
+            if (data.parental) ls.setItem('parental', data.parental);
+            if (data.rating !== undefined) ls.setItem('rating', String(data.rating));
+            clearTimeout(timeout);
+            iframe.remove();
+            resolve();
+          } catch (err) {
+            clearTimeout(timeout);
+            iframe.remove();
+            reject(err);
+          }
+        };
+
+        iframe.onerror = () => {
+          clearTimeout(timeout);
+          iframe.remove();
+          reject(new Error('Falha ao carregar a plataforma'));
+        };
+      });
+
+      // Abrir a plataforma em nova aba — já autenticada
+      window.open('https://maistv.internetmais.net/', '_blank');
+      setLoginOpen(false);
+      setLoginUser('');
+      setLoginPwd('');
+
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : '';
+      if (msg === 'TIMEOUT' || msg.includes('Falha')) {
+        // Fallback: redirecionar diretamente para a plataforma
+        // (o usuário precisará fazer login novamente lá)
+        window.open('https://maistv.internetmais.net/login', '_blank');
         setLoginOpen(false);
         setLoginUser('');
         setLoginPwd('');
       } else {
-        setLoginError('Usuário ou senha inválidos. Verifique seus dados e tente novamente.');
+        setLoginError('Erro de conexão. Verifique sua internet e tente novamente.');
       }
-    } catch {
-      setLoginError('Erro de conexão. Verifique sua internet e tente novamente.');
     } finally {
       setLoginLoading(false);
     }
