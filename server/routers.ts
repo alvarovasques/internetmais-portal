@@ -19,6 +19,9 @@ import {
 import { storagePut } from "./storage";
 import { TRPCError } from "@trpc/server";
 
+// Cache em memória para tokens da MaisTV — evita 429 por chamadas repetidas à API externa
+const maistvTokenCache = new Map<string, { data: Record<string, unknown>; expiresAt: number }>();
+
 // Helper para verificar se é admin
 const adminProcedure = protectedProcedure.use(async ({ ctx, next }) => {
   if (ctx.user?.role !== 'admin') {
@@ -166,12 +169,21 @@ export const appRouter = router({
   // MaisTV - Proxy de autenticação server-side
   maistv: router({
     // Proxy da API /auth da MaisTV — feito pelo servidor para evitar CORS, HTTP2 e rate limit por IP do usuário
+    // Cache em memória: evita chamadas repetidas à API externa para o mesmo usuário dentro do TTL do token
     login: publicProcedure
       .input(z.object({
         username: z.string().min(1),
         password: z.string().min(1),
       }))
       .mutation(async ({ input }) => {
+        // Cache em memória por usuário — chave: hash simples de user+pwd
+        const cacheKey = `${input.username}:${input.password}`;
+        const cached = maistvTokenCache.get(cacheKey);
+        if (cached && cached.expiresAt > Date.now()) {
+          console.log('[MaisTV proxy] Retornando token em cache para:', input.username);
+          return { success: true, data: cached.data };
+        }
+
         try {
           const resp = await fetch('https://maistv.internetmais.net/auth', {
             method: 'POST',
@@ -196,6 +208,8 @@ export const appRouter = router({
           }
 
           if (resp.status === 401 || !resp.ok) {
+            // Limpar cache inválido se existir
+            maistvTokenCache.delete(cacheKey);
             throw new TRPCError({
               code: 'UNAUTHORIZED',
               message: 'Usuário ou senha inválidos. Verifique seus dados e tente novamente.',
@@ -203,6 +217,13 @@ export const appRouter = router({
           }
 
           const data = await resp.json();
+
+          // Cachear o token por 55 minutos (tokens geralmente expiram em 1h)
+          maistvTokenCache.set(cacheKey, {
+            data,
+            expiresAt: Date.now() + 55 * 60 * 1000,
+          });
+
           // Retornar os dados de autenticação para o frontend gravar no localStorage via iframe
           return { success: true, data };
         } catch (err) {
