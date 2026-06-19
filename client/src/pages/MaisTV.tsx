@@ -2,6 +2,7 @@ import { useState, useRef, useEffect, useCallback } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { useViewPlanTracker } from '@/hooks/useViewPlanTracker';
+import { trpc } from '@/lib/trpc';
 
 declare global {
   interface Window {
@@ -145,39 +146,20 @@ export default function MaisTV() {
   const [loginLoading, setLoginLoading] = useState(false);
   const [loginCooldown, setLoginCooldown] = useState(0);
 
+  const loginMutation = trpc.maistv.login.useMutation();
+
   const handleLoginSubmit = useCallback(async (e: React.FormEvent) => {
     e.preventDefault();
     setLoginError('');
     setLoginLoading(true);
     try {
-      const resp = await fetch('https://maistv.internetmais.net/auth', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          username: loginUser,
-          password: loginPwd,
-          location: { latitude: null, longitude: null },
-        }),
+      // Chamada via proxy server-side (evita CORS, HTTP2 e rate limit por IP do usuário)
+      const result = await loginMutation.mutateAsync({
+        username: loginUser,
+        password: loginPwd,
       });
 
-      if (resp.status === 429) {
-        let secs = 30;
-        setLoginCooldown(secs);
-        setLoginError('Muitas tentativas. Aguarde alguns segundos antes de tentar novamente.');
-        const timer = setInterval(() => {
-          secs -= 1;
-          setLoginCooldown(secs);
-          if (secs <= 0) clearInterval(timer);
-        }, 1000);
-        return;
-      }
-
-      if (!resp.ok) {
-        setLoginError('Usuário ou senha inválidos. Verifique seus dados e tente novamente.');
-        return;
-      }
-
-      const data = await resp.json();
+      const data = result.data;
 
       // Gravar o token no localStorage do domínio maistv.internetmais.net
       // usando um iframe oculto (o domínio não bloqueia iframes)

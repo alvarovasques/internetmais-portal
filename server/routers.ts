@@ -163,6 +163,59 @@ export const appRouter = router({
       }),
   }),
 
+  // MaisTV - Proxy de autenticação server-side
+  maistv: router({
+    // Proxy da API /auth da MaisTV — feito pelo servidor para evitar CORS, HTTP2 e rate limit por IP do usuário
+    login: publicProcedure
+      .input(z.object({
+        username: z.string().min(1),
+        password: z.string().min(1),
+      }))
+      .mutation(async ({ input }) => {
+        try {
+          const resp = await fetch('https://maistv.internetmais.net/auth', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json',
+              'Origin': 'https://maistv.internetmais.net',
+              'Referer': 'https://maistv.internetmais.net/login',
+            },
+            body: JSON.stringify({
+              username: input.username,
+              password: input.password,
+              location: { latitude: null, longitude: null },
+            }),
+          });
+
+          if (resp.status === 429) {
+            throw new TRPCError({
+              code: 'TOO_MANY_REQUESTS',
+              message: 'Muitas tentativas. Aguarde alguns segundos antes de tentar novamente.',
+            });
+          }
+
+          if (resp.status === 401 || !resp.ok) {
+            throw new TRPCError({
+              code: 'UNAUTHORIZED',
+              message: 'Usuário ou senha inválidos. Verifique seus dados e tente novamente.',
+            });
+          }
+
+          const data = await resp.json();
+          // Retornar os dados de autenticação para o frontend gravar no localStorage via iframe
+          return { success: true, data };
+        } catch (err) {
+          if (err instanceof TRPCError) throw err;
+          console.error('[MaisTV proxy] Erro ao autenticar:', err);
+          throw new TRPCError({
+            code: 'INTERNAL_SERVER_ERROR',
+            message: 'Erro ao conectar com a MaisTV. Tente novamente.',
+          });
+        }
+      }),
+  }),
+
   // Applications - Admin procedures
   applications: router({
     // Admin: Listar todas as candidaturas
