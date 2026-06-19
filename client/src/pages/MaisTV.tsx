@@ -143,6 +143,7 @@ export default function MaisTV() {
   const [loginPwd, setLoginPwd] = useState('');
   const [loginError, setLoginError] = useState('');
   const [loginLoading, setLoginLoading] = useState(false);
+  const [loginCooldown, setLoginCooldown] = useState(0);
 
   const handleLoginSubmit = useCallback(async (e: React.FormEvent) => {
     e.preventDefault();
@@ -158,6 +159,18 @@ export default function MaisTV() {
           location: { latitude: null, longitude: null },
         }),
       });
+
+      if (resp.status === 429) {
+        let secs = 30;
+        setLoginCooldown(secs);
+        setLoginError('Muitas tentativas. Aguarde alguns segundos antes de tentar novamente.');
+        const timer = setInterval(() => {
+          secs -= 1;
+          setLoginCooldown(secs);
+          if (secs <= 0) clearInterval(timer);
+        }, 1000);
+        return;
+      }
 
       if (!resp.ok) {
         setLoginError('Usuário ou senha inválidos. Verifique seus dados e tente novamente.');
@@ -707,13 +720,18 @@ export default function MaisTV() {
                 {/* Botão de submit */}
                 <button
                   type="submit"
-                  disabled={loginLoading}
+                  disabled={loginLoading || loginCooldown > 0}
                   className="w-full flex items-center justify-center gap-2.5 bg-[#3DD93D] hover:bg-[#2bc42b] disabled:opacity-60 disabled:cursor-not-allowed text-[#060d1a] font-black text-base py-3.5 rounded-xl transition-all duration-300 shadow-lg shadow-[#3DD93D]/25"
                 >
                   {loginLoading ? (
                     <>
                       <svg className="w-4 h-4 animate-spin" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" opacity=".25"/><path d="M21 12a9 9 0 00-9-9"/></svg>
                       Entrando...
+                    </>
+                  ) : loginCooldown > 0 ? (
+                    <>
+                      <svg className="w-4 h-4 animate-spin" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" opacity=".25"/><path d="M21 12a9 9 0 00-9-9"/></svg>
+                      Aguarde {loginCooldown}s...
                     </>
                   ) : (
                     <>

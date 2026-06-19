@@ -11,6 +11,7 @@ export default function Header() {
   const [loginPwd, setLoginPwd] = useState('');
   const [loginError, setLoginError] = useState('');
   const [loginLoading, setLoginLoading] = useState(false);
+  const [loginCooldown, setLoginCooldown] = useState(0);
 
   const navItems = [
     {
@@ -73,6 +74,19 @@ export default function Header() {
           location: { latitude: null, longitude: null },
         }),
       });
+
+      if (resp.status === 429) {
+        // Rate limiting — iniciar cooldown de 30s
+        let secs = 30;
+        setLoginCooldown(secs);
+        setLoginError('Muitas tentativas. Aguarde alguns segundos antes de tentar novamente.');
+        const timer = setInterval(() => {
+          secs -= 1;
+          setLoginCooldown(secs);
+          if (secs <= 0) clearInterval(timer);
+        }, 1000);
+        return;
+      }
 
       if (!resp.ok) {
         setLoginError('Usuário ou senha inválidos. Verifique seus dados e tente novamente.');
@@ -389,13 +403,18 @@ export default function Header() {
 
               <button
                 type="submit"
-                disabled={loginLoading}
+                disabled={loginLoading || loginCooldown > 0}
                 className="w-full bg-[#3DD93D] text-[#0D1B3E] font-bold py-3 rounded-xl hover:bg-[#35c435] transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
               >
                 {loginLoading ? (
                   <>
                     <Loader2 size={18} className="animate-spin" />
                     <span>Entrando...</span>
+                  </>
+                ) : loginCooldown > 0 ? (
+                  <>
+                    <Loader2 size={18} className="animate-spin" />
+                    <span>Aguarde {loginCooldown}s...</span>
                   </>
                 ) : (
                   <>
