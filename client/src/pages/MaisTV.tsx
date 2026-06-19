@@ -9,7 +9,8 @@ declare global {
   }
 }
 
-const HERO_BG = 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/maistv-hero-netflix-G92S5i7Lj8fuzZXJgF479U.webp';
+const HERO_BG = 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/maistv-hero-bg_d996ba3e.jpg';
+const NETFLIX_BG = 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/maistv-hero-netflix-G92S5i7Lj8fuzZXJgF479U.webp';
 const CHANNELS_BG = 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/maistv-channels-bg-dXYAhLeKE5SB7EUAwJZ3gE.webp';
 
 const WHATSAPP_NUMBER = '556730272500';
@@ -307,8 +308,12 @@ export default function MaisTV() {
       </section>
 
       {/* ─── VOD ─── */}
-      <section className="py-16 bg-[#0a1628]">
-        <div className="container mx-auto px-4">
+      <section
+        className="py-16 relative overflow-hidden"
+        style={{ backgroundImage: `url(${NETFLIX_BG})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
+      >
+        <div className="absolute inset-0 bg-[#060d1a]/88" />
+        <div className="relative z-10 container mx-auto px-4">
           <div className="text-center mb-10">
             <span className="inline-block bg-[#3DD93D]/15 text-[#3DD93D] text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-widest mb-3">On Demand</span>
             <h2 className="text-3xl md:text-4xl font-black text-white mb-3">
