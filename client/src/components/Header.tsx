@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react';
-import { Menu, X, MessageCircle, ChevronDown, Tv, LogIn, Loader2, AlertCircle } from 'lucide-react';
+import { Menu, X, MessageCircle, ChevronDown, TvMinimalPlay, LogIn, Loader2, AlertCircle } from 'lucide-react';
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -204,8 +204,8 @@ export default function Header() {
                 onClick={() => { setLoginOpen(true); setLoginError(''); }}
                 className="flex items-center gap-2 bg-[#0D1B3E] text-white font-bold py-2 px-4 rounded-full hover:bg-[#1a2d5a] hover:shadow-lg hover:scale-105 transition-all duration-300 text-sm"
               >
-                <Tv size={16} />
-                <span>Já sou assinante</span>
+                <TvMinimalPlay size={16} />
+                <span>MaisTV</span>
               </button>
 
               {/* WhatsApp CTA */}
@@ -296,8 +296,8 @@ export default function Header() {
                 onClick={() => { setLoginOpen(true); setLoginError(''); setMobileMenuOpen(false); }}
                 className="mt-3 flex items-center justify-center gap-2 bg-[#0D1B3E] text-white font-bold py-2 px-4 rounded-full hover:bg-[#1a2d5a] transition-all duration-300 w-full"
               >
-                <Tv size={16} />
-                <span>Já sou assinante</span>
+                <TvMinimalPlay size={16} />
+                <span>MaisTV</span>
               </button>
 
               <a
@@ -342,7 +342,7 @@ export default function Header() {
             {/* Cabeçalho do modal */}
             <div className="flex items-center gap-3 mb-6">
               <div className="w-10 h-10 bg-[#3DD93D]/20 rounded-xl flex items-center justify-center">
-                <Tv size={20} className="text-[#3DD93D]" />
+                <TvMinimalPlay size={20} className="text-[#3DD93D]" />
               </div>
               <div>
                 <h2 className="text-white font-bold text-lg leading-tight">Acessar MaisTV</h2>
