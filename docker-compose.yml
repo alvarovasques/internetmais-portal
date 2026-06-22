@@ -39,6 +39,22 @@ services:
       - "traefik.http.routers.internetmais-http.rule=Host(`internetmais.net`)"
       - "traefik.http.routers.internetmais-http.entrypoints=web"
       - "traefik.http.routers.internetmais-http.middlewares=internetmais-redirect"
+
+      # Redirect www para sem www (HTTPS)
+      - "traefik.http.middlewares.internetmais-www-redirect.redirectregex.regex=^https://www\\.internetmais\\.net(.*)"
+      - "traefik.http.middlewares.internetmais-www-redirect.redirectregex.replacement=https://internetmais.net$${1}"
+      - "traefik.http.middlewares.internetmais-www-redirect.redirectregex.permanent=true"
+      - "traefik.http.routers.internetmais-www.rule=Host(`www.internetmais.net`)"
+      - "traefik.http.routers.internetmais-www.entrypoints=websecure"
+      - "traefik.http.routers.internetmais-www.tls=true"
+      - "traefik.http.routers.internetmais-www.tls.certresolver=letsencryptresolver"
+      - "traefik.http.routers.internetmais-www.middlewares=internetmais-www-redirect"
+      - "traefik.http.routers.internetmais-www.service=internetmais"
+
+      # Redirect www HTTP para sem www HTTPS
+      - "traefik.http.routers.internetmais-www-http.rule=Host(`www.internetmais.net`)"
+      - "traefik.http.routers.internetmais-www-http.entrypoints=web"
+      - "traefik.http.routers.internetmais-www-http.middlewares=internetmais-www-redirect"
     
     deploy:
       mode: replicated
