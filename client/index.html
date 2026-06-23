@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt-BR">
 
   <head>
     <!-- Google Tag Manager -->
@@ -21,6 +21,20 @@
     <meta name="robots" content="index, follow" />
     <meta name="language" content="Portuguese" />
     <meta name="revisit-after" content="7 days" />
+    
+    <!-- GEO Meta Tags (Local SEO / Assistentes de IA) -->
+    <meta name="geo.region" content="BR-MS" />
+    <meta name="geo.placename" content="Campo Grande, Mato Grosso do Sul, Brasil" />
+    <meta name="geo.position" content="-20.4697;-54.6201" />
+    <meta name="ICBM" content="-20.4697, -54.6201" />
+    
+    <!-- ASO / PWA Meta Tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Internet Mais" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="application-name" content="Internet Mais" />
+    <link rel="manifest" href="/manifest.json" />
     
     <!-- Open Graph Tags (Facebook, LinkedIn, etc) -->
     <meta property="og:type" content="website" />
@@ -45,6 +59,13 @@
     <link rel="icon" type="image/png" href="https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/favicon-YS9ptUUrUQhRBrKKSSQjcN.webp" />
     <link rel="apple-touch-icon" href="https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/favicon-YS9ptUUrUQhRBrKKSSQjcN.webp" />
     <meta name="theme-color" content="#3DD93D" />
+    
+    <!-- DNS Prefetch para domínios externos -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="//fonts.gstatic.com" />
+    <link rel="dns-prefetch" href="//www.googletagmanager.com" />
+    <link rel="dns-prefetch" href="//wa.me" />
+    <link rel="dns-prefetch" href="//d2xsxph8kpxj0f.cloudfront.net" />
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -261,12 +282,56 @@
 }
     </script>
     
-    <!-- ServiceArea Schema -->
+    <!-- LocalBusiness Principal — Sede Internet Mais -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "LocalBusiness",
+      "@type": "InternetCafe",
       "name": "Internet Mais",
+      "alternateName": "InternetMais",
+      "image": "https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/Logo_internet_MAIS_9b6aefe1.png",
+      "description": "Provedor de internet fibra óptica 100% pura, Chip 5G e serviços empresariais em Campo Grande, MS. Mais de 20 mil clientes satisfeitos.",
+      "url": "https://internetmais.net",
+      "telephone": "+55-67-3027-2500",
+      "email": "atendimento@internetmais.net",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Rua Palmácia, 836",
+        "addressLocality": "Campo Grande",
+        "addressRegion": "MS",
+        "postalCode": "79065-140",
+        "addressCountry": "BR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "-20.4697",
+        "longitude": "-54.6201"
+      },
+      "hasMap": "https://maps.google.com/?q=Internet+Mais+Campo+Grande+MS",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+          "opens": "08:00",
+          "closes": "18:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Saturday"],
+          "opens": "08:00",
+          "closes": "12:00"
+        }
+      ],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "ratingCount": "20000",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "priceRange": "R$89 - R$499",
+      "currenciesAccepted": "BRL",
+      "paymentAccepted": "Cartão de crédito, débito, boleto, Pix",
       "areaServed": [
         {"@type": "City", "name": "Aero Rancho"},
         {"@type": "City", "name": "Alves Pereira"},
@@ -415,6 +480,156 @@
     }
     </script>
     
+    <!-- LocalBusiness: Loja Aero Rancho -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Internet Mais - Loja Aero Rancho",
+      "image": "https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/Logo_internet_MAIS_9b6aefe1.png",
+      "description": "Loja Internet Mais no Aero Rancho — fibra óptica, chip 5G e atendimento presencial em Campo Grande, MS.",
+      "url": "https://internetmais.net",
+      "telephone": "+55-67-3027-2500",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Avenida Rachel de Queiroz, 1468",
+        "addressLocality": "Campo Grande",
+        "addressRegion": "MS",
+        "postalCode": "79084-070",
+        "addressCountry": "BR"
+      },
+      "geo": { "@type": "GeoCoordinates", "latitude": "-20.522835", "longitude": "-54.6444226" },
+      "hasMap": "https://maps.google.com/?q=Avenida+Rachel+de+Queiroz+1468+Campo+Grande+MS",
+      "openingHoursSpecification": [
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:00", "closes": "18:00" },
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday"], "opens": "08:00", "closes": "12:00" }
+      ],
+      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "ratingCount": "150", "bestRating": "5", "worstRating": "1" },
+      "priceRange": "R$89 - R$499",
+      "parentOrganization": { "@type": "Organization", "name": "Internet Mais", "url": "https://internetmais.net" }
+    }
+    </script>
+
+    <!-- LocalBusiness: Loja Nova Lima -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Internet Mais - Loja Nova Lima",
+      "image": "https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/Logo_internet_MAIS_9b6aefe1.png",
+      "description": "Loja Internet Mais no Nova Lima — fibra óptica, chip 5G e atendimento presencial em Campo Grande, MS.",
+      "url": "https://internetmais.net",
+      "telephone": "+55-67-3027-2500",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Rua Zulmira Borba, 510",
+        "addressLocality": "Campo Grande",
+        "addressRegion": "MS",
+        "postalCode": "79017-220",
+        "addressCountry": "BR"
+      },
+      "geo": { "@type": "GeoCoordinates", "latitude": "-20.3810139", "longitude": "-54.5805739" },
+      "hasMap": "https://maps.google.com/?q=Rua+Zulmira+Borba+510+Campo+Grande+MS",
+      "openingHoursSpecification": [
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:00", "closes": "18:00" },
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday"], "opens": "08:00", "closes": "12:00" }
+      ],
+      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "ratingCount": "120", "bestRating": "5", "worstRating": "1" },
+      "priceRange": "R$89 - R$499",
+      "parentOrganization": { "@type": "Organization", "name": "Internet Mais", "url": "https://internetmais.net" }
+    }
+    </script>
+
+    <!-- LocalBusiness: Loja União -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Internet Mais - Loja União",
+      "image": "https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/Logo_internet_MAIS_9b6aefe1.png",
+      "description": "Loja Internet Mais no União — fibra óptica, chip 5G e atendimento presencial em Campo Grande, MS.",
+      "url": "https://internetmais.net",
+      "telephone": "+55-67-3027-2500",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Avenida Petrópolis, 1109",
+        "addressLocality": "Campo Grande",
+        "addressRegion": "MS",
+        "postalCode": "79091-723",
+        "addressCountry": "BR"
+      },
+      "geo": { "@type": "GeoCoordinates", "latitude": "-20.4497897", "longitude": "-54.6662812" },
+      "hasMap": "https://maps.google.com/?q=Avenida+Petr%C3%B3polis+1109+Campo+Grande+MS",
+      "openingHoursSpecification": [
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:00", "closes": "18:00" },
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday"], "opens": "08:00", "closes": "12:00" }
+      ],
+      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "ratingCount": "130", "bestRating": "5", "worstRating": "1" },
+      "priceRange": "R$89 - R$499",
+      "parentOrganization": { "@type": "Organization", "name": "Internet Mais", "url": "https://internetmais.net" }
+    }
+    </script>
+
+    <!-- LocalBusiness: Loja Julio de Castilho -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Internet Mais - Loja Julio de Castilho",
+      "image": "https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/Logo_internet_MAIS_9b6aefe1.png",
+      "description": "Loja Internet Mais no Julio de Castilho — fibra óptica, chip 5G e atendimento presencial em Campo Grande, MS.",
+      "url": "https://internetmais.net",
+      "telephone": "+55-67-3027-2500",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Avenida Julio de Castilho, 1666",
+        "addressLocality": "Campo Grande",
+        "addressRegion": "MS",
+        "postalCode": "79103-531",
+        "addressCountry": "BR"
+      },
+      "geo": { "@type": "GeoCoordinates", "latitude": "-20.4613580", "longitude": "-54.6327050" },
+      "hasMap": "https://maps.google.com/?q=Avenida+Julio+de+Castilho+1666+Campo+Grande+MS",
+      "openingHoursSpecification": [
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:00", "closes": "18:00" },
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday"], "opens": "08:00", "closes": "12:00" }
+      ],
+      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "ratingCount": "110", "bestRating": "5", "worstRating": "1" },
+      "priceRange": "R$89 - R$499",
+      "parentOrganization": { "@type": "Organization", "name": "Internet Mais", "url": "https://internetmais.net" }
+    }
+    </script>
+
+    <!-- LocalBusiness: Loja Cafezais -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Internet Mais - Loja Cafezais",
+      "image": "https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/Logo_internet_MAIS_9b6aefe1.png",
+      "description": "Loja Internet Mais nos Cafezais — fibra óptica, chip 5G e atendimento presencial em Campo Grande, MS.",
+      "url": "https://internetmais.net",
+      "telephone": "+55-67-3027-2500",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Av. dos Cafezais, 1985",
+        "addressLocality": "Campo Grande",
+        "addressRegion": "MS",
+        "postalCode": "79072-244",
+        "addressCountry": "BR"
+      },
+      "geo": { "@type": "GeoCoordinates", "latitude": "-20.5464699", "longitude": "-54.5976988" },
+      "hasMap": "https://maps.google.com/?q=Av+dos+Cafezais+1985+Campo+Grande+MS",
+      "openingHoursSpecification": [
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:00", "closes": "18:00" },
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday"], "opens": "08:00", "closes": "12:00" }
+      ],
+      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "ratingCount": "100", "bestRating": "5", "worstRating": "1" },
+      "priceRange": "R$89 - R$499",
+      "parentOrganization": { "@type": "Organization", "name": "Internet Mais", "url": "https://internetmais.net" }
+    }
+    </script>
+
     <!-- BreadcrumbList Schema -->
     <script type="application/ld+json">
     {
@@ -617,6 +832,94 @@
         "description": "Incluso sem custo adicional em todos os planos de internet",
         "availability": "https://schema.org/InStock"
       }
+    }
+    </script>
+
+    <!-- Schema: WebSite com Sitelinks Search Box -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Internet Mais",
+      "alternateName": "InternetMais",
+      "url": "https://internetmais.net",
+      "description": "Provedor de internet fibra óptica, 5G e serviços empresariais em Campo Grande, MS",
+      "inLanguage": "pt-BR",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://internetmais.net/?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Internet Mais",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/Logo_internet_MAIS_9b6aefe1.png",
+          "width": 300,
+          "height": 80
+        }
+      }
+    }
+    </script>
+
+    <!-- Schema: SpeakableSpecification (Google Assistant / Leitura em voz alta) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Internet Mais - Fibra Óptica, 5G e Internet Empresarial em Campo Grande",
+      "url": "https://internetmais.net",
+      "description": "Internet Mais: Fibra óptica 100% pura, Chip 5G, planos residenciais e empresariais em Campo Grande. Mais de 20 mil clientes satisfeitos.",
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": ["h1", "h2", ".hero-description", ".plan-title", ".plan-price"]
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://internetmais.net" }
+        ]
+      },
+      "mainEntity": {
+        "@type": "Organization",
+        "name": "Internet Mais",
+        "url": "https://internetmais.net"
+      }
+    }
+    </script>
+
+    <!-- Schema: MobileApplication (App MaisTV) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "MobileApplication",
+      "name": "MaisTV",
+      "description": "Aplicativo MaisTV: mais de 160 canais ao vivo e catálogo on demand incluso em todos os planos da Internet Mais em Campo Grande, MS.",
+      "applicationCategory": "EntertainmentApplication",
+      "operatingSystem": "Android, iOS, Smart TV",
+      "url": "https://internetmais.net/maistv",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "BRL",
+        "description": "Incluso gratuitamente em todos os planos de internet da Internet Mais"
+      },
+      "provider": {
+        "@type": "Organization",
+        "name": "Internet Mais",
+        "url": "https://internetmais.net"
+      },
+      "featureList": [
+        "160+ canais ao vivo",
+        "Catálogo on demand com filmes e séries",
+        "Disponível em Android, iOS, Smart TV, Fire Stick, Roku",
+        "Acesso de qualquer lugar do Brasil",
+        "Incluso sem custo adicional"
+      ]
     }
     </script>
 
