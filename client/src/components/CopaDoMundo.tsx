@@ -79,8 +79,16 @@ export default function CopaDoMundo() {
     <section
       ref={ref}
       id="ferias-escolares"
-      className="relative overflow-hidden bg-gradient-to-br from-[#0D1B3E] via-[#0a1628] to-[#0D1B3E]"
+      className="relative overflow-hidden"
+      style={{
+        backgroundImage: 'url(https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/ferias-bg-XCKCQ9FXyEpAzFuSSQhx3g.webp)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+      }}
     >
+      {/* Overlay escuro para legibilidade */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#0D1B3E]/90 via-[#0a1628]/85 to-[#0D1B3E]/90 pointer-events-none" />
       {/* Fundo decorativo */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-24 -right-24 w-96 h-96 bg-[#3DD93D]/10 rounded-full blur-3xl" />
