@@ -149,26 +149,14 @@ export default function MaisGloboPlay() {
           </p>
         </div>
 
-        {/* Badge Copa do Mundo — promoção */}
+        {/* Promoção Sinal Aberto Telecine */}
         <div className="flex justify-center mb-10 animate-fade-in-up animate-delay-200">
-          <div className="relative bg-gradient-to-r from-[#006400] via-[#FFD700] to-[#006400] p-0.5 rounded-2xl shadow-2xl max-w-3xl w-full">
-            <div className="bg-[#0D1B3E]/90 backdrop-blur-md rounded-2xl px-6 py-5 flex flex-col md:flex-row items-center gap-4 text-center md:text-left">
-              <div className="text-5xl">⚽</div>
-              <div className="flex-1">
-                <p className="text-[#FFD700] font-black text-lg md:text-xl leading-tight">
-                  🏆 PROMOÇÃO COPA DO MUNDO
-                </p>
-                <p className="text-white font-bold text-base mt-1">
-                  Assine a InternetMais e ganhe <span className="text-[#FFD700]">GloboPlay Premium</span> no preço do Básico!
-                </p>
-                <p className="text-white/60 text-sm mt-1">
-                  Promoção válida até <span className="text-white font-semibold">31/07/2026</span>. Aproveite e assista à Copa com qualidade máxima.
-                </p>
-              </div>
-              <div className="bg-[#FFD700] text-[#0D1B3E] font-black text-sm px-4 py-2 rounded-full whitespace-nowrap animate-pulse">
-                ATÉ 31/07/2026
-              </div>
-            </div>
+          <div className="relative rounded-2xl shadow-2xl overflow-hidden" style={{ maxWidth: '420px', width: '100%' }}>
+            <img
+              src="https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/telecine_75b232e0.jpg"
+              alt="Telecine Sinal Aberto — 21 a 27 de Julho: O Retorno, Velozes e Furiosos 9, John Wick 4"
+              className="w-full h-auto object-cover rounded-2xl"
+            />
           </div>
         </div>
 
