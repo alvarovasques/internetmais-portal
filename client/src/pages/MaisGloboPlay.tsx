@@ -205,12 +205,12 @@ export default function MaisGloboPlayLP() {
 
         <div className="container mx-auto px-6 relative z-10">
           {/* Logos */}
-          <div className="flex items-center justify-center gap-4 mb-8 flex-wrap">
-            <img src={ASSETS.logo} alt="Internet Mais" className="h-10 object-contain" />
-            <span className="text-white/30 text-2xl font-thin">+</span>
-            <img src={ASSETS.globoplay} alt="GloboPlay" className="h-12 w-12 object-contain rounded-xl" />
-            <span className="text-white/30 text-2xl font-thin">+</span>
-            <img src={ASSETS.telecine} alt="Telecine" className="h-10 bg-white rounded-lg px-3 py-1 object-contain" />
+          <div className="flex items-center justify-center gap-6 mb-10 flex-wrap">
+            <img src={ASSETS.logo} alt="Internet Mais" className="h-16 md:h-20 object-contain drop-shadow-lg" />
+            <span className="text-white/30 text-4xl font-thin">+</span>
+            <img src={ASSETS.globoplay} alt="GloboPlay" className="h-20 w-20 md:h-24 md:w-24 object-contain rounded-2xl shadow-xl" />
+            <span className="text-white/30 text-4xl font-thin">+</span>
+            <img src={ASSETS.telecine} alt="Telecine" className="h-14 md:h-18 bg-white rounded-xl px-5 py-2 object-contain shadow-xl" />
           </div>
 
           {/* Badge */}
@@ -443,7 +443,7 @@ export default function MaisGloboPlayLP() {
 
       {/* ── RODAPÉ MÍNIMO ─────────────────────────────────────────────── */}
       <footer className="py-8 px-6 border-t border-white/10 text-center">
-        <img src={ASSETS.logo} alt="Internet Mais" className="h-8 object-contain mx-auto mb-3" />
+        <img src={ASSETS.logo} alt="Internet Mais" className="h-14 md:h-16 object-contain mx-auto mb-4 drop-shadow-lg" />
         <p className="text-white/30 text-xs">
           © {new Date().getFullYear()} Internet Mais · Campo Grande, MS · Todos os direitos reservados
         </p>
