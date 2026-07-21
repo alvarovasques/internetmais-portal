@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from 'react';
-import { MessageCircle, Check, Star, Film, Clock, Shield, Wifi, ChevronDown, Play } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { MessageCircle, Check, Star, Film, Clock, Shield, ChevronDown, Play, Tv, Zap } from 'lucide-react';
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
@@ -23,9 +23,9 @@ const ASSETS = {
   telecine:  `${CDN}/telecine-logo_58f3a687.png`,
   globoplay: `${CDN}/globoplay-hq_5eefcb22.png`,
   logo:      `${CDN}/Logo_internet_MAIS_9b6aefe1.png`,
-  poster1:   `${CDN}/bCb5kNiFIqoH_4d788dcc.jpg`,   // O Retorno
-  poster2:   `${CDN}/EFvDsp8uYaDB_f2eb1b86.jpg`,   // Velozes e Furiosos 9
-  poster3:   `${CDN}/YO6LenMjrQGk_cede9e5f.jpg`,   // John Wick 4
+  poster1:   `${CDN}/bCb5kNiFIqoH_4d788dcc.jpg`,
+  poster2:   `${CDN}/EFvDsp8uYaDB_f2eb1b86.jpg`,
+  poster3:   `${CDN}/YO6LenMjrQGk_cede9e5f.jpg`,
 };
 
 const FILMES = [
@@ -34,68 +34,49 @@ const FILMES = [
   { poster: ASSETS.poster3, title: 'John Wick 4: Baba Yaga', genre: 'Ação' },
 ];
 
-const PLANOS = [
-  { velocidade: '400 Mega', preco: 'R$ 109,90', popular: false },
-  { velocidade: '600 Mega', preco: 'R$ 129,90', popular: true },
-  { velocidade: '800 Mega', preco: 'R$ 149,90', popular: false },
-];
-
-const BENEFICIOS = [
-  { icon: Film,   text: 'GloboPlay Premium incluso — filmes, séries e conteúdo exclusivo' },
-  { icon: Star,   text: 'Telecine Sinal Aberto: filmes liberados de 21 a 27 de Julho' },
-  { icon: Wifi,   text: 'Fibra óptica 100% pura — velocidade real garantida' },
-  { icon: Shield, text: 'Instalação grátis, sem fidelidade e sem taxa de adesão' },
-  { icon: Clock,  text: 'Suporte 24h — atendimento rápido pelo WhatsApp' },
-];
-
 const FAQ = [
   {
-    q: 'O que é o Sinal Aberto do Telecine?',
-    a: 'É uma promoção especial em que o canal Telecine libera gratuitamente sua programação completa — incluindo filmes como O Retorno, Velozes e Furiosos 9 e John Wick 4: Baba Yaga — para todos os assinantes do GloboPlay Premium no período de 21 a 27 de julho.',
-  },
-  {
-    q: 'O GloboPlay Premium já está incluso no meu plano?',
-    a: 'Sim! Todos os planos Internet Mais a partir de 400 Mega incluem o GloboPlay Premium sem custo adicional. Você assina a internet e já ganha acesso completo ao streaming.',
+    q: 'Já sou cliente Internet Mais. Como adiciono o GloboPlay?',
+    a: 'Simples! Clique em qualquer botão desta página e fale com nossa equipe pelo WhatsApp. Em minutos adicionamos o GloboPlay Premium ao seu plano sem burocracia.',
   },
   {
     q: 'Preciso pagar algo a mais pelo Telecine Sinal Aberto?',
-    a: 'Não. Durante o período de 21 a 27 de julho, o Telecine fica liberado automaticamente para quem tem GloboPlay Premium — que já está incluso no seu plano Internet Mais.',
+    a: 'Não. O Telecine Sinal Aberto é uma promoção do próprio Telecine para assinantes do GloboPlay Premium. De 21 a 27 de julho, o canal fica liberado automaticamente — sem custo extra.',
   },
   {
-    q: 'Quantas telas posso usar ao mesmo tempo?',
-    a: 'Com o GloboPlay Premium você pode assistir em até 5 telas simultâneas, com resolução Full HD e 4K, além de poder baixar conteúdo para assistir offline.',
+    q: 'O que é o GloboPlay Premium?',
+    a: 'É o streaming da Globo com filmes, séries, novelas, reality shows e esportes ao vivo — tudo sem anúncios, em Full HD e 4K, em até 5 telas simultâneas.',
   },
   {
-    q: 'Como faço para contratar?',
-    a: 'É simples! Clique em qualquer botão "Quero Contratar" nesta página e você será direcionado diretamente para o nosso WhatsApp. Nossa equipe responde rapidamente e agenda a instalação.',
+    q: 'Posso assistir em qualquer dispositivo?',
+    a: 'Sim! GloboPlay funciona em celular, tablet, Smart TV, computador e Fire Stick. Você também pode baixar conteúdo para assistir offline.',
+  },
+  {
+    q: 'Quanto custa adicionar o GloboPlay Premium ao meu plano?',
+    a: 'O valor é acessível e varia conforme o seu plano atual. Fale com nossa equipe pelo WhatsApp para receber uma proposta personalizada.',
   },
 ];
 
 // ─── Componentes ──────────────────────────────────────────────────────────────
 
-function CTAButton({ label, plan, location, size = 'lg' }: {
+function CTAButton({ label, location, size = 'lg' }: {
   label: string;
-  plan?: string;
   location: string;
   size?: 'sm' | 'lg';
 }) {
-  const msg = plan
-    ? `Olá! Vim pelo SMS da Internet Mais. Quero contratar o plano ${plan} com GloboPlay Premium + Telecine Sinal Aberto. Podem me ajudar?`
-    : `Olá! Vim pelo SMS da Internet Mais sobre a promoção GloboPlay Premium + Telecine Sinal Aberto. Quero saber mais!`;
+  const msg = `Olá! Sou cliente Internet Mais e quero adicionar o GloboPlay Premium ao meu plano para ter acesso ao Telecine Sinal Aberto. Podem me ajudar?`;
 
   return (
     <a
       href={buildWaLink(msg)}
       target="_blank"
       rel="noopener noreferrer"
-      onClick={() => pushGTM('Click_Whatsapp_LP', { button_location: location, plan_name: plan ?? 'geral' })}
-      className={`inline-flex items-center justify-center gap-3 font-black rounded-full transition-all duration-300 hover:scale-105 active:scale-95 shadow-lg hover:shadow-green-500/40 ${
-        size === 'lg'
-          ? 'px-8 py-4 text-lg'
-          : 'px-5 py-3 text-sm'
-      } bg-gradient-to-r from-[#25D366] to-[#128C7E] text-white`}
+      onClick={() => pushGTM('Click_Whatsapp_LP', { button_location: location })}
+      className={`inline-flex items-center justify-center gap-3 font-black rounded-full transition-all duration-300 hover:scale-105 active:scale-95 shadow-xl ${
+        size === 'lg' ? 'px-8 py-5 text-lg' : 'px-5 py-3 text-sm'
+      } bg-gradient-to-r from-[#25D366] to-[#128C7E] text-white hover:shadow-green-500/40`}
     >
-      <MessageCircle size={size === 'lg' ? 22 : 18} />
+      <MessageCircle size={size === 'lg' ? 24 : 18} />
       {label}
     </a>
   );
@@ -117,7 +98,6 @@ function CountdownTimer() {
   const h = Math.floor((secs % 86400) / 3600);
   const m = Math.floor((secs % 3600) / 60);
   const s = secs % 60;
-
   const pad = (n: number) => String(n).padStart(2, '0');
 
   return (
@@ -126,7 +106,7 @@ function CountdownTimer() {
         <div key={l} className="flex flex-col items-center">
           <span
             className="text-3xl md:text-4xl font-black text-white tabular-nums px-3 py-2 rounded-xl"
-            style={{ background: 'rgba(229,9,20,0.85)', minWidth: '3rem', textAlign: 'center' }}
+            style={{ background: 'rgba(229,9,20,0.9)', minWidth: '3.5rem', textAlign: 'center' }}
           >
             {pad(v)}
           </span>
@@ -145,7 +125,7 @@ function FaqItem({ q, a }: { q: string; a: string }) {
       onClick={() => setOpen(o => !o)}
     >
       <div className="flex items-center justify-between px-5 py-4 bg-white/5 hover:bg-white/10 transition-colors">
-        <span className="text-white font-semibold text-sm md:text-base">{q}</span>
+        <span className="text-white font-semibold text-sm md:text-base pr-4">{q}</span>
         <ChevronDown
           size={18}
           className={`text-white/60 flex-shrink-0 transition-transform duration-300 ${open ? 'rotate-180' : ''}`}
@@ -163,11 +143,9 @@ function FaqItem({ q, a }: { q: string; a: string }) {
 // ─── Página principal ─────────────────────────────────────────────────────────
 
 export default function MaisGloboPlayLP() {
-  const heroRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    document.title = 'GloboPlay Premium + Telecine Sinal Aberto — Internet Mais';
-    // Evento de pageview específico para a LP
+    document.title = 'Assine GloboPlay e ganhe Telecine Sinal Aberto — Internet Mais';
     pushGTM('LP_MaisGloboPlay_View');
   }, []);
 
@@ -177,24 +155,23 @@ export default function MaisGloboPlayLP() {
       style={{ background: 'linear-gradient(160deg, #07070f 0%, #100718 50%, #07070f 100%)' }}
     >
 
-      {/* ── BARRA SUPERIOR DE URGÊNCIA ─────────────────────────────────── */}
+      {/* ── BARRA URGÊNCIA ────────────────────────────────────────────── */}
       <div
-        className="w-full py-2 px-4 text-center text-sm font-bold tracking-wide"
+        className="w-full py-2.5 px-4 text-center text-sm font-bold tracking-wide"
         style={{ background: 'linear-gradient(90deg, #e50914, #b81d24)' }}
       >
-        🎬 SINAL ABERTO TELECINE — 21 a 27 de Julho &nbsp;|&nbsp; Filmes liberados para assinantes GloboPlay Premium
+        ⏰ Oferta válida apenas de 21 a 27 de julho — Não perca!
       </div>
 
       {/* ── HERO ──────────────────────────────────────────────────────── */}
-      <section ref={heroRef} className="relative overflow-hidden pt-10 pb-16 md:pt-16 md:pb-24">
+      <section className="relative overflow-hidden pt-10 pb-16 md:pt-16 md:pb-24">
         {/* Fundo: posters desfocados */}
         <div className="absolute inset-0 flex opacity-10">
           {FILMES.map((f, i) => (
-            <img key={i} src={f.poster} alt="" className="flex-1 h-full object-cover" style={{ filter: 'blur(12px)' }} />
+            <img key={i} src={f.poster} alt="" className="flex-1 h-full object-cover" style={{ filter: 'blur(14px)' }} />
           ))}
         </div>
-        <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, rgba(7,7,15,0.7) 0%, rgba(7,7,15,0.95) 100%)' }} />
-
+        <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, rgba(7,7,15,0.75) 0%, rgba(7,7,15,0.97) 100%)' }} />
         {/* Faixas de película */}
         <div className="absolute left-0 top-0 bottom-0 w-6 flex flex-col gap-2 py-2 opacity-10 pointer-events-none">
           {Array.from({ length: 40 }).map((_, i) => <div key={i} className="w-full h-4 bg-white rounded-sm flex-shrink-0" />)}
@@ -204,6 +181,7 @@ export default function MaisGloboPlayLP() {
         </div>
 
         <div className="container mx-auto px-6 relative z-10">
+
           {/* Logos */}
           <div className="flex items-center justify-center gap-6 mb-10 flex-wrap">
             <img src={ASSETS.logo} alt="Internet Mais" className="h-24 md:h-32 object-contain drop-shadow-xl" />
@@ -216,42 +194,78 @@ export default function MaisGloboPlayLP() {
           {/* Badge */}
           <div className="flex justify-center mb-5">
             <span
-              className="text-white font-black text-xs px-4 py-1.5 rounded-full uppercase tracking-widest animate-pulse"
+              className="text-white font-black text-xs px-5 py-2 rounded-full uppercase tracking-widest"
               style={{ background: 'linear-gradient(90deg, #e50914, #b81d24)' }}
             >
-              🎬 Sinal Aberto — Oferta por Tempo Limitado
+              🎬 Exclusivo para clientes Internet Mais
             </span>
           </div>
 
           {/* Headline */}
-          <h1 className="text-4xl md:text-6xl font-black text-center leading-tight mb-4">
-            Cinema em Casa<br />
-            <span style={{ color: '#e50914' }}>Incluso no seu Plano</span>
+          <h1 className="text-4xl md:text-6xl font-black text-center leading-tight mb-5">
+            Assine o GloboPlay<br />
+            <span style={{ color: '#e50914' }}>e ganhe o Telecine</span><br />
+            <span className="text-white/90">Sinal Aberto</span>
           </h1>
+
           <p className="text-lg md:text-xl text-white/70 text-center max-w-2xl mx-auto mb-8">
-            Assine a <strong className="text-white">Internet Mais</strong> e ganhe <strong className="text-white">GloboPlay Premium</strong> incluso —
-            com acesso ao <strong className="text-white">Telecine Sinal Aberto</strong> de 21 a 27 de julho, sem pagar nada a mais.
+            Você já é cliente <strong className="text-white">Internet Mais</strong>. Agora adicione o <strong className="text-white">GloboPlay Premium</strong> ao seu plano
+            e aproveite o <strong className="text-white">Telecine Sinal Aberto</strong> — filmes liberados de <strong className="text-white">21 a 27 de julho</strong>, sem pagar nada a mais.
           </p>
 
           {/* CTA principal */}
           <div className="flex justify-center mb-10">
-            <CTAButton label="Quero Contratar Agora" location="Hero" size="lg" />
+            <CTAButton label="Quero Adicionar GloboPlay Agora" location="Hero" size="lg" />
           </div>
 
-          {/* Contagem regressiva */}
-          <div className="text-center mb-2">
+          {/* Countdown */}
+          <div className="text-center">
             <p className="text-white/50 text-xs uppercase tracking-widest mb-3">Sinal Aberto encerra em</p>
             <CountdownTimer />
           </div>
         </div>
       </section>
 
-      {/* ── ESTEIRA DE FILMES ─────────────────────────────────────────── */}
+      {/* ── COMO FUNCIONA ─────────────────────────────────────────────── */}
+      <section className="py-14 px-6">
+        <div className="container mx-auto max-w-3xl">
+          <div className="text-center mb-10">
+            <h2 className="text-2xl md:text-3xl font-black text-white">Como funciona?</h2>
+            <p className="text-white/50 mt-2 text-sm">É simples. São apenas 3 passos.</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              { step: '1', icon: MessageCircle, title: 'Fale conosco', desc: 'Clique no botão e mande mensagem pelo WhatsApp. Nossa equipe responde rapidinho.' },
+              { step: '2', icon: Tv, title: 'Adicione o GloboPlay', desc: 'Adicionamos o GloboPlay Premium ao seu plano atual. Sem burocracia, sem fidelidade.' },
+              { step: '3', icon: Film, title: 'Assista ao Telecine', desc: 'Com o GloboPlay Premium ativo, o Telecine Sinal Aberto fica liberado automaticamente de 21 a 27/jul.' },
+            ].map(({ step, icon: Icon, title, desc }) => (
+              <div
+                key={step}
+                className="relative rounded-2xl p-6 text-center"
+                style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.08)' }}
+              >
+                <div
+                  className="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-black text-lg"
+                  style={{ background: 'linear-gradient(135deg, #e50914, #8b0000)' }}
+                >
+                  {step}
+                </div>
+                <Icon size={28} className="mx-auto mb-3 text-red-400" />
+                <h3 className="text-white font-bold text-base mb-2">{title}</h3>
+                <p className="text-white/60 text-sm leading-relaxed">{desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── FILMES EM DESTAQUE ────────────────────────────────────────── */}
       <section className="py-12 px-6">
         <div className="container mx-auto">
           <div className="text-center mb-8">
-            <p className="text-white/50 text-xs uppercase tracking-widest mb-2">Filmes em destaque</p>
-            <h2 className="text-2xl md:text-3xl font-black text-white">Disponíveis nesta semana</h2>
+            <p className="text-white/50 text-xs uppercase tracking-widest mb-2">Telecine Sinal Aberto</p>
+            <h2 className="text-2xl md:text-3xl font-black text-white">Filmes liberados esta semana</h2>
+            <p className="text-white/50 text-sm mt-2">21 a 27 de julho — disponível com GloboPlay Premium</p>
           </div>
           <div className="grid grid-cols-3 gap-4 max-w-lg mx-auto">
             {FILMES.map((f, i) => (
@@ -284,14 +298,21 @@ export default function MaisGloboPlayLP() {
         </div>
       </section>
 
-      {/* ── BENEFÍCIOS ────────────────────────────────────────────────── */}
-      <section className="py-12 px-6">
+      {/* ── O QUE VOCÊ GANHA ─────────────────────────────────────────── */}
+      <section className="py-14 px-6">
         <div className="container mx-auto max-w-2xl">
           <div className="text-center mb-8">
-            <h2 className="text-2xl md:text-3xl font-black text-white">Por que escolher a Internet Mais?</h2>
+            <h2 className="text-2xl md:text-3xl font-black text-white">O que você ganha com o GloboPlay Premium</h2>
           </div>
-          <div className="space-y-4">
-            {BENEFICIOS.map(({ icon: Icon, text }, i) => (
+          <div className="space-y-3">
+            {[
+              { icon: Film,    text: 'Filmes, séries e novelas — catálogo completo sem anúncios' },
+              { icon: Star,    text: 'Telecine Sinal Aberto: filmes liberados de 21 a 27/jul' },
+              { icon: Tv,      text: 'Esportes ao vivo: Campeonato Brasileiro, NFL e mais' },
+              { icon: Zap,     text: 'Resolução Full HD e 4K — até 5 telas simultâneas' },
+              { icon: Clock,   text: 'Baixe e assista offline quando quiser' },
+              { icon: Shield,  text: 'Até 5 perfis personalizados para toda a família' },
+            ].map(({ icon: Icon, text }, i) => (
               <div
                 key={i}
                 className="flex items-center gap-4 rounded-xl px-5 py-4"
@@ -304,107 +325,28 @@ export default function MaisGloboPlayLP() {
                   <Icon size={18} style={{ color: '#e50914' }} />
                 </div>
                 <span className="text-white/85 text-sm md:text-base">{text}</span>
+                <Check size={16} className="ml-auto flex-shrink-0 text-green-400" />
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── PLANOS ────────────────────────────────────────────────────── */}
-      <section className="py-14 px-6">
-        <div className="container mx-auto">
-          <div className="text-center mb-10">
-            <p className="text-white/50 text-xs uppercase tracking-widest mb-2">Escolha seu plano</p>
-            <h2 className="text-2xl md:text-3xl font-black text-white">GloboPlay Premium incluso em todos</h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto">
-            {PLANOS.map((p, i) => (
-              <div
-                key={i}
-                className={`relative rounded-2xl overflow-hidden transition-transform duration-300 hover:scale-105 ${
-                  p.popular ? 'ring-2 ring-[#e50914] shadow-2xl shadow-red-900/30 scale-105' : ''
-                }`}
-              >
-                {p.popular && (
-                  <div
-                    className="absolute top-0 left-0 right-0 py-1.5 text-center text-white font-black text-xs uppercase tracking-widest"
-                    style={{ background: 'linear-gradient(90deg, #e50914, #b81d24)' }}
-                  >
-                    ⭐ Mais Popular
-                  </div>
-                )}
-                <div
-                  className="p-6 flex flex-col items-center text-center h-full"
-                  style={{
-                    background: p.popular
-                      ? 'linear-gradient(160deg, #1a0a0a, #2a0808)'
-                      : 'rgba(255,255,255,0.05)',
-                    paddingTop: p.popular ? '2.5rem' : '1.5rem',
-                    border: '1px solid rgba(255,255,255,0.08)',
-                  }}
-                >
-                  <p className="text-white/50 text-xs uppercase tracking-widest mb-1">Internet Fibra</p>
-                  <h3 className="text-3xl font-black text-white mb-1">{p.velocidade}</h3>
-                  <p className="text-4xl font-black mb-1" style={{ color: p.popular ? '#e50914' : '#3DD93D' }}>
-                    {p.preco}
-                  </p>
-                  <p className="text-white/40 text-xs mb-5">/mês com desconto de pontualidade</p>
-
-                  <div className="space-y-2 mb-6 w-full text-left">
-                    {[
-                      'Instalação grátis*',
-                      'GloboPlay Premium incluso',
-                      'Telecine Sinal Aberto',
-                      'MaisTV — 100+ canais',
-                      'Suporte 24h',
-                    ].map((f, j) => (
-                      <div key={j} className="flex items-center gap-2">
-                        <Check size={14} style={{ color: p.popular ? '#e50914' : '#3DD93D', flexShrink: 0 }} />
-                        <span className="text-white/80 text-sm">{f}</span>
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Mini logos */}
-                  <div className="flex items-center justify-center gap-3 mb-6">
-                    <img src={ASSETS.globoplay} alt="GloboPlay" className="h-8 w-8 rounded-lg object-contain" />
-                    <img src={ASSETS.telecine} alt="Telecine" className="h-6 bg-white rounded px-1.5 py-0.5 object-contain" />
-                  </div>
-
-                  <CTAButton
-                    label="Quero Este Plano"
-                    plan={p.velocidade}
-                    location={`Planos - ${p.velocidade}`}
-                    size="sm"
-                  />
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <p className="text-center text-white/30 text-xs mt-6">*Sem taxa de instalação. Consulte condições de cobertura.</p>
-        </div>
-      </section>
-
-      {/* ── PROVA SOCIAL ──────────────────────────────────────────────── */}
-      <section className="py-12 px-6">
-        <div className="container mx-auto max-w-2xl">
+      {/* ── CTA MEIO ──────────────────────────────────────────────────── */}
+      <section className="py-10 px-6">
+        <div className="container mx-auto max-w-xl text-center">
           <div
-            className="rounded-2xl p-8 text-center"
-            style={{ background: 'rgba(229,9,20,0.08)', border: '1px solid rgba(229,9,20,0.2)' }}
+            className="rounded-2xl p-8"
+            style={{ background: 'rgba(229,9,20,0.1)', border: '1px solid rgba(229,9,20,0.3)' }}
           >
-            <div className="flex justify-center gap-1 mb-3">
-              {Array.from({ length: 5 }).map((_, i) => (
-                <Star key={i} size={20} fill="#e50914" style={{ color: '#e50914' }} />
-              ))}
-            </div>
-            <p className="text-white text-lg font-semibold mb-2">
-              "Mais de 20.000 clientes satisfeitos em Campo Grande"
+            <p className="text-white/60 text-sm mb-2 uppercase tracking-widest">Oferta por tempo limitado</p>
+            <h3 className="text-2xl md:text-3xl font-black text-white mb-2">
+              Sinal Aberto encerra em <span style={{ color: '#e50914' }}>27 de julho</span>
+            </h3>
+            <p className="text-white/60 text-sm mb-6">
+              Adicione o GloboPlay agora e aproveite os filmes liberados ainda hoje.
             </p>
-            <p className="text-white/50 text-sm">
-              Internet fibra óptica 100% pura com velocidade real e atendimento humano.
-            </p>
+            <CTAButton label="Adicionar GloboPlay ao Meu Plano" location="CTA Meio" size="lg" />
           </div>
         </div>
       </section>
@@ -413,7 +355,7 @@ export default function MaisGloboPlayLP() {
       <section className="py-12 px-6">
         <div className="container mx-auto max-w-2xl">
           <div className="text-center mb-8">
-            <h2 className="text-2xl font-black text-white">Perguntas Frequentes</h2>
+            <h2 className="text-2xl font-black text-white">Dúvidas frequentes</h2>
           </div>
           <div className="space-y-3">
             {FAQ.map((item, i) => <FaqItem key={i} {...item} />)}
@@ -424,15 +366,16 @@ export default function MaisGloboPlayLP() {
       {/* ── CTA FINAL ─────────────────────────────────────────────────── */}
       <section className="py-16 px-6">
         <div className="container mx-auto max-w-xl text-center">
-          <div className="flex justify-center gap-3 mb-6 flex-wrap">
-            <img src={ASSETS.globoplay} alt="GloboPlay" className="h-12 w-12 rounded-xl object-contain" />
-            <img src={ASSETS.telecine} alt="Telecine" className="h-10 bg-white rounded-lg px-3 py-1 object-contain" />
+          <div className="flex justify-center gap-4 mb-6 flex-wrap">
+            <img src={ASSETS.globoplay} alt="GloboPlay" className="h-14 w-14 rounded-xl object-contain shadow-xl" />
+            <img src={ASSETS.telecine} alt="Telecine" className="h-12 bg-white rounded-xl px-4 py-2 object-contain shadow-xl" />
           </div>
           <h2 className="text-3xl md:text-4xl font-black text-white mb-3">
-            Não perca esta oportunidade
+            Você já tem a melhor internet.<br />
+            <span style={{ color: '#e50914' }}>Agora complete com o GloboPlay.</span>
           </h2>
-          <p className="text-white/60 mb-8">
-            Sinal Aberto encerra em <strong className="text-white">27 de julho</strong>. Contrate agora e assista ainda hoje.
+          <p className="text-white/60 mb-8 text-sm">
+            Fale agora com nossa equipe e adicione o GloboPlay Premium ao seu plano Internet Mais.
           </p>
           <CTAButton label="Falar com um Consultor Agora" location="CTA Final" size="lg" />
           <p className="text-white/30 text-xs mt-4">
@@ -441,8 +384,8 @@ export default function MaisGloboPlayLP() {
         </div>
       </section>
 
-      {/* ── RODAPÉ MÍNIMO ─────────────────────────────────────────────── */}
-      <footer className="py-8 px-6 border-t border-white/10 text-center">
+      {/* ── RODAPÉ ────────────────────────────────────────────────────── */}
+      <footer className="py-10 px-6 border-t border-white/10 text-center">
         <img src={ASSETS.logo} alt="Internet Mais" className="h-20 md:h-24 object-contain mx-auto mb-4 drop-shadow-xl" />
         <p className="text-white/30 text-xs">
           © {new Date().getFullYear()} Internet Mais · Campo Grande, MS · Todos os direitos reservados
