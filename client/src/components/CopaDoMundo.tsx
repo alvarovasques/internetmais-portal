@@ -87,15 +87,6 @@ export default function CopaDoMundo() {
         backgroundRepeat: 'no-repeat',
       }}
     >
-      {/* Overlay escuro para legibilidade */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#0D1B3E]/90 via-[#0a1628]/85 to-[#0D1B3E]/90 pointer-events-none" />
-      {/* Fundo decorativo */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-24 -right-24 w-96 h-96 bg-[#3DD93D]/10 rounded-full blur-3xl" />
-        <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-[#3DD93D]/8 rounded-full blur-3xl" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#1a3a6e]/20 rounded-full blur-3xl" />
-      </div>
-
       {/* Faixa superior Férias */}
       <div className="relative z-10 bg-gradient-to-r from-[#3DD93D] via-[#2bc42b] to-[#3DD93D] py-2.5 text-center">
         <p className="text-[#0D1B3E] font-black text-sm tracking-widest uppercase">
@@ -107,26 +98,28 @@ export default function CopaDoMundo() {
 
         {/* Cabeçalho */}
         <div className="text-center mb-14">
-          <div className="inline-flex items-center gap-3 bg-[#3DD93D]/15 backdrop-blur-md border border-[#3DD93D]/30 px-6 py-3 rounded-full mb-6">
-            <GraduationCap className="text-[#3DD93D]" size={22} />
-            <span className="text-[#3DD93D] font-black text-sm tracking-wide uppercase">
+          <div className="inline-flex items-center gap-3 bg-white/80 backdrop-blur-md border border-[#3DD93D]/50 px-6 py-3 rounded-full mb-6 shadow-md">
+            <GraduationCap className="text-[#1a7a1a]" size={22} />
+            <span className="text-[#1a7a1a] font-black text-sm tracking-wide uppercase">
               Férias Escolares é com a Internet Mais
             </span>
           </div>
 
-          <h2 className="text-4xl md:text-6xl font-black text-white leading-tight mb-4">
+          <h2 className="text-4xl md:text-6xl font-black leading-tight mb-4 drop-shadow-lg"
+            style={{ color: '#0D1B3E', textShadow: '0 2px 8px rgba(255,255,255,0.8)' }}>
             Menos Tédio{' '}
-            <span className="text-[#3DD93D]">nas Férias!</span>
+            <span style={{ color: '#1a7a1a' }}>nas Férias!</span>
           </h2>
-          <p className="text-white/70 text-lg md:text-xl max-w-2xl mx-auto">
+          <p className="text-[#0D1B3E] text-lg md:text-xl max-w-2xl mx-auto font-medium drop-shadow"
+            style={{ textShadow: '0 1px 4px rgba(255,255,255,0.9)' }}>
             Férias é tempo de brincar — e brincar também pode ensinar.{' '}
-            <span className="text-white font-semibold">Dê o Play na diversão!</span>
+            <span className="font-black text-[#1a7a1a]">Dê o Play na diversão!</span>
           </p>
         </div>
 
         {/* Card de plano destaque */}
         <div className="max-w-4xl mx-auto mb-14">
-          <div className="bg-gradient-to-br from-[#0D1B3E] to-[#1a2f5e] border border-[#3DD93D]/30 rounded-3xl overflow-hidden shadow-2xl">
+          <div className="bg-white/90 backdrop-blur-md border border-[#3DD93D]/40 rounded-3xl overflow-hidden shadow-2xl">
 
             {/* Badge Assine */}
             <div className="bg-[#3DD93D] text-[#0D1B3E] text-center py-3 font-black text-sm tracking-widest uppercase">
@@ -139,39 +132,39 @@ export default function CopaDoMundo() {
                 {/* Velocidade + Preço */}
                 <div className="text-center md:text-left">
                   <div className="flex items-end justify-center md:justify-start gap-2 mb-2">
-                    <span className="text-white font-black text-8xl leading-none">800</span>
-                    <span className="text-white/60 font-bold text-2xl mb-3">mb</span>
+                    <span className="text-[#0D1B3E] font-black text-8xl leading-none">800</span>
+                    <span className="text-[#0D1B3E]/60 font-bold text-2xl mb-3">mb</span>
                   </div>
-                  <div className="w-full h-px bg-white/10 mb-4" />
-                  <p className="text-white/50 text-xs font-semibold uppercase tracking-wider mb-1">A partir de</p>
+                  <div className="w-full h-px bg-[#0D1B3E]/10 mb-4" />
+                  <p className="text-[#0D1B3E]/50 text-xs font-semibold uppercase tracking-wider mb-1">A partir de</p>
                   <div className="flex items-end justify-center md:justify-start gap-1">
-                    <span className="text-white/70 font-bold text-xl">R$</span>
-                    <span className="text-white font-black text-6xl leading-none">84</span>
-                    <span className="text-white font-black text-3xl mb-1">,95</span>
-                    <span className="text-white/50 font-semibold text-sm mb-1">/mês</span>
+                    <span className="text-[#0D1B3E]/70 font-bold text-xl">R$</span>
+                    <span className="text-[#0D1B3E] font-black text-6xl leading-none">84</span>
+                    <span className="text-[#0D1B3E] font-black text-3xl mb-1">,95</span>
+                    <span className="text-[#0D1B3E]/50 font-semibold text-sm mb-1">/mês</span>
                   </div>
-                  <p className="text-[#3DD93D] font-bold text-sm mt-2">
+                  <p className="text-[#1a7a1a] font-bold text-sm mt-2">
                     50% OFF nos 3 primeiros meses
                   </p>
                 </div>
 
                 {/* Benefícios do plano */}
                 <div className="space-y-3">
-                  <div className="flex items-center gap-3 bg-white/5 rounded-xl px-4 py-3">
-                    <div className="w-2 h-2 rounded-full bg-[#3DD93D] shrink-0" />
-                    <span className="text-white/90 text-sm font-medium">50% desconto nos 3 primeiros meses</span>
+                  <div className="flex items-center gap-3 bg-[#3DD93D]/10 rounded-xl px-4 py-3">
+                    <div className="w-2 h-2 rounded-full bg-[#1a7a1a] shrink-0" />
+                    <span className="text-[#0D1B3E] text-sm font-medium">50% desconto nos 3 primeiros meses</span>
                   </div>
-                  <div className="flex items-center gap-3 bg-white/5 rounded-xl px-4 py-3">
-                    <div className="w-2 h-2 rounded-full bg-[#3DD93D] shrink-0" />
-                    <span className="text-white/90 text-sm font-medium">+ 1 Aplicativo Standard incluso</span>
+                  <div className="flex items-center gap-3 bg-[#3DD93D]/10 rounded-xl px-4 py-3">
+                    <div className="w-2 h-2 rounded-full bg-[#1a7a1a] shrink-0" />
+                    <span className="text-[#0D1B3E] text-sm font-medium">+ 1 Aplicativo Standard incluso</span>
                   </div>
-                  <div className="flex items-center gap-3 bg-white/5 rounded-xl px-4 py-3">
-                    <div className="w-2 h-2 rounded-full bg-[#3DD93D] shrink-0" />
-                    <span className="text-white/90 text-sm font-medium">+ 1 Aplicativo Premium incluso</span>
+                  <div className="flex items-center gap-3 bg-[#3DD93D]/10 rounded-xl px-4 py-3">
+                    <div className="w-2 h-2 rounded-full bg-[#1a7a1a] shrink-0" />
+                    <span className="text-[#0D1B3E] text-sm font-medium">+ 1 Aplicativo Premium incluso</span>
                   </div>
-                  <div className="flex items-center gap-3 bg-white/5 rounded-xl px-4 py-3">
-                    <div className="w-2 h-2 rounded-full bg-[#3DD93D] shrink-0" />
-                    <span className="text-white/90 text-sm font-medium">Extensor WiFi por + R$ 29,90</span>
+                  <div className="flex items-center gap-3 bg-[#3DD93D]/10 rounded-xl px-4 py-3">
+                    <div className="w-2 h-2 rounded-full bg-[#1a7a1a] shrink-0" />
+                    <span className="text-[#0D1B3E] text-sm font-medium">Extensor WiFi por + R$ 29,90</span>
                   </div>
                 </div>
               </div>
@@ -181,15 +174,16 @@ export default function CopaDoMundo() {
 
         {/* Apps disponíveis */}
         <div className="mb-14">
-          <h3 className="text-white font-black text-2xl text-center mb-8 flex items-center justify-center gap-3">
-            <Tv className="text-[#3DD93D]" size={24} />
+          <h3 className="font-black text-2xl text-center mb-8 flex items-center justify-center gap-3 drop-shadow-md"
+            style={{ color: '#0D1B3E', textShadow: '0 1px 6px rgba(255,255,255,0.9)' }}>
+            <Tv className="text-[#1a7a1a]" size={24} />
             Escolha seus aplicativos
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
             {apps.map((app, i) => (
               <div
                 key={i}
-                className="relative bg-white/5 border border-white/10 rounded-2xl p-5 text-center hover:bg-white/10 hover:border-[#3DD93D]/30 transition-all duration-300 group"
+                className="relative bg-white/85 backdrop-blur-sm border border-white/60 rounded-2xl p-5 text-center hover:bg-white hover:border-[#3DD93D]/50 transition-all duration-300 group shadow-md"
               >
                 {/* Badge tipo */}
                 <div className={`absolute -top-2 left-1/2 -translate-x-1/2 px-2 py-0.5 rounded-full text-white text-[10px] font-black uppercase tracking-wider bg-gradient-to-r ${app.cor}`}>
@@ -199,12 +193,13 @@ export default function CopaDoMundo() {
                 <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${app.cor} flex items-center justify-center mx-auto mb-3 font-black text-white text-sm shadow-lg group-hover:scale-110 transition-transform duration-300`}>
                   {app.icone}
                 </div>
-                <p className="text-white font-bold text-sm leading-tight">{app.nome}</p>
-                <p className="text-white/50 text-xs mt-1">{app.descricao}</p>
+                <p className="text-[#0D1B3E] font-bold text-sm leading-tight">{app.nome}</p>
+                <p className="text-[#0D1B3E]/60 text-xs mt-1">{app.descricao}</p>
               </div>
             ))}
           </div>
-          <p className="text-white/40 text-xs text-center mt-4">
+          <p className="text-[#0D1B3E]/70 text-xs text-center mt-4 font-medium drop-shadow"
+            style={{ textShadow: '0 1px 4px rgba(255,255,255,0.8)' }}>
             * Escolha 1 aplicativo Standard + 1 aplicativo Premium ao contratar
           </p>
         </div>
@@ -214,35 +209,36 @@ export default function CopaDoMundo() {
 
           {/* Benefícios */}
           <div>
-            <h3 className="text-white font-black text-2xl mb-6 flex items-center gap-3">
-              <Star className="text-[#3DD93D]" size={24} fill="currentColor" />
+            <h3 className="font-black text-2xl mb-6 flex items-center gap-3 drop-shadow-md"
+              style={{ color: '#0D1B3E', textShadow: '0 1px 6px rgba(255,255,255,0.9)' }}>
+              <Star className="text-[#1a7a1a]" size={24} fill="currentColor" />
               Tudo incluso na promoção
             </h3>
             <div className="space-y-3">
               {beneficios.map((b, i) => (
                 <div
                   key={i}
-                  className="flex items-start gap-4 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl px-5 py-4 hover:bg-white/10 transition-all duration-300"
+                  className="flex items-start gap-4 bg-white/80 backdrop-blur-sm border border-white/50 rounded-xl px-5 py-4 hover:bg-white transition-all duration-300 shadow-sm"
                 >
-                  <div className="shrink-0 mt-0.5 bg-[#3DD93D]/10 rounded-lg p-2">
+                  <div className="shrink-0 mt-0.5 bg-[#3DD93D]/15 rounded-lg p-2">
                     {b.icon}
                   </div>
-                  <p className="text-white/90 text-sm leading-relaxed">{b.texto}</p>
+                  <p className="text-[#0D1B3E]/90 text-sm leading-relaxed">{b.texto}</p>
                 </div>
               ))}
             </div>
           </div>
 
           {/* CTA */}
-          <div className="bg-gradient-to-br from-[#0D1B3E] to-[#1a2f5e] border border-[#3DD93D]/30 rounded-2xl p-8 text-center">
-            <GraduationCap className="text-[#3DD93D] mx-auto mb-4" size={40} />
-            <h4 className="text-white font-black text-xl mb-2">
+          <div className="bg-white/90 backdrop-blur-md border border-[#3DD93D]/40 rounded-2xl p-8 text-center shadow-xl">
+            <GraduationCap className="text-[#1a7a1a] mx-auto mb-4" size={40} />
+            <h4 className="text-[#0D1B3E] font-black text-xl mb-2">
               Férias Escolares com a Internet Mais
             </h4>
-            <p className="text-white/60 text-sm mb-2">
+            <p className="text-[#0D1B3E]/60 text-sm mb-2">
               800 MB a partir de R$ 84,95/mês
             </p>
-            <p className="text-[#3DD93D] font-bold text-sm mb-6">
+            <p className="text-[#1a7a1a] font-bold text-sm mb-6">
               50% OFF nos 3 primeiros meses
             </p>
 
@@ -258,21 +254,21 @@ export default function CopaDoMundo() {
 
             {/* Apps base */}
             <div className="flex items-center justify-center gap-3 mb-4">
-              <div className="flex items-center gap-1.5 bg-white/5 rounded-lg px-3 py-2">
+              <div className="flex items-center gap-1.5 bg-[#3DD93D]/10 rounded-lg px-3 py-2">
                 <div className="w-6 h-6 rounded bg-[#1B5E20] flex items-center justify-center text-white text-[9px] font-black">K</div>
-                <span className="text-white/60 text-xs">Kinvo</span>
+                <span className="text-[#0D1B3E]/70 text-xs font-medium">Kinvo</span>
               </div>
-              <div className="flex items-center gap-1.5 bg-white/5 rounded-lg px-3 py-2">
+              <div className="flex items-center gap-1.5 bg-[#3DD93D]/10 rounded-lg px-3 py-2">
                 <div className="w-6 h-6 rounded bg-[#FF6B00] flex items-center justify-center text-white text-[9px] font-black">U+</div>
-                <span className="text-white/60 text-xs">Ubook Plus</span>
+                <span className="text-[#0D1B3E]/70 text-xs font-medium">Ubook Plus</span>
               </div>
-              <div className="flex items-center gap-1.5 bg-white/5 rounded-lg px-3 py-2">
-                <div className="w-6 h-6 rounded bg-[#1a3a6e] flex items-center justify-center text-[#3DD93D] text-[9px] font-black">TV</div>
-                <span className="text-white/60 text-xs">MaisTV</span>
+              <div className="flex items-center gap-1.5 bg-[#3DD93D]/10 rounded-lg px-3 py-2">
+                <div className="w-6 h-6 rounded bg-[#0D1B3E] flex items-center justify-center text-[#3DD93D] text-[9px] font-black">TV</div>
+                <span className="text-[#0D1B3E]/70 text-xs font-medium">MaisTV</span>
               </div>
             </div>
 
-            <p className="text-white/30 text-xs leading-relaxed">
+            <p className="text-[#0D1B3E]/40 text-xs leading-relaxed">
               Promoção válida para novos assinantes ou para upgrade. Plano com fidelidade.
               Após 3 meses os valores voltam ao valor de tabela. Consulte condições.
             </p>
