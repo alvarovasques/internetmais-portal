@@ -149,14 +149,119 @@ export default function MaisGloboPlay() {
           </p>
         </div>
 
-        {/* Promoção Sinal Aberto Telecine */}
-        <div className="flex justify-center mb-10 animate-fade-in-up animate-delay-200">
-          <div className="relative rounded-2xl shadow-2xl overflow-hidden" style={{ maxWidth: '420px', width: '100%' }}>
-            <img
-              src="https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/telecine_75b232e0.jpg"
-              alt="Telecine Sinal Aberto — 21 a 27 de Julho: O Retorno, Velozes e Furiosos 9, John Wick 4"
-              className="w-full h-auto object-cover rounded-2xl"
-            />
+        {/* Promoção Sinal Aberto Telecine — estilo Netflix */}
+        <div className="mb-10 animate-fade-in-up animate-delay-200">
+          <div
+            className="relative rounded-2xl overflow-hidden shadow-2xl"
+            style={{
+              background: 'linear-gradient(135deg, #0a0a0a 0%, #1a0a1a 40%, #0a0a1a 100%)',
+              border: '1px solid rgba(255,255,255,0.08)'
+            }}
+          >
+            {/* Fundo com gradiente de posters desfocados */}
+            <div className="absolute inset-0 overflow-hidden">
+              <div className="absolute inset-0 flex gap-1 opacity-15 scale-110">
+                {[
+                  'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/bCb5kNiFIqoH_4d788dcc.jpg',
+                  'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/EFvDsp8uYaDB_f2eb1b86.jpg',
+                  'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/YO6LenMjrQGk_cede9e5f.jpg',
+                ].map((src, i) => (
+                  <img key={i} src={src} alt="" className="h-full object-cover flex-1" style={{ filter: 'blur(8px)' }} />
+                ))}
+              </div>
+              <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, #0a0a0a 0%, rgba(10,10,10,0.6) 50%, #0a0a0a 100%)' }} />
+            </div>
+
+            <div className="relative z-10 px-6 py-8 md:px-10">
+              {/* Header da promoção */}
+              <div className="flex flex-col md:flex-row items-center md:items-start gap-6 mb-8">
+                {/* Logo + badge */}
+                <div className="flex flex-col items-center gap-3 flex-shrink-0">
+                  <img
+                    src="https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/telecine-logo_58f3a687.png"
+                    alt="Telecine"
+                    className="h-12 w-auto object-contain bg-white rounded-lg px-3 py-1"
+                  />
+                  <span
+                    className="text-white font-black text-xs px-3 py-1 rounded-full uppercase tracking-widest"
+                    style={{ background: 'linear-gradient(90deg, #e50914, #b81d24)' }}
+                  >
+                    Sinal Aberto
+                  </span>
+                </div>
+                {/* Texto principal */}
+                <div className="text-center md:text-left">
+                  <p className="text-white/50 text-xs font-semibold uppercase tracking-widest mb-1">Promoção Especial</p>
+                  <h3 className="text-white font-black text-2xl md:text-3xl leading-tight mb-2">
+                    Filmes Liberados
+                  </h3>
+                  <p className="text-white/70 text-sm">
+                    Diversão em família &bull; Sucessos atemporais
+                  </p>
+                  <div className="mt-3 inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-1.5">
+                    <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
+                    <span className="text-white font-bold text-sm">21 a 27 de Julho</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Esteira de posters estilo Netflix */}
+              <div className="grid grid-cols-3 gap-3 md:gap-4">
+                {[
+                  {
+                    poster: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/bCb5kNiFIqoH_4d788dcc.jpg',
+                    title: 'O Retorno',
+                    genre: 'Drama'
+                  },
+                  {
+                    poster: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/EFvDsp8uYaDB_f2eb1b86.jpg',
+                    title: 'Velozes e Furiosos 9',
+                    genre: 'Ação'
+                  },
+                  {
+                    poster: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/YO6LenMjrQGk_cede9e5f.jpg',
+                    title: 'John Wick 4: Baba Yaga',
+                    genre: 'Ação'
+                  },
+                ].map((filme, i) => (
+                  <div
+                    key={i}
+                    className="group relative rounded-xl overflow-hidden cursor-pointer transition-transform duration-300 hover:scale-105 hover:z-10"
+                    style={{ aspectRatio: '2/3' }}
+                  >
+                    <img
+                      src={filme.poster}
+                      alt={filme.title}
+                      className="w-full h-full object-cover"
+                    />
+                    {/* Overlay ao hover */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <div className="absolute bottom-0 left-0 right-0 p-3 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                      <p className="text-white font-bold text-xs leading-tight">{filme.title}</p>
+                      <p className="text-white/60 text-xs">{filme.genre}</p>
+                    </div>
+                    {/* Badge numerado */}
+                    <div
+                      className="absolute top-2 left-2 w-6 h-6 rounded-full flex items-center justify-center text-white font-black text-xs"
+                      style={{ background: 'rgba(229,9,20,0.9)' }}
+                    >
+                      {i + 1}
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Rodapé */}
+              <div className="mt-6 flex items-center justify-center gap-2">
+                <span className="text-white/40 text-xs">Pra tudo tem filme.</span>
+                <img
+                  src="https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/telecine-logo_58f3a687.png"
+                  alt="Telecine"
+                  className="h-5 w-auto object-contain bg-white rounded px-1.5 py-0.5"
+                />
+                <span className="text-white/40 text-xs">• Assista no GloboPlay</span>
+              </div>
+            </div>
           </div>
         </div>
 
