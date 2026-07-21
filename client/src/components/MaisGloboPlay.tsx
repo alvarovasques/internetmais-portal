@@ -1,6 +1,6 @@
 'use client';
 
-import { Tv, Check, MessageCircle, Star, TrendingDown } from 'lucide-react';
+import { Tv, Check, MessageCircle, Star, Film, Clapperboard } from 'lucide-react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { useViewPlanTracker } from '@/hooks/useViewPlanTracker';
 import { useState } from 'react';
@@ -23,14 +23,13 @@ interface Plano {
 
 export default function MaisGloboPlay() {
   const ref = useScrollAnimation();
-  // Aba Básico oculta provisoriamente — apenas Premium exibido
   const [abaAtiva, setAbaAtiva] = useState<'basico' | 'premium'>('premium');
   useViewPlanTracker(ref as React.RefObject<HTMLElement>, {
     section_name: 'MaisGloboPlay',
     plan_type: 'Internet + GloboPlay',
   });
 
-  // Apps Standard (mesmos do MaisAplicativos)
+  // Apps Standard
   const appsStandard: App[] = [
     { name: 'Ubook Plus', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/ubook_plus_cb4505d6.png' },
     { name: 'Zen', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/zen_5fe6a424.png' },
@@ -53,7 +52,7 @@ export default function MaisGloboPlay() {
     { name: 'Hub Vantagens', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/hub_vantagens_f70aaea4.png' },
   ];
 
-  // Apps Premium (mesmos do MaisAplicativos)
+  // Apps Premium
   const appsPremiumList: App[] = [
     { name: 'Smart Content', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/pasted_file_rhmkSC_image_9113653c.png' },
     { name: 'Ritual Fit', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/ritual_fit_229a350c.png' },
@@ -87,8 +86,8 @@ export default function MaisGloboPlay() {
   ];
 
   const diferenciais = [
-    'Todo o conteúdo sem anúncios e a maior cobertura de esportes, shows e entretenimento',
-    'Maior cobertura do esporte no SporTV: Copa do Brasil, Estaduais, NFL, Olimpíadas e mais',
+    'Todo o conteúdo sem anúncios — filmes, séries e shows exclusivos',
+    'Catálogo completo de filmes e séries nacionais e internacionais',
     'Até 5 perfis — 1 titular + 4 adicionais — cada um com experiência personalizada',
     'Baixe e assista offline onde quiser',
     'Assista em até 5 telas simultâneas',
@@ -125,27 +124,42 @@ export default function MaisGloboPlay() {
       id="mais-globoplay"
       className="relative py-20 md:py-32 overflow-hidden"
       style={{
-        backgroundImage: 'url(https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/mais-globoplay-hero-K5fJGBp8pWVRKjTzknHtR5.webp)',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundAttachment: 'fixed'
+        background: 'linear-gradient(160deg, #0a0a14 0%, #12071a 40%, #0d0a1f 70%, #0a0a14 100%)',
       }}
     >
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black/35"></div>
+      {/* Decoração: linhas de película de fundo */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {/* Faixa lateral esquerda estilo película */}
+        <div className="absolute left-0 top-0 bottom-0 w-8 flex flex-col gap-3 py-4 opacity-10">
+          {Array.from({ length: 30 }).map((_, i) => (
+            <div key={i} className="w-full h-5 bg-white rounded-sm flex-shrink-0" />
+          ))}
+        </div>
+        {/* Faixa lateral direita estilo película */}
+        <div className="absolute right-0 top-0 bottom-0 w-8 flex flex-col gap-3 py-4 opacity-10">
+          {Array.from({ length: 30 }).map((_, i) => (
+            <div key={i} className="w-full h-5 bg-white rounded-sm flex-shrink-0" />
+          ))}
+        </div>
+        {/* Brilho central suave */}
+        <div
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-5"
+          style={{ background: 'radial-gradient(circle, #e50914 0%, transparent 70%)' }}
+        />
+      </div>
 
       <div className="container mx-auto px-4 relative z-10">
         {/* Header */}
         <div className="text-center mb-10 animate-fade-in-down animate-delay-100">
           <div className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-md px-6 py-3 rounded-full mb-6 border border-white/20">
-            <Tv className="text-[#FF6B35]" size={24} />
+            <Clapperboard className="text-[#e50914]" size={22} />
             <span className="text-white font-bold">Mais GloboPlay</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
-            Entretenimento para toda a Família
+            Cinema em Casa, Todo Dia
           </h2>
-          <p className="text-xl text-white/80 max-w-2xl mx-auto">
-            Acesso a GloboPlay, séries, filmes e esportes ao vivo para toda a família
+          <p className="text-xl text-white/70 max-w-2xl mx-auto">
+            Filmes, séries e conteúdo exclusivo com GloboPlay — assista quando e onde quiser
           </p>
         </div>
 
@@ -158,7 +172,7 @@ export default function MaisGloboPlay() {
               border: '1px solid rgba(255,255,255,0.08)'
             }}
           >
-            {/* Fundo com gradiente de posters desfocados */}
+            {/* Fundo com posters desfocados */}
             <div className="absolute inset-0 overflow-hidden">
               <div className="absolute inset-0 flex gap-1 opacity-15 scale-110">
                 {[
@@ -208,39 +222,21 @@ export default function MaisGloboPlay() {
               {/* Esteira de posters estilo Netflix */}
               <div className="grid grid-cols-3 gap-3 md:gap-4">
                 {[
-                  {
-                    poster: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/bCb5kNiFIqoH_4d788dcc.jpg',
-                    title: 'O Retorno',
-                    genre: 'Drama'
-                  },
-                  {
-                    poster: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/EFvDsp8uYaDB_f2eb1b86.jpg',
-                    title: 'Velozes e Furiosos 9',
-                    genre: 'Ação'
-                  },
-                  {
-                    poster: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/YO6LenMjrQGk_cede9e5f.jpg',
-                    title: 'John Wick 4: Baba Yaga',
-                    genre: 'Ação'
-                  },
+                  { poster: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/bCb5kNiFIqoH_4d788dcc.jpg', title: 'O Retorno', genre: 'Drama' },
+                  { poster: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/EFvDsp8uYaDB_f2eb1b86.jpg', title: 'Velozes e Furiosos 9', genre: 'Ação' },
+                  { poster: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/YO6LenMjrQGk_cede9e5f.jpg', title: 'John Wick 4: Baba Yaga', genre: 'Ação' },
                 ].map((filme, i) => (
                   <div
                     key={i}
                     className="group relative rounded-xl overflow-hidden cursor-pointer transition-transform duration-300 hover:scale-105 hover:z-10"
                     style={{ aspectRatio: '2/3' }}
                   >
-                    <img
-                      src={filme.poster}
-                      alt={filme.title}
-                      className="w-full h-full object-cover"
-                    />
-                    {/* Overlay ao hover */}
+                    <img src={filme.poster} alt={filme.title} className="w-full h-full object-cover" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     <div className="absolute bottom-0 left-0 right-0 p-3 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
                       <p className="text-white font-bold text-xs leading-tight">{filme.title}</p>
                       <p className="text-white/60 text-xs">{filme.genre}</p>
                     </div>
-                    {/* Badge numerado */}
                     <div
                       className="absolute top-2 left-2 w-6 h-6 rounded-full flex items-center justify-center text-white font-black text-xs"
                       style={{ background: 'rgba(229,9,20,0.9)' }}
@@ -267,8 +263,9 @@ export default function MaisGloboPlay() {
 
         {/* Badge descritivo */}
         <div className="text-center mb-10">
-          <p className="text-yellow-300 text-sm font-semibold">
-            ⭐ GloboPlay Premium incluso — filmes, séries, esportes ao vivo e conteúdo exclusivo sem anúncios
+          <p className="text-red-300 text-sm font-semibold">
+            <Film size={14} className="inline mr-1" />
+            GloboPlay Premium incluso — filmes, séries e conteúdo exclusivo sem anúncios
           </p>
         </div>
 
@@ -289,9 +286,9 @@ export default function MaisGloboPlay() {
                 </div>
               )}
 
-              {/* Premium top bar */}
+              {/* Barra superior — tema cinema (vermelho) */}
               {isPremium && (
-                <div className="h-1.5 w-full bg-gradient-to-r from-[#FFD700] to-[#FF8C00]" />
+                <div className="h-1.5 w-full bg-gradient-to-r from-[#e50914] to-[#8b0000]" />
               )}
 
               {/* Card Background */}
@@ -319,24 +316,27 @@ export default function MaisGloboPlay() {
                 <div className="mb-6 space-y-3">
                   {plano.features.map((feature, idx) => (
                     <div key={idx} className="flex items-start gap-3">
-                      <Check size={20} className={plano.popular ? 'text-white' : 'text-[#3DD93D]'} />
-                      <span className={`text-sm font-semibold ${plano.popular ? 'text-white' : 'text-gray-700'}`}>
+                      <Check
+                        size={16}
+                        className={`mt-0.5 flex-shrink-0 ${plano.popular ? 'text-white' : 'text-[#3DD93D]'}`}
+                      />
+                      <span className={`text-sm ${plano.popular ? 'text-white/90' : 'text-gray-700'}`}>
                         {feature}
                       </span>
                     </div>
                   ))}
                 </div>
 
-                {/* Apps Section — apenas no Premium */}
-                {isPremium && (plano.appsStandard || plano.appsPremium) && (
-                  <div className="mb-6 space-y-4 border-t border-opacity-20 border-white pt-5">
+                {/* Apps section */}
+                {(plano.appsStandard || plano.appsPremium) && (
+                  <div className="mb-6">
                     {plano.appsStandard && (
                       <div>
                         <p className={`text-xs font-bold mb-3 ${plano.popular ? 'text-white' : 'text-[#3DD93D]'}`}>
-                          Escolha 1 em mais de 15 opções
+                          Aplicativos inclusos
                         </p>
                         <div className="grid grid-cols-5 gap-2">
-                          {appsStandard.map((app, idx) => (
+                          {appsStandard.slice(0, plano.appsStandard).map((app, idx) => (
                             <div
                               key={idx}
                               className={`flex flex-col items-center justify-center p-1.5 rounded-lg transition-all duration-300 hover:scale-110 cursor-pointer ${
@@ -354,7 +354,7 @@ export default function MaisGloboPlay() {
                     )}
                     {plano.appsPremium && (
                       <div>
-                        <p className={`text-xs font-bold mb-3 ${plano.popular ? 'text-white' : isPremium ? 'text-[#FF8C00]' : 'text-[#3DD93D]'}`}>
+                        <p className={`text-xs font-bold mb-3 ${plano.popular ? 'text-white' : 'text-[#e50914]'}`}>
                           Escolha 1 em mais de 5 opções
                         </p>
                         <div className="grid grid-cols-5 gap-2">
@@ -364,7 +364,7 @@ export default function MaisGloboPlay() {
                               className={`flex flex-col items-center justify-center p-1.5 rounded-lg transition-all duration-300 hover:scale-110 cursor-pointer ${
                                 plano.popular
                                   ? 'bg-white/10 hover:bg-white/20'
-                                  : 'bg-orange-50 border border-orange-200 hover:bg-orange-100'
+                                  : 'bg-red-50 border border-red-100 hover:bg-red-100'
                               }`}
                               title={app.name}
                             >
@@ -378,16 +378,16 @@ export default function MaisGloboPlay() {
                 )}
 
                 {/* GloboPlay Section */}
-                <div className={`mb-8 pt-5 ${isPremium ? 'border-t border-opacity-20 border-white' : 'border-t border-opacity-20 border-white pt-6'}`}>
-                  <p className={`text-xs font-bold mb-4 ${plano.popular ? 'text-white' : isPremium ? 'text-[#FF8C00]' : 'text-[#FF1744]'}`}>
-                    {isPremium ? '⭐ INCLUSO' : 'APLICATIVO INCLUSO'}
+                <div className={`mb-8 pt-5 border-t ${plano.popular ? 'border-white/20' : 'border-gray-100'}`}>
+                  <p className={`text-xs font-bold mb-4 ${plano.popular ? 'text-white' : isPremium ? 'text-[#e50914]' : 'text-[#e50914]'}`}>
+                    {isPremium ? '🎬 INCLUSO' : 'APLICATIVO INCLUSO'}
                   </p>
                   <div className="flex justify-center">
                     <div className={`rounded-2xl p-5 flex flex-col items-center justify-center ${
                       isPremium && !plano.popular
-                        ? 'bg-gradient-to-br from-yellow-50 to-orange-50 border-2 border-yellow-300'
+                        ? 'bg-gradient-to-br from-red-50 to-rose-50 border-2 border-red-200'
                         : isPremium && plano.popular
-                        ? 'bg-white/20 border-2 border-yellow-300/50'
+                        ? 'bg-white/20 border-2 border-white/30'
                         : 'bg-white'
                     }`}>
                       <img
@@ -399,7 +399,7 @@ export default function MaisGloboPlay() {
                         GloboPlay
                       </p>
                       {isPremium ? (
-                        <span className="mt-1 inline-flex items-center gap-1 bg-gradient-to-r from-[#FFD700] to-[#FF8C00] text-white text-xs font-black px-3 py-1 rounded-full shadow-md">
+                        <span className="mt-1 inline-flex items-center gap-1 bg-gradient-to-r from-[#e50914] to-[#8b0000] text-white text-xs font-black px-3 py-1 rounded-full shadow-md">
                           <Star size={10} fill="white" /> Premium
                         </span>
                       ) : (
@@ -431,7 +431,7 @@ export default function MaisGloboPlay() {
                     plano.popular
                       ? 'bg-white text-[#3DD93D] hover:bg-gray-100'
                       : isPremium
-                        ? 'bg-gradient-to-r from-[#FFD700] to-[#FF8C00] text-white hover:opacity-90'
+                        ? 'bg-gradient-to-r from-[#e50914] to-[#8b0000] text-white hover:opacity-90'
                         : 'bg-[#3DD93D] text-white hover:bg-[#2BA82A]'
                   }`}
                 >
@@ -444,7 +444,7 @@ export default function MaisGloboPlay() {
         </div>
 
         {/* Info */}
-        <div className="mt-16 text-center text-white/80 text-sm">
+        <div className="mt-16 text-center text-white/60 text-sm">
           <p>*Sem taxa de instalação. Consulte condições.</p>
         </div>
       </div>
