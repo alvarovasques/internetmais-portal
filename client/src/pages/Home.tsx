@@ -1,6 +1,5 @@
 import Header from '@/components/Header';
 import HeroSection from '@/components/HeroSection';
-import CopaDoMundo from '@/components/CopaDoMundo';
 import MaisVelocidade from '@/components/MaisVelocidade';
 import MaisAplicativos from '@/components/MaisAplicativos';
 import MaisGloboPlay from '@/components/MaisGloboPlay';
@@ -34,7 +33,6 @@ export default function Home() {
       <Header />
       <main>
         <HeroSection />
-        <CopaDoMundo />
         <MaisVelocidade />
         <MaisAplicativos />
         <MaisGloboPlay />
