@@ -19,18 +19,6 @@ export default function Lojas() {
       bairro_slug: 'aero-rancho'
     },
     {
-      nome: 'Loja Nova Lima',
-      endereco: 'Rua Zulmira Borba, 510',
-      horario: 'Seg-Sex: 8h-18h | Sab: 8h-12h',
-      bairro_slug: 'nova-campo-grande'
-    },
-    {
-      nome: 'Loja União',
-      endereco: 'Avenida Petrópolis, 1109',
-      horario: 'Seg-Sex: 8h-18h | Sab: 8h-12h',
-      bairro_slug: 'uniao'
-    },
-    {
       nome: 'Loja Julio de Castilho',
       endereco: 'Avenida Julio de Castilho, 1666',
       horario: 'Seg-Sex: 8h-18h | Sab: 8h-12h',
@@ -52,11 +40,11 @@ export default function Lojas() {
           Visite Nossas Lojas
         </h2>
         <p className="text-lg text-gray-700 text-center mb-16 max-w-2xl mx-auto animate-fade-in-up">
-          Estamos presentes em 6 unidades em Campo Grande. Faça pagamentos, contrate planos e solicite atendimento com praticidade e suporte humanizado.
+          Estamos presentes em 4 unidades em Campo Grande. Faça pagamentos, contrate planos e solicite atendimento com praticidade e suporte humanizado.
         </p>
 
         {/* Lojas Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
           {lojas.map((loja, i) => (
             <Link key={i} href={`/bairro/${loja.bairro_slug}`} className="bg-white rounded-2xl p-5 shadow-lg hover:shadow-xl border-l-4 border-[#3DD93D] card-hover animate-fade-in-up hover:border-[#2ba82a] transition-all duration-300 block"
               style={{ animationDelay: `${0.1 + i * 0.1}s` }}

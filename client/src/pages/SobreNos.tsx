@@ -37,16 +37,6 @@ export default function SobreNos() {
       horario: 'Seg-Sex: 8h-18h | Sab: 8h-12h'
     },
     {
-      nome: 'Loja Nova Lima',
-      endereco: 'Rua Zulmira Borba, 510',
-      horario: 'Seg-Sex: 8h-18h | Sab: 8h-12h'
-    },
-    {
-      nome: 'Loja União',
-      endereco: 'Avenida Petrópolis, 1109',
-      horario: 'Seg-Sex: 8h-18h | Sab: 8h-12h'
-    },
-    {
       nome: 'Loja Julio de Castilho',
       endereco: 'Avenida Julio de Castilho, 1666',
       horario: 'Seg-Sex: 8h-18h | Sab: 8h-12h'
