@@ -23,37 +23,37 @@ const ASSETS = {
   telecine:  `${CDN}/telecine-logo_58f3a687.png`,
   globoplay: `${CDN}/globoplay-hq_5eefcb22.png`,
   logo:      `${CDN}/Logo_internet_MAIS_9b6aefe1.png`,
-  poster1:   `${CDN}/bCb5kNiFIqoH_4d788dcc.jpg`,
-  poster2:   `${CDN}/EFvDsp8uYaDB_f2eb1b86.jpg`,
-  poster3:   `${CDN}/YO6LenMjrQGk_cede9e5f.jpg`,
+  poster1:   '/manus-storage/poster-charlie_b4b398e1.jpg',
+  poster2:   '/manus-storage/poster-empregada_9c77b2da.jpg',
+  poster3:   '/manus-storage/poster-retorno_5ab3137e.jpg',
 };
 
 const FILMES = [
-  { poster: ASSETS.poster1, title: 'O Retorno', genre: 'Drama' },
-  { poster: ASSETS.poster2, title: 'Velozes e Furiosos 9', genre: 'Ação' },
-  { poster: ASSETS.poster3, title: 'John Wick 4: Baba Yaga', genre: 'Ação' },
+  { poster: ASSETS.poster1, title: 'Charlie, o Cão Maravilha', genre: 'Animação' },
+  { poster: ASSETS.poster2, title: 'A Empregada', genre: 'Suspense' },
+  { poster: ASSETS.poster3, title: 'O Retorno', genre: 'Drama' },
 ];
 
 const FAQ = [
   {
-    q: 'Já sou cliente Internet Mais. Como adiciono o GloboPlay?',
-    a: 'Simples! Clique em qualquer botão desta página e fale com nossa equipe pelo WhatsApp. Em minutos adicionamos o GloboPlay Premium ao seu plano sem burocracia.',
+    q: 'Preciso ser cliente Internet Mais para aproveitar?',
+    a: 'Sim! Esta oferta é exclusiva para clientes Internet Mais. Basta entrar em contato via WhatsApp para adicionar o Telecine ao seu plano.',
   },
   {
-    q: 'Preciso pagar algo a mais pelo Telecine Sinal Aberto?',
-    a: 'Não. O Telecine Sinal Aberto é uma promoção do próprio Telecine para assinantes do GloboPlay Premium. De 21 a 27 de julho, o canal fica liberado automaticamente — sem custo extra.',
+    q: 'Quanto custa o Telecine nesta promoção?',
+    a: 'Apenas R$ 9,90/mês, por até 12 meses após a ativação. Após esse período, o valor volta ao preço de tabela.',
   },
   {
-    q: 'O que é o GloboPlay Premium?',
-    a: 'É o streaming da Globo com filmes, séries, novelas, reality shows e esportes ao vivo — tudo sem anúncios, em Full HD e 4K, em até 5 telas simultâneas.',
+    q: 'Quando termina a promoção?',
+    a: 'A promoção é válida de 01/08/2026 a 31/08/2026. Não perca!',
   },
   {
-    q: 'Posso assistir em qualquer dispositivo?',
-    a: 'Sim! GloboPlay funciona em celular, tablet, Smart TV, computador e Fire Stick. Você também pode baixar conteúdo para assistir offline.',
+    q: 'Como faço para contratar?',
+    a: 'É simples! Clique em qualquer botão desta página para falar com nossa equipe via WhatsApp. Em minutos seu Telecine estará ativo.',
   },
   {
-    q: 'Quanto custa adicionar o GloboPlay Premium ao meu plano?',
-    a: 'O valor é acessível e varia conforme o seu plano atual. Fale com nossa equipe pelo WhatsApp para receber uma proposta personalizada.',
+    q: 'Posso cancelar quando quiser?',
+    a: 'Sim! O Telecine não tem fidelidade. Você pode cancelar a qualquer momento sem multa.',
   },
 ];
 
@@ -64,7 +64,7 @@ function CTAButton({ label, location, size = 'lg' }: {
   location: string;
   size?: 'sm' | 'lg';
 }) {
-  const msg = `Olá! Sou cliente Internet Mais e quero adicionar o GloboPlay Premium ao meu plano para ter acesso ao Telecine Sinal Aberto. Podem me ajudar?`;
+  const msg = `Olá! Vim pelo SMS da Internet Mais. Sou cliente e quero adicionar o Telecine por R$ 9,90/mês. Podem me ajudar?`;
 
   return (
     <a
@@ -84,7 +84,7 @@ function CTAButton({ label, location, size = 'lg' }: {
 
 function CountdownTimer() {
   const getSecondsUntilEnd = () => {
-    const end = new Date('2026-07-27T23:59:59-04:00').getTime();
+    const end = new Date('2026-08-31T23:59:59-04:00').getTime();
     return Math.max(0, Math.floor((end - Date.now()) / 1000));
   };
   const [secs, setSecs] = useState(getSecondsUntilEnd);
@@ -145,8 +145,8 @@ function FaqItem({ q, a }: { q: string; a: string }) {
 export default function MaisGloboPlayLP() {
 
   useEffect(() => {
-    document.title = 'Assine GloboPlay e ganhe Telecine Sinal Aberto — Internet Mais';
-    pushGTM('LP_MaisGloboPlay_View');
+    document.title = 'Telecine no Precinho — R$ 9,90/mês | Internet Mais';
+    pushGTM('LP_Telecine_Agosto_View');
   }, []);
 
   return (
@@ -160,7 +160,7 @@ export default function MaisGloboPlayLP() {
         className="w-full py-2.5 px-4 text-center text-sm font-bold tracking-wide"
         style={{ background: 'linear-gradient(90deg, #e50914, #b81d24)' }}
       >
-        ⏰ Oferta válida apenas de 21 a 27 de julho — Não perca!
+        🎬 Telecine no Precinho · R$ 9,90/mês · Promoção válida até 31/08/2026 · Exclusivo para clientes Internet Mais
       </div>
 
       {/* ── HERO ──────────────────────────────────────────────────────── */}
@@ -203,24 +203,23 @@ export default function MaisGloboPlayLP() {
 
           {/* Headline */}
           <h1 className="text-4xl md:text-6xl font-black text-center leading-tight mb-5">
-            Assine o GloboPlay<br />
-            <span style={{ color: '#e50914' }}>e ganhe o Telecine</span><br />
-            <span className="text-white/90">Sinal Aberto</span>
+            Não perca a oportunidade<br />
+            <span style={{ color: '#e50914' }}>de garantir o Telecine</span><br />
+            <span className="text-white/90">no precinho!</span>
           </h1>
 
           <p className="text-lg md:text-xl text-white/70 text-center max-w-2xl mx-auto mb-8">
-            Você já é cliente <strong className="text-white">Internet Mais</strong>. Agora adicione o <strong className="text-white">GloboPlay Premium</strong> ao seu plano
-            e aproveite o <strong className="text-white">Telecine Sinal Aberto</strong> — filmes liberados de <strong className="text-white">21 a 27 de julho</strong>, sem pagar nada a mais.
+            Você já é cliente <strong className="text-white">Internet Mais</strong>. Agora adicione o <strong className="text-white">Telecine</strong> por apenas <strong className="text-white">R$ 9,90/mês</strong> — válido por até 12 meses após a ativação. Promoção de <strong className="text-white">01/08 a 31/08/2026</strong>.
           </p>
 
           {/* CTA principal */}
           <div className="flex justify-center mb-10">
-            <CTAButton label="Quero Adicionar GloboPlay Agora" location="Hero" size="lg" />
+            <CTAButton label="Garanta o Telecine por R$ 9,90/mês" location="Hero" size="lg" />
           </div>
 
           {/* Countdown */}
           <div className="text-center">
-            <p className="text-white/50 text-xs uppercase tracking-widest mb-3">Sinal Aberto encerra em</p>
+            <p className="text-white/50 text-xs uppercase tracking-widest mb-3">⏱ Promoção encerra em</p>
             <CountdownTimer />
           </div>
         </div>
@@ -263,9 +262,9 @@ export default function MaisGloboPlayLP() {
       <section className="py-12 px-6">
         <div className="container mx-auto">
           <div className="text-center mb-8">
-            <p className="text-white/50 text-xs uppercase tracking-widest mb-2">Telecine Sinal Aberto</p>
-            <h2 className="text-2xl md:text-3xl font-black text-white">Filmes liberados esta semana</h2>
-            <p className="text-white/50 text-sm mt-2">21 a 27 de julho — disponível com GloboPlay Premium</p>
+            <p className="text-white/50 text-xs uppercase tracking-widest mb-2">Telecine · Promoção de Agosto</p>
+            <h2 className="text-2xl md:text-3xl font-black text-white">Filmes em Destaque no Telecine</h2>
+            <p className="text-white/50 text-sm mt-2">Disponível com GloboPlay Premium + Telecine</p>
           </div>
           <div className="grid grid-cols-3 gap-4 max-w-lg mx-auto">
             {FILMES.map((f, i) => (

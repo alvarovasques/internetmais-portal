@@ -12,6 +12,7 @@ import BairrosPage from "./pages/BairrosPage";
 import Vagas from "./pages/Vagas";
 import MaisTV from "./pages/MaisTV";
 import AdminRH from './pages/AdminRH';
+import MaisGloboPlay from './pages/MaisGloboPlay';
 import { useHashNavigation } from "./hooks/useHashNavigation";
 
 function Router() {
@@ -36,6 +37,7 @@ function Router() {
       <Route path="/vagas" component={Vagas} />
       <Route path="/maistv" component={MaisTV} />
       <Route path="/admin/rh" component={AdminRH} />
+      <Route path="/maisgloboplay" component={MaisGloboPlay} />
       <Route path="/404" component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />

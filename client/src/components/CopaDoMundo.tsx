@@ -1,286 +1,194 @@
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
-import { GraduationCap, Wifi, Tv, Smartphone, Star, Zap, Gift } from 'lucide-react';
+import { Film, Star, Clock, Zap } from 'lucide-react';
 
-const beneficios = [
+const CDN = 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP';
+const WA_NUMBER = '556730272500';
+
+const filmes = [
   {
-    icon: <Gift size={22} className="text-[#3DD93D]" />,
-    texto: '50% de desconto nos 3 primeiros meses — após esse período, o valor volta ao preço de tabela',
+    poster: '/manus-storage/poster-charlie_b4b398e1.jpg',
+    title: 'Charlie, o Cão Maravilha',
+    genre: 'Animação / Família',
   },
   {
-    icon: <Tv size={22} className="text-[#3DD93D]" />,
-    texto: '1 aplicativo Standard incluso (PlayKids Learning ou Ubook Plus) + 1 aplicativo Premium (Disney+ ou Globoplay)',
+    poster: '/manus-storage/poster-empregada_9c77b2da.jpg',
+    title: 'A Empregada',
+    genre: 'Suspense / Thriller',
   },
   {
-    icon: <Wifi size={22} className="text-[#3DD93D]" />,
-    texto: 'Extensor WiFi disponível por apenas + R$ 29,90 — sinal em todos os cômodos da casa',
-  },
-  {
-    icon: <Smartphone size={22} className="text-[#3DD93D]" />,
-    texto: 'Acesso à MaisTV com mais de 160 canais ao vivo incluso em todos os planos',
-  },
-  {
-    icon: <Zap size={22} className="text-[#3DD93D]" />,
-    texto: 'Fibra óptica 100% pura — velocidade simétrica, upload e download iguais',
-  },
-  {
-    icon: <Star size={22} className="text-[#3DD93D]" />,
-    texto: 'Promoção válida para novos assinantes ou para upgrade. Plano com fidelidade.',
+    poster: '/manus-storage/poster-retorno_5ab3137e.jpg',
+    title: 'O Retorno',
+    genre: 'Drama',
   },
 ];
 
-const apps = [
-  {
-    nome: 'PlayKids Learning',
-    descricao: 'Educação e diversão para crianças',
-    cor: 'from-[#7B2D8B] to-[#9B3DBA]',
-    icone: 'PK',
-    tipo: 'Standard',
-  },
-  {
-    nome: 'Ubook Plus',
-    descricao: 'Audiobooks e podcasts',
-    cor: 'from-[#FF6B00] to-[#FF8C00]',
-    icone: 'U+',
-    tipo: 'Standard',
-  },
-  {
-    nome: 'Disney+',
-    descricao: 'Filmes, séries e animações',
-    cor: 'from-[#0D3B8C] to-[#1A5FBF]',
-    icone: 'D+',
-    tipo: 'Premium',
-  },
-  {
-    nome: 'Globoplay',
-    descricao: 'Novelas, séries e esportes',
-    cor: 'from-[#E30613] to-[#FF1A2B]',
-    icone: 'GP',
-    tipo: 'Premium',
-  },
-];
+function buildWaLink() {
+  const msg = 'Olá! Sou cliente Internet Mais e quero adicionar o Telecine por R$ 9,90/mês. Podem me ajudar?';
+  return `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
+}
 
-export default function CopaDoMundo() {
+function pushGTM(event: string, extra?: Record<string, string>) {
+  if (typeof window !== 'undefined' && (window as any).dataLayer) {
+    (window as any).dataLayer.push({ event, ...extra });
+  }
+}
+
+export default function TelecineCampanha() {
   const ref = useScrollAnimation();
-
-  const handleWhatsApp = () => {
-    if (typeof window !== 'undefined' && (window as any).dataLayer) {
-      (window as any).dataLayer.push({
-        'event': 'Click_Whatsapp',
-        'button_location': 'FeriasEscolares - Plano 800MB R$84,95'
-      });
-    }
-    const msg = encodeURIComponent(
-      'Olá! Quero aproveitar a promoção de Férias Escolares: plano 800 MB a partir de R$ 84,95/mês com 50% de desconto nos 3 primeiros meses. Podem me ajudar?'
-    );
-    window.open(`https://wa.me/556730272500?text=${msg}`, '_blank');
-  };
 
   return (
     <section
       ref={ref}
-      id="ferias-escolares"
+      id="telecine-campanha"
       className="relative overflow-hidden"
       style={{
-        backgroundImage: 'url(https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/ferias-bg-XCKCQ9FXyEpAzFuSSQhx3g.webp)',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
+        background: 'linear-gradient(135deg, #0a0a1a 0%, #0d1b3e 40%, #1a0a2e 100%)',
       }}
     >
-      {/* Faixa superior Férias */}
-      <div className="relative z-10 bg-gradient-to-r from-[#3DD93D] via-[#2bc42b] to-[#3DD93D] py-2.5 text-center">
-        <p className="text-[#0D1B3E] font-black text-sm tracking-widest uppercase">
-          🎒 Férias Escolares com a Internet Mais · Promoção por tempo limitado · 🎒
-        </p>
+      {/* Ticker topo */}
+      <div
+        className="w-full py-2.5 overflow-hidden"
+        style={{ background: 'linear-gradient(90deg, #e50914, #b81d24)' }}
+      >
+        <div className="whitespace-nowrap animate-[marquee_25s_linear_infinite] inline-block">
+          {[...Array(6)].map((_, i) => (
+            <span key={i} className="text-white font-black text-xs uppercase tracking-widest mx-10">
+              🎬 Telecine no Precinho · R$ 9,90/mês · Até 12 meses · Promoção de Agosto 2026 ·
+            </span>
+          ))}
+        </div>
       </div>
 
-      <div className="relative z-10 container mx-auto px-4 py-16 md:py-24">
-
-        {/* Cabeçalho */}
-        <div className="text-center mb-14">
-          <div className="inline-flex items-center gap-3 bg-white/80 backdrop-blur-md border border-[#3DD93D]/50 px-6 py-3 rounded-full mb-6 shadow-md">
-            <GraduationCap className="text-[#1a7a1a]" size={22} />
-            <span className="text-[#1a7a1a] font-black text-sm tracking-wide uppercase">
-              Férias Escolares é com a Internet Mais
+      <div className="container mx-auto px-4 py-14">
+        {/* Header */}
+        <div className="text-center mb-10">
+          <div className="flex items-center justify-center gap-4 mb-5 flex-wrap">
+            <img
+              src={`${CDN}/telecine-logo_58f3a687.png`}
+              alt="Telecine"
+              className="h-12 w-auto object-contain bg-white rounded-xl px-4 py-2 shadow-lg"
+            />
+            <span
+              className="text-white font-black text-xs px-4 py-2 rounded-full uppercase tracking-widest shadow-lg"
+              style={{ background: 'linear-gradient(90deg, #e50914, #b81d24)' }}
+            >
+              Promoção de Agosto
             </span>
           </div>
 
-          <h2 className="text-4xl md:text-6xl font-black leading-tight mb-4 drop-shadow-lg"
-            style={{ color: '#0D1B3E', textShadow: '0 2px 8px rgba(255,255,255,0.8)' }}>
-            Menos Tédio{' '}
-            <span style={{ color: '#1a7a1a' }}>nas Férias!</span>
+          <p className="text-white/70 text-base font-semibold mb-2">
+            Não perca a oportunidade de garantir
+          </p>
+          <h2 className="font-black text-4xl md:text-6xl leading-tight mb-4">
+            <span className="text-white">TELE</span>
+            <span style={{ color: '#e50914' }}>CINE</span>
+            <span className="text-white"> no precinho!</span>
           </h2>
-          <p className="text-[#0D1B3E] text-lg md:text-xl max-w-2xl mx-auto font-medium drop-shadow"
-            style={{ textShadow: '0 1px 4px rgba(255,255,255,0.9)' }}>
-            Férias é tempo de brincar — e brincar também pode ensinar.{' '}
-            <span className="font-black text-[#1a7a1a]">Dê o Play na diversão!</span>
-          </p>
-        </div>
 
-        {/* Card de plano destaque */}
-        <div className="max-w-4xl mx-auto mb-14">
-          <div className="bg-white/90 backdrop-blur-md border border-[#3DD93D]/40 rounded-3xl overflow-hidden shadow-2xl">
-
-            {/* Badge Assine */}
-            <div className="bg-[#3DD93D] text-[#0D1B3E] text-center py-3 font-black text-sm tracking-widest uppercase">
-              ASSINE AGORA
+          {/* Período e preço */}
+          <div className="inline-flex flex-col sm:flex-row items-center gap-3 bg-white/10 border border-white/20 rounded-2xl px-6 py-4">
+            <div className="flex items-center gap-2">
+              <Clock size={16} className="text-orange-400" />
+              <span className="text-white/80 text-sm font-semibold">01/08/2026 a 31/08/2026</span>
             </div>
-
-            <div className="p-8 md:p-10">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-
-                {/* Velocidade + Preço */}
-                <div className="text-center md:text-left">
-                  <div className="flex items-end justify-center md:justify-start gap-2 mb-2">
-                    <span className="text-[#0D1B3E] font-black text-8xl leading-none">800</span>
-                    <span className="text-[#0D1B3E]/60 font-bold text-2xl mb-3">mb</span>
-                  </div>
-                  <div className="w-full h-px bg-[#0D1B3E]/10 mb-4" />
-                  <p className="text-[#0D1B3E]/50 text-xs font-semibold uppercase tracking-wider mb-1">A partir de</p>
-                  <div className="flex items-end justify-center md:justify-start gap-1">
-                    <span className="text-[#0D1B3E]/70 font-bold text-xl">R$</span>
-                    <span className="text-[#0D1B3E] font-black text-6xl leading-none">84</span>
-                    <span className="text-[#0D1B3E] font-black text-3xl mb-1">,95</span>
-                    <span className="text-[#0D1B3E]/50 font-semibold text-sm mb-1">/mês</span>
-                  </div>
-                  <p className="text-[#1a7a1a] font-bold text-sm mt-2">
-                    50% OFF nos 3 primeiros meses
-                  </p>
-                </div>
-
-                {/* Benefícios do plano */}
-                <div className="space-y-3">
-                  <div className="flex items-center gap-3 bg-[#3DD93D]/10 rounded-xl px-4 py-3">
-                    <div className="w-2 h-2 rounded-full bg-[#1a7a1a] shrink-0" />
-                    <span className="text-[#0D1B3E] text-sm font-medium">50% desconto nos 3 primeiros meses</span>
-                  </div>
-                  <div className="flex items-center gap-3 bg-[#3DD93D]/10 rounded-xl px-4 py-3">
-                    <div className="w-2 h-2 rounded-full bg-[#1a7a1a] shrink-0" />
-                    <span className="text-[#0D1B3E] text-sm font-medium">+ 1 Aplicativo Standard incluso</span>
-                  </div>
-                  <div className="flex items-center gap-3 bg-[#3DD93D]/10 rounded-xl px-4 py-3">
-                    <div className="w-2 h-2 rounded-full bg-[#1a7a1a] shrink-0" />
-                    <span className="text-[#0D1B3E] text-sm font-medium">+ 1 Aplicativo Premium incluso</span>
-                  </div>
-                  <div className="flex items-center gap-3 bg-[#3DD93D]/10 rounded-xl px-4 py-3">
-                    <div className="w-2 h-2 rounded-full bg-[#1a7a1a] shrink-0" />
-                    <span className="text-[#0D1B3E] text-sm font-medium">Extensor WiFi por + R$ 29,90</span>
-                  </div>
-                </div>
-              </div>
+            <span className="hidden sm:block text-white/30">|</span>
+            <div className="flex items-center gap-2">
+              <Star size={16} className="text-orange-400" />
+              <span className="text-orange-400 font-black text-base">
+                Telecine por apenas{' '}
+                <span className="text-white text-lg">R$ 9,90</span>{' '}
+                até 12 meses após a ativação!
+              </span>
             </div>
           </div>
         </div>
 
-        {/* Apps disponíveis */}
-        <div className="mb-14">
-          <h3 className="font-black text-2xl text-center mb-8 flex items-center justify-center gap-3 drop-shadow-md"
-            style={{ color: '#0D1B3E', textShadow: '0 1px 6px rgba(255,255,255,0.9)' }}>
-            <Tv className="text-[#1a7a1a]" size={24} />
-            Escolha seus aplicativos
-          </h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
-            {apps.map((app, i) => (
-              <div
-                key={i}
-                className="relative bg-white/85 backdrop-blur-sm border border-white/60 rounded-2xl p-5 text-center hover:bg-white hover:border-[#3DD93D]/50 transition-all duration-300 group shadow-md"
-              >
-                {/* Badge tipo */}
-                <div className={`absolute -top-2 left-1/2 -translate-x-1/2 px-2 py-0.5 rounded-full text-white text-[10px] font-black uppercase tracking-wider bg-gradient-to-r ${app.cor}`}>
-                  {app.tipo}
-                </div>
-                {/* Ícone */}
-                <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${app.cor} flex items-center justify-center mx-auto mb-3 font-black text-white text-sm shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                  {app.icone}
-                </div>
-                <p className="text-[#0D1B3E] font-bold text-sm leading-tight">{app.nome}</p>
-                <p className="text-[#0D1B3E]/60 text-xs mt-1">{app.descricao}</p>
-              </div>
-            ))}
-          </div>
-          <p className="text-[#0D1B3E]/70 text-xs text-center mt-4 font-medium drop-shadow"
-            style={{ textShadow: '0 1px 4px rgba(255,255,255,0.8)' }}>
-            * Escolha 1 aplicativo Standard + 1 aplicativo Premium ao contratar
-          </p>
-        </div>
-
-        {/* Benefícios + CTA */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start max-w-5xl mx-auto">
-
-          {/* Benefícios */}
-          <div>
-            <h3 className="font-black text-2xl mb-6 flex items-center gap-3 drop-shadow-md"
-              style={{ color: '#0D1B3E', textShadow: '0 1px 6px rgba(255,255,255,0.9)' }}>
-              <Star className="text-[#1a7a1a]" size={24} fill="currentColor" />
-              Tudo incluso na promoção
-            </h3>
-            <div className="space-y-3">
-              {beneficios.map((b, i) => (
-                <div
-                  key={i}
-                  className="flex items-start gap-4 bg-white/80 backdrop-blur-sm border border-white/50 rounded-xl px-5 py-4 hover:bg-white transition-all duration-300 shadow-sm"
-                >
-                  <div className="shrink-0 mt-0.5 bg-[#3DD93D]/15 rounded-lg p-2">
-                    {b.icon}
-                  </div>
-                  <p className="text-[#0D1B3E]/90 text-sm leading-relaxed">{b.texto}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* CTA */}
-          <div className="bg-white/90 backdrop-blur-md border border-[#3DD93D]/40 rounded-2xl p-8 text-center shadow-xl">
-            <GraduationCap className="text-[#1a7a1a] mx-auto mb-4" size={40} />
-            <h4 className="text-[#0D1B3E] font-black text-xl mb-2">
-              Férias Escolares com a Internet Mais
-            </h4>
-            <p className="text-[#0D1B3E]/60 text-sm mb-2">
-              800 MB a partir de R$ 84,95/mês
-            </p>
-            <p className="text-[#1a7a1a] font-bold text-sm mb-6">
-              50% OFF nos 3 primeiros meses
-            </p>
-
-            <button
-              onClick={handleWhatsApp}
-              className="w-full bg-gradient-to-r from-[#25D366] to-[#128C7E] text-white font-black py-4 rounded-xl text-base hover:scale-105 transition-all duration-300 shadow-lg flex items-center justify-center gap-3 mb-4"
+        {/* Esteira de posters */}
+        <div className="grid grid-cols-3 gap-4 md:gap-6 max-w-2xl mx-auto mb-10">
+          {filmes.map((filme, i) => (
+            <div
+              key={i}
+              className="group relative rounded-2xl overflow-hidden shadow-2xl transition-transform duration-300 hover:scale-105 hover:z-10 cursor-pointer"
+              style={{ aspectRatio: '2/3' }}
             >
-              <svg viewBox="0 0 24 24" className="w-5 h-5 fill-white">
-                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-              </svg>
-              Quero contratar via WhatsApp
-            </button>
-
-            {/* Apps base */}
-            <div className="flex items-center justify-center gap-3 mb-4">
-              <div className="flex items-center gap-1.5 bg-[#3DD93D]/10 rounded-lg px-3 py-2">
-                <div className="w-6 h-6 rounded bg-[#1B5E20] flex items-center justify-center text-white text-[9px] font-black">K</div>
-                <span className="text-[#0D1B3E]/70 text-xs font-medium">Kinvo</span>
+              <img
+                src={filme.poster}
+                alt={filme.title}
+                className="w-full h-full object-cover"
+              />
+              {/* Overlay hover */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              {/* Título hover */}
+              <div className="absolute bottom-0 left-0 right-0 p-3 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                <p className="text-white font-bold text-xs leading-tight">{filme.title}</p>
+                <p className="text-white/60 text-xs">{filme.genre}</p>
               </div>
-              <div className="flex items-center gap-1.5 bg-[#3DD93D]/10 rounded-lg px-3 py-2">
-                <div className="w-6 h-6 rounded bg-[#FF6B00] flex items-center justify-center text-white text-[9px] font-black">U+</div>
-                <span className="text-[#0D1B3E]/70 text-xs font-medium">Ubook Plus</span>
+              {/* Badge número */}
+              <div
+                className="absolute top-2 left-2 w-7 h-7 rounded-full flex items-center justify-center text-white font-black text-sm shadow-lg"
+                style={{ background: 'rgba(229,9,20,0.95)' }}
+              >
+                {i + 1}
               </div>
-              <div className="flex items-center gap-1.5 bg-[#3DD93D]/10 rounded-lg px-3 py-2">
-                <div className="w-6 h-6 rounded bg-[#0D1B3E] flex items-center justify-center text-[#3DD93D] text-[9px] font-black">TV</div>
-                <span className="text-[#0D1B3E]/70 text-xs font-medium">MaisTV</span>
+              {/* Título fixo */}
+              <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/80 to-transparent group-hover:opacity-0 transition-opacity duration-300">
+                <p className="text-white font-bold text-xs leading-tight truncate">{filme.title}</p>
               </div>
             </div>
+          ))}
+        </div>
 
-            <p className="text-[#0D1B3E]/40 text-xs leading-relaxed">
-              Promoção válida para novos assinantes ou para upgrade. Plano com fidelidade.
-              Após 3 meses os valores voltam ao valor de tabela. Consulte condições.
-            </p>
-          </div>
+        {/* Benefícios */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-2xl mx-auto mb-10">
+          {[
+            { icon: <Film size={18} />, text: 'Catálogo completo de filmes' },
+            { icon: <Star size={18} />, text: 'Lançamentos exclusivos' },
+            { icon: <Zap size={18} />, text: 'Sem fidelidade' },
+            { icon: <Clock size={18} />, text: 'Cancele quando quiser' },
+          ].map((item, i) => (
+            <div
+              key={i}
+              className="flex flex-col items-center gap-2 bg-white/5 border border-white/10 rounded-xl p-3 text-center"
+            >
+              <span className="text-orange-400">{item.icon}</span>
+              <span className="text-white/80 text-xs font-semibold leading-tight">{item.text}</span>
+            </div>
+          ))}
+        </div>
+
+        {/* CTA */}
+        <div className="text-center">
+          <a
+            href={buildWaLink()}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => pushGTM('Click_Telecine_Campanha', { button_location: 'Home - Bloco Telecine Agosto' })}
+            className="inline-flex items-center gap-3 text-white font-black text-lg px-10 py-5 rounded-2xl shadow-2xl transition-all duration-200 hover:scale-105 hover:brightness-110"
+            style={{ background: 'linear-gradient(135deg, #25D366, #128C7E)' }}
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+            Garanta agora!
+          </a>
+          <p className="text-white/40 text-xs mt-3">
+            Promoção válida de 01/08/2026 a 31/08/2026 · Exclusivo para clientes Internet Mais
+          </p>
         </div>
       </div>
 
-      {/* Faixa inferior */}
-      <div className="relative z-10 bg-gradient-to-r from-[#3DD93D] via-[#2bc42b] to-[#3DD93D] py-2.5 text-center">
-        <p className="text-[#0D1B3E] font-black text-sm tracking-widest uppercase">
-          🎒 Férias Escolares · 800 MB a partir de R$ 84,95/mês · 50% OFF nos 3 primeiros meses 🎒
-        </p>
+      {/* Ticker rodapé */}
+      <div
+        className="w-full py-2.5 overflow-hidden"
+        style={{ background: 'linear-gradient(90deg, #e50914, #b81d24)' }}
+      >
+        <div className="whitespace-nowrap animate-[marquee_25s_linear_infinite_reverse] inline-block">
+          {[...Array(6)].map((_, i) => (
+            <span key={i} className="text-white font-black text-xs uppercase tracking-widest mx-10">
+              ✨ Garanta agora · Telecine R$ 9,90/mês · Até 12 meses · Oferta por tempo limitado ·
+            </span>
+          ))}
+        </div>
       </div>
     </section>
   );
