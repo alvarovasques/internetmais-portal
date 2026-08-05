@@ -23,9 +23,9 @@ const ASSETS = {
   telecine:  `${CDN}/telecine-logo_58f3a687.png`,
   globoplay: `${CDN}/globoplay-hq_5eefcb22.png`,
   logo:      `${CDN}/Logo_internet_MAIS_9b6aefe1.png`,
-  poster1:   '/manus-storage/poster-charlie_b4b398e1.jpg',
-  poster2:   '/manus-storage/poster-empregada_9c77b2da.jpg',
-  poster3:   '/manus-storage/poster-retorno_5ab3137e.jpg',
+  poster1:   '/manus-storage/poster-charlie-hd_92db6653.jpg',
+  poster2:   '/manus-storage/poster-empregada_526f790b.jpg',
+  poster3:   '/manus-storage/poster-retorno_23d90d3c.jpg',
 };
 
 const FILMES = [
