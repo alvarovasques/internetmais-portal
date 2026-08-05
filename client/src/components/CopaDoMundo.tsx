@@ -6,17 +6,17 @@ const WA_NUMBER = '556730272500';
 
 const filmes = [
   {
-    poster: 'https://files.manuscdn.com/user_upload_by_module/session_file/310419663028749933/ZnibWMFVLzEYwxiw.jpg',
+    poster: '/images/poster-charlie.jpg',
     title: 'Charlie, o Cão Maravilha',
     genre: 'Animação / Família',
   },
   {
-    poster: 'https://files.manuscdn.com/user_upload_by_module/session_file/310419663028749933/rLsZnXzJfEwFtJje.jpg',
+    poster: '/images/poster-empregada.jpg',
     title: 'A Empregada',
     genre: 'Suspense / Thriller',
   },
   {
-    poster: 'https://files.manuscdn.com/user_upload_by_module/session_file/310419663028749933/tvqsDWnedRhGEMSS.jpg',
+    poster: '/images/poster-retorno.jpg',
     title: 'O Retorno',
     genre: 'Drama',
   },
