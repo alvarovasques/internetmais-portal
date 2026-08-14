@@ -41,7 +41,7 @@ export default function Footer() {
                 <a href="/sobre-nos" className="text-gray-400 hover:text-[#3DD93D] transition-colors">Sobre Nós</a>
               </li>
               <li>
-                <a href="/sobre-nos" className="text-gray-400 hover:text-[#3DD93D] transition-colors">Nossas Lojas</a>
+                <a href="/#lojas" className="text-gray-400 hover:text-[#3DD93D] transition-colors">Nossas Unidades</a>
               </li>
             </ul>
           </div>

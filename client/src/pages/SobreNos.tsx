@@ -107,10 +107,10 @@ export default function SobreNos() {
               Visite Nossas Lojas
             </h2>
             <p className="text-base md:text-lg text-gray-600 text-center mb-10 max-w-2xl mx-auto">
-              Atendimento presencial em 5 lojas em Campo Grande. Suporte técnico, contratação e atendimento humanizado.
+              Atendimento presencial em 4 unidades em Campo Grande. Suporte técnico, contratação e atendimento humanizado.
             </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
               {lojas.map((loja, i) => (
                 <div
                   key={i}

@@ -232,7 +232,10 @@ export default function MaisTV() {
     }
   }, [loginUser, loginPwd]);
 
-  useViewPlanTracker(sectionRef, 'MaisTV', 'TV Digital Inclusa');
+  useViewPlanTracker(sectionRef, {
+    section_name: 'MaisTV',
+    plan_type: 'TV Digital Inclusa',
+  });
 
   useEffect(() => {
     document.title = 'MaisTV — Entretenimento Completo Incluso | Internet Mais';

@@ -10,25 +10,25 @@ export default function Lojas() {
       nome: 'Loja Moreninhas',
       endereco: 'Rua Palmácia, 836',
       horario: 'Seg-Sex: 8h-18h | Sab: 8h-12h',
-      bairro_slug: 'moreninha'
+      mapa: 'https://www.google.com/maps/search/?api=1&query=Rua%20Palm%C3%A1cia%2C%20836%2C%20Campo%20Grande%2C%20MS'
     },
     {
       nome: 'Loja Aero Rancho',
       endereco: 'Avenida Rachel de Queiroz, 1468',
       horario: 'Seg-Sex: 8h-18h | Sab: 8h-12h',
-      bairro_slug: 'aero-rancho'
+      mapa: 'https://www.google.com/maps/search/?api=1&query=Avenida%20Rachel%20de%20Queiroz%2C%201468%2C%20Campo%20Grande%2C%20MS'
     },
     {
       nome: 'Loja Julio de Castilho',
       endereco: 'Avenida Julio de Castilho, 1666',
       horario: 'Seg-Sex: 8h-18h | Sab: 8h-12h',
-      bairro_slug: 'centro'
+      mapa: 'https://www.google.com/maps/search/?api=1&query=Avenida%20Julio%20de%20Castilho%2C%201666%2C%20Campo%20Grande%2C%20MS'
     },
     {
       nome: 'Loja Cafezais',
       endereco: 'Av. dos Cafezais, 1985 - Loja 06',
       horario: 'Seg-Sex: 8h-18h | Sab: 8h-12h',
-      bairro_slug: 'cafezais'
+      mapa: 'https://www.google.com/maps/search/?api=1&query=Avenida%20dos%20Cafezais%2C%201985%2C%20Loja%2006%2C%20Campo%20Grande%2C%20MS'
     },
   ];
 
@@ -46,7 +46,7 @@ export default function Lojas() {
         {/* Lojas Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
           {lojas.map((loja, i) => (
-            <Link key={i} href={`/bairro/${loja.bairro_slug}`} className="bg-white rounded-2xl p-5 shadow-lg hover:shadow-xl border-l-4 border-[#3DD93D] card-hover animate-fade-in-up hover:border-[#2ba82a] transition-all duration-300 block"
+            <a key={i} href={loja.mapa} target="_blank" rel="noopener noreferrer" aria-label={`Abrir localização da ${loja.nome} no Google Maps`} className="bg-white rounded-2xl p-5 shadow-lg hover:shadow-xl border-l-4 border-[#3DD93D] card-hover animate-fade-in-up hover:border-[#2ba82a] transition-all duration-300 block"
               style={{ animationDelay: `${0.1 + i * 0.1}s` }}
             >
               <MapPin size={28} className="text-[#3DD93D] mb-3" />
@@ -62,7 +62,7 @@ export default function Lojas() {
                   {loja.horario}
                 </p>
               </div>
-            </Link>
+            </a>
           ))}
         </div>
 

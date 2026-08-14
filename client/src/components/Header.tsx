@@ -22,7 +22,7 @@ export default function Header() {
       href: '/sobre-nos',
       submenu: [
         { label: 'Missão, Visão e Valores', href: '/sobre-nos' },
-        { label: 'Nossas Lojas', href: '/sobre-nos#lojas' },
+        { label: 'Nossas Lojas', href: '/#lojas' },
         { label: 'Internet nos Bairros', href: '/bairros' },
       ]
     },
