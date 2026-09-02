@@ -167,6 +167,29 @@ logos aparecerem por cima.
 
 ---
 
+## Gerando pelo script
+
+`scripts/gerar-imagens.py` roda os 16 prompts no Nano Banana (Gemini image) e
+grava cada arquivo já no caminho e no formato que o site espera. Os prompts
+deste documento e os do script são os mesmos.
+
+```bash
+# a chave fica no .env da raiz, que está no .gitignore
+echo 'GEMINI_API_KEY=sua-chave' >> .env
+
+python3 scripts/gerar-imagens.py --listar          # ver os slugs
+python3 scripts/gerar-imagens.py                   # gera o que falta
+python3 scripts/gerar-imagens.py --somente vagas-hero --forcar   # refaz uma
+```
+
+O script recorta no centro para a proporção exata antes de redimensionar, então
+não distorce se a API devolver outra razão. Ele pula o que já existe com mais de
+60 KB, o que na prática significa pular o que já foi gerado e refazer os
+placeholders.
+
+Gerar não é aprovar: olhe cada uma. Regenerar uma imagem custa centavos, e a
+mesma foto ruim fica anos no site.
+
 ## Depois de gerar
 
 1. Salve cada arquivo com o nome e o caminho exatos da lista, em
