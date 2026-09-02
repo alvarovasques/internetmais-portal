@@ -13,8 +13,8 @@ import { toast } from 'sonner';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
-const HERO_BG = 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/vagas-hero-Hzy5Z7wegZ5PtBdmS9BRoV.webp';
-const BENEFITS_BG = 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/vagas-benefits-VMFtsDhXZyifhwxLCwFm5w.webp';
+const HERO_BG = '/images/bg/vagas-hero.webp';
+const BENEFITS_BG = '/images/bg/vagas-benefits.webp';
 
 const benefits = [
   {

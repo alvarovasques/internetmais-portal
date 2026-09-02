@@ -19,7 +19,7 @@ export default function Empresarial() {
       {/* Background Image with Overlay */}
       <div className="absolute inset-0">
         <img
-          src="https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/office-modern-GoVmZvh4HUoGCEAR78yU97.webp"
+          src="/images/bg/office-modern.webp"
           alt="Internet empresarial com suporte especializado para negócios em Campo Grande"
           className="w-full h-full object-cover"
           loading="lazy"

@@ -151,7 +151,7 @@ export default function Header() {
             {/* Logo */}
             <a href="/" className="flex items-center gap-3 cursor-pointer">
               <img
-                src="https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/Logo_internet_MAIS_9b6aefe1.png"
+                src="/images/marca/logo-internet-mais.png"
                 alt="InternetMais - Fibra Óptica, 5G e Internet Empresarial em Campo Grande"
                 className="h-24 md:h-32"
                 loading="lazy"

@@ -1,7 +1,6 @@
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { Film, Star, Clock, Zap } from 'lucide-react';
 
-const CDN = 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP';
 const WA_NUMBER = '556730272500';
 
 const filmes = [
@@ -64,7 +63,7 @@ export default function TelecineCampanha() {
         <div className="text-center mb-10">
           <div className="flex items-center justify-center gap-4 mb-5 flex-wrap">
             <img
-              src={`${CDN}/telecine-logo_58f3a687.png`}
+              src="/images/apps/telecine.png"
               alt="Telecine"
               className="h-12 w-auto object-contain bg-white rounded-xl px-4 py-2 shadow-lg"
             />

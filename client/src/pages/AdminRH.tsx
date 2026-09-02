@@ -180,7 +180,7 @@ export default function AdminRH() {
       <header className="bg-white shadow-sm border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <img src="https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/logo_internetmais_6b7e3e4a.png" alt="InternetMais" className="h-10" />
+            <img src="/images/marca/logo-internet-mais.png" alt="InternetMais" className="h-10" />
             <div>
               <h1 className="text-xl font-bold text-gray-800">Painel RH</h1>
               <p className="text-xs text-gray-500">Gestão de Vagas e Candidaturas</p>

@@ -29,36 +29,36 @@ export default function MaisAplicativos() {
 
   // Apps disponíveis
   const appsStandard: App[] = [
-    { name: 'Ubook Plus', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/ubook_plus_cb4505d6.png' },
-    { name: 'Zen', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/zen_5fe6a424.png' },
-    { name: 'Leitura 360', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/leitura_360_dcb38301.png' },
-    { name: 'Estuda+', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/estuda_5da0ea5e.png' },
-    { name: 'Pequenos Leitores', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/pequenos_leitores_bd05c71e.png' },
-    { name: 'O Jornalista', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/jornalista_72f92588.png' },
-    { name: 'Playlist', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/playlist_ae5a8f2c.png' },
-    { name: 'Kiddle Pass', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/kiddle_pass_83480f5f.png' },
-    { name: 'PlayKids+', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/playkids_plus_0edcb760.png' },
-    { name: 'Sky+ Light', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/sky_plus_light_correct_5bb1bc0f.png' },
-    { name: 'Deezer', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/deezer_c80f6c93.png' },
-    { name: 'Social Comics', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/social_comics_73989f43.png' },
-    { name: 'Kaspersky Standard (3 lic.)', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/kaspersky_standard_91009e85.png' },
-    { name: 'Qnutri', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/qnutri_f742a5e2.png' },
-    { name: 'Looke', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/looke_16394443.png' },
-    { name: 'Curtaon', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/curtaon_b85cae88.png' },
-    { name: 'Revistaria', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/revistaria_correct_2fc8ef73.png' },
-    { name: 'Fluid', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/fluid_6672ee02.png' },
-    { name: 'Hub Vantagens', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/hub_vantagens_f70aaea4.png' },
+    { name: 'Ubook Plus', logo: '/images/apps/ubook-plus.png' },
+    { name: 'Zen', logo: '/images/apps/zen.png' },
+    { name: 'Leitura 360', logo: '/images/apps/leitura-360.png' },
+    { name: 'Estuda+', logo: '/images/apps/estuda-mais.png' },
+    { name: 'Pequenos Leitores', logo: '/images/apps/pequenos-leitores.png' },
+    { name: 'O Jornalista', logo: '/images/apps/o-jornalista.png' },
+    { name: 'Playlist', logo: '/images/apps/playlist.png' },
+    { name: 'Kiddle Pass', logo: '/images/apps/kiddle-pass.png' },
+    { name: 'PlayKids+', logo: '/images/apps/playkids-plus.png' },
+    { name: 'Sky+ Light', logo: '/images/apps/sky-plus-light.png' },
+    { name: 'Deezer', logo: '/images/apps/deezer.png' },
+    { name: 'Social Comics', logo: '/images/apps/social-comics.png' },
+    { name: 'Kaspersky Standard (3 lic.)', logo: '/images/apps/kaspersky-standard.png' },
+    { name: 'Qnutri', logo: '/images/apps/qnutri.png' },
+    { name: 'Looke', logo: '/images/apps/looke.png' },
+    { name: 'Curtaon', logo: '/images/apps/curtaon.png' },
+    { name: 'Revistaria', logo: '/images/apps/revistaria.png' },
+    { name: 'Fluid', logo: '/images/apps/fluid.png' },
+    { name: 'Hub Vantagens', logo: '/images/apps/hub-vantagens.png' },
   ];
 
   const appsPremium: App[] = [
-    { name: 'Smart Content', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/pasted_file_rhmkSC_image_9113653c.png' },
-    { name: 'Ritual Fit', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/ritual_fit_229a350c.png' },
-    { name: 'Kaspersky Plus (5 licencas)', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/kaspersky_plus_83f4dd88.png' },
-    { name: 'Docway', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/docway_27238b63.png' },
-    { name: 'HotGo', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/hotgo_bc8647a1.png' },
-    { name: 'Queima Diaria', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/queima_diaria_correct_9b9e6828.png' },
-    { name: 'HBO Max', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/hbo-max_8983f5f2.png' },
-    { name: 'Disney+', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/disney-plus_e2b45e97.png' },
+    { name: 'Smart Content', logo: '/images/apps/smart-content.png' },
+    { name: 'Ritual Fit', logo: '/images/apps/ritual-fit.png' },
+    { name: 'Kaspersky Plus (5 licencas)', logo: '/images/apps/kaspersky-plus.png' },
+    { name: 'Docway', logo: '/images/apps/docway.png' },
+    { name: 'HotGo', logo: '/images/apps/hotgo.png' },
+    { name: 'Queima Diaria', logo: '/images/apps/queima-diaria.png' },
+    { name: 'HBO Max', logo: '/images/apps/hbo-max.png' },
+    { name: 'Disney+', logo: '/images/apps/disney-plus.png' },
   ];
 
   const planos: Plano[] = [
@@ -99,7 +99,7 @@ export default function MaisAplicativos() {
       id="mais-aplicativos" 
       className="relative py-20 md:py-32 overflow-hidden"
       style={{
-        backgroundImage: `url('https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/mais-aplicativos-bg-v2-5pL6YVruhpsJN9c3cbApED.webp')`,
+        backgroundImage: `url('/images/bg/mais-aplicativos-bg.webp')`,
         backgroundSize: 'cover',
         backgroundPosition: 'center 30%',
         backgroundRepeat: 'no-repeat',

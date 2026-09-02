@@ -10,7 +10,7 @@ export default function HeroSection() {
   const slides = [
     {
       id: 1,
-      image: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/hero-person-smartphone-Rpr8kr2PaxPu6YGvVXmiU6.webp',
+      image: '/images/bg/hero-person-smartphone.webp',
       imageAlt: 'Pessoa segurando smartphone com fibra óptica 100% pura e chip 5G em Campo Grande',
       badge: 'FIBRA ÓPTICA + CHIP 5G',
       title: 'Fibra Óptica + Chip 5G. Tudo o que você precisa em um só lugar.',
@@ -21,7 +21,7 @@ export default function HeroSection() {
     },
     {
       id: 2,
-      image: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/carousel-velocidade-oBDuwux95MV7uvpUTagvTQ.webp',
+      image: '/images/bg/carousel-velocidade.webp',
       imageAlt: 'Internet fibra óptica de máxima velocidade com latência ultra-baixa em Campo Grande',
       badge: 'MÁXIMA VELOCIDADE',
       title: 'Internet Mais Velocidade',
@@ -32,7 +32,7 @@ export default function HeroSection() {
     },
     {
       id: 3,
-      image: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/carousel-aplicativos-7WdoKoYAqGqz7gVWf9MGZ2.webp',
+      image: '/images/bg/carousel-aplicativos.webp',
       imageAlt: 'Família assistindo streaming com internet fibra e aplicativos inclusos InternetMais',
       badge: 'TEMPO EM FAMÍLIA',
       title: 'Internet Mais Aplicativos',
@@ -43,7 +43,7 @@ export default function HeroSection() {
     },
     {
       id: 4,
-      image: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/carousel-5g-i9MU3z53kdLKWTBtBNhKrk.webp',
+      image: '/images/bg/carousel-5g.webp',
       imageAlt: 'Chip 5G InternetMais com conectividade móvel de próxima geração em Campo Grande',
       badge: 'OPERADORA 5G',
       title: 'Telefonia com Chip 5G',
@@ -54,7 +54,7 @@ export default function HeroSection() {
     },
     {
       id: 5,
-      image: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/carousel-empresarial-59j7VzkmoLVCgHYY7e6JQF.webp',
+      image: '/images/bg/carousel-empresarial.webp',
       imageAlt: 'Internet empresarial com estabilidade garantida para negócios em Campo Grande',
       badge: 'PARA EMPRESAS',
       title: 'Internet Empresarial',
@@ -65,7 +65,7 @@ export default function HeroSection() {
     },
     {
       id: 6,
-      image: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/chip-5g-mockup-nKczXnR3D6rQvEQ4DTpnEm.webp',
+      image: '/images/bg/chip-5g-mockup.webp',
       imageAlt: 'Chip 5G InternetMais com melhor sinal e cobertura confiável em Campo Grande MS',
       badge: 'SOMOS UMA OPERADORA 5G',
       title: 'Seu celular merece o melhor sinal. Conheça o Chip InternetMais 5G.',
@@ -76,7 +76,7 @@ export default function HeroSection() {
     },
     {
       id: 7,
-      image: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/maistv-hero-bg_d996ba3e.jpg',
+      image: '/images/bg/maistv-hero-bg.jpg',
       imageAlt: 'Família assistindo MaisTV com +160 canais ao vivo e filmes inclusos na Internet Mais',
       badge: 'INCLUSO EM TODOS OS PLANOS',
       title: 'Assine internet. Ganhe uma TV completa.',

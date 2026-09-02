@@ -8,7 +8,7 @@ export default function Footer() {
           {/* Logo Section */}
           <div>
             <img
-              src="https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/Logo_internet_MAIS_9b6aefe1.png"
+              src="/images/marca/logo-internet-mais.png"
               alt="Internet Mais - Provedor de Fibra Óptica e Chip 5G em Campo Grande, MS"
               className="h-32 md:h-40 mb-6"
               loading="lazy"

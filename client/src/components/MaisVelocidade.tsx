@@ -53,7 +53,7 @@ export default function MaisVelocidade() {
       id="mais-velocidade" 
       className="relative py-20 md:py-32 overflow-hidden"
       style={{
-        backgroundImage: 'url(https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/mais-velocidade-hero-MNxH6KsSpwRBDf3UnRhCAs.webp)',
+        backgroundImage: 'url(/images/bg/mais-velocidade-hero.webp)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundAttachment: 'fixed'

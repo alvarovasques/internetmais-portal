@@ -8,7 +8,7 @@ export default function Bloco5G() {
       {/* Background Image with Overlay */}
       <div className="absolute inset-0">
         <img
-          src="https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/chip-5g-mockup-nKczXnR3D6rQvEQ4DTpnEm.webp"
+          src="/images/bg/chip-5g-mockup.webp"
           alt="Chip 5G"
           className="w-full h-full object-cover"
         />
