@@ -112,3 +112,32 @@ select etapa, resultado, ixc_id, erro, atualizado_em
 from sincronizacoes_ixc
 where pedido_id = (select id from pedidos where protocolo = 'IM-XXXXXX');
 ```
+
+### Documentos do cliente
+
+O checkout recebe documento com foto, comprovante de residência e selfie com
+documento. O arquivo **não fica guardado no nosso banco**: passa pelo servidor
+em memória e vai para a aba Arquivos do cadastro do cliente no IXC, junto com o
+resto. A tabela `documentos` guarda só o rastro (nome, tipo, tamanho, hash
+SHA-256 e o id do anexo no IXC).
+
+O conteúdo só é retido quando o envio ao IXC falha, para permitir reenvio, e é
+apagado no mesmo instante em que o IXC aceita o anexo. RG e selfie parados no
+nosso banco seriam uma base de dados sensíveis sem finalidade.
+
+Aceita JPG, PNG e PDF, até 8 MB, e o tipo é conferido pela assinatura do
+arquivo, não pela extensão nem pelo content-type que o navegador manda.
+
+**Pendência:** a aba Arquivos existe no IXC, mas o nome da tabela no webservice
+não está na wiki. Enquanto `IXC_TABELA_ARQUIVOS_CLIENTE` estiver vazio, o
+documento é recebido e fica com status `erro` e a mensagem pedindo anexo manual
+pelo painel; nenhum endpoint é adivinhado. Confirmar com o suporte do IXC e
+preencher a variável.
+
+Documentos pendentes de anexo:
+
+```sql
+select p.protocolo, d.tipo, d.status, d.erro
+from documentos d join pedidos p on p.id = d.pedido_id
+where d.status <> 'anexado';
+```

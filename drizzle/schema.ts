@@ -246,6 +246,56 @@ export const consultasCobertura = pgTable(
   t => [index("consultas_bairro_idx").on(t.bairro, t.temViabilidade)],
 );
 
+/**
+ * Documentos que o cliente envia no checkout.
+ *
+ * O arquivo NÃO fica guardado aqui. Ele passa pelo servidor em memória e vai
+ * direto para o cadastro do cliente no IXC, que é onde o time já consulta.
+ * Esta tabela guarda só o rastro: o que foi enviado, quando, e o id do anexo
+ * no IXC. Guardar RG e selfie no nosso banco criaria uma base de documentos
+ * sensíveis sem necessidade, com todo o custo de LGPD que vem junto.
+ *
+ * Quando o envio ao IXC falha, `conteudo` segura o arquivo temporariamente
+ * para o reenvio, e é limpo assim que o anexo é aceito.
+ */
+export const tipoDocumento = pgEnum("tipo_documento", [
+  "identidade",            // RG ou CNH
+  "comprovante_residencia",
+  "selfie_documento",
+]);
+
+export const statusDocumento = pgEnum("status_documento", [
+  "recebido",    // chegou, ainda não foi para o IXC
+  "anexado",     // está no cadastro do cliente no IXC
+  "erro",        // falhou; conteudo preservado para reenvio
+]);
+
+export const documentos = pgTable(
+  "documentos",
+  {
+    id: serial("id").primaryKey(),
+    pedidoId: integer("pedido_id").notNull().references(() => pedidos.id, { onDelete: "cascade" }),
+    tipo: tipoDocumento("tipo").notNull(),
+    status: statusDocumento("status").notNull().default("recebido"),
+    nomeArquivo: varchar("nome_arquivo", { length: 200 }).notNull(),
+    tipoMime: varchar("tipo_mime", { length: 60 }).notNull(),
+    tamanhoBytes: integer("tamanho_bytes").notNull(),
+    /** SHA-256 do arquivo: confere integridade sem guardar o conteúdo. */
+    hash: varchar("hash", { length: 64 }).notNull(),
+    /** Só preenchido enquanto o anexo no IXC não foi aceito. */
+    conteudo: text("conteudo"),
+    ixcArquivoId: varchar("ixc_arquivo_id", { length: 40 }),
+    erro: text("erro"),
+    criadoEm: timestamp("criado_em", { withTimezone: true }).notNull().defaultNow(),
+    anexadoEm: timestamp("anexado_em", { withTimezone: true }),
+  },
+  t => [
+    // Um documento de cada tipo por pedido: reenviar substitui, não acumula.
+    uniqueIndex("documentos_pedido_tipo_idx").on(t.pedidoId, t.tipo),
+    index("documentos_status_idx").on(t.status),
+  ],
+);
+
 /* ─────────────────────────── Vagas ─────────────────────────── */
 
 export const tipoVaga = pgEnum("tipo_vaga", ["clt", "estagio", "temporario", "pj"]);
@@ -307,6 +357,7 @@ export type Pedido = typeof pedidos.$inferSelect;
 export type NovoPedido = typeof pedidos.$inferInsert;
 export type Cobranca = typeof cobrancas.$inferSelect;
 export type SincronizacaoIxc = typeof sincronizacoesIxc.$inferSelect;
+export type Documento = typeof documentos.$inferSelect;
 export type Vaga = typeof vagas.$inferSelect;
 export type NovaVaga = typeof vagas.$inferInsert;
 export type Candidatura = typeof candidaturas.$inferSelect;

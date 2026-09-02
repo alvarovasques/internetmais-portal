@@ -1,5 +1,5 @@
 {
-  "id": "4731b8f1-17fc-4b40-bfaf-8e4624a79dfe",
+  "id": "a761f305-33a4-4f7d-9d4d-6fdbbf93cecb",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -480,6 +480,152 @@
         }
       },
       "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.documentos": {
+      "name": "documentos",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "pedido_id": {
+          "name": "pedido_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "tipo": {
+          "name": "tipo",
+          "type": "tipo_documento",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "status": {
+          "name": "status",
+          "type": "status_documento",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'recebido'"
+        },
+        "nome_arquivo": {
+          "name": "nome_arquivo",
+          "type": "varchar(200)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "tipo_mime": {
+          "name": "tipo_mime",
+          "type": "varchar(60)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "tamanho_bytes": {
+          "name": "tamanho_bytes",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "hash": {
+          "name": "hash",
+          "type": "varchar(64)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "conteudo": {
+          "name": "conteudo",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ixc_arquivo_id": {
+          "name": "ixc_arquivo_id",
+          "type": "varchar(40)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "erro": {
+          "name": "erro",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "criado_em": {
+          "name": "criado_em",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "anexado_em": {
+          "name": "anexado_em",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {
+        "documentos_pedido_tipo_idx": {
+          "name": "documentos_pedido_tipo_idx",
+          "columns": [
+            {
+              "expression": "pedido_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "tipo",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": true,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "documentos_status_idx": {
+          "name": "documentos_status_idx",
+          "columns": [
+            {
+              "expression": "status",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "documentos_pedido_id_pedidos_id_fk": {
+          "name": "documentos_pedido_id_pedidos_id_fk",
+          "tableFrom": "documentos",
+          "tableTo": "pedidos",
+          "columnsFrom": [
+            "pedido_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {},
       "policies": {},
@@ -1270,6 +1416,15 @@
         "cancelada"
       ]
     },
+    "public.status_documento": {
+      "name": "status_documento",
+      "schema": "public",
+      "values": [
+        "recebido",
+        "anexado",
+        "erro"
+      ]
+    },
     "public.status_pedido": {
       "name": "status_pedido",
       "schema": "public",
@@ -1291,6 +1446,15 @@
         "standard",
         "premium",
         "incluso"
+      ]
+    },
+    "public.tipo_documento": {
+      "name": "tipo_documento",
+      "schema": "public",
+      "values": [
+        "identidade",
+        "comprovante_residencia",
+        "selfie_documento"
       ]
     },
     "public.tipo_vaga": {

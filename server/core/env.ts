@@ -43,6 +43,13 @@ export const ENV = {
     idFilial: process.env.IXC_ID_FILIAL ?? "",
     idAssuntoInstalacao: process.env.IXC_ID_ASSUNTO_INSTALACAO ?? "",
     setorInstalacao: process.env.IXC_SETOR_INSTALACAO ?? "",
+    /**
+     * Tabela de arquivos anexados ao cadastro do cliente. A aba "Arquivos" do
+     * cliente existe no IXC, mas o nome da tabela no webservice não está na
+     * wiki. Fica configurável: enquanto estiver vazio, o documento é recebido
+     * e guardado para envio manual, sem tentar adivinhar endpoint.
+     */
+    tabelaArquivosCliente: process.env.IXC_TABELA_ARQUIVOS_CLIENTE ?? "",
   },
 } as const;
 

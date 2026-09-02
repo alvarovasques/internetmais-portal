@@ -19,6 +19,7 @@ import { ENV } from "../core/env";
 import { pedidos, sincronizacoesIxc, type Pedido } from "../../drizzle/schema";
 import { criar, listar, ErroIxc } from "../integrations/ixc";
 import { buscarPlanoPorId } from "../repositories/catalogo";
+import { anexarDocumentosDoPedido } from "./documentos";
 
 type Etapa = "cliente" | "contrato" | "ordem_servico";
 
@@ -237,6 +238,14 @@ export async function enviarPedidoParaIxc(pedido: Pedido): Promise<ResultadoCont
   }
 
   const ixcClienteId = await passoCliente(pedido);
+
+  // Documentos vão junto do cadastro. Falha aqui não derruba a contratação:
+  // o contrato é o que não pode parar, e o anexo pendente fica visível para
+  // o time resolver.
+  await anexarDocumentosDoPedido(pedido.id, ixcClienteId).catch(erro =>
+    console.error(`[documentos] pedido ${pedido.protocolo}:`, erro),
+  );
+
   const ixcContratoId = await passoContrato(pedido, ixcClienteId);
   const ixcOsId = await passoOrdemServico(pedido, ixcClienteId);
 

@@ -5,8 +5,10 @@ CREATE TYPE "public"."papel_usuario" AS ENUM('admin', 'operador');--> statement-
 CREATE TYPE "public"."resultado_sincronizacao" AS ENUM('pendente', 'sucesso', 'erro');--> statement-breakpoint
 CREATE TYPE "public"."status_candidatura" AS ENUM('recebida', 'em_analise', 'aprovada', 'recusada');--> statement-breakpoint
 CREATE TYPE "public"."status_cobranca" AS ENUM('aberta', 'recebida', 'parcial', 'cancelada');--> statement-breakpoint
+CREATE TYPE "public"."status_documento" AS ENUM('recebido', 'anexado', 'erro');--> statement-breakpoint
 CREATE TYPE "public"."status_pedido" AS ENUM('rascunho', 'aguardando_pagamento', 'pago', 'em_analise', 'agendado', 'instalado', 'cancelado', 'recusado');--> statement-breakpoint
 CREATE TYPE "public"."tipo_aplicativo" AS ENUM('standard', 'premium', 'incluso');--> statement-breakpoint
+CREATE TYPE "public"."tipo_documento" AS ENUM('identidade', 'comprovante_residencia', 'selfie_documento');--> statement-breakpoint
 CREATE TYPE "public"."tipo_vaga" AS ENUM('clt', 'estagio', 'temporario', 'pj');--> statement-breakpoint
 CREATE TYPE "public"."turno_instalacao" AS ENUM('manha', 'tarde');--> statement-breakpoint
 CREATE TABLE "aplicativos" (
@@ -67,6 +69,22 @@ CREATE TABLE "conteudo_site" (
 	"chave" varchar(200) NOT NULL,
 	"valor" jsonb NOT NULL,
 	"atualizado_em" timestamp with time zone DEFAULT now() NOT NULL
+);
+--> statement-breakpoint
+CREATE TABLE "documentos" (
+	"id" serial PRIMARY KEY NOT NULL,
+	"pedido_id" integer NOT NULL,
+	"tipo" "tipo_documento" NOT NULL,
+	"status" "status_documento" DEFAULT 'recebido' NOT NULL,
+	"nome_arquivo" varchar(200) NOT NULL,
+	"tipo_mime" varchar(60) NOT NULL,
+	"tamanho_bytes" integer NOT NULL,
+	"hash" varchar(64) NOT NULL,
+	"conteudo" text,
+	"ixc_arquivo_id" varchar(40),
+	"erro" text,
+	"criado_em" timestamp with time zone DEFAULT now() NOT NULL,
+	"anexado_em" timestamp with time zone
 );
 --> statement-breakpoint
 CREATE TABLE "pedidos" (
@@ -163,6 +181,7 @@ CREATE TABLE "vagas" (
 --> statement-breakpoint
 ALTER TABLE "candidaturas" ADD CONSTRAINT "candidaturas_vaga_id_vagas_id_fk" FOREIGN KEY ("vaga_id") REFERENCES "public"."vagas"("id") ON DELETE cascade ON UPDATE no action;--> statement-breakpoint
 ALTER TABLE "cobrancas" ADD CONSTRAINT "cobrancas_pedido_id_pedidos_id_fk" FOREIGN KEY ("pedido_id") REFERENCES "public"."pedidos"("id") ON DELETE set null ON UPDATE no action;--> statement-breakpoint
+ALTER TABLE "documentos" ADD CONSTRAINT "documentos_pedido_id_pedidos_id_fk" FOREIGN KEY ("pedido_id") REFERENCES "public"."pedidos"("id") ON DELETE cascade ON UPDATE no action;--> statement-breakpoint
 ALTER TABLE "pedidos" ADD CONSTRAINT "pedidos_plano_id_planos_id_fk" FOREIGN KEY ("plano_id") REFERENCES "public"."planos"("id") ON DELETE no action ON UPDATE no action;--> statement-breakpoint
 ALTER TABLE "sincronizacoes_ixc" ADD CONSTRAINT "sincronizacoes_ixc_pedido_id_pedidos_id_fk" FOREIGN KEY ("pedido_id") REFERENCES "public"."pedidos"("id") ON DELETE cascade ON UPDATE no action;--> statement-breakpoint
 CREATE UNIQUE INDEX "aplicativos_slug_idx" ON "aplicativos" USING btree ("slug");--> statement-breakpoint
@@ -171,6 +190,8 @@ CREATE UNIQUE INDEX "cobrancas_ixc_idx" ON "cobrancas" USING btree ("ixc_arecebe
 CREATE INDEX "cobrancas_pedido_idx" ON "cobrancas" USING btree ("pedido_id");--> statement-breakpoint
 CREATE INDEX "consultas_bairro_idx" ON "consultas_cobertura" USING btree ("bairro","tem_viabilidade");--> statement-breakpoint
 CREATE UNIQUE INDEX "conteudo_chave_idx" ON "conteudo_site" USING btree ("chave");--> statement-breakpoint
+CREATE UNIQUE INDEX "documentos_pedido_tipo_idx" ON "documentos" USING btree ("pedido_id","tipo");--> statement-breakpoint
+CREATE INDEX "documentos_status_idx" ON "documentos" USING btree ("status");--> statement-breakpoint
 CREATE UNIQUE INDEX "pedidos_protocolo_idx" ON "pedidos" USING btree ("protocolo");--> statement-breakpoint
 CREATE INDEX "pedidos_status_idx" ON "pedidos" USING btree ("status","criado_em");--> statement-breakpoint
 CREATE INDEX "pedidos_cpf_idx" ON "pedidos" USING btree ("cpf_cnpj");--> statement-breakpoint

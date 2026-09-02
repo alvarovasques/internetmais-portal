@@ -9,6 +9,9 @@ import {
 import { listarCobrancasDoPedido, sincronizarCobrancas } from "../repositories/cobrancas";
 import { enviarPedidoParaIxc } from "../services/contratacao";
 import { consultarViabilidade } from "../integrations/ixc";
+import {
+  listarDocumentosDoPedido, receberDocumento, TAMANHO_MAXIMO_BYTES,
+} from "../services/documentos";
 
 const cep = z.string().regex(/^\d{5}-?\d{3}$/, "CEP inválido");
 const cpfCnpj = z.string().min(11).max(18);
@@ -218,6 +221,48 @@ export const pedidosRouter = router({
             "Recebemos seus dados, mas não conseguimos concluir agora. Nossa equipe vai finalizar e entrar em contato.",
         });
       }
+    }),
+
+  /**
+   * Recebe um documento do checkout. O arquivo não é guardado aqui: vai para
+   * o cadastro do cliente no IXC quando o pedido é finalizado.
+   */
+  enviarDocumento: publicProcedure
+    .input(
+      z.object({
+        protocolo: z.string().min(1),
+        tipo: z.enum(["identidade", "comprovante_residencia", "selfie_documento"]),
+        nomeArquivo: z.string().min(1).max(200),
+        // O limite em base64 é maior que o do arquivo: 4 caracteres por 3 bytes.
+        conteudoBase64: z.string().min(1).max(Math.ceil((TAMANHO_MAXIMO_BYTES * 4) / 3) + 1024),
+      }),
+    )
+    .mutation(async ({ input }) => {
+      const pedido = await buscarPedidoPorProtocolo(input.protocolo);
+      if (!pedido) throw new TRPCError({ code: "NOT_FOUND" });
+      try {
+        const doc = await receberDocumento({
+          pedidoId: pedido.id,
+          protocolo: pedido.protocolo,
+          tipo: input.tipo,
+          nomeArquivo: input.nomeArquivo,
+          conteudoBase64: input.conteudoBase64,
+        });
+        return { id: doc.id, tipo: doc.tipo, tamanhoBytes: doc.tamanhoBytes };
+      } catch (erro) {
+        throw new TRPCError({
+          code: "BAD_REQUEST",
+          message: erro instanceof Error ? erro.message : "Não foi possível receber o arquivo.",
+        });
+      }
+    }),
+
+  documentos: publicProcedure
+    .input(z.object({ protocolo: z.string().min(1) }))
+    .query(async ({ input }) => {
+      const pedido = await buscarPedidoPorProtocolo(input.protocolo);
+      if (!pedido) throw new TRPCError({ code: "NOT_FOUND" });
+      return listarDocumentosDoPedido(pedido.id);
     }),
 
   listar: adminProcedure
