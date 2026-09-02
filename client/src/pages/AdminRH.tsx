@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { trpc } from '@/lib/trpc';
-import { useAuth } from '@/_core/hooks/useAuth';
+import { useSessao } from '@/hooks/useSessao';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { toast } from 'sonner';
@@ -54,7 +54,7 @@ const emptyForm: JobFormData = {
 };
 
 export default function AdminRH() {
-  const { user, isAuthenticated, loading } = useAuth();
+  const { usuario: user, autenticado: isAuthenticated, carregando: loading } = useSessao();
   const [activeTab, setActiveTab] = useState<Tab>('vagas');
   const [showForm, setShowForm] = useState(false);
   const [editingId, setEditingId] = useState<number | null>(null);

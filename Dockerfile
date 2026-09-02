@@ -1,19 +1,23 @@
-# Stage 1: Build
+# ── Build ────────────────────────────────────────────────────────────────
 FROM node:22-alpine AS builder
 WORKDIR /app
 COPY package.json package-lock.json ./
-RUN npm install --legacy-peer-deps
+RUN npm ci --legacy-peer-deps
 COPY . .
 RUN npm run build
 
-# Stage 2: Runtime
+# ── Runtime ──────────────────────────────────────────────────────────────
 FROM node:22-alpine
 WORKDIR /app
-COPY --from=builder /app/package.json /app/package-lock.json ./
+ENV NODE_ENV=production
+COPY package.json package-lock.json ./
+RUN npm ci --omit=dev --legacy-peer-deps && npm cache clean --force
 COPY --from=builder /app/dist ./dist
-COPY --from=builder /app/client/public ./client/public
-RUN npm install --legacy-peer-deps --omit=dev
+COPY --from=builder /app/drizzle ./drizzle
+
+# Não roda como root.
+USER node
 EXPOSE 3000
-HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
-  CMD node -e "require('http').get('http://localhost:3000', (r) => {if (r.statusCode !== 200) throw new Error(r.statusCode)})"
-CMD ["npm", "start"]
+HEALTHCHECK --interval=30s --timeout=10s --start-period=20s --retries=3 \
+  CMD node -e "fetch('http://localhost:3000/api/saude').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"
+CMD ["node", "dist/index.js"]
