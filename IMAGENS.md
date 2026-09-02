@@ -94,6 +94,13 @@ A dimensão listada é a do placeholder e serve como referência de proporção.
 | `/images/bg/vagas-hero.webp` | 1920x1080 | `client/src/pages/Vagas.tsx` |
 | `/images/bg/young-urban-5g.webp` | 1920x1080 | `client/src/components/Planos5G.tsx` |
 
+## Prompts das que faltam
+
+O arquivo `PROMPTS-IMAGENS.md`, na raiz, tem o prompt de cada uma das 16
+imagens pendentes, com nome de arquivo, tamanho e a regra de arte que vale para
+todas. Os mesmos prompts estão no artboard "Briefing das 16 imagens" do canvas
+de design.
+
 ## Como substituir
 
 1. Coloque o arquivo definitivo no mesmo caminho e com o mesmo nome do placeholder.
