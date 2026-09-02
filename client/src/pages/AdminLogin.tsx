@@ -17,7 +17,7 @@ export default function AdminLogin() {
         setPedeCodigo(true);
         return;
       }
-      navegar("/admin/rh");
+      navegar("/");
     },
     onError: e => setErro(e.message),
   });

@@ -153,31 +153,75 @@ export const pedidos = pgTable(
   ],
 );
 
-export const statusPagamento = pgEnum("status_pagamento", [
-  "criado", "autorizado", "pago", "negado", "cancelado", "estornado",
+/**
+ * Espelho das cobranças que vivem no IXC (fn_areceber). O IXC é o dono do
+ * faturamento e a Cielo já está integrada lá: o site não processa pagamento,
+ * só mostra o que o IXC gerou e guarda o vínculo com o pedido.
+ */
+export const statusCobranca = pgEnum("status_cobranca", [
+  "aberta",     // A no IXC
+  "recebida",   // R
+  "parcial",    // P
+  "cancelada",  // C
 ]);
 
-export const pagamentos = pgTable(
-  "pagamentos",
+export const cobrancas = pgTable(
+  "cobrancas",
+  {
+    id: serial("id").primaryKey(),
+    pedidoId: integer("pedido_id").references(() => pedidos.id, { onDelete: "set null" }),
+    /** id do título em fn_areceber. É a chave de reconciliação. */
+    ixcAreceberId: varchar("ixc_areceber_id", { length: 40 }).notNull(),
+    ixcClienteId: varchar("ixc_cliente_id", { length: 40 }),
+    valor: numeric("valor", { precision: 10, scale: 2 }).notNull(),
+    vencimento: date("vencimento"),
+    status: statusCobranca("status").notNull().default("aberta"),
+    /** Boleto/Pix/Cartão, como o IXC classifica. */
+    tipoRecebimento: varchar("tipo_recebimento", { length: 40 }),
+    /** Link do checkout no gateway, gerado pelo IXC. É o que mostramos ao cliente. */
+    gatewayLink: text("gateway_link"),
+    linhaDigitavel: varchar("linha_digitavel", { length: 80 }),
+    pixTxid: varchar("pix_txid", { length: 80 }),
+    sincronizadoEm: timestamp("sincronizado_em", { withTimezone: true }).notNull().defaultNow(),
+  },
+  t => [
+    uniqueIndex("cobrancas_ixc_idx").on(t.ixcAreceberId),
+    index("cobrancas_pedido_idx").on(t.pedidoId),
+  ],
+);
+
+/**
+ * Registro de cada tentativa de escrever no IXC. Existe para duas coisas:
+ * não criar cliente duplicado quando a rede cai no meio, e ter o que auditar
+ * quando um pedido não virou contrato.
+ */
+export const etapaSincronizacao = pgEnum("etapa_sincronizacao", [
+  "cliente", "contrato", "ordem_servico",
+]);
+export const resultadoSincronizacao = pgEnum("resultado_sincronizacao", [
+  "pendente", "sucesso", "erro",
+]);
+
+export const sincronizacoesIxc = pgTable(
+  "sincronizacoes_ixc",
   {
     id: serial("id").primaryKey(),
     pedidoId: integer("pedido_id").notNull().references(() => pedidos.id, { onDelete: "cascade" }),
-    meio: meioPagamento("meio").notNull(),
-    status: statusPagamento("status").notNull().default("criado"),
-    valor: numeric("valor", { precision: 10, scale: 2 }).notNull(),
-    /** PaymentId da Cielo. */
-    cieloPaymentId: varchar("cielo_payment_id", { length: 64 }),
-    cieloTid: varchar("cielo_tid", { length: 64 }),
-    /** Identificador da recorrência programada, quando houver. */
-    cieloRecorrenciaId: varchar("cielo_recorrencia_id", { length: 64 }),
-    /** Retorno bruto da Cielo, para conciliação e disputa. */
-    retornoCielo: jsonb("retorno_cielo"),
+    etapa: etapaSincronizacao("etapa").notNull(),
+    resultado: resultadoSincronizacao("resultado").notNull().default("pendente"),
+    /** id devolvido pelo IXC quando deu certo. */
+    ixcId: varchar("ixc_id", { length: 40 }),
+    /** Payload enviado e resposta crua, para auditoria e para reprocessar. */
+    requisicao: jsonb("requisicao"),
+    resposta: jsonb("resposta"),
+    tentativas: integer("tentativas").notNull().default(0),
+    erro: text("erro"),
     criadoEm: timestamp("criado_em", { withTimezone: true }).notNull().defaultNow(),
     atualizadoEm: timestamp("atualizado_em", { withTimezone: true }).notNull().defaultNow(),
   },
   t => [
-    index("pagamentos_pedido_idx").on(t.pedidoId),
-    index("pagamentos_cielo_idx").on(t.cieloPaymentId),
+    // Uma etapa por pedido: reexecutar atualiza a linha, não cria outra.
+    uniqueIndex("sincronizacoes_pedido_etapa_idx").on(t.pedidoId, t.etapa),
   ],
 );
 
@@ -258,7 +302,8 @@ export type NovoPlano = typeof planos.$inferInsert;
 export type Aplicativo = typeof aplicativos.$inferSelect;
 export type Pedido = typeof pedidos.$inferSelect;
 export type NovoPedido = typeof pedidos.$inferInsert;
-export type Pagamento = typeof pagamentos.$inferSelect;
+export type Cobranca = typeof cobrancas.$inferSelect;
+export type SincronizacaoIxc = typeof sincronizacoesIxc.$inferSelect;
 export type Vaga = typeof vagas.$inferSelect;
 export type NovaVaga = typeof vagas.$inferInsert;
 export type Candidatura = typeof candidaturas.$inferSelect;

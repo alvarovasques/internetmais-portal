@@ -1,8 +1,10 @@
+CREATE TYPE "public"."etapa_sincronizacao" AS ENUM('cliente', 'contrato', 'ordem_servico');--> statement-breakpoint
 CREATE TYPE "public"."familia_plano" AS ENUM('internet', 'internet_aplicativos', 'empresarial', 'movel_5g', 'telefonia_fixa');--> statement-breakpoint
 CREATE TYPE "public"."meio_pagamento" AS ENUM('cartao_credito', 'pix', 'boleto');--> statement-breakpoint
 CREATE TYPE "public"."papel_usuario" AS ENUM('admin', 'operador');--> statement-breakpoint
+CREATE TYPE "public"."resultado_sincronizacao" AS ENUM('pendente', 'sucesso', 'erro');--> statement-breakpoint
 CREATE TYPE "public"."status_candidatura" AS ENUM('recebida', 'em_analise', 'aprovada', 'recusada');--> statement-breakpoint
-CREATE TYPE "public"."status_pagamento" AS ENUM('criado', 'autorizado', 'pago', 'negado', 'cancelado', 'estornado');--> statement-breakpoint
+CREATE TYPE "public"."status_cobranca" AS ENUM('aberta', 'recebida', 'parcial', 'cancelada');--> statement-breakpoint
 CREATE TYPE "public"."status_pedido" AS ENUM('rascunho', 'aguardando_pagamento', 'pago', 'em_analise', 'agendado', 'instalado', 'cancelado', 'recusado');--> statement-breakpoint
 CREATE TYPE "public"."tipo_aplicativo" AS ENUM('standard', 'premium', 'incluso');--> statement-breakpoint
 CREATE TYPE "public"."tipo_vaga" AS ENUM('clt', 'estagio', 'temporario', 'pj');--> statement-breakpoint
@@ -31,6 +33,21 @@ CREATE TABLE "candidaturas" (
 	"criado_em" timestamp with time zone DEFAULT now() NOT NULL
 );
 --> statement-breakpoint
+CREATE TABLE "cobrancas" (
+	"id" serial PRIMARY KEY NOT NULL,
+	"pedido_id" integer,
+	"ixc_areceber_id" varchar(40) NOT NULL,
+	"ixc_cliente_id" varchar(40),
+	"valor" numeric(10, 2) NOT NULL,
+	"vencimento" date,
+	"status" "status_cobranca" DEFAULT 'aberta' NOT NULL,
+	"tipo_recebimento" varchar(40),
+	"gateway_link" text,
+	"linha_digitavel" varchar(80),
+	"pix_txid" varchar(80),
+	"sincronizado_em" timestamp with time zone DEFAULT now() NOT NULL
+);
+--> statement-breakpoint
 CREATE TABLE "consultas_cobertura" (
 	"id" serial PRIMARY KEY NOT NULL,
 	"cep" varchar(9) NOT NULL,
@@ -48,20 +65,6 @@ CREATE TABLE "conteudo_site" (
 	"id" serial PRIMARY KEY NOT NULL,
 	"chave" varchar(200) NOT NULL,
 	"valor" jsonb NOT NULL,
-	"atualizado_em" timestamp with time zone DEFAULT now() NOT NULL
-);
---> statement-breakpoint
-CREATE TABLE "pagamentos" (
-	"id" serial PRIMARY KEY NOT NULL,
-	"pedido_id" integer NOT NULL,
-	"meio" "meio_pagamento" NOT NULL,
-	"status" "status_pagamento" DEFAULT 'criado' NOT NULL,
-	"valor" numeric(10, 2) NOT NULL,
-	"cielo_payment_id" varchar(64),
-	"cielo_tid" varchar(64),
-	"cielo_recorrencia_id" varchar(64),
-	"retorno_cielo" jsonb,
-	"criado_em" timestamp with time zone DEFAULT now() NOT NULL,
 	"atualizado_em" timestamp with time zone DEFAULT now() NOT NULL
 );
 --> statement-breakpoint
@@ -116,6 +119,20 @@ CREATE TABLE "planos" (
 	"atualizado_em" timestamp with time zone DEFAULT now() NOT NULL
 );
 --> statement-breakpoint
+CREATE TABLE "sincronizacoes_ixc" (
+	"id" serial PRIMARY KEY NOT NULL,
+	"pedido_id" integer NOT NULL,
+	"etapa" "etapa_sincronizacao" NOT NULL,
+	"resultado" "resultado_sincronizacao" DEFAULT 'pendente' NOT NULL,
+	"ixc_id" varchar(40),
+	"requisicao" jsonb,
+	"resposta" jsonb,
+	"tentativas" integer DEFAULT 0 NOT NULL,
+	"erro" text,
+	"criado_em" timestamp with time zone DEFAULT now() NOT NULL,
+	"atualizado_em" timestamp with time zone DEFAULT now() NOT NULL
+);
+--> statement-breakpoint
 CREATE TABLE "usuarios" (
 	"id" serial PRIMARY KEY NOT NULL,
 	"email" varchar(320) NOT NULL,
@@ -144,17 +161,19 @@ CREATE TABLE "vagas" (
 );
 --> statement-breakpoint
 ALTER TABLE "candidaturas" ADD CONSTRAINT "candidaturas_vaga_id_vagas_id_fk" FOREIGN KEY ("vaga_id") REFERENCES "public"."vagas"("id") ON DELETE cascade ON UPDATE no action;--> statement-breakpoint
-ALTER TABLE "pagamentos" ADD CONSTRAINT "pagamentos_pedido_id_pedidos_id_fk" FOREIGN KEY ("pedido_id") REFERENCES "public"."pedidos"("id") ON DELETE cascade ON UPDATE no action;--> statement-breakpoint
+ALTER TABLE "cobrancas" ADD CONSTRAINT "cobrancas_pedido_id_pedidos_id_fk" FOREIGN KEY ("pedido_id") REFERENCES "public"."pedidos"("id") ON DELETE set null ON UPDATE no action;--> statement-breakpoint
 ALTER TABLE "pedidos" ADD CONSTRAINT "pedidos_plano_id_planos_id_fk" FOREIGN KEY ("plano_id") REFERENCES "public"."planos"("id") ON DELETE no action ON UPDATE no action;--> statement-breakpoint
+ALTER TABLE "sincronizacoes_ixc" ADD CONSTRAINT "sincronizacoes_ixc_pedido_id_pedidos_id_fk" FOREIGN KEY ("pedido_id") REFERENCES "public"."pedidos"("id") ON DELETE cascade ON UPDATE no action;--> statement-breakpoint
 CREATE UNIQUE INDEX "aplicativos_slug_idx" ON "aplicativos" USING btree ("slug");--> statement-breakpoint
 CREATE INDEX "candidaturas_vaga_idx" ON "candidaturas" USING btree ("vaga_id","status");--> statement-breakpoint
+CREATE UNIQUE INDEX "cobrancas_ixc_idx" ON "cobrancas" USING btree ("ixc_areceber_id");--> statement-breakpoint
+CREATE INDEX "cobrancas_pedido_idx" ON "cobrancas" USING btree ("pedido_id");--> statement-breakpoint
 CREATE INDEX "consultas_bairro_idx" ON "consultas_cobertura" USING btree ("bairro","tem_viabilidade");--> statement-breakpoint
 CREATE UNIQUE INDEX "conteudo_chave_idx" ON "conteudo_site" USING btree ("chave");--> statement-breakpoint
-CREATE INDEX "pagamentos_pedido_idx" ON "pagamentos" USING btree ("pedido_id");--> statement-breakpoint
-CREATE INDEX "pagamentos_cielo_idx" ON "pagamentos" USING btree ("cielo_payment_id");--> statement-breakpoint
 CREATE UNIQUE INDEX "pedidos_protocolo_idx" ON "pedidos" USING btree ("protocolo");--> statement-breakpoint
 CREATE INDEX "pedidos_status_idx" ON "pedidos" USING btree ("status","criado_em");--> statement-breakpoint
 CREATE INDEX "pedidos_cpf_idx" ON "pedidos" USING btree ("cpf_cnpj");--> statement-breakpoint
 CREATE UNIQUE INDEX "planos_slug_idx" ON "planos" USING btree ("slug");--> statement-breakpoint
 CREATE INDEX "planos_familia_idx" ON "planos" USING btree ("familia","ativo");--> statement-breakpoint
+CREATE UNIQUE INDEX "sincronizacoes_pedido_etapa_idx" ON "sincronizacoes_ixc" USING btree ("pedido_id","etapa");--> statement-breakpoint
 CREATE UNIQUE INDEX "usuarios_email_idx" ON "usuarios" USING btree ("email");

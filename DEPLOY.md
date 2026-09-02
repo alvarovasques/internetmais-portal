@@ -59,3 +59,34 @@ perda do host.
 
 `GET /api/saude` responde `{"ok":true}`. É o que o healthcheck do container e o
 Traefik usam.
+
+## Integração com o IXC
+
+O site não fala com a Cielo. O IXC é o dono do cadastro, do contrato e do
+faturamento, e a Cielo já está integrada lá. Quando um pedido é finalizado, o
+site cria no IXC, nesta ordem: **cliente** (`cliente`), **contrato**
+(`cliente_contrato`) e **ordem de serviço de instalação** (`su_oss_chamado`).
+Os títulos aparecem em `fn_areceber` e o site só lê o `gateway_link` para
+mostrar ao cliente onde pagar.
+
+Antes de ligar a venda online, confirme no IXC e preencha no ambiente:
+
+- `IXC_ID_FILIAL`
+- `IXC_ID_ASSUNTO_INSTALACAO` — assunto da OS de instalação (`su_oss_assunto`)
+- `IXC_SETOR_INSTALACAO` — setor responsável
+- `planos.ixc_plano_id` de cada plano — o `id_vd_contrato` correspondente
+
+Esses ids variam por instalação. Chutar valor gera OS órfã ou erro na criação,
+então liste os cadastros no IXC e use os ids reais.
+
+### Reprocessar um pedido que falhou
+
+Cada passo fica em `sincronizacoes_ixc` com índice único por pedido e etapa.
+Chamar `pedidos.finalizar` de novo retoma de onde parou e não duplica cliente.
+Para ver onde travou:
+
+```sql
+select etapa, resultado, ixc_id, erro, atualizado_em
+from sincronizacoes_ixc
+where pedido_id = (select id from pedidos where protocolo = 'IM-XXXXXX');
+```

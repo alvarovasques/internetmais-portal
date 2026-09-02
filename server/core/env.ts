@@ -24,11 +24,25 @@ export const ENV = {
   /** Rótulo mostrado no app autenticador ao cadastrar o segundo fator. */
   totpIssuer: process.env.TOTP_ISSUER ?? "Internet Mais",
 
-  cielo: {
-    merchantId: process.env.CIELO_MERCHANT_ID ?? "",
-    merchantKey: process.env.CIELO_MERCHANT_KEY ?? "",
-    /** sandbox | production */
-    ambiente: process.env.CIELO_AMBIENTE ?? "sandbox",
+  /**
+   * O IXC é o dono do cadastro, do contrato e do faturamento. A Cielo já está
+   * integrada lá, então o site nunca fala com a Cielo: cria o contrato no IXC
+   * e mostra ao cliente o link de pagamento que o IXC devolve.
+   */
+  ixc: {
+    /** Sem barra no fim. Ex.: https://sistema.internetmais.net */
+    host: (process.env.IXC_HOST ?? "").replace(/\/+$/, ""),
+    /** Formato id:hash, gerado no cadastro do usuário de API do IXC. */
+    token: process.env.IXC_TOKEN ?? "",
+    /** Aceitar certificado autoassinado. Só ligar se o IXC for on-premise sem CA. */
+    permitirCertificadoInvalido: process.env.IXC_TLS_INSEGURO === "true",
+    /**
+     * Ids que variam por instalação e precisam ser conferidos no IXC antes de
+     * qualquer escrita: chutar id gera OS órfã ou erro.
+     */
+    idFilial: process.env.IXC_ID_FILIAL ?? "",
+    idAssuntoInstalacao: process.env.IXC_ID_ASSUNTO_INSTALACAO ?? "",
+    setorInstalacao: process.env.IXC_SETOR_INSTALACAO ?? "",
   },
 } as const;
 

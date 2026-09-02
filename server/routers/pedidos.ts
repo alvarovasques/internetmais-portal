@@ -4,8 +4,10 @@ import { adminProcedure, publicProcedure, router } from "../core/trpc";
 import { buscarPlanoPorSlug } from "../repositories/catalogo";
 import {
   atualizarPedido, buscarPedidoPorProtocolo, criarPedido,
-  listarPagamentosDoPedido, listarPedidos, registrarConsultaCobertura,
+  listarPedidos, registrarConsultaCobertura,
 } from "../repositories/pedidos";
+import { listarCobrancasDoPedido, sincronizarCobrancas } from "../repositories/cobrancas";
+import { enviarPedidoParaIxc } from "../services/contratacao";
 
 const cep = z.string().regex(/^\d{5}-?\d{3}$/, "CEP inválido");
 const cpfCnpj = z.string().min(11).max(18);
@@ -123,11 +125,59 @@ export const pedidosRouter = router({
       };
     }),
 
+  /**
+   * Fecha o pedido: registra a forma de pagamento escolhida, cria cliente,
+   * contrato e ordem de serviço no IXC e devolve o link da primeira cobrança.
+   *
+   * O site não processa pagamento. Quem fatura é o IXC, onde a Cielo já está
+   * integrada: aqui só mostramos ao cliente o link que o IXC gerou.
+   */
+  finalizar: publicProcedure
+    .input(
+      z.object({
+        protocolo: z.string().min(1),
+        meioPagamento: z.enum(["cartao_credito", "pix", "boleto"]),
+      }),
+    )
+    .mutation(async ({ input }) => {
+      const pedido = await buscarPedidoPorProtocolo(input.protocolo);
+      if (!pedido) throw new TRPCError({ code: "NOT_FOUND" });
+      if (pedido.ixcContratoId) {
+        throw new TRPCError({ code: "CONFLICT", message: "Este pedido já foi enviado ao sistema." });
+      }
+
+      const atualizado = await atualizarPedido(pedido.id, { meioPagamento: input.meioPagamento });
+      if (!atualizado) throw new TRPCError({ code: "NOT_FOUND" });
+
+      try {
+        const { ixcClienteId } = await enviarPedidoParaIxc(atualizado);
+        // A cobrança pode ainda não existir no instante seguinte à criação do
+        // contrato: quando não vier nada, o cliente recebe o link por WhatsApp.
+        const cobrancas = await sincronizarCobrancas(ixcClienteId, atualizado.id).catch(() => []);
+        const emAberto = cobrancas.find(c => c.status === "aberta");
+        return {
+          protocolo: atualizado.protocolo,
+          linkPagamento: emAberto?.gatewayLink ?? null,
+          linhaDigitavel: emAberto?.linhaDigitavel ?? null,
+          vencimento: emAberto?.vencimento ?? null,
+        };
+      } catch (erro) {
+        // O pedido fica gravado com o passo que falhou registrado, para o time
+        // retomar sem pedir os dados de novo ao cliente.
+        console.error(`[contratacao] pedido ${atualizado.protocolo}:`, erro);
+        throw new TRPCError({
+          code: "INTERNAL_SERVER_ERROR",
+          message:
+            "Recebemos seus dados, mas não conseguimos concluir agora. Nossa equipe vai finalizar e entrar em contato.",
+        });
+      }
+    }),
+
   listar: adminProcedure
     .input(z.object({ limite: z.number().min(1).max(500).default(100) }).optional())
     .query(({ input }) => listarPedidos(input?.limite ?? 100)),
 
-  pagamentos: adminProcedure
+  cobrancas: adminProcedure
     .input(z.object({ pedidoId: z.number() }))
-    .query(({ input }) => listarPagamentosDoPedido(input.pedidoId)),
+    .query(({ input }) => listarCobrancasDoPedido(input.pedidoId)),
 });

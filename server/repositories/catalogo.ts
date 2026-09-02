@@ -27,3 +27,10 @@ export async function listarAplicativos(): Promise<Aplicativo[]> {
     .where(eq(aplicativos.ativo, true))
     .orderBy(asc(aplicativos.ordem), asc(aplicativos.nome));
 }
+
+export async function buscarPlanoPorId(id: number): Promise<Plano | null> {
+  const db = getDb();
+  if (!db) return null;
+  const [linha] = await db.select().from(planos).where(eq(planos.id, id)).limit(1);
+  return linha ?? null;
+}

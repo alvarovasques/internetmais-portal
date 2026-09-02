@@ -2,7 +2,7 @@ import { randomBytes } from "crypto";
 import { desc, eq } from "drizzle-orm";
 import { getDb, requireDb } from "../core/db";
 import {
-  consultasCobertura, pagamentos, pedidos,
+  consultasCobertura, pedidos,
   type NovoPedido, type Pedido,
 } from "../../drizzle/schema";
 
@@ -47,11 +47,6 @@ export async function listarPedidos(limite = 100): Promise<Pedido[]> {
   return db.select().from(pedidos).orderBy(desc(pedidos.criadoEm)).limit(limite);
 }
 
-export async function listarPagamentosDoPedido(pedidoId: number) {
-  const db = getDb();
-  if (!db) return [];
-  return db.select().from(pagamentos).where(eq(pagamentos.pedidoId, pedidoId)).orderBy(desc(pagamentos.criadoEm));
-}
 
 export async function registrarConsultaCobertura(dados: {
   cep: string; logradouro?: string; numero?: string; bairro?: string;

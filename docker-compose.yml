@@ -14,9 +14,12 @@ services:
       DATABASE_URL: postgres://internetmais:${POSTGRES_PASSWORD}@postgres:5432/internetmais
       SESSION_SECRET: ${SESSION_SECRET}
       TOTP_ISSUER: Internet Mais
-      CIELO_AMBIENTE: ${CIELO_AMBIENTE:-sandbox}
-      CIELO_MERCHANT_ID: ${CIELO_MERCHANT_ID}
-      CIELO_MERCHANT_KEY: ${CIELO_MERCHANT_KEY}
+      IXC_HOST: ${IXC_HOST}
+      IXC_TOKEN: ${IXC_TOKEN}
+      IXC_TLS_INSEGURO: ${IXC_TLS_INSEGURO:-false}
+      IXC_ID_FILIAL: ${IXC_ID_FILIAL}
+      IXC_ID_ASSUNTO_INSTALACAO: ${IXC_ID_ASSUNTO_INSTALACAO}
+      IXC_SETOR_INSTALACAO: ${IXC_SETOR_INSTALACAO}
     networks:
       - di4e
       - interna
