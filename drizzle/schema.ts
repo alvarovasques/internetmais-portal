@@ -234,7 +234,10 @@ export const consultasCobertura = pgTable(
     logradouro: varchar("logradouro", { length: 200 }),
     numero: varchar("numero", { length: 20 }),
     bairro: varchar("bairro", { length: 120 }),
+    /** null quando o IXC respondeu algo que não deu para interpretar. */
     temViabilidade: boolean("tem_viabilidade"),
+    /** Resposta crua de viabilidade_tecnica, para auditoria e conferência. */
+    respostaIxc: jsonb("resposta_ixc"),
     telefone: varchar("telefone", { length: 20 }),
     email: varchar("email", { length: 320 }),
     avisarQuandoChegar: boolean("avisar_quando_chegar").notNull().default(false),

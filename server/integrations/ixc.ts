@@ -140,3 +140,65 @@ export async function testarConexao(): Promise<boolean> {
     return false;
   }
 }
+
+/* ─────────────────────── Viabilidade técnica ─────────────────────── */
+
+/**
+ * `viabilidade_tecnica` não segue o padrão qtype/query/oper das outras
+ * tabelas: recebe os campos do local direto. Aceita duas formas, e o exemplo
+ * oficial mostra as duas separadas, não combinadas.
+ */
+export type ConsultaViabilidade =
+  | {
+      /** Rua, avenida, logradouro. */
+      endereco: string;
+      numero: string;
+      cidade: string;
+      /** Sigla, ex.: MS. */
+      estado: string;
+      bairro?: string;
+      cep?: string;
+    }
+  | { latitude: string; longitude: string };
+
+/**
+ * Devolve a resposta crua do IXC junto com a leitura de disponibilidade.
+ *
+ * `disponivel` é null quando a resposta chega mas não dá para interpretar:
+ * o formato de retorno deste endpoint não está documentado na wiki, então a
+ * leitura abaixo é defensiva de propósito. Guarde `bruto` e confira contra
+ * uma resposta real antes de confiar no booleano em produção.
+ */
+export async function consultarViabilidade(
+  consulta: ConsultaViabilidade,
+): Promise<{ disponivel: boolean | null; bruto: unknown }> {
+  const bruto = await chamar("viabilidade_tecnica", {
+    method: "POST",
+    headers: { ixcsoft: "listar" },
+    body: JSON.stringify(consulta),
+  });
+
+  return { disponivel: interpretarViabilidade(bruto), bruto };
+}
+
+/** Heurística sobre as formas que o IXC costuma usar para sim/não. */
+function interpretarViabilidade(bruto: unknown): boolean | null {
+  if (!bruto || typeof bruto !== "object") return null;
+  const obj = bruto as Record<string, unknown>;
+
+  // Forma de listagem: registros com as caixas/estruturas atendendo o ponto.
+  if (Array.isArray(obj.registros)) return obj.registros.length > 0;
+  if (obj.total !== undefined) return Number(obj.total) > 0;
+
+  // Forma de resposta direta, com um campo de sim/não.
+  for (const chave of ["viabilidade", "viavel", "disponivel", "status", "type"]) {
+    const valor = obj[chave];
+    if (typeof valor === "boolean") return valor;
+    if (typeof valor === "string") {
+      const v = valor.trim().toLowerCase();
+      if (["s", "sim", "true", "1", "success", "viavel", "disponivel"].includes(v)) return true;
+      if (["n", "nao", "não", "false", "0", "error"].includes(v)) return false;
+    }
+  }
+  return null;
+}

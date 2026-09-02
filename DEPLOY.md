@@ -79,6 +79,28 @@ Antes de ligar a venda online, confirme no IXC e preencha no ambiente:
 Esses ids variam por instalação. Chutar valor gera OS órfã ou erro na criação,
 então liste os cadastros no IXC e use os ids reais.
 
+### Viabilidade por endereço
+
+A consulta de cobertura usa a tabela `viabilidade_tecnica` do IXC, que aceita
+duas formas: por endereço (`endereco`, `numero`, `cidade`, `estado` obrigatórios,
+com `bairro` e `cep` opcionais) ou por coordenada (`latitude`, `longitude`). O
+site usa a forma por endereço.
+
+O formato da resposta não está na wiki. A leitura de sim/não em
+`interpretarViabilidade` é defensiva e devolve `null` quando não reconhece o
+retorno: nesse caso o site não nega nem promete cobertura, diz que vai
+confirmar. Toda consulta grava a resposta crua em
+`consultas_cobertura.resposta_ixc`.
+
+Depois da primeira consulta real, conferir o retorno e ajustar a leitura:
+
+```sql
+select cep, numero, tem_viabilidade, resposta_ixc
+from consultas_cobertura
+order by criado_em desc
+limit 5;
+```
+
 ### Reprocessar um pedido que falhou
 
 Cada passo fica em `sincronizacoes_ixc` com índice único por pedido e etapa.

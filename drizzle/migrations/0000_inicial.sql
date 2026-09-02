@@ -55,6 +55,7 @@ CREATE TABLE "consultas_cobertura" (
 	"numero" varchar(20),
 	"bairro" varchar(120),
 	"tem_viabilidade" boolean,
+	"resposta_ixc" jsonb,
 	"telefone" varchar(20),
 	"email" varchar(320),
 	"avisar_quando_chegar" boolean DEFAULT false NOT NULL,

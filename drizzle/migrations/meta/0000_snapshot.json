@@ -1,5 +1,5 @@
 {
-  "id": "5f32a60b-75cc-41e8-b89b-379306e88b53",
+  "id": "4731b8f1-17fc-4b40-bfaf-8e4624a79dfe",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -366,6 +366,12 @@
         "tem_viabilidade": {
           "name": "tem_viabilidade",
           "type": "boolean",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "resposta_ixc": {
+          "name": "resposta_ixc",
+          "type": "jsonb",
           "primaryKey": false,
           "notNull": false
         },

@@ -50,7 +50,8 @@ export async function listarPedidos(limite = 100): Promise<Pedido[]> {
 
 export async function registrarConsultaCobertura(dados: {
   cep: string; logradouro?: string; numero?: string; bairro?: string;
-  temViabilidade?: boolean; telefone?: string; email?: string; avisarQuandoChegar?: boolean;
+  temViabilidade?: boolean | null; respostaIxc?: unknown;
+  telefone?: string; email?: string; avisarQuandoChegar?: boolean;
 }) {
   const db = getDb();
   if (!db) return null;

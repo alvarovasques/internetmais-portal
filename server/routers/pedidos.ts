@@ -8,32 +8,79 @@ import {
 } from "../repositories/pedidos";
 import { listarCobrancasDoPedido, sincronizarCobrancas } from "../repositories/cobrancas";
 import { enviarPedidoParaIxc } from "../services/contratacao";
+import { consultarViabilidade } from "../integrations/ixc";
 
 const cep = z.string().regex(/^\d{5}-?\d{3}$/, "CEP inválido");
 const cpfCnpj = z.string().min(11).max(18);
 
 export const pedidosRouter = router({
   /**
-   * Consulta de cobertura. Enquanto a fonte de viabilidade real não estiver
-   * definida, devolve indefinido e registra a consulta como lista de espera.
+   * Consulta de cobertura no IXC (`viabilidade_tecnica`).
+   *
+   * Toda consulta fica registrada, com viabilidade ou sem: quem não tem
+   * cobertura hoje é lista de espera, e o conjunto mostra onde vale expandir
+   * a rede. Falha na integração não derruba a experiência: o endereço é
+   * gravado do mesmo jeito e o visitante recebe resposta honesta.
    */
   consultarCobertura: publicProcedure
     .input(
       z.object({
         cep,
-        numero: z.string().optional(),
-        logradouro: z.string().optional(),
+        numero: z.string().min(1),
+        logradouro: z.string().min(3),
         bairro: z.string().optional(),
+        cidade: z.string().default("Campo Grande"),
+        estado: z.string().length(2).default("MS"),
         telefone: z.string().optional(),
         email: z.string().email().optional(),
         avisarQuandoChegar: z.boolean().default(false),
       }),
     )
     .mutation(async ({ input }) => {
-      // TODO: trocar por consulta real (base de caixas/portas ou API do IXC).
-      const temViabilidade: boolean | null = null;
-      await registrarConsultaCobertura({ ...input, temViabilidade: temViabilidade ?? undefined });
-      return { temViabilidade, mensagem: "Consulta registrada. Viabilidade ainda não integrada." };
+      let temViabilidade: boolean | null = null;
+      let respostaIxc: unknown = null;
+
+      try {
+        const consulta = await consultarViabilidade({
+          endereco: input.logradouro,
+          numero: input.numero,
+          bairro: input.bairro,
+          cidade: input.cidade,
+          estado: input.estado,
+          cep: input.cep,
+        });
+        temViabilidade = consulta.disponivel;
+        respostaIxc = consulta.bruto;
+      } catch (erro) {
+        console.error("[viabilidade] falha ao consultar o IXC:", erro);
+      }
+
+      await registrarConsultaCobertura({
+        cep: input.cep,
+        logradouro: input.logradouro,
+        numero: input.numero,
+        bairro: input.bairro,
+        temViabilidade,
+        respostaIxc,
+        telefone: input.telefone,
+        email: input.email,
+        avisarQuandoChegar: input.avisarQuandoChegar,
+      });
+
+      if (temViabilidade === true) {
+        return { temViabilidade: true as const, mensagem: "Temos fibra no seu endereço." };
+      }
+      if (temViabilidade === false) {
+        return {
+          temViabilidade: false as const,
+          mensagem: "Ainda não chegamos nesse endereço. Deixe seu contato que avisamos quando chegar.",
+        };
+      }
+      // Não sabemos: não prometer prazo nem negar cobertura.
+      return {
+        temViabilidade: null,
+        mensagem: "Vamos confirmar a disponibilidade e retornar pelo WhatsApp em seguida.",
+      };
     }),
 
   iniciar: publicProcedure
