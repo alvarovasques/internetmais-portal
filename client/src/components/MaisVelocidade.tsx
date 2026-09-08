@@ -27,7 +27,7 @@ export default function MaisVelocidade() {
       precoComDesconto: 'R$ 89,90',
       temDesconto: true,
       popular: false,
-      features: ['400 Mbps de velocidade', 'Instalação grátis*', 'MaisTV (100+ canais)', 'Ubook', 'Kaspersky']
+      features: ['400 Mbps de velocidade', 'Instalação grátis*', 'MaisTV (+160 canais)', 'Ubook', 'Kaspersky']
     },
     {
       velocidade: '600 Mega',
@@ -35,7 +35,7 @@ export default function MaisVelocidade() {
       precoComDesconto: 'R$ 99,90',
       temDesconto: true,
       popular: true,
-      features: ['600 Mbps de velocidade', 'Instalação grátis*', 'MaisTV (100+ canais)', 'Ubook', 'Kaspersky']
+      features: ['600 Mbps de velocidade', 'Instalação grátis*', 'MaisTV (+160 canais)', 'Ubook', 'Kaspersky']
     },
     {
       velocidade: '800 Mega',
@@ -43,7 +43,7 @@ export default function MaisVelocidade() {
       precoComDesconto: 'R$ 129,90',
       temDesconto: true,
       popular: false,
-      features: ['800 Mbps de velocidade', 'Instalação grátis*', 'MaisTV (100+ canais)', 'Ubook', 'Kaspersky']
+      features: ['800 Mbps de velocidade', 'Instalação grátis*', 'MaisTV (+160 canais)', 'Ubook', 'Kaspersky']
     },
   ];
 

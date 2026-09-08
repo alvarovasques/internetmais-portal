@@ -69,19 +69,19 @@ export default function MaisGloboPlay() {
       velocidade: '400 Mega',
       preco: 'R$ 109,90',
       popular: false,
-      features: ['400 Mbps de velocidade', 'Instalação grátis*', 'MaisTV (100+ canais)', 'Ubook', 'Kaspersky']
+      features: ['400 Mbps de velocidade', 'Instalação grátis*', 'MaisTV (+160 canais)', 'Ubook', 'Kaspersky']
     },
     {
       velocidade: '600 Mega',
       preco: 'R$ 129,90',
       popular: true,
-      features: ['600 Mbps de velocidade', 'Instalação grátis*', 'MaisTV (100+ canais)', 'Ubook', 'Kaspersky']
+      features: ['600 Mbps de velocidade', 'Instalação grátis*', 'MaisTV (+160 canais)', 'Ubook', 'Kaspersky']
     },
     {
       velocidade: '800 Mega',
       preco: 'R$ 149,90',
       popular: false,
-      features: ['800 Mbps de velocidade', 'Instalação grátis*', 'MaisTV (100+ canais)', 'Ubook', 'Kaspersky']
+      features: ['800 Mbps de velocidade', 'Instalação grátis*', 'MaisTV (+160 canais)', 'Ubook', 'Kaspersky']
     },
   ];
 
@@ -99,19 +99,19 @@ export default function MaisGloboPlay() {
       velocidade: '400 Mega',
       preco: 'R$ 109,90',
       popular: false,
-      features: ['400 Mbps de velocidade', 'Instalação grátis*', 'MaisTV (100+ canais)', ...diferenciais]
+      features: ['400 Mbps de velocidade', 'Instalação grátis*', 'MaisTV (+160 canais)', ...diferenciais]
     },
     {
       velocidade: '600 Mega',
       preco: 'R$ 129,90',
       popular: true,
-      features: ['600 Mbps de velocidade', 'Instalação grátis*', 'MaisTV (100+ canais)', ...diferenciais]
+      features: ['600 Mbps de velocidade', 'Instalação grátis*', 'MaisTV (+160 canais)', ...diferenciais]
     },
     {
       velocidade: '800 Mega',
       preco: 'R$ 149,90',
       popular: false,
-      features: ['800 Mbps de velocidade', 'Instalação grátis*', 'MaisTV (100+ canais)', ...diferenciais]
+      features: ['800 Mbps de velocidade', 'Instalação grátis*', 'MaisTV (+160 canais)', ...diferenciais]
     },
   ];
 
