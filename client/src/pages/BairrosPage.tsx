@@ -7,8 +7,8 @@ import locationsData from '@/data/locations.json';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { ChevronRight, MapPin, Search, MessageCircle } from 'lucide-react';
-import mapboxgl from 'mapbox-gl';
-import 'mapbox-gl/dist/mapbox-gl.css';
+import maplibregl from 'maplibre-gl';
+import 'maplibre-gl/dist/maplibre-gl.css';
 
 interface BairroInfo {
   slug: string;
@@ -17,16 +17,28 @@ interface BairroInfo {
   faq: Array<{ q: string; a: string }>;
 }
 
-// Set Mapbox access token
-mapboxgl.accessToken = 'pk.eyJ1IjoiaW50ZXJuZXRtYWlzIiwiYSI6ImNtb3N3ZXVpODAzcWMycXB1eml4OHNsdGUifQ.LQjeJXcWF45juASHasbIog';
+/**
+ * Estilo do mapa base.
+ *
+ * O MapLibre não vem com tiles próprios: ele desenha o que a folha de estilo
+ * apontar. Esta é a Voyager da CARTO, que é a mais parecida com a streets do
+ * Mapbox que estava aqui antes, não pede chave e já traz a atribuição do
+ * OpenStreetMap embutida, que o MapLibre exibe sozinho no canto.
+ *
+ * Para volume alto de produção a CARTO pede que o uso passe por uma conta
+ * deles. Se um dia esse limite apertar, trocar por MapTiler (chave, plano
+ * gratuito) ou servir os tiles da própria VPS é mudar esta constante e nada
+ * mais: o resto do código não sabe de onde vem o mapa.
+ */
+const ESTILO_DO_MAPA = 'https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json';
 
 export default function BairrosPage() {
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredBairros, setFilteredBairros] = useState<[string, BairroInfo][]>([]);
   const [mapMode] = useState<'neighborhoods' | 'stores'>('stores');
   const mapContainer = useRef<HTMLDivElement>(null);
-  const map = useRef<mapboxgl.Map | null>(null);
-  const markersRef = useRef<mapboxgl.Marker[]>([]);
+  const map = useRef<maplibregl.Map | null>(null);
+  const markersRef = useRef<maplibregl.Marker[]>([]);
 
   // Update document title and meta tags
   useEffect(() => {
@@ -97,16 +109,16 @@ export default function BairrosPage() {
   useEffect(() => {
     if (!mapContainer.current) return;
 
-    map.current = new mapboxgl.Map({
+    map.current = new maplibregl.Map({
       container: mapContainer.current,
-      style: 'mapbox://styles/mapbox/streets-v12',
+      style: ESTILO_DO_MAPA,
       center: [-54.6, -20.45],
       zoom: 11,
       pitch: 0,
       bearing: 0
     });
 
-    map.current.addControl(new mapboxgl.NavigationControl(), 'top-right');
+    map.current.addControl(new maplibregl.NavigationControl(), 'top-right');
 
     return () => {
       if (map.current) {
@@ -142,8 +154,8 @@ export default function BairrosPage() {
         el.textContent = '🏪';
         el.title = loja.name;
 
-        const popup = new mapboxgl.Popup({ offset: 25 }).setText(loja.name);
-        const marker = new mapboxgl.Marker({ element: el })
+        const popup = new maplibregl.Popup({ offset: 25 }).setText(loja.name);
+        const marker = new maplibregl.Marker({ element: el })
           .setLngLat([loja.lng, loja.lat])
           .setPopup(popup)
           .addTo(map.current!);
