@@ -1,9 +1,19 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { Menu, X, MessageCircle, ChevronDown, TvMinimalPlay, LogIn, Loader2, AlertCircle } from 'lucide-react';
 import { trpc } from '@/lib/trpc';
 
-export default function Header() {
+type Props = {
+  /**
+   * Liga o header escuro, para as páginas que rodam sobre o Palco. Fora delas
+   * o fundo é claro e o header continua branco: header escuro translúcido em
+   * cima de página clara deixa o menu ilegível.
+   */
+  sobrePalco?: boolean;
+};
+
+export default function Header({ sobrePalco = false }: Props) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [rolou, setRolou] = useState(false);
   const [openSubmenu, setOpenSubmenu] = useState<string | null>(null);
 
   // Modal de login MaisTV
@@ -15,6 +25,38 @@ export default function Header() {
   const [loginCooldown, setLoginCooldown] = useState(0);
 
   const loginMutation = trpc.maistv.login.useMutation();
+
+  // Sobre o Palco o header começa invisível, para o hero ocupar a tela inteira,
+  // e só ganha corpo depois que a página desce. O menu aberto no celular
+  // também pede fundo sólido, senão o conteúdo aparece por trás dos itens.
+  useEffect(() => {
+    if (!sobrePalco) return;
+    const aoRolar = () => setRolou(window.scrollY > 24);
+    aoRolar();
+    window.addEventListener('scroll', aoRolar, { passive: true });
+    return () => window.removeEventListener('scroll', aoRolar);
+  }, [sobrePalco]);
+
+  const comCorpo = rolou || mobileMenuOpen;
+
+  const corDoItem = sobrePalco
+    ? 'text-white/90 hover:text-[#3DD93D]'
+    : 'text-[#0D1B3E] hover:text-[#3DD93D]';
+  const fundoDoSubmenu = sobrePalco
+    ? 'bg-[#0B1730] ring-1 ring-white/10'
+    : 'bg-white';
+  const corDoSubitem = sobrePalco
+    ? 'text-white/80 hover:bg-[#3DD93D]/15 hover:text-[#3DD93D]'
+    : 'text-[#0D1B3E] hover:bg-[#3DD93D]/10 hover:text-[#3DD93D]';
+  const bordaDoMenuMovel = sobrePalco ? 'border-white/12' : 'border-gray-200';
+  const fundoDoGrupoMovel = sobrePalco ? 'bg-white/5' : 'bg-gray-50';
+  const classeDoHeader = sobrePalco
+    ? `sticky top-0 z-50 transition-[background-color,border-color,backdrop-filter] duration-500 ${
+        comCorpo
+          ? 'border-b border-white/10 bg-[#070E22]/85 backdrop-blur-xl'
+          : 'border-b border-transparent bg-transparent'
+      }`
+    : 'sticky top-0 z-50 bg-white shadow-md';
 
   const navItems = [
     {
@@ -145,16 +187,25 @@ export default function Header() {
 
   return (
     <>
-      <header className="sticky top-0 z-50 bg-white shadow-md">
-        <div className="container mx-auto px-4 py-4">
+      <header className={classeDoHeader} data-tema={sobrePalco ? 'escuro' : undefined}>
+        <div className={`container mx-auto px-4 transition-[padding] duration-500 ${
+          sobrePalco && comCorpo ? 'py-2' : 'py-4'
+        }`}>
           <div className="flex items-center justify-between">
             {/* Logo */}
             <a href="/" className="flex items-center gap-3 cursor-pointer">
               <img
-                src="/images/marca/logo-internet-mais.png"
+                src={
+                  sobrePalco
+                    ? '/images/marca/logo-internet-mais-claro.png'
+                    : '/images/marca/logo-internet-mais.png'
+                }
                 alt="InternetMais - Fibra Óptica, 5G e Internet Empresarial em Campo Grande"
-                className="h-24 md:h-32"
-                loading="lazy"
+                className={`transition-[height] duration-500 ${
+                  sobrePalco && comCorpo ? 'h-14 md:h-16' : 'h-16 md:h-20'
+                }`}
+                width={802}
+                height={320}
               />
             </a>
 
@@ -166,7 +217,7 @@ export default function Header() {
                     href={item.href}
                     target={item.external ? '_blank' : undefined}
                     rel={item.external ? 'noopener noreferrer' : undefined}
-                    className="text-sm font-semibold text-[#0D1B3E] hover:text-[#3DD93D] transition-colors px-3 py-2 rounded-lg flex items-center gap-1"
+                    className={`whitespace-nowrap text-sm font-semibold ${corDoItem} transition-colors px-3 py-2 rounded-lg flex items-center gap-1`}
                   >
                     {item.label}
                     {item.submenu && item.submenu.length > 0 && (
@@ -176,12 +227,12 @@ export default function Header() {
 
                   {/* Desktop Submenu */}
                   {item.submenu && item.submenu.length > 0 && (
-                    <div className="absolute left-0 mt-0 w-48 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 py-2">
+                    <div className={`absolute left-0 mt-0 w-48 ${fundoDoSubmenu} rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 py-2`}>
                       {item.submenu.map((subitem) => (
                         <a
                           key={subitem.label}
                           href={subitem.href}
-                          className="block px-4 py-2 text-sm text-[#0D1B3E] hover:bg-[#3DD93D]/10 hover:text-[#3DD93D] transition-colors"
+                          className={`block px-4 py-2 text-sm ${corDoSubitem} transition-colors`}
                         >
                           {subitem.label}
                         </a>
@@ -228,7 +279,7 @@ export default function Header() {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden text-[#0D1B3E]"
+              className={`md:hidden ${sobrePalco ? 'text-white' : 'text-[#0D1B3E]'}`}
             >
               {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -236,14 +287,14 @@ export default function Header() {
 
           {/* Mobile Navigation */}
           {mobileMenuOpen && (
-            <nav className="md:hidden mt-4 pb-4 border-t border-gray-200">
+            <nav className={`md:hidden mt-4 pb-4 border-t ${bordaDoMenuMovel}`}>
               {navItems.map((item) => (
                 <div key={item.label}>
                   {item.submenu && item.submenu.length > 0 ? (
                     <>
                       <button
                         onClick={() => setOpenSubmenu(openSubmenu === item.label ? null : item.label)}
-                        className="w-full text-left py-2 text-sm font-semibold text-[#0D1B3E] hover:text-[#3DD93D] transition-colors flex items-center justify-between"
+                        className={`w-full text-left py-2 text-sm font-semibold ${corDoItem} transition-colors flex items-center justify-between`}
                       >
                         {item.label}
                         <ChevronDown
@@ -252,12 +303,12 @@ export default function Header() {
                         />
                       </button>
                       {openSubmenu === item.label && (
-                        <div className="bg-gray-50 rounded-lg mt-2 py-2">
+                        <div className={`${fundoDoGrupoMovel} rounded-lg mt-2 py-2`}>
                           {item.submenu.map((subitem) => (
                             <a
                               key={subitem.label}
                               href={subitem.href}
-                              className="block px-4 py-2 text-xs text-[#0D1B3E] hover:text-[#3DD93D] transition-colors"
+                              className={`block px-4 py-2 text-xs ${corDoSubitem} transition-colors`}
                               onClick={() => setMobileMenuOpen(false)}
                             >
                               {subitem.label}
@@ -271,7 +322,7 @@ export default function Header() {
                       href={item.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="block py-2 text-sm font-semibold text-[#0D1B3E] hover:text-[#3DD93D] transition-colors"
+                      className={`block py-2 text-sm font-semibold ${corDoItem} transition-colors`}
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       {item.label}
@@ -279,7 +330,7 @@ export default function Header() {
                   ) : (
                     <a
                       href={item.href}
-                      className="block py-2 text-sm font-semibold text-[#0D1B3E] hover:text-[#3DD93D] transition-colors"
+                      className={`block py-2 text-sm font-semibold ${corDoItem} transition-colors`}
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       {item.label}

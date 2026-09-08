@@ -186,7 +186,7 @@ export default function HeroSection() {
       ref={palco}
       aria-roledescription="carrossel"
       aria-label="Destaques da Internet Mais"
-      className="relative z-10 w-full min-h-[92vh] overflow-hidden"
+      className="relative z-10 -mt-[104px] w-full min-h-[100svh] overflow-hidden md:-mt-[120px]"
       style={{ perspective: '1400px' }}
     >
       <AnimatePresence initial={false} custom={direcao} mode="popLayout">
@@ -225,7 +225,7 @@ export default function HeroSection() {
 
       {/* Plano do texto: o mais próximo da câmera */}
       <motion.div
-        className="relative z-20 flex min-h-[92vh] items-center"
+        className="relative z-20 flex min-h-[100svh] items-center pt-[104px] md:pt-[120px]"
         style={semMovimento ? undefined : { y: yTexto, opacity: opacidadeTexto }}
       >
         <div className="container mx-auto px-4 md:px-8">
@@ -243,7 +243,7 @@ export default function HeroSection() {
                   {slide.badge}
                 </span>
 
-                <h1 className="mb-5 text-4xl font-black leading-[1.05] text-white md:text-6xl lg:text-7xl">
+                <h1 className="mb-5 text-4xl font-black leading-[1.06] text-white md:text-5xl lg:text-6xl">
                   {slide.title}
                 </h1>
 

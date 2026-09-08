@@ -36,7 +36,7 @@ export default function Home() {
   return (
     <div className="relative flex min-h-screen flex-col">
       <Palco />
-      <Header />
+      <Header sobrePalco />
       <main className="relative z-10">
         <HeroSection />
 
@@ -64,7 +64,7 @@ export default function Home() {
           <Diferenciais />
         </Faixa>
 
-        <Faixa variante="plena">
+        <Faixa variante="clara">
           <Planos5G />
         </Faixa>
 

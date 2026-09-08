@@ -98,6 +98,11 @@ export default function Palco() {
   >
     <path
       d="M52 0 C 120 160, 8 300, 74 460 C 132 604, 20 720, 88 880 C 122 950, 96 980, 84 1000"
+      stroke="rgba(7,14,34,0.22)"
+      strokeWidth="6"
+    />
+    <path
+      d="M52 0 C 120 160, 8 300, 74 460 C 132 604, 20 720, 88 880 C 122 950, 96 980, 84 1000"
       stroke="rgba(255,255,255,0.07)"
       strokeWidth="1.5"
     />
@@ -106,7 +111,7 @@ export default function Palco() {
       stroke="#3DD93D"
       strokeWidth="2"
       strokeLinecap="round"
-      style={{ pathLength: traco, opacity: 0.5 }}
+      style={{ pathLength: traco, opacity: 0.72 }}
     />
     <motion.path
       d="M52 0 C 120 160, 8 300, 74 460 C 132 604, 20 720, 88 880 C 122 950, 96 980, 84 1000"
