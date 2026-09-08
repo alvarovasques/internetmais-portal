@@ -101,6 +101,7 @@ export default function Header({ sobrePalco = false }: Props) {
       submenu: [
         { label: 'Gerenciar Aplicativos', href: 'https://www.portaldoassinante.com/internetmais/login', external: true },
         { label: 'MaisTV', href: '/maistv' },
+        { label: 'Mais GloboPlay', href: '/maisgloboplay' },
       ]
     },
     {
@@ -295,6 +296,8 @@ export default function Header({ sobrePalco = false }: Props) {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label={mobileMenuOpen ? 'Fechar o menu' : 'Abrir o menu'}
+              aria-expanded={mobileMenuOpen}
               className={`md:hidden ${sobrePalco ? 'text-white' : 'text-[#0D1B3E]'}`}
             >
               {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
