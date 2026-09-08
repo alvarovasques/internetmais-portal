@@ -320,7 +320,7 @@ export default function Vagas() {
               </div>
               <div>
                 <DialogTitle className="text-xl font-black text-[#0D1B3E]">
-                  {selectedJobData?.title}
+                  {selectedJobData?.titulo}
                 </DialogTitle>
                 <DialogDescription className="text-gray-500">
                   Preencha o formulário abaixo para enviar sua candidatura
