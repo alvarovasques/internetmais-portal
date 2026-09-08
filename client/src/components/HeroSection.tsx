@@ -51,7 +51,7 @@ export default function HeroSection() {
       description: 'Mais de 20 mil clientes em Campo Grande. 100% fibra óptica com rede própria, infraestrutura e suporte local. E agora, somos também sua operadora de celular 5G.',
       cta: 'Quero Contratar Agora',
       ctaMessage: 'Olá! Gostaria de contratar um plano de Fibra Óptica + Chip 5G da InternetMais.',
-      viewPlansLink: '#mais-velocidade'
+      viewPlansLink: '#chip-5g'
     },
     {
       id: 2,
@@ -73,7 +73,7 @@ export default function HeroSection() {
       description: 'Aproveite os melhores aplicativos e serviços de streaming com sua família. Qualidade 4K, sem travamentos, sem limites.',
       cta: 'Ver Aplicativos',
       ctaMessage: 'Olá! Gostaria de contratar Internet Mais Aplicativos com meus apps favoritos.',
-      viewPlansLink: '#aplicativos'
+      viewPlansLink: '#mais-aplicativos'
     },
     {
       id: 4,

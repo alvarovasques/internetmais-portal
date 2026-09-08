@@ -2,7 +2,6 @@ import { Target, Eye, Heart, MapPin, Clock } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
-import Cobertura from '@/components/Cobertura';
 
 export default function SobreNos() {
   const ref = useScrollAnimation();
@@ -97,8 +96,6 @@ export default function SobreNos() {
           </div>
         </section>
 
-        {/* Cobertura */}
-        <Cobertura />
 
         {/* Lojas */}
         <section id="lojas" className="py-12 md:py-16 bg-[#F4F4F4]">

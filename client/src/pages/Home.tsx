@@ -56,7 +56,7 @@ export default function Home() {
           <MaisGloboPlay />
         </Faixa>
 
-        <Faixa variante="plena">
+        <Faixa variante="clara">
           <Empresarial />
         </Faixa>
 

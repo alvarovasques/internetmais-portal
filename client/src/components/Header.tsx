@@ -69,8 +69,11 @@ export default function Header({ sobrePalco = false }: Props) {
       ]
     },
     {
+      // Sem href de propósito: "Residencial" não é uma seção, é o guarda-chuva
+      // de três produtos distintos. Mandar o pai para um dos filhos daria a
+      // entender que os outros dois são variações dele.
       label: 'Residencial',
-      href: '/#mais-velocidade',
+      href: undefined as string | undefined,
       submenu: [
         { label: 'Mais Velocidade', href: '/#mais-velocidade' },
         { label: 'Mais Aplicativos', href: '/#mais-aplicativos' },
@@ -83,16 +86,18 @@ export default function Header({ sobrePalco = false }: Props) {
       submenu: []
     },
     {
+      // Sem href: os destinos são os dois subitens.
       label: 'Telefonia',
-      href: '/',
+      href: undefined as string | undefined,
       submenu: [
         { label: 'Chip 5G', href: '/#chip-5g' },
         { label: 'Telefonia Fixa', href: '/#telefonia-fixa' },
       ]
     },
     {
+      // Sem href: '#' saltava para o topo da página.
       label: 'Aplicativos',
-      href: '#',
+      href: undefined as string | undefined,
       submenu: [
         { label: 'Gerenciar Aplicativos', href: 'https://www.portaldoassinante.com/internetmais/login', external: true },
         { label: 'MaisTV', href: '/maistv' },
@@ -213,17 +218,28 @@ export default function Header({ sobrePalco = false }: Props) {
             <nav className="hidden md:flex items-center gap-1">
               {navItems.map((item) => (
                 <div key={item.label} className="relative group">
-                  <a
-                    href={item.href}
-                    target={item.external ? '_blank' : undefined}
-                    rel={item.external ? 'noopener noreferrer' : undefined}
-                    className={`whitespace-nowrap text-sm font-semibold ${corDoItem} transition-colors px-3 py-2 rounded-lg flex items-center gap-1`}
-                  >
-                    {item.label}
-                    {item.submenu && item.submenu.length > 0 && (
+                  {item.href ? (
+                    <a
+                      href={item.href}
+                      target={item.external ? '_blank' : undefined}
+                      rel={item.external ? 'noopener noreferrer' : undefined}
+                      className={`whitespace-nowrap text-sm font-semibold ${corDoItem} transition-colors px-3 py-2 rounded-lg flex items-center gap-1`}
+                    >
+                      {item.label}
+                      {item.submenu && item.submenu.length > 0 && (
+                        <ChevronDown size={16} className="group-hover:rotate-180 transition-transform" />
+                      )}
+                    </a>
+                  ) : (
+                    <button
+                      type="button"
+                      aria-haspopup="true"
+                      className={`whitespace-nowrap text-sm font-semibold ${corDoItem} transition-colors px-3 py-2 rounded-lg flex items-center gap-1`}
+                    >
+                      {item.label}
                       <ChevronDown size={16} className="group-hover:rotate-180 transition-transform" />
-                    )}
-                  </a>
+                    </button>
+                  )}
 
                   {/* Desktop Submenu */}
                   {item.submenu && item.submenu.length > 0 && (
