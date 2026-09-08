@@ -28,7 +28,7 @@ export default function Header() {
     },
     {
       label: 'Residencial',
-      href: '/#planos-residenciais',
+      href: '/#mais-velocidade',
       submenu: [
         { label: 'Mais Velocidade', href: '/#mais-velocidade' },
         { label: 'Mais Aplicativos', href: '/#mais-aplicativos' },

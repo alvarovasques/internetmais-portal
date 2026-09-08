@@ -6,7 +6,6 @@ import MaisAplicativos from '@/components/MaisAplicativos';
 import MaisGloboPlay from '@/components/MaisGloboPlay';
 import Diferenciais from '@/components/Diferenciais';
 
-import PlanosResidenciais from '@/components/PlanosResidenciais';
 import Planos5G from '@/components/Planos5G';
 import TelefoniaFixa from '@/components/TelefoniaFixa';
 import Aplicativos from '@/components/Aplicativos';
