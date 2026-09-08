@@ -188,7 +188,7 @@ def gerar(chave: str, prompt: str, proporcao: str) -> bytes:
         "input": f"{prompt}\n\n{ESTILO}\n\n{NEGATIVO}",
         "response_format": {
             "type": "image",
-            "mime_type": "image/png",
+            "mime_type": "image/jpeg",
             "aspect_ratio": proporcao,
             "image_size": "2K",
         },
