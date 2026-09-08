@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { AlertCircle, Home } from "lucide-react";
@@ -5,6 +6,13 @@ import { useLocation } from "wouter";
 
 export default function NotFound() {
   const [, setLocation] = useLocation();
+
+  // Vale para /404 e para qualquer caminho desconhecido: o mapa de títulos do
+  // App só conhece as rotas declaradas, então sem isto uma URL errada era
+  // anunciada como "Internet Mais".
+  useEffect(() => {
+    document.title = "Página não encontrada - Internet Mais";
+  }, []);
 
   const handleGoHome = () => {
     setLocation("/");

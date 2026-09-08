@@ -46,11 +46,21 @@ function Router() {
 
   useEffect(() => {
     // Definir títulos dinâmicos por página
+    // As páginas que dependem de dado carregado (bairro, MaisTV, GloboPlay) e
+    // a de 404 definem o próprio título; aqui ficam as de conteúdo fixo, que
+    // sem isto caíam no genérico "Internet Mais".
     const titles: Record<string, string> = {
       '/': 'Internet Mais - Fibra Óptica, 5G e Internet Empresarial',
       '/sobre-nos': 'Sobre Nós - Internet Mais | Missão, Visão e Valores',
+      '/vagas': 'Trabalhe Conosco - Internet Mais | Vagas em Campo Grande',
+      '/admin/entrar': 'Acesso restrito - Internet Mais',
     };
-    document.title = titles[location] || 'Internet Mais';
+    // Só sobrescreve quando a rota está mapeada aqui. O efeito do App roda
+    // depois do da página filha, então um fallback genérico apagaria o título
+    // que a própria página acabou de definir, e era isso que fazia /blog e
+    // qualquer URL errada aparecerem como "Internet Mais".
+    const titulo = titles[location];
+    if (titulo) document.title = titulo;
   }, [location]);
 
   return (
