@@ -17,37 +17,85 @@ import ProvaSocial from '@/components/ProvaSocial';
 import BannerCTAFinal from '@/components/BannerCTAFinal';
 import FAQ from '@/components/FAQ';
 import Footer from '@/components/Footer';
+import { Palco, Faixa } from '@/components/cinema';
 
 /**
- * Home Page - InternetMais Portal
- * 
- * Design Philosophy: Modern Tech Minimalism
- * - Verde vibrante (#3DD93D) como cor primária
- * - Azul navy (#0D1B3E) para fundos escuros
- * - Tipografia Poppins bold e moderna
- * - Animações suaves ao scroll
- * - Responsivo mobile-first
+ * Home — Portal Internet Mais
+ *
+ * A página inteira é uma cena só. O Palco é um fundo fixo que nunca reinicia
+ * entre as seções, e cada seção pousa sobre ele de uma de duas formas:
+ *
+ * - `plena` para as seções escuras e de imagem, que sangram de ponta a ponta e
+ *   deixam o Palco aparecer por trás;
+ * - `clara` para as seções de leitura densa (planos, preço, FAQ, lojas), que
+ *   viram painéis flutuantes e mantêm o próprio fundo claro. Contraste de
+ *   número não se negocia por causa de efeito.
+ *
+ * O conteúdo das seções não mudou: a alternância acontece toda no wrapper.
  */
 export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col bg-white">
+    <div className="relative flex min-h-screen flex-col">
+      <Palco />
       <Header />
-      <main>
+      <main className="relative z-10">
         <HeroSection />
-        <CopaDoMundo />
-        <MaisVelocidade />
-        <MaisAplicativos />
-        <MaisGloboPlay />
-        <Empresarial />
-        <Diferenciais />
-        <Planos5G />
-        <TelefoniaFixa />
-        <Aplicativos />
-        <AreaAssinante />
-        <Lojas />
-        <ProvaSocial />
-        <FAQ />
-        <BannerCTAFinal />
+
+        <Faixa variante="plena">
+          <CopaDoMundo />
+        </Faixa>
+
+        <Faixa variante="plena">
+          <MaisVelocidade />
+        </Faixa>
+
+        <Faixa variante="plena">
+          <MaisAplicativos />
+        </Faixa>
+
+        <Faixa variante="plena">
+          <MaisGloboPlay />
+        </Faixa>
+
+        <Faixa variante="plena">
+          <Empresarial />
+        </Faixa>
+
+        <Faixa variante="clara">
+          <Diferenciais />
+        </Faixa>
+
+        <Faixa variante="plena">
+          <Planos5G />
+        </Faixa>
+
+        <Faixa variante="clara">
+          <TelefoniaFixa />
+        </Faixa>
+
+        <Faixa variante="plena">
+          <Aplicativos />
+        </Faixa>
+
+        <Faixa variante="clara">
+          <AreaAssinante />
+        </Faixa>
+
+        <Faixa variante="clara">
+          <Lojas />
+        </Faixa>
+
+        <Faixa variante="clara">
+          <ProvaSocial />
+        </Faixa>
+
+        <Faixa variante="clara">
+          <FAQ />
+        </Faixa>
+
+        <Faixa variante="plena">
+          <BannerCTAFinal />
+        </Faixa>
       </main>
       <Footer />
     </div>
