@@ -64,6 +64,21 @@ export default function MaisGloboPlay() {
     { name: 'Disney+', logo: '/images/apps/disney-plus.png' },
   ];
 
+  /**
+   * ATENÇÃO: esta lista não aparece no site.
+   *
+   * O bloco tem duas variantes, básico e premium, mas o seletor de aba nunca
+   * foi construído: `abaAtiva` nasce em 'premium' e `setAbaAtiva` não é
+   * chamado em lugar nenhum. Só a lista premium é renderizada.
+   *
+   * Os valores abaixo são os da internet pura (89,90 / 99,90 / 109,90), e
+   * ESTÃO ERRADOS para esta variante: o card do básico exibe "GloboPlay
+   * Básico" como aplicativo incluso, então cobrar o preço da internet sem
+   * aplicativo entregaria o GloboPlay de graça. O preço da variante básica
+   * ainda não foi definido.
+   *
+   * Antes de ligar a aba, definir o preço. Enquanto isso, nada aqui vai ao ar.
+   */
   const planosBasico: Plano[] = [
     {
       velocidade: '400 Mega',
