@@ -68,18 +68,24 @@ export default function MaisGloboPlay() {
     {
       velocidade: '400 Mega',
       preco: 'R$ 109,90',
+      precoComDesconto: 'R$ 89,90',
+      temDesconto: true,
       popular: false,
       features: ['400 Mbps de velocidade', 'Instalação grátis*', 'MaisTV (+160 canais)', 'Ubook', 'Kaspersky']
     },
     {
       velocidade: '600 Mega',
-      preco: 'R$ 129,90',
+      preco: 'R$ 119,90',
+      precoComDesconto: 'R$ 99,90',
+      temDesconto: true,
       popular: true,
       features: ['600 Mbps de velocidade', 'Instalação grátis*', 'MaisTV (+160 canais)', 'Ubook', 'Kaspersky']
     },
     {
       velocidade: '800 Mega',
-      preco: 'R$ 149,90',
+      preco: 'R$ 129,90',
+      precoComDesconto: 'R$ 109,90',
+      temDesconto: true,
       popular: false,
       features: ['800 Mbps de velocidade', 'Instalação grátis*', 'MaisTV (+160 canais)', 'Ubook', 'Kaspersky']
     },
@@ -97,19 +103,25 @@ export default function MaisGloboPlay() {
   const planosPremium: Plano[] = [
     {
       velocidade: '400 Mega',
-      preco: 'R$ 109,90',
+      preco: 'R$ 129,90',
+      precoComDesconto: 'R$ 109,90',
+      temDesconto: true,
       popular: false,
       features: ['400 Mbps de velocidade', 'Instalação grátis*', 'MaisTV (+160 canais)', ...diferenciais]
     },
     {
       velocidade: '600 Mega',
-      preco: 'R$ 129,90',
+      preco: 'R$ 149,90',
+      precoComDesconto: 'R$ 129,90',
+      temDesconto: true,
       popular: true,
       features: ['600 Mbps de velocidade', 'Instalação grátis*', 'MaisTV (+160 canais)', ...diferenciais]
     },
     {
       velocidade: '800 Mega',
-      preco: 'R$ 149,90',
+      preco: 'R$ 169,90',
+      precoComDesconto: 'R$ 149,90',
+      temDesconto: true,
       popular: false,
       features: ['800 Mbps de velocidade', 'Instalação grátis*', 'MaisTV (+160 canais)', ...diferenciais]
     },
@@ -204,14 +216,34 @@ export default function MaisGloboPlay() {
                   {plano.velocidade}
                 </h3>
 
-                {/* Price */}
+                {/* Price
+                    Mesmo tratamento do Mais Velocidade: o cheio riscado, o
+                    abatimento e o valor que o cliente paga. Antes só aparecia
+                    um número, com o texto do desconto embaixo, o que dizia
+                    que o desconto estava aplicado quando não estava. */}
                 <div className="mb-6">
-                  <p className={`text-4xl font-black ${plano.popular ? 'text-white' : 'text-[#3DD93D]'}`}>
-                    {plano.preco}
-                  </p>
-                  <p className={`text-xs mt-1 ${plano.popular ? 'text-white/90' : 'text-gray-600'}`}>
-                    ✓ Já com desconto de pontualidade
-                  </p>
+                  {plano.temDesconto && plano.precoComDesconto ? (
+                    <div className="space-y-2">
+                      <div className="flex items-center gap-2">
+                        <p className={`text-sm line-through opacity-60 ${plano.popular ? 'text-white' : 'text-gray-500'}`}>
+                          {plano.preco}
+                        </p>
+                        <span className="rounded-full bg-[#FF6B6B] px-2 py-1 text-xs font-bold text-white">
+                          -R$ 20
+                        </span>
+                      </div>
+                      <p className={`text-4xl font-black ${plano.popular ? 'text-white' : 'text-[#3DD93D]'}`}>
+                        {plano.precoComDesconto}
+                      </p>
+                      <p className={`text-xs ${plano.popular ? 'text-white/90' : 'text-gray-600'}`}>
+                        ✓ Já com desconto de pontualidade
+                      </p>
+                    </div>
+                  ) : (
+                    <p className={`text-4xl font-black ${plano.popular ? 'text-white' : 'text-[#3DD93D]'}`}>
+                      {plano.preco}
+                    </p>
+                  )}
                 </div>
 
                 {/* Features */}

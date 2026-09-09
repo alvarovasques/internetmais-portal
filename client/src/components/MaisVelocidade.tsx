@@ -39,8 +39,8 @@ export default function MaisVelocidade() {
     },
     {
       velocidade: '800 Mega',
-      preco: 'R$ 149,90',
-      precoComDesconto: 'R$ 129,90',
+      preco: 'R$ 129,90',
+      precoComDesconto: 'R$ 109,90',
       temDesconto: true,
       popular: false,
       features: ['800 Mbps de velocidade', 'Instalação grátis*', 'MaisTV (+160 canais)', 'Ubook', 'Kaspersky']

@@ -56,7 +56,7 @@ const PLANOS = [
   // Internet + Velocidade
   { slug: "fibra-400", familia: "internet", nome: "400 Mega", velocidadeMbps: 400, precoCheio: "109.90", precoComDesconto: "89.90", ordem: 1 },
   { slug: "fibra-600", familia: "internet", nome: "600 Mega", velocidadeMbps: 600, precoCheio: "119.90", precoComDesconto: "99.90", destaque: true, ordem: 2 },
-  { slug: "fibra-800", familia: "internet", nome: "800 Mega", velocidadeMbps: 800, precoCheio: "149.90", precoComDesconto: "129.90", ordem: 3 },
+  { slug: "fibra-800", familia: "internet", nome: "800 Mega", velocidadeMbps: 800, precoCheio: "129.90", precoComDesconto: "109.90", ordem: 3 },
 
   // Internet + Aplicativos
   { slug: "fibra-apps-400", familia: "internet_aplicativos", nome: "400 Mega + Apps", velocidadeMbps: 400, precoCheio: "129.90", precoComDesconto: "109.90", appsStandard: 1, ordem: 1 },
