@@ -101,7 +101,6 @@ export default function Header({ sobrePalco = false }: Props) {
       submenu: [
         { label: 'Gerenciar Aplicativos', href: 'https://www.portaldoassinante.com/internetmais/login', external: true },
         { label: 'MaisTV', href: '/maistv' },
-        { label: 'Mais GloboPlay', href: '/maisgloboplay' },
       ]
     },
     {

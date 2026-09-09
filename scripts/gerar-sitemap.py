@@ -26,12 +26,14 @@ HOJE = date.today().isoformat()
 NAO_INDEXAR = {
     "/admin/entrar": "área interna",
     "/404": "página de erro",
+    # Landing de campanha que será refeita e hoje ainda traz o texto de agosto.
+    # Enquanto não for reescrita, não deve ser indexada nem linkada.
+    "/maisgloboplay": "landing a ser refeita",
 }
 
 PRIORIDADES = {
     "/": ("weekly", "1.0"),
     "/maistv": ("weekly", "0.9"),
-    "/maisgloboplay": ("weekly", "0.9"),
     "/bairros": ("monthly", "0.8"),
     "/sobre-nos": ("monthly", "0.8"),
     "/vagas": ("weekly", "0.7"),
