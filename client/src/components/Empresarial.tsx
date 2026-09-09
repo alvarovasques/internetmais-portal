@@ -19,7 +19,7 @@ export default function Empresarial() {
       {/* Background Image with Overlay */}
       <div className="absolute inset-0">
         <img
-          src="https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/office-modern-GoVmZvh4HUoGCEAR78yU97.webp"
+          src="/images/bg/office-modern.webp"
           alt="Internet empresarial com suporte especializado para negócios em Campo Grande"
           className="w-full h-full object-cover"
           loading="lazy"
@@ -33,11 +33,23 @@ export default function Empresarial() {
         <h2 className="text-3xl md:text-4xl font-black text-[#0D1B3E] mb-4 text-center">
           Sua empresa merece uma conexão à altura
         </h2>
-        <p className="text-lg text-gray-700 text-center mb-4 max-w-2xl mx-auto">
+        <p className="text-lg text-[#0D1B3E]/85 text-center mb-4 max-w-2xl mx-auto">
           Planos corporativos, Suporte Técnico até 12h e estabilidade para o seu negócio.
         </p>
-        <p className="text-sm text-gray-600 text-center mb-16 max-w-2xl mx-auto">
-          Procurando por <a href="#planos-residenciais" className="text-[#3DD93D] hover:text-[#2BA82A] font-semibold" style={{color: '#000000'}}>planos residenciais</a>? Temos opções para todos os perfis de uso.
+        <p className="text-sm text-[#0D1B3E]/75 text-center mb-16 max-w-2xl mx-auto">
+          Procurando por planos residenciais? Conheça{' '}
+          <a href="#mais-velocidade" className="font-bold text-[#0D1B3E] underline underline-offset-2 hover:text-[#0D1B3E]/70">
+            Mais Velocidade
+          </a>
+          ,{' '}
+          <a href="#mais-aplicativos" className="font-bold text-[#0D1B3E] underline underline-offset-2 hover:text-[#0D1B3E]/70">
+            Mais Aplicativos
+          </a>{' '}
+          ou{' '}
+          <a href="#mais-globoplay" className="font-bold text-[#0D1B3E] underline underline-offset-2 hover:text-[#0D1B3E]/70">
+            Mais GloboPlay
+          </a>
+          .
         </p>
 
         {/* Plans Grid */}

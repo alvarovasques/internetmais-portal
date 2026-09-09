@@ -6,15 +6,15 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import {
-  Briefcase, MapPin, Clock, FileUp, Loader2, Wifi, Users, TrendingUp,
+  Briefcase, MapPin, Clock, Loader2, Wifi, Users, TrendingUp,
   Heart, Award, Coffee, Zap, ChevronRight, Star
 } from 'lucide-react';
 import { toast } from 'sonner';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
-const HERO_BG = 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/vagas-hero-Hzy5Z7wegZ5PtBdmS9BRoV.webp';
-const BENEFITS_BG = 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/vagas-benefits-VMFtsDhXZyifhwxLCwFm5w.webp';
+const HERO_BG = '/images/bg/vagas-hero.webp';
+const BENEFITS_BG = '/images/bg/vagas-benefits.webp';
 
 const benefits = [
   {
@@ -49,11 +49,11 @@ const benefits = [
   },
 ];
 
-const jobTypeLabel: Record<string, string> = {
-  'full-time': 'Tempo Integral',
-  'part-time': 'Meio Período',
-  'contract': 'Contrato',
-  'internship': 'Estágio',
+const rotuloTipo: Record<string, string> = {
+  clt: 'CLT',
+  estagio: 'Estágio',
+  temporario: 'Temporário',
+  pj: 'PJ',
 };
 
 export default function Vagas() {
@@ -64,51 +64,36 @@ export default function Vagas() {
     email: '',
     phone: '',
     coverLetter: '',
-    resume: null as File | null,
+    curriculoUrl: '',
   });
 
-  const { data: jobs, isLoading } = trpc.jobs.list.useQuery();
-  const applyMutation = trpc.jobs.createApplication.useMutation();
-
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files?.[0]) {
-      setFormData({ ...formData, resume: e.target.files[0] });
-    }
-  };
+  const { data: jobs, isLoading } = trpc.vagas.listar.useQuery();
+  const applyMutation = trpc.vagas.candidatar.useMutation();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!selectedJob || !formData.resume) {
-      toast.error('Por favor, preencha todos os campos obrigatórios');
+    if (!selectedJob) {
+      toast.error('Escolha uma vaga antes de enviar.');
       return;
     }
 
     setIsApplying(true);
-
     try {
-      const reader = new FileReader();
-      reader.onload = async (event) => {
-        const base64 = (event.target?.result as string)?.split(',')[1];
-
-        await applyMutation.mutateAsync({
-          jobId: selectedJob,
-          fullName: formData.fullName,
-          email: formData.email,
-          phone: formData.phone,
-          resumeBase64: base64,
-          resumeFileName: formData.resume!.name,
-          coverLetter: formData.coverLetter,
-        });
-
-        toast.success('Candidatura enviada com sucesso! Entraremos em contato em breve.');
-        setSelectedJob(null);
-        setFormData({ fullName: '', email: '', phone: '', coverLetter: '', resume: null });
-        setIsApplying(false);
-      };
-      reader.readAsDataURL(formData.resume);
-    } catch (error) {
+      await applyMutation.mutateAsync({
+        vagaId: selectedJob,
+        nome: formData.fullName,
+        email: formData.email,
+        telefone: formData.phone,
+        curriculoUrl: formData.curriculoUrl || undefined,
+        apresentacao: formData.coverLetter || undefined,
+      });
+      toast.success('Candidatura enviada. Entraremos em contato em breve.');
+      setSelectedJob(null);
+      setFormData({ fullName: '', email: '', phone: '', coverLetter: '', curriculoUrl: '' });
+    } catch {
       toast.error('Erro ao enviar candidatura. Tente novamente.');
+    } finally {
       setIsApplying(false);
     }
   };
@@ -246,33 +231,33 @@ export default function Vagas() {
                     <div className="flex items-center justify-between mb-4">
                       <span className="inline-flex items-center gap-1.5 bg-[#3DD93D]/10 text-[#2BA82A] text-xs font-bold px-3 py-1 rounded-full">
                         <Briefcase size={11} />
-                        {jobTypeLabel[job.jobType] ?? job.jobType}
+                        {rotuloTipo[job.tipo] ?? job.tipo}
                       </span>
                       <Star size={16} className="text-gray-200 group-hover:text-[#3DD93D] transition-colors" />
                     </div>
 
                     {/* Título */}
                     <h3 className="text-xl font-black text-[#0D1B3E] mb-2 group-hover:text-[#2BA82A] transition-colors">
-                      {job.title}
+                      {job.titulo}
                     </h3>
 
                     {/* Localização */}
                     <div className="flex items-center gap-1.5 text-gray-400 text-sm mb-3">
                       <MapPin size={14} />
-                      <span>{job.location ?? 'Campo Grande, MS'}</span>
+                      <span>{job.local ?? 'Campo Grande, MS'}</span>
                     </div>
 
                     {/* Salário */}
-                    {job.salary && (
+                    {job.salario && (
                       <div className="flex items-center gap-1.5 text-[#3DD93D] text-sm font-semibold mb-3">
                         <span className="text-gray-400">💰</span>
-                        <span>{job.salary}</span>
+                        <span>{job.salario}</span>
                       </div>
                     )}
 
                     {/* Descrição */}
                     <p className="text-gray-500 text-sm leading-relaxed line-clamp-3 flex-1 mb-6">
-                      {job.description}
+                      {job.descricao}
                     </p>
 
                     {/* CTA */}
@@ -335,7 +320,7 @@ export default function Vagas() {
               </div>
               <div>
                 <DialogTitle className="text-xl font-black text-[#0D1B3E]">
-                  {selectedJobData?.title}
+                  {selectedJobData?.titulo}
                 </DialogTitle>
                 <DialogDescription className="text-gray-500">
                   Preencha o formulário abaixo para enviar sua candidatura
@@ -394,35 +379,24 @@ export default function Vagas() {
               </div>
             </div>
 
-            {/* Upload Currículo */}
+            {/* Currículo */}
             <div>
-              <Label className="text-[#0D1B3E] font-semibold">Currículo (PDF) *</Label>
-              <label
-                htmlFor="resume"
-                className={`mt-1 flex flex-col items-center justify-center gap-2 border-2 border-dashed rounded-xl p-6 cursor-pointer transition-all ${
-                  formData.resume
-                    ? 'border-[#3DD93D] bg-[#3DD93D]/5'
-                    : 'border-gray-200 hover:border-[#3DD93D]/50 hover:bg-gray-50'
-                }`}
-              >
-                <FileUp
-                  size={28}
-                  className={formData.resume ? 'text-[#3DD93D]' : 'text-gray-400'}
-                />
-                <span className={`text-sm font-medium ${formData.resume ? 'text-[#3DD93D]' : 'text-gray-500'}`}>
-                  {formData.resume ? `✓ ${formData.resume.name}` : 'Clique para selecionar seu currículo (PDF)'}
-                </span>
-                {!formData.resume && (
-                  <span className="text-xs text-gray-400">Apenas arquivos PDF</span>
-                )}
-              </label>
+              <Label htmlFor="curriculoUrl" className="text-[#0D1B3E] font-semibold">
+                Link do currículo
+              </Label>
               <Input
-                id="resume"
-                type="file"
-                accept=".pdf"
-                onChange={handleFileChange}
-                className="hidden"
+                id="curriculoUrl"
+                type="url"
+                inputMode="url"
+                placeholder="https://drive.google.com/... ou seu perfil no LinkedIn"
+                value={formData.curriculoUrl}
+                onChange={(e) => setFormData({ ...formData, curriculoUrl: e.target.value })}
+                className="mt-1"
               />
+              <p className="mt-1.5 text-xs text-gray-500">
+                Cole o link de um PDF no Drive, Dropbox ou do seu perfil no LinkedIn. Confira se o
+                link está aberto para quem tem o endereço.
+              </p>
             </div>
 
             {/* Carta de Apresentação */}

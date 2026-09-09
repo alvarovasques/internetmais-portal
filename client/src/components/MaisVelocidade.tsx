@@ -27,7 +27,7 @@ export default function MaisVelocidade() {
       precoComDesconto: 'R$ 89,90',
       temDesconto: true,
       popular: false,
-      features: ['400 Mbps de velocidade', 'Instalação grátis*', 'MaisTV (100+ canais)', 'Ubook', 'Kaspersky']
+      features: ['400 Mbps de velocidade', 'Instalação grátis*', 'MaisTV (+160 canais)', 'Ubook', 'Kaspersky']
     },
     {
       velocidade: '600 Mega',
@@ -35,15 +35,15 @@ export default function MaisVelocidade() {
       precoComDesconto: 'R$ 99,90',
       temDesconto: true,
       popular: true,
-      features: ['600 Mbps de velocidade', 'Instalação grátis*', 'MaisTV (100+ canais)', 'Ubook', 'Kaspersky']
+      features: ['600 Mbps de velocidade', 'Instalação grátis*', 'MaisTV (+160 canais)', 'Ubook', 'Kaspersky']
     },
     {
       velocidade: '800 Mega',
-      preco: 'R$ 149,90',
-      precoComDesconto: 'R$ 129,90',
+      preco: 'R$ 129,90',
+      precoComDesconto: 'R$ 109,90',
       temDesconto: true,
       popular: false,
-      features: ['800 Mbps de velocidade', 'Instalação grátis*', 'MaisTV (100+ canais)', 'Ubook', 'Kaspersky']
+      features: ['800 Mbps de velocidade', 'Instalação grátis*', 'MaisTV (+160 canais)', 'Ubook', 'Kaspersky']
     },
   ];
 
@@ -53,7 +53,7 @@ export default function MaisVelocidade() {
       id="mais-velocidade" 
       className="relative py-20 md:py-32 overflow-hidden"
       style={{
-        backgroundImage: 'url(https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/mais-velocidade-hero-MNxH6KsSpwRBDf3UnRhCAs.webp)',
+        backgroundImage: 'url(/images/bg/mais-velocidade-hero.webp)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundAttachment: 'fixed'

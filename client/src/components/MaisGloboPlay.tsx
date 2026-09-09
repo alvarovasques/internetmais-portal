@@ -3,7 +3,6 @@
 import { Tv, Check, MessageCircle, Star, Film, Clapperboard } from 'lucide-react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { useViewPlanTracker } from '@/hooks/useViewPlanTracker';
-import { useState } from 'react';
 
 interface App {
   name: string;
@@ -23,7 +22,6 @@ interface Plano {
 
 export default function MaisGloboPlay() {
   const ref = useScrollAnimation();
-  const [abaAtiva, setAbaAtiva] = useState<'basico' | 'premium'>('premium');
   useViewPlanTracker(ref as React.RefObject<HTMLElement>, {
     section_name: 'MaisGloboPlay',
     plan_type: 'Internet + GloboPlay',
@@ -31,58 +29,37 @@ export default function MaisGloboPlay() {
 
   // Apps Standard
   const appsStandard: App[] = [
-    { name: 'Ubook Plus', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/ubook_plus_cb4505d6.png' },
-    { name: 'Zen', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/zen_5fe6a424.png' },
-    { name: 'Leitura 360', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/leitura_360_dcb38301.png' },
-    { name: 'Estuda+', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/estuda_5da0ea5e.png' },
-    { name: 'Pequenos Leitores', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/pequenos_leitores_bd05c71e.png' },
-    { name: 'O Jornalista', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/jornalista_72f92588.png' },
-    { name: 'Playlist', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/playlist_ae5a8f2c.png' },
-    { name: 'Kiddle Pass', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/kiddle_pass_83480f5f.png' },
-    { name: 'PlayKids+', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/playkids_plus_0edcb760.png' },
-    { name: 'Sky+ Light', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/sky_plus_light_correct_5bb1bc0f.png' },
-    { name: 'Deezer', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/deezer_c80f6c93.png' },
-    { name: 'Social Comics', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/social_comics_73989f43.png' },
-    { name: 'Kaspersky Standard (3 lic.)', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/kaspersky_standard_91009e85.png' },
-    { name: 'Qnutri', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/qnutri_f742a5e2.png' },
-    { name: 'Looke', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/looke_16394443.png' },
-    { name: 'Curtaon', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/curtaon_b85cae88.png' },
-    { name: 'Revistaria', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/revistaria_correct_2fc8ef73.png' },
-    { name: 'Fluid', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/fluid_6672ee02.png' },
-    { name: 'Hub Vantagens', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/hub_vantagens_f70aaea4.png' },
+    { name: 'Ubook Plus', logo: '/images/apps/ubook-plus.png' },
+    { name: 'Zen', logo: '/images/apps/zen.png' },
+    { name: 'Leitura 360', logo: '/images/apps/leitura-360.png' },
+    { name: 'Estuda+', logo: '/images/apps/estuda-mais.png' },
+    { name: 'Pequenos Leitores', logo: '/images/apps/pequenos-leitores.png' },
+    { name: 'O Jornalista', logo: '/images/apps/o-jornalista.png' },
+    { name: 'Playlist', logo: '/images/apps/playlist.png' },
+    { name: 'Kiddle Pass', logo: '/images/apps/kiddle-pass.png' },
+    { name: 'PlayKids+', logo: '/images/apps/playkids-plus.png' },
+    { name: 'Sky+ Light', logo: '/images/apps/sky-plus-light.png' },
+    { name: 'Deezer', logo: '/images/apps/deezer.png' },
+    { name: 'Social Comics', logo: '/images/apps/social-comics.png' },
+    { name: 'Kaspersky Standard (3 lic.)', logo: '/images/apps/kaspersky-standard.png' },
+    { name: 'Qnutri', logo: '/images/apps/qnutri.png' },
+    { name: 'Looke', logo: '/images/apps/looke.png' },
+    { name: 'Curtaon', logo: '/images/apps/curtaon.png' },
+    { name: 'Revistaria', logo: '/images/apps/revistaria.png' },
+    { name: 'Fluid', logo: '/images/apps/fluid.png' },
+    { name: 'Hub Vantagens', logo: '/images/apps/hub-vantagens.png' },
   ];
 
   // Apps Premium
   const appsPremiumList: App[] = [
-    { name: 'Smart Content', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/pasted_file_rhmkSC_image_9113653c.png' },
-    { name: 'Ritual Fit', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/ritual_fit_229a350c.png' },
-    { name: 'Kaspersky Plus (5 licenças)', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/kaspersky_plus_83f4dd88.png' },
-    { name: 'Docway', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/docway_27238b63.png' },
-    { name: 'HotGo', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/hotgo_bc8647a1.png' },
-    { name: 'Queima Diária', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/queima_diaria_correct_9b9e6828.png' },
-    { name: 'HBO Max', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/hbo-max_8983f5f2.png' },
-    { name: 'Disney+', logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/disney-plus_e2b45e97.png' },
-  ];
-
-  const planosBasico: Plano[] = [
-    {
-      velocidade: '400 Mega',
-      preco: 'R$ 109,90',
-      popular: false,
-      features: ['400 Mbps de velocidade', 'Instalação grátis*', 'MaisTV (100+ canais)', 'Ubook', 'Kaspersky']
-    },
-    {
-      velocidade: '600 Mega',
-      preco: 'R$ 129,90',
-      popular: true,
-      features: ['600 Mbps de velocidade', 'Instalação grátis*', 'MaisTV (100+ canais)', 'Ubook', 'Kaspersky']
-    },
-    {
-      velocidade: '800 Mega',
-      preco: 'R$ 149,90',
-      popular: false,
-      features: ['800 Mbps de velocidade', 'Instalação grátis*', 'MaisTV (100+ canais)', 'Ubook', 'Kaspersky']
-    },
+    { name: 'Smart Content', logo: '/images/apps/smart-content.png' },
+    { name: 'Ritual Fit', logo: '/images/apps/ritual-fit.png' },
+    { name: 'Kaspersky Plus (5 licenças)', logo: '/images/apps/kaspersky-plus.png' },
+    { name: 'Docway', logo: '/images/apps/docway.png' },
+    { name: 'HotGo', logo: '/images/apps/hotgo.png' },
+    { name: 'Queima Diária', logo: '/images/apps/queima-diaria.png' },
+    { name: 'HBO Max', logo: '/images/apps/hbo-max.png' },
+    { name: 'Disney+', logo: '/images/apps/disney-plus.png' },
   ];
 
   const diferenciais = [
@@ -94,29 +71,33 @@ export default function MaisGloboPlay() {
     'Resolução Full HD e 4K',
   ];
 
-  const planosPremium: Plano[] = [
+  const planos: Plano[] = [
     {
       velocidade: '400 Mega',
-      preco: 'R$ 109,90',
+      preco: 'R$ 129,90',
+      precoComDesconto: 'R$ 109,90',
+      temDesconto: true,
       popular: false,
-      features: ['400 Mbps de velocidade', 'Instalação grátis*', 'MaisTV (100+ canais)', ...diferenciais]
+      features: ['400 Mbps de velocidade', 'Instalação grátis*', 'MaisTV (+160 canais)', ...diferenciais]
     },
     {
       velocidade: '600 Mega',
-      preco: 'R$ 129,90',
+      preco: 'R$ 149,90',
+      precoComDesconto: 'R$ 129,90',
+      temDesconto: true,
       popular: true,
-      features: ['600 Mbps de velocidade', 'Instalação grátis*', 'MaisTV (100+ canais)', ...diferenciais]
+      features: ['600 Mbps de velocidade', 'Instalação grátis*', 'MaisTV (+160 canais)', ...diferenciais]
     },
     {
       velocidade: '800 Mega',
-      preco: 'R$ 149,90',
+      preco: 'R$ 169,90',
+      precoComDesconto: 'R$ 149,90',
+      temDesconto: true,
       popular: false,
-      features: ['800 Mbps de velocidade', 'Instalação grátis*', 'MaisTV (100+ canais)', ...diferenciais]
+      features: ['800 Mbps de velocidade', 'Instalação grátis*', 'MaisTV (+160 canais)', ...diferenciais]
     },
   ];
 
-  const planos = abaAtiva === 'basico' ? planosBasico : planosPremium;
-  const isPremium = abaAtiva === 'premium';
 
   return (
     <section
@@ -175,7 +156,7 @@ export default function MaisGloboPlay() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 animate-fade-in-up animate-delay-300">
           {planos.map((plano, i) => (
             <div
-              key={`${abaAtiva}-${i}`}
+              key={plano.velocidade}
               className={`relative rounded-2xl overflow-hidden transition-all duration-500 transform animate-scale-in hover:shadow-2xl hover:scale-105 ${
                 plano.popular ? 'md:scale-105 shadow-2xl' : 'shadow-lg'
               }`}
@@ -189,9 +170,7 @@ export default function MaisGloboPlay() {
               )}
 
               {/* Barra superior — tema cinema (vermelho) */}
-              {isPremium && (
-                <div className="h-1.5 w-full bg-gradient-to-r from-[#e50914] to-[#8b0000]" />
-              )}
+              <div className="h-1.5 w-full bg-gradient-to-r from-[#e50914] to-[#8b0000]" />
 
               {/* Card Background */}
               <div className={`p-8 h-full flex flex-col ${
@@ -204,14 +183,34 @@ export default function MaisGloboPlay() {
                   {plano.velocidade}
                 </h3>
 
-                {/* Price */}
+                {/* Price
+                    Mesmo tratamento do Mais Velocidade: o cheio riscado, o
+                    abatimento e o valor que o cliente paga. Antes só aparecia
+                    um número, com o texto do desconto embaixo, o que dizia
+                    que o desconto estava aplicado quando não estava. */}
                 <div className="mb-6">
-                  <p className={`text-4xl font-black ${plano.popular ? 'text-white' : 'text-[#3DD93D]'}`}>
-                    {plano.preco}
-                  </p>
-                  <p className={`text-xs mt-1 ${plano.popular ? 'text-white/90' : 'text-gray-600'}`}>
-                    ✓ Já com desconto de pontualidade
-                  </p>
+                  {plano.temDesconto && plano.precoComDesconto ? (
+                    <div className="space-y-2">
+                      <div className="flex items-center gap-2">
+                        <p className={`text-sm line-through opacity-60 ${plano.popular ? 'text-white' : 'text-gray-500'}`}>
+                          {plano.preco}
+                        </p>
+                        <span className="rounded-full bg-[#FF6B6B] px-2 py-1 text-xs font-bold text-white">
+                          -R$ 20
+                        </span>
+                      </div>
+                      <p className={`text-4xl font-black ${plano.popular ? 'text-white' : 'text-[#3DD93D]'}`}>
+                        {plano.precoComDesconto}
+                      </p>
+                      <p className={`text-xs ${plano.popular ? 'text-white/90' : 'text-gray-600'}`}>
+                        ✓ Já com desconto de pontualidade
+                      </p>
+                    </div>
+                  ) : (
+                    <p className={`text-4xl font-black ${plano.popular ? 'text-white' : 'text-[#3DD93D]'}`}>
+                      {plano.preco}
+                    </p>
+                  )}
                 </div>
 
                 {/* Features */}
@@ -281,60 +280,50 @@ export default function MaisGloboPlay() {
 
                 {/* GloboPlay Section */}
                 <div className={`mb-8 pt-5 border-t ${plano.popular ? 'border-white/20' : 'border-gray-100'}`}>
-                  <p className={`text-xs font-bold mb-4 ${plano.popular ? 'text-white' : isPremium ? 'text-[#e50914]' : 'text-[#e50914]'}`}>
-                    {isPremium ? '🎬 INCLUSO' : 'APLICATIVO INCLUSO'}
+                  <p className={`text-xs font-bold mb-4 ${plano.popular ? 'text-white' : 'text-[#e50914]'}`}>
+                    🎬 INCLUSO
                   </p>
                   <div className="flex justify-center">
                     <div className={`rounded-2xl p-5 flex flex-col items-center justify-center ${
-                      isPremium && !plano.popular
-                        ? 'bg-gradient-to-br from-red-50 to-rose-50 border-2 border-red-200'
-                        : isPremium && plano.popular
+                      plano.popular
                         ? 'bg-white/20 border-2 border-white/30'
-                        : 'bg-white'
+                        : 'bg-gradient-to-br from-red-50 to-rose-50 border-2 border-red-200'
                     }`}>
                       <img
-                        src="https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/globoplay-hq_5eefcb22.png"
+                        src="/images/apps/globoplay.png"
                         alt="GloboPlay"
                         className="h-20 w-20 object-contain mb-2"
                       />
-                      <p className={`text-sm font-bold ${plano.popular && isPremium ? 'text-white' : 'text-gray-800'}`}>
+                      <p className={`text-sm font-bold ${plano.popular ? 'text-white' : 'text-gray-800'}`}>
                         GloboPlay
                       </p>
-                      {isPremium ? (
-                        <span className="mt-1 inline-flex items-center gap-1 bg-gradient-to-r from-[#e50914] to-[#8b0000] text-white text-xs font-black px-3 py-1 rounded-full shadow-md">
-                          <Star size={10} fill="white" /> Premium
-                        </span>
-                      ) : (
-                        <p className="text-xs text-gray-500 font-medium">
-                          Básico
-                        </p>
-                      )}
+                      <span className="mt-1 inline-flex items-center gap-1 bg-gradient-to-r from-[#e50914] to-[#8b0000] text-white text-xs font-black px-3 py-1 rounded-full shadow-md">
+                        <Star size={10} fill="white" /> Premium
+                      </span>
                     </div>
                   </div>
                 </div>
 
                 {/* CTA Button */}
                 <a
-                  href={`https://wa.me/556730272500?text=Ol%C3%A1!%20Gostaria%20de%20falar%20com%20um%20representante%20sobre%20o%20plano%20${plano.velocidade}%20de%20Internet%20%2B%20GloboPlay%20${isPremium ? 'Premium' : 'B%C3%A1sico'}.`}
+                  href={`https://wa.me/556730272500?text=Ol%C3%A1!%20Gostaria%20de%20falar%20com%20um%20representante%20sobre%20o%20plano%20${plano.velocidade}%20de%20Internet%20%2B%20GloboPlay%20Premium.`}
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => {
                     if (typeof window !== 'undefined' && (window as any).dataLayer) {
                       (window as any).dataLayer.push({
                         'event': 'Click_Whatsapp',
-                        'button_location': `MaisGloboPlay - ${plano.velocidade} ${isPremium ? 'Premium' : 'Básico'}`,
+                        'button_location': `MaisGloboPlay - ${plano.velocidade} Premium`,
                         'plan_name': plano.velocidade,
                         'plan_price': plano.precoComDesconto ?? plano.preco,
-                        'plan_type': `Internet + GloboPlay ${isPremium ? 'Premium' : 'Básico'}`
+                        'plan_type': 'Internet + GloboPlay Premium'
                       });
                     }
                   }}
                   className={`mt-auto w-full inline-flex items-center justify-center gap-2 font-bold py-3 px-6 rounded-full transition-all duration-300 hover:shadow-lg hover:scale-105 ${
                     plano.popular
                       ? 'bg-white text-[#3DD93D] hover:bg-gray-100'
-                      : isPremium
-                        ? 'bg-gradient-to-r from-[#e50914] to-[#8b0000] text-white hover:opacity-90'
-                        : 'bg-[#3DD93D] text-white hover:bg-[#2BA82A]'
+                      : 'bg-gradient-to-r from-[#e50914] to-[#8b0000] text-white hover:opacity-90'
                   }`}
                 >
                   <MessageCircle size={18} />

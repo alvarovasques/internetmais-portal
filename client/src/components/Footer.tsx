@@ -8,7 +8,7 @@ export default function Footer() {
           {/* Logo Section */}
           <div>
             <img
-              src="https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/Logo_internet_MAIS_9b6aefe1.png"
+              src="/images/marca/logo-internet-mais.png"
               alt="Internet Mais - Provedor de Fibra Óptica e Chip 5G em Campo Grande, MS"
               className="h-32 md:h-40 mb-6"
               loading="lazy"
@@ -22,27 +22,39 @@ export default function Footer() {
           <div>
             <h4 className="font-bold text-lg mb-4">Links Rápidos</h4>
             <ul className="space-y-2">
-              <li>
-                <a href="/" className="text-gray-400 hover:text-[#3DD93D] transition-colors">Residencial</a>
-              </li>
-              <li>
-                <a href="#empresarial" className="text-gray-400 hover:text-[#3DD93D] transition-colors">Empresarial</a>
-              </li>
-              <li>
-                <a href="#chip-5g" className="text-gray-400 hover:text-[#3DD93D] transition-colors">Telefonia</a>
-              </li>
-              <li>
-                <a href="https://www.portaldoassinante.com/internetmais/login" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#3DD93D] transition-colors">Aplicativos</a>
-              </li>
-              <li>
-                <a href="https://sistema.freewaynet.com.br/central_assinante_web/login" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#3DD93D] transition-colors">Central do Assinante</a>
-              </li>
-              <li>
-                <a href="/sobre-nos" className="text-gray-400 hover:text-[#3DD93D] transition-colors">Sobre Nós</a>
-              </li>
-              <li>
-                <a href="/#lojas" className="text-gray-400 hover:text-[#3DD93D] transition-colors">Nossas Unidades</a>
-              </li>
+              {[
+                { rotulo: 'Mais Velocidade', href: '/#mais-velocidade' },
+                { rotulo: 'Mais Aplicativos', href: '/#mais-aplicativos' },
+                { rotulo: 'Mais GloboPlay', href: '/#mais-globoplay' },
+                { rotulo: 'Empresarial', href: '/#empresarial' },
+                { rotulo: 'Telefonia', href: '/#chip-5g' },
+                { rotulo: 'MaisTV', href: '/maistv' },
+                { rotulo: 'Sobre Nós', href: '/sobre-nos' },
+                { rotulo: 'Nossas Unidades', href: '/#lojas' },
+                { rotulo: 'Internet nos Bairros', href: '/bairros' },
+                { rotulo: 'Trabalhe Conosco', href: '/vagas' },
+                {
+                  rotulo: 'Gerenciar Aplicativos',
+                  href: 'https://www.portaldoassinante.com/internetmais/login',
+                  externo: true,
+                },
+                {
+                  rotulo: 'Central do Assinante',
+                  href: 'https://sistema.freewaynet.com.br/central_assinante_web/login',
+                  externo: true,
+                },
+              ].map((item) => (
+                <li key={item.rotulo}>
+                  <a
+                    href={item.href}
+                    target={item.externo ? '_blank' : undefined}
+                    rel={item.externo ? 'noopener noreferrer' : undefined}
+                    className="text-gray-400 hover:text-[#3DD93D] transition-colors"
+                  >
+                    {item.rotulo}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -96,6 +108,7 @@ export default function Footer() {
                 href="https://www.instagram.com/internetmaisms/"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Internet Mais no Instagram"
                 className="text-gray-400 hover:text-[#3DD93D] transition-colors"
               >
                 <Instagram size={24} />
@@ -104,6 +117,7 @@ export default function Footer() {
                 href="https://www.facebook.com/InternetMaisMS"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Internet Mais no Facebook"
                 className="text-gray-400 hover:text-[#3DD93D] transition-colors"
               >
                 <Facebook size={24} />
@@ -120,6 +134,7 @@ export default function Footer() {
                     });
                   }
                 }}
+                aria-label="Falar com a Internet Mais no WhatsApp"
                 className="text-gray-400 hover:text-[#25D366] transition-colors"
               >
                 <MessageCircle size={24} />

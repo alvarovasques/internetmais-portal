@@ -58,7 +58,7 @@ export default function Planos5G() {
       {/* Background Image with Overlay */}
       <div className="absolute inset-0">
         <img
-          src="https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/young-urban-5g-cNg49canYigBkfq88ooW3Z.webp"
+          src="/images/bg/young-urban-5g.webp"
           alt="Chip 5G InternetMais com conectividade móvel de próxima geração em Campo Grande"
           className="w-full h-full object-cover"
           loading="lazy"

@@ -10,9 +10,9 @@ declare global {
   }
 }
 
-const HERO_BG = 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/maistv-hero-bg_d996ba3e.jpg';
-const NETFLIX_BG = 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/maistv-hero-netflix-G92S5i7Lj8fuzZXJgF479U.webp';
-const CHANNELS_BG = 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP/maistv-channels-bg-dXYAhLeKE5SB7EUAwJZ3gE.webp';
+const HERO_BG = '/images/bg/maistv-hero-bg.jpg';
+const NETFLIX_BG = '/images/bg/maistv-hero-netflix.webp';
+const CHANNELS_BG = '/images/bg/maistv-channels-bg.webp';
 
 const WHATSAPP_NUMBER = '556730272500';
 

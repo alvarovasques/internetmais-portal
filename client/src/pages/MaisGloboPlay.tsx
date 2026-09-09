@@ -15,14 +15,12 @@ function pushGTM(event: string, extra?: Record<string, string>) {
   }
 }
 
-// ─── Assets CDN ───────────────────────────────────────────────────────────────
-
-const CDN = 'https://d2xsxph8kpxj0f.cloudfront.net/310419663028749933/QrZSp3M6QVWAMUgvwA5jWP';
+// ─── Assets locais (client/public/images) ────────────────────────────────────
 
 const ASSETS = {
-  telecine:  `${CDN}/telecine-logo_58f3a687.png`,
-  globoplay: `${CDN}/globoplay-hq_5eefcb22.png`,
-  logo:      `${CDN}/Logo_internet_MAIS_9b6aefe1.png`,
+  telecine:  '/images/apps/telecine.png',
+  globoplay: '/images/apps/globoplay.png',
+  logo:      '/images/marca/logo-internet-mais.png',
   poster1:   '/images/poster-charlie.jpg',
   poster2:   '/images/poster-empregada.jpg',
   poster3:   '/images/poster-retorno.jpg',
@@ -82,10 +80,19 @@ function CTAButton({ label, location, size = 'lg' }: {
   );
 }
 
+/**
+ * Fim da promoção, em um lugar só.
+ *
+ * Estava repetida em quatro pontos do arquivo e um deles já tinha divergido.
+ * Quando a campanha mudar, muda aqui: o contador, a barra de urgência e o
+ * texto do hero leem daqui.
+ */
+const FIM_DA_PROMOCAO = new Date('2026-08-31T23:59:59-04:00');
+const PROMOCAO_ATIVA = Date.now() < FIM_DA_PROMOCAO.getTime();
+
 function CountdownTimer() {
   const getSecondsUntilEnd = () => {
-    const end = new Date('2026-08-31T23:59:59-04:00').getTime();
-    return Math.max(0, Math.floor((end - Date.now()) / 1000));
+    return Math.max(0, Math.floor((FIM_DA_PROMOCAO.getTime() - Date.now()) / 1000));
   };
   const [secs, setSecs] = useState(getSecondsUntilEnd);
 
@@ -156,12 +163,14 @@ export default function MaisGloboPlayLP() {
     >
 
       {/* ── BARRA URGÊNCIA ────────────────────────────────────────────── */}
-      <div
-        className="w-full py-2.5 px-4 text-center text-sm font-bold tracking-wide"
-        style={{ background: 'linear-gradient(90deg, #e50914, #b81d24)' }}
-      >
-        🎬 Telecine no Precinho · R$ 9,90/mês · Promoção válida até 31/08/2026 · Exclusivo para clientes Internet Mais
-      </div>
+      {PROMOCAO_ATIVA && (
+        <div
+          className="w-full py-2.5 px-4 text-center text-sm font-bold tracking-wide"
+          style={{ background: 'linear-gradient(90deg, #e50914, #b81d24)' }}
+        >
+          🎬 Telecine no Precinho · R$ 9,90/mês · Promoção válida até 31/08/2026 · Exclusivo para clientes Internet Mais
+        </div>
+      )}
 
       {/* ── HERO ──────────────────────────────────────────────────────── */}
       <section className="relative overflow-hidden pt-10 pb-16 md:pt-16 md:pb-24">
@@ -217,11 +226,13 @@ export default function MaisGloboPlayLP() {
             <CTAButton label="Garanta o Telecine por R$ 9,90/mês" location="Hero" size="lg" />
           </div>
 
-          {/* Countdown */}
-          <div className="text-center">
-            <p className="text-white/50 text-xs uppercase tracking-widest mb-3">⏱ Promoção encerra em</p>
-            <CountdownTimer />
-          </div>
+          {/* Countdown: some quando a promoção acaba, em vez de mostrar zeros */}
+          {PROMOCAO_ATIVA && (
+            <div className="text-center">
+              <p className="text-white/50 text-xs uppercase tracking-widest mb-3">⏱ Promoção encerra em</p>
+              <CountdownTimer />
+            </div>
+          )}
         </div>
       </section>
 
@@ -385,7 +396,9 @@ export default function MaisGloboPlayLP() {
 
       {/* ── RODAPÉ ────────────────────────────────────────────────────── */}
       <footer className="py-10 px-6 border-t border-white/10 text-center">
-        <img src={ASSETS.logo} alt="Internet Mais" className="h-20 md:h-24 object-contain mx-auto mb-4 drop-shadow-xl" />
+        <a href="/" aria-label="Ir para a home da Internet Mais" className="inline-block">
+          <img src={ASSETS.logo} alt="Internet Mais" className="h-20 md:h-24 object-contain mx-auto mb-4 drop-shadow-xl" />
+        </a>
         <p className="text-white/30 text-xs">
           © {new Date().getFullYear()} Internet Mais · Campo Grande, MS · Todos os direitos reservados
         </p>
