@@ -1,6 +1,5 @@
 import { migrate } from "drizzle-orm/node-postgres/migrator";
 import { getDb } from "./db";
-import { ENV } from "./env";
 
 /**
  * Aplica as migrações pendentes na subida do servidor.
@@ -24,8 +23,7 @@ import { ENV } from "./env";
 export async function aplicarMigracoes(): Promise<void> {
   const db = getDb();
   if (!db) {
-    if (ENV.isProduction) throw new Error("DATABASE_URL ausente em produção");
-    console.warn("[migrações] sem DATABASE_URL, pulando");
+    console.warn("[migrações] sem DATABASE_URL, nada a aplicar");
     return;
   }
 

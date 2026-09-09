@@ -7,15 +7,14 @@ let pool: Pool | null = null;
 let _db: ReturnType<typeof drizzle<typeof schema>> | null = null;
 
 /**
- * Instância única do Drizzle. Retorna null quando não há DATABASE_URL,
- * para que build, lint e testes rodem sem banco.
+ * Instância única do Drizzle. Retorna null quando não há DATABASE_URL, para
+ * que build, testes e o site institucional rodem sem banco.
  */
 export function getDb() {
   if (_db) return _db;
-  if (!ENV.databaseUrl) {
-    if (ENV.isProduction) throw new Error("DATABASE_URL ausente em produção");
-    return null;
-  }
+  // Sem DATABASE_URL o site serve normalmente e quem precisa de banco
+  // responde erro tratado, em vez de o processo inteiro cair.
+  if (!ENV.databaseUrl) return null;
   pool = new Pool({
     connectionString: ENV.databaseUrl,
     max: 10,

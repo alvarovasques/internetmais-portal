@@ -11,8 +11,25 @@ export type Sessao = {
   papel: "admin" | "operador";
 };
 
+/**
+ * Sem SESSION_SECRET não existe sessão.
+ *
+ * Isto é uma trava de segurança, não uma conveniência: assinar um JWT com
+ * chave vazia produz um token que qualquer um forja, e o token carrega o
+ * papel de admin. Melhor o painel ficar indisponível do que aberto.
+ */
 function chave() {
+  if (!ENV.sessionSecret) {
+    throw new Error(
+      "SESSION_SECRET não configurado: o painel administrativo está indisponível nesta instância.",
+    );
+  }
   return new TextEncoder().encode(ENV.sessionSecret);
+}
+
+/** Para as camadas de cima decidirem antes de tentar assinar. */
+export function sessoesDisponiveis(): boolean {
+  return Boolean(ENV.sessionSecret);
 }
 
 export async function assinarSessao(sessao: Sessao): Promise<string> {
@@ -25,7 +42,7 @@ export async function assinarSessao(sessao: Sessao): Promise<string> {
 }
 
 export async function lerSessao(token: string | undefined): Promise<Sessao | null> {
-  if (!token) return null;
+  if (!token || !ENV.sessionSecret) return null;
   try {
     const { payload } = await jwtVerify(token, chave(), { algorithms: ["HS256"] });
     const usuarioId = Number(payload.sub);

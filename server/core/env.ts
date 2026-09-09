@@ -1,14 +1,7 @@
 import "dotenv/config";
 
-function required(name: string, fallback?: string): string {
-  const value = process.env[name] ?? fallback;
-  if (value === undefined || value === "") {
-    if (process.env.NODE_ENV === "production") {
-      throw new Error(`Variável de ambiente obrigatória ausente: ${name}`);
-    }
-    return "";
-  }
-  return value;
+function opcional(name: string, fallback = ""): string {
+  return process.env[name] ?? fallback;
 }
 
 export const ENV = {
@@ -18,9 +11,9 @@ export const ENV = {
   siteUrl: process.env.SITE_URL ?? "http://localhost:3000",
 
   /** postgres://usuario:senha@host:5432/banco */
-  databaseUrl: required("DATABASE_URL"),
+  databaseUrl: opcional("DATABASE_URL"),
   /** Segredo de assinatura das sessões. Trocar invalida todos os logins. */
-  sessionSecret: required("SESSION_SECRET"),
+  sessionSecret: opcional("SESSION_SECRET"),
   /** Rótulo mostrado no app autenticador ao cadastrar o segundo fator. */
   totpIssuer: process.env.TOTP_ISSUER ?? "Internet Mais",
 
@@ -53,12 +46,31 @@ export const ENV = {
   },
 } as const;
 
+/**
+ * O site institucional não depende de banco: as páginas são estáticas e o
+ * login da MaisTV é um proxy para um serviço externo. Só as vagas e o painel
+ * administrativo precisam do Postgres.
+ *
+ * Por isso a ausência de DATABASE_URL não impede a subida. Ela desliga esses
+ * dois recursos e escreve no log o que ficou de fora, de forma barulhenta o
+ * bastante para ninguém descobrir por acaso três semanas depois.
+ *
+ * O contrário, recusar subir, transformava toda publicação do site em uma
+ * virada de infraestrutura: o container novo não subia, o Swarm reiniciava em
+ * laço e o site saía do ar por causa de um recurso que aquela página nem usa.
+ */
 export function assertProductionEnv() {
   if (!ENV.isProduction) return;
-  const faltando: string[] = [];
-  if (!ENV.databaseUrl) faltando.push("DATABASE_URL");
-  if (!ENV.sessionSecret) faltando.push("SESSION_SECRET");
-  if (faltando.length) {
-    throw new Error(`Configuração incompleta em produção: ${faltando.join(", ")}`);
+
+  const desligado: string[] = [];
+  if (!ENV.databaseUrl) desligado.push("banco: página de vagas fica vazia");
+  if (!ENV.sessionSecret) desligado.push("sessões: painel administrativo indisponível");
+
+  if (desligado.length) {
+    console.warn(
+      "[config] rodando em modo reduzido —\n  " +
+        desligado.join("\n  ") +
+        "\n  Para ligar: DATABASE_URL e SESSION_SECRET (ver DEPLOY.md).",
+    );
   }
 }
