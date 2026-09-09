@@ -3,7 +3,6 @@
 import { Tv, Check, MessageCircle, Star, Film, Clapperboard } from 'lucide-react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { useViewPlanTracker } from '@/hooks/useViewPlanTracker';
-import { useState } from 'react';
 
 interface App {
   name: string;
@@ -23,7 +22,6 @@ interface Plano {
 
 export default function MaisGloboPlay() {
   const ref = useScrollAnimation();
-  const [abaAtiva, setAbaAtiva] = useState<'basico' | 'premium'>('premium');
   useViewPlanTracker(ref as React.RefObject<HTMLElement>, {
     section_name: 'MaisGloboPlay',
     plan_type: 'Internet + GloboPlay',
@@ -64,48 +62,6 @@ export default function MaisGloboPlay() {
     { name: 'Disney+', logo: '/images/apps/disney-plus.png' },
   ];
 
-  /**
-   * ATENÇÃO: esta lista não aparece no site.
-   *
-   * O bloco tem duas variantes, básico e premium, mas o seletor de aba nunca
-   * foi construído: `abaAtiva` nasce em 'premium' e `setAbaAtiva` não é
-   * chamado em lugar nenhum. Só a lista premium é renderizada.
-   *
-   * Os valores abaixo são os da internet pura (89,90 / 99,90 / 109,90), e
-   * ESTÃO ERRADOS para esta variante: o card do básico exibe "GloboPlay
-   * Básico" como aplicativo incluso, então cobrar o preço da internet sem
-   * aplicativo entregaria o GloboPlay de graça. O preço da variante básica
-   * ainda não foi definido.
-   *
-   * Antes de ligar a aba, definir o preço. Enquanto isso, nada aqui vai ao ar.
-   */
-  const planosBasico: Plano[] = [
-    {
-      velocidade: '400 Mega',
-      preco: 'R$ 109,90',
-      precoComDesconto: 'R$ 89,90',
-      temDesconto: true,
-      popular: false,
-      features: ['400 Mbps de velocidade', 'Instalação grátis*', 'MaisTV (+160 canais)', 'Ubook', 'Kaspersky']
-    },
-    {
-      velocidade: '600 Mega',
-      preco: 'R$ 119,90',
-      precoComDesconto: 'R$ 99,90',
-      temDesconto: true,
-      popular: true,
-      features: ['600 Mbps de velocidade', 'Instalação grátis*', 'MaisTV (+160 canais)', 'Ubook', 'Kaspersky']
-    },
-    {
-      velocidade: '800 Mega',
-      preco: 'R$ 129,90',
-      precoComDesconto: 'R$ 109,90',
-      temDesconto: true,
-      popular: false,
-      features: ['800 Mbps de velocidade', 'Instalação grátis*', 'MaisTV (+160 canais)', 'Ubook', 'Kaspersky']
-    },
-  ];
-
   const diferenciais = [
     'Todo o conteúdo sem anúncios — filmes, séries e shows exclusivos',
     'Catálogo completo de filmes e séries nacionais e internacionais',
@@ -115,7 +71,7 @@ export default function MaisGloboPlay() {
     'Resolução Full HD e 4K',
   ];
 
-  const planosPremium: Plano[] = [
+  const planos: Plano[] = [
     {
       velocidade: '400 Mega',
       preco: 'R$ 129,90',
@@ -142,8 +98,6 @@ export default function MaisGloboPlay() {
     },
   ];
 
-  const planos = abaAtiva === 'basico' ? planosBasico : planosPremium;
-  const isPremium = abaAtiva === 'premium';
 
   return (
     <section
@@ -202,7 +156,7 @@ export default function MaisGloboPlay() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 animate-fade-in-up animate-delay-300">
           {planos.map((plano, i) => (
             <div
-              key={`${abaAtiva}-${i}`}
+              key={plano.velocidade}
               className={`relative rounded-2xl overflow-hidden transition-all duration-500 transform animate-scale-in hover:shadow-2xl hover:scale-105 ${
                 plano.popular ? 'md:scale-105 shadow-2xl' : 'shadow-lg'
               }`}
@@ -216,9 +170,7 @@ export default function MaisGloboPlay() {
               )}
 
               {/* Barra superior — tema cinema (vermelho) */}
-              {isPremium && (
-                <div className="h-1.5 w-full bg-gradient-to-r from-[#e50914] to-[#8b0000]" />
-              )}
+              <div className="h-1.5 w-full bg-gradient-to-r from-[#e50914] to-[#8b0000]" />
 
               {/* Card Background */}
               <div className={`p-8 h-full flex flex-col ${
@@ -328,60 +280,50 @@ export default function MaisGloboPlay() {
 
                 {/* GloboPlay Section */}
                 <div className={`mb-8 pt-5 border-t ${plano.popular ? 'border-white/20' : 'border-gray-100'}`}>
-                  <p className={`text-xs font-bold mb-4 ${plano.popular ? 'text-white' : isPremium ? 'text-[#e50914]' : 'text-[#e50914]'}`}>
-                    {isPremium ? '🎬 INCLUSO' : 'APLICATIVO INCLUSO'}
+                  <p className={`text-xs font-bold mb-4 ${plano.popular ? 'text-white' : 'text-[#e50914]'}`}>
+                    🎬 INCLUSO
                   </p>
                   <div className="flex justify-center">
                     <div className={`rounded-2xl p-5 flex flex-col items-center justify-center ${
-                      isPremium && !plano.popular
-                        ? 'bg-gradient-to-br from-red-50 to-rose-50 border-2 border-red-200'
-                        : isPremium && plano.popular
+                      plano.popular
                         ? 'bg-white/20 border-2 border-white/30'
-                        : 'bg-white'
+                        : 'bg-gradient-to-br from-red-50 to-rose-50 border-2 border-red-200'
                     }`}>
                       <img
                         src="/images/apps/globoplay.png"
                         alt="GloboPlay"
                         className="h-20 w-20 object-contain mb-2"
                       />
-                      <p className={`text-sm font-bold ${plano.popular && isPremium ? 'text-white' : 'text-gray-800'}`}>
+                      <p className={`text-sm font-bold ${plano.popular ? 'text-white' : 'text-gray-800'}`}>
                         GloboPlay
                       </p>
-                      {isPremium ? (
-                        <span className="mt-1 inline-flex items-center gap-1 bg-gradient-to-r from-[#e50914] to-[#8b0000] text-white text-xs font-black px-3 py-1 rounded-full shadow-md">
-                          <Star size={10} fill="white" /> Premium
-                        </span>
-                      ) : (
-                        <p className="text-xs text-gray-500 font-medium">
-                          Básico
-                        </p>
-                      )}
+                      <span className="mt-1 inline-flex items-center gap-1 bg-gradient-to-r from-[#e50914] to-[#8b0000] text-white text-xs font-black px-3 py-1 rounded-full shadow-md">
+                        <Star size={10} fill="white" /> Premium
+                      </span>
                     </div>
                   </div>
                 </div>
 
                 {/* CTA Button */}
                 <a
-                  href={`https://wa.me/556730272500?text=Ol%C3%A1!%20Gostaria%20de%20falar%20com%20um%20representante%20sobre%20o%20plano%20${plano.velocidade}%20de%20Internet%20%2B%20GloboPlay%20${isPremium ? 'Premium' : 'B%C3%A1sico'}.`}
+                  href={`https://wa.me/556730272500?text=Ol%C3%A1!%20Gostaria%20de%20falar%20com%20um%20representante%20sobre%20o%20plano%20${plano.velocidade}%20de%20Internet%20%2B%20GloboPlay%20Premium.`}
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => {
                     if (typeof window !== 'undefined' && (window as any).dataLayer) {
                       (window as any).dataLayer.push({
                         'event': 'Click_Whatsapp',
-                        'button_location': `MaisGloboPlay - ${plano.velocidade} ${isPremium ? 'Premium' : 'Básico'}`,
+                        'button_location': `MaisGloboPlay - ${plano.velocidade} Premium`,
                         'plan_name': plano.velocidade,
                         'plan_price': plano.precoComDesconto ?? plano.preco,
-                        'plan_type': `Internet + GloboPlay ${isPremium ? 'Premium' : 'Básico'}`
+                        'plan_type': 'Internet + GloboPlay Premium'
                       });
                     }
                   }}
                   className={`mt-auto w-full inline-flex items-center justify-center gap-2 font-bold py-3 px-6 rounded-full transition-all duration-300 hover:shadow-lg hover:scale-105 ${
                     plano.popular
                       ? 'bg-white text-[#3DD93D] hover:bg-gray-100'
-                      : isPremium
-                        ? 'bg-gradient-to-r from-[#e50914] to-[#8b0000] text-white hover:opacity-90'
-                        : 'bg-[#3DD93D] text-white hover:bg-[#2BA82A]'
+                      : 'bg-gradient-to-r from-[#e50914] to-[#8b0000] text-white hover:opacity-90'
                   }`}
                 >
                   <MessageCircle size={18} />
