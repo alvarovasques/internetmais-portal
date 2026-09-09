@@ -4,10 +4,12 @@ import { createExpressMiddleware } from "@trpc/server/adapters/express";
 import { appRouter } from "../routers/index";
 import { createContext } from "./context";
 import { ENV, assertProductionEnv } from "./env";
+import { aplicarMigracoes } from "./migrar";
 import { serveStatic } from "./static";
 
 async function iniciar() {
   assertProductionEnv();
+  await aplicarMigracoes();
 
   const app = express();
   const server = createServer(app);
