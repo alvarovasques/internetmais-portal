@@ -198,7 +198,7 @@ export default function Header({ sobrePalco = false }: Props) {
         }`}>
           <div className="flex items-center justify-between">
             {/* Logo */}
-            <a href="/" className="flex items-center gap-3 cursor-pointer">
+            <a href="/" className="flex shrink-0 items-center gap-3 cursor-pointer">
               <img
                 src={
                   sobrePalco
@@ -206,8 +206,16 @@ export default function Header({ sobrePalco = false }: Props) {
                     : '/images/marca/logo-internet-mais.png'
                 }
                 alt="InternetMais - Fibra Óptica, 5G e Internet Empresarial em Campo Grande"
-                className={`transition-[height] duration-500 ${
-                  sobrePalco && comCorpo ? 'h-14 md:h-16' : 'h-16 md:h-20'
+                /*
+                  w-auto é obrigatório junto com width/height: dentro de um
+                  flex, sem ele a largura vem do atributo (802px) e encolhe
+                  conforme a janela, então o logo estica ou espreme de acordo
+                  com o tamanho da tela. Os atributos ficam porque dão a
+                  proporção ao navegador e evitam o pulo de layout no
+                  carregamento; shrink-0 no link impede o flex de espremer.
+                */
+                className={`w-auto transition-[height] duration-500 ${
+                  sobrePalco && comCorpo ? 'h-12 md:h-14' : 'h-14 md:h-16'
                 }`}
                 width={802}
                 height={320}
