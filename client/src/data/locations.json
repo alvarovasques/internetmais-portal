@@ -2,322 +2,383 @@
   "lojas": [
     {
       "id": "loja-moreninhas",
-      "name": "Internet Mais - Moreninha",
-      "address": "Rua Palmácia, 836 - Moreninha, Campo Grande, MS",
-      "phone": "+55 67 3027-2500",
+      "name": "Internet Mais - Loja Moreninhas",
+      "address": "Rua Palmácia, 836 - Moreninhas, Campo Grande, MS",
+      "phone": "+556730272500",
       "whatsapp": "+55 67 3027-2500",
       "hours": "Seg-Sex: 8h-18h | Sab: 8h-12h",
       "lat": -20.5519458,
       "lng": -54.5773331,
-      "type": "store"
+      "type": "store",
+      "telefone_exibicao": "(67) 3027-2500",
+      "cep": "CONFIRMAR",
+      "perfil_google": "CONFIRMAR"
     },
     {
       "id": "loja-aero-rancho",
-      "name": "Internet Mais - Aero Rancho",
+      "name": "Internet Mais - Loja Aero Rancho",
       "address": "Avenida Rachel de Queiroz, 1468 - Aero Rancho, Campo Grande, MS",
-      "phone": "+55 67 3027-2500",
+      "phone": "+556730272500",
       "whatsapp": "+55 67 3027-2500",
       "hours": "Seg-Sex: 8h-18h | Sab: 8h-12h",
       "lat": -20.52283,
       "lng": -54.6469975,
-      "type": "store"
+      "type": "store",
+      "telefone_exibicao": "(67) 3027-2500",
+      "cep": "CONFIRMAR",
+      "perfil_google": "CONFIRMAR"
     },
     {
       "id": "loja-julio-castilho",
-      "name": "Internet Mais - Julio de Castilho",
-      "address": "Avenida Julio de Castilho, 1666 - Centro, Campo Grande, MS",
-      "phone": "+55 67 3027-2500",
+      "name": "Internet Mais - Loja Julio de Castilho",
+      "address": "Avenida Julio de Castilho, 1666 - Campo Grande, MS",
+      "phone": "+556730272500",
       "whatsapp": "+55 67 3027-2500",
       "hours": "Seg-Sex: 8h-18h | Sab: 8h-12h",
       "lat": -20.4539654,
       "lng": -54.6479292,
-      "type": "store"
+      "type": "store",
+      "telefone_exibicao": "(67) 3027-2500",
+      "cep": "CONFIRMAR",
+      "perfil_google": "CONFIRMAR"
     },
     {
       "id": "loja-cafezais",
-      "name": "Internet Mais - Cafezais",
-      "address": "Av. dos Cafezais, 1985 - Loja 06 - Cafezais, Campo Grande, MS",
-      "phone": "+55 67 3027-2500",
+      "name": "Internet Mais - Loja Cafezais",
+      "address": "Avenida dos Cafezais, 1985 - Loja 06 - Cafezais, Campo Grande, MS",
+      "phone": "+556730272500",
       "whatsapp": "+55 67 3027-2500",
       "hours": "Seg-Sex: 8h-18h | Sab: 8h-12h",
       "lat": -20.5477646,
       "lng": -54.6149795,
-      "type": "store"
+      "type": "store",
+      "telefone_exibicao": "(67) 3027-2500",
+      "cep": "CONFIRMAR",
+      "perfil_google": "CONFIRMAR"
     }
   ],
   "bairros": [
     {
       "slug": "centro",
       "name": "Centro",
-      "lat": -20.4697,
-      "lng": -55.4944,
-      "type": "neighborhood"
+      "lat": -20.461351,
+      "lng": -54.613333,
+      "type": "neighborhood",
+      "fonte": "openstreetmap:relation/5322913"
     },
     {
       "slug": "moreninha",
       "name": "Moreninha",
-      "lat": -20.4850,
-      "lng": -55.5200,
-      "type": "neighborhood"
+      "lat": -20.553215,
+      "lng": -54.575435,
+      "type": "neighborhood",
+      "fonte": "openstreetmap:relation/5385842"
     },
     {
       "slug": "aero-rancho",
       "name": "Aero Rancho",
-      "lat": -20.4500,
-      "lng": -55.5100,
-      "type": "neighborhood"
+      "lat": -20.521802,
+      "lng": -54.649124,
+      "type": "neighborhood",
+      "fonte": "openstreetmap:relation/5649882"
     },
     {
       "slug": "alves-pereira",
       "name": "Alves Pereira",
-      "lat": -20.4600,
-      "lng": -55.5000,
-      "type": "neighborhood"
+      "lat": -20.528736,
+      "lng": -54.60861,
+      "type": "neighborhood",
+      "fonte": "openstreetmap:relation/5459419"
     },
     {
       "slug": "bandeirantes",
       "name": "Bandeirantes",
-      "lat": -20.4550,
-      "lng": -55.5150,
-      "type": "neighborhood"
+      "lat": -20.477804,
+      "lng": -54.63967,
+      "type": "neighborhood",
+      "fonte": "openstreetmap:relation/5549413"
     },
     {
       "slug": "batistao",
       "name": "Batistão",
-      "lat": -20.4700,
-      "lng": -55.5050,
-      "type": "neighborhood"
+      "lat": -20.525085,
+      "lng": -54.667783,
+      "type": "neighborhood",
+      "fonte": "openstreetmap:relation/5683977"
     },
     {
       "slug": "caicara",
       "name": "Caiçara",
-      "lat": -20.4750,
-      "lng": -55.4950,
-      "type": "neighborhood"
+      "lat": -20.484179,
+      "lng": -54.651296,
+      "type": "neighborhood",
+      "fonte": "openstreetmap:relation/5639970"
     },
     {
       "slug": "caioba",
       "name": "Caiobá",
-      "lat": -20.4800,
-      "lng": -55.5100,
-      "type": "neighborhood"
+      "lat": -20.516711,
+      "lng": -54.686403,
+      "type": "neighborhood",
+      "fonte": "openstreetmap:relation/5684639"
     },
     {
       "slug": "carvalho",
       "name": "Carvalho",
-      "lat": -20.4650,
-      "lng": -55.5200,
-      "type": "neighborhood"
+      "lat": -20.4757,
+      "lng": -54.620063,
+      "type": "neighborhood",
+      "fonte": "openstreetmap:relation/5317609"
     },
     {
       "slug": "centenario",
       "name": "Centenário",
-      "lat": -20.4550,
-      "lng": -55.4900,
-      "type": "neighborhood"
+      "lat": -20.536971,
+      "lng": -54.647294,
+      "type": "neighborhood",
+      "fonte": "openstreetmap:node/1663662508"
     },
     {
       "slug": "centro-oeste",
       "name": "Centro-Oeste",
-      "lat": -20.4720,
-      "lng": -55.5050,
-      "type": "neighborhood"
+      "lat": -20.546687,
+      "lng": -54.610259,
+      "type": "neighborhood",
+      "fonte": "openstreetmap:relation/5457952"
     },
     {
       "slug": "cophavila-ii",
       "name": "Cophavila II",
-      "lat": -20.4600,
-      "lng": -55.5250,
-      "type": "neighborhood"
+      "type": "neighborhood",
+      "lat": -20.487464,
+      "lng": -54.646766,
+      "fonte": "openstreetmap:node/2094053883",
+      "precisao": "aproximada",
+      "fonte_nome": "Cophavila"
     },
     {
       "slug": "cruzeiro",
       "name": "Cruzeiro",
-      "lat": -20.4700,
-      "lng": -55.5150,
-      "type": "neighborhood"
+      "lat": -20.437568,
+      "lng": -54.591855,
+      "type": "neighborhood",
+      "fonte": "openstreetmap:node/1954353311",
+      "precisao": "aproximada",
+      "fonte_nome": "Cruzeiro do Sul"
     },
     {
       "slug": "guanandi",
       "name": "Guanandi",
-      "lat": -20.4550,
-      "lng": -55.5050,
-      "type": "neighborhood"
+      "lat": -20.500527,
+      "lng": -54.64596,
+      "type": "neighborhood",
+      "fonte": "openstreetmap:relation/5682565"
     },
     {
       "slug": "jacy",
       "name": "Jacy",
-      "lat": -20.4650,
-      "lng": -55.4850,
-      "type": "neighborhood"
+      "lat": -20.489076,
+      "lng": -54.639201,
+      "type": "neighborhood",
+      "fonte": "openstreetmap:relation/5678120"
     },
     {
       "slug": "jardim-dos-estados",
       "name": "Jardim dos Estados",
-      "lat": -20.4750,
-      "lng": -55.5200,
-      "type": "neighborhood"
+      "lat": -20.458001,
+      "lng": -54.598317,
+      "type": "neighborhood",
+      "fonte": "openstreetmap:relation/5322919"
     },
     {
       "slug": "jockey-club",
       "name": "Jockey Club",
-      "lat": -20.4800,
-      "lng": -55.5000,
-      "type": "neighborhood"
+      "lat": -20.487085,
+      "lng": -54.626254,
+      "type": "neighborhood",
+      "fonte": "openstreetmap:relation/5672764"
     },
     {
       "slug": "jose-abrao",
       "name": "José Abrão",
-      "lat": -20.4600,
-      "lng": -55.5100,
-      "type": "neighborhood"
+      "lat": -20.417325,
+      "lng": -54.654546,
+      "type": "neighborhood",
+      "fonte": "openstreetmap:relation/5539941"
     },
     {
       "slug": "lageado",
       "name": "Lageado",
-      "lat": -20.4700,
-      "lng": -55.4900,
-      "type": "neighborhood"
+      "lat": -20.551242,
+      "lng": -54.650586,
+      "type": "neighborhood",
+      "fonte": "openstreetmap:relation/5462639"
     },
     {
       "slug": "leblon",
       "name": "Leblon",
-      "lat": -20.4550,
-      "lng": -55.5200,
-      "type": "neighborhood"
+      "lat": -20.494593,
+      "lng": -54.652499,
+      "type": "neighborhood",
+      "fonte": "openstreetmap:node/2094053900"
     },
     {
       "slug": "los-angeles",
       "name": "Los Angeles",
-      "lat": -20.4650,
-      "lng": -55.4950,
-      "type": "neighborhood"
+      "lat": -20.551619,
+      "lng": -54.626889,
+      "type": "neighborhood",
+      "fonte": "openstreetmap:node/2092597135"
     },
     {
       "slug": "nasser",
       "name": "Nasser",
-      "lat": -20.4750,
-      "lng": -55.5100,
-      "type": "neighborhood"
+      "lat": -20.418143,
+      "lng": -54.635152,
+      "type": "neighborhood",
+      "fonte": "openstreetmap:relation/5535722"
     },
     {
       "slug": "nova-campo-grande",
       "name": "Nova Campo Grande",
-      "lat": -20.4600,
-      "lng": -55.5000,
-      "type": "neighborhood"
+      "lat": -20.464305,
+      "lng": -54.696981,
+      "type": "neighborhood",
+      "fonte": "openstreetmap:relation/5614943"
     },
     {
       "slug": "nucleo-industrial",
       "name": "Núcleo Industrial",
-      "lat": -20.4700,
-      "lng": -55.5250,
-      "type": "neighborhood"
+      "lat": -20.481107,
+      "lng": -54.732375,
+      "type": "neighborhood",
+      "fonte": "openstreetmap:relation/5690690"
     },
     {
       "slug": "panama",
       "name": "Panamá",
-      "lat": -20.4550,
-      "lng": -55.4850,
-      "type": "neighborhood"
+      "lat": -20.440683,
+      "lng": -54.663033,
+      "type": "neighborhood",
+      "fonte": "openstreetmap:node/8569682984",
+      "precisao": "aproximada",
+      "fonte_nome": "Jardim Panamá"
     },
     {
       "slug": "popular",
       "name": "Popular",
-      "lat": -20.4650,
-      "lng": -55.5150,
-      "type": "neighborhood"
+      "lat": -20.448211,
+      "lng": -54.686099,
+      "type": "neighborhood",
+      "fonte": "openstreetmap:relation/5546200"
     },
     {
       "slug": "rita-vieira",
       "name": "Rita Vieira",
-      "lat": -20.4750,
-      "lng": -55.4950,
-      "type": "neighborhood"
+      "lat": -20.505304,
+      "lng": -54.571987,
+      "type": "neighborhood",
+      "fonte": "openstreetmap:relation/5385119"
     },
     {
       "slug": "santo-amaro",
       "name": "Santo Amaro",
-      "lat": -20.4600,
-      "lng": -55.5200,
-      "type": "neighborhood"
+      "lat": -20.43471,
+      "lng": -54.654883,
+      "type": "neighborhood",
+      "fonte": "openstreetmap:relation/5543521"
     },
     {
       "slug": "santo-antonio",
       "name": "Santo Antônio",
-      "lat": -20.4700,
-      "lng": -55.5050,
-      "type": "neighborhood"
+      "lat": -20.453863,
+      "lng": -54.656874,
+      "type": "neighborhood",
+      "fonte": "openstreetmap:relation/5540677"
     },
     {
       "slug": "sao-conrado",
       "name": "São Conrado",
-      "lat": -20.4550,
-      "lng": -55.5100,
-      "type": "neighborhood"
+      "lat": -20.496754,
+      "lng": -54.682836,
+      "type": "neighborhood",
+      "fonte": "openstreetmap:relation/5684376"
     },
     {
       "slug": "seminario",
       "name": "Seminário",
-      "lat": -20.4650,
-      "lng": -55.4900,
-      "type": "neighborhood"
+      "lat": -20.420156,
+      "lng": -54.620633,
+      "type": "neighborhood",
+      "fonte": "openstreetmap:node/2009914496",
+      "precisao": "aproximada",
+      "fonte_nome": "Seminário I"
     },
     {
       "slug": "sobrinho",
       "name": "Sobrinho",
-      "lat": -20.4750,
-      "lng": -55.5200,
-      "type": "neighborhood"
+      "lat": -20.455276,
+      "lng": -54.637652,
+      "type": "neighborhood",
+      "fonte": "openstreetmap:relation/5537936"
     },
     {
       "slug": "taquarussu",
       "name": "Taquarussu",
-      "lat": -20.4600,
-      "lng": -55.5000,
-      "type": "neighborhood"
+      "lat": -20.480188,
+      "lng": -54.632194,
+      "type": "neighborhood",
+      "fonte": "openstreetmap:relation/5678090"
     },
     {
       "slug": "taruma",
       "name": "Tarumã",
-      "lat": -20.4700,
-      "lng": -55.5150,
-      "type": "neighborhood"
+      "lat": -20.542299,
+      "lng": -54.671217,
+      "type": "neighborhood",
+      "fonte": "openstreetmap:node/2133862889",
+      "precisao": "aproximada",
+      "fonte_nome": "Tarumã I"
     },
     {
       "slug": "taveiropolis",
       "name": "Taveiropólis",
-      "lat": -20.4550,
-      "lng": -55.4950,
-      "type": "neighborhood"
+      "lat": -20.472379,
+      "lng": -54.648934,
+      "type": "neighborhood",
+      "fonte": "openstreetmap:relation/5636496"
     },
     {
       "slug": "tijuca",
       "name": "Tijuca",
-      "lat": -20.4650,
-      "lng": -55.5100,
-      "type": "neighborhood"
+      "lat": -20.512578,
+      "lng": -54.661355,
+      "type": "neighborhood",
+      "fonte": "openstreetmap:relation/5682700"
     },
     {
       "slug": "tiradentes",
       "name": "Tiradentes",
-      "lat": -20.4750,
-      "lng": -55.4900,
-      "type": "neighborhood"
+      "lat": -20.479092,
+      "lng": -54.571967,
+      "type": "neighborhood",
+      "fonte": "openstreetmap:relation/5365467"
     },
     {
       "slug": "uniao",
       "name": "União",
-      "lat": -20.4600,
-      "lng": -55.5200,
-      "type": "neighborhood"
+      "lat": -20.481961,
+      "lng": -54.663819,
+      "type": "neighborhood",
+      "fonte": "openstreetmap:relation/5670223"
     },
     {
       "slug": "universitario",
       "name": "Universitário",
-      "lat": -20.4700,
-      "lng": -55.5050,
-      "type": "neighborhood"
+      "lat": -20.520436,
+      "lng": -54.586534,
+      "type": "neighborhood",
+      "fonte": "openstreetmap:relation/5383804"
     }
   ]
 }

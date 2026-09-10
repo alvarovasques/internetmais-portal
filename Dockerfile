@@ -1,5 +1,9 @@
 # ── Build ────────────────────────────────────────────────────────────────
 FROM node:22-alpine AS builder
+# python3 é usado por scripts/gerar-heads.py, que grava um index.html por rota
+# com canonical, título e JSON-LD próprios. Fica só no estágio de build: a
+# imagem final continua sendo node puro.
+RUN apk add --no-cache python3
 WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm ci --legacy-peer-deps

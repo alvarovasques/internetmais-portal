@@ -36,6 +36,7 @@ export default function BairrosPage() {
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredBairros, setFilteredBairros] = useState<[string, BairroInfo][]>([]);
   const [mapMode] = useState<'neighborhoods' | 'stores'>('stores');
+  const [mapaFalhou, setMapaFalhou] = useState(false);
   const mapContainer = useRef<HTMLDivElement>(null);
   const map = useRef<maplibregl.Map | null>(null);
   const markersRef = useRef<maplibregl.Marker[]>([]);
@@ -119,6 +120,14 @@ export default function BairrosPage() {
     });
 
     map.current.addControl(new maplibregl.NavigationControl(), 'top-right');
+
+    // Os tiles vêm de um serviço externo. Sem este tratamento, uma conexão ruim
+    // ou o CDN fora do ar derrubam uma exceção não capturada no console e o
+    // visitante fica olhando um retângulo cinza sem explicação nenhuma.
+    map.current.on('error', (e) => {
+      console.warn('[mapa] tiles indisponíveis', e?.error?.message ?? e);
+      setMapaFalhou(true);
+    });
 
     return () => {
       if (map.current) {
@@ -225,8 +234,31 @@ export default function BairrosPage() {
             <div className="flex gap-4 mb-4">
               <p className="text-gray-600 font-semibold">🏪 Nossas Lojas em Campo Grande</p>
             </div>
-            <div className="rounded-lg overflow-hidden shadow-lg h-[500px]">
+            <div className="relative rounded-lg overflow-hidden shadow-lg h-[500px]">
               <div ref={mapContainer} className="w-full h-full" />
+              {mapaFalhou && (
+                // Quem só queria o endereço da loja não pode ficar preso a um
+                // mapa que não carregou: os quatro endereços aparecem aqui.
+                <div className="absolute inset-0 bg-white flex flex-col items-center justify-center gap-4 p-8 text-center">
+                  <p className="font-bold text-[#0D1B3E] text-lg">
+                    Não foi possível carregar o mapa agora.
+                  </p>
+                  <ul className="text-gray-700 text-sm space-y-1">
+                    {locationsData.lojas.map((loja) => (
+                      <li key={loja.name}>
+                        <strong>{loja.name}</strong>
+                        {loja.address ? ` — ${loja.address}` : ''}
+                      </li>
+                    ))}
+                  </ul>
+                  <a
+                    href="tel:+556730272500"
+                    className="text-[#3DD93D] font-bold underline underline-offset-2"
+                  >
+                    (67) 3027-2500
+                  </a>
+                </div>
+              )}
             </div>
           </div>
 

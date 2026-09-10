@@ -1,72 +1,65 @@
-import { Star } from 'lucide-react';
+import { Network, MapPin, Headset } from 'lucide-react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
+/**
+ * Aqui havia três depoimentos assinados por "Carlos Silva", "Maria Santos" e
+ * "João Costa" — pessoas que não existem — e a mesma invenção aparecia como
+ * `review` no JSON-LD da home. Avaliação inventada em dados estruturados é
+ * candidata a ação manual por spam, não a estrela no resultado de busca.
+ *
+ * No lugar entram três fatos verificáveis sobre a rede. Para trazer depoimento
+ * de verdade de volta: use avaliações reais do perfil do Google Meu Negócio,
+ * com autorização de quem escreveu, e nunca as declare em `aggregateRating` do
+ * próprio site — quem publica nota agregada é a plataforma de avaliação.
+ */
 export default function ProvaSocial() {
   const ref = useScrollAnimation();
-  const depoimentos = [
+
+  const fatos = [
     {
-      nome: 'Carlos Silva',
-      cargo: 'Empresário',
-      texto: 'A velocidade e estabilidade da InternetMais transformaram meu negócio. Não tenho mais problemas com conexão.',
-      rating: 5,
+      icone: <Network size={26} />,
+      titulo: 'Rede própria desde 2017',
+      texto:
+        'Construímos e mantemos a nossa própria fibra em Campo Grande. Quando dá problema, ' +
+        'o time que resolve é o nosso, não o de um terceiro.',
     },
     {
-      nome: 'Maria Santos',
-      cargo: 'Professora',
-      texto: 'Excelente atendimento! O suporte é rápido e eficiente. Recomendo para todos os meus amigos.',
-      rating: 5,
+      icone: <MapPin size={26} />,
+      titulo: '39 bairros atendidos',
+      texto:
+        'Cerca de 70% da cidade já tem cobertura de fibra da InternetMais, e a rede ' +
+        'continua crescendo todo mês.',
     },
     {
-      nome: 'João Costa',
-      cargo: 'Desenvolvedor',
-      texto: 'A fibra óptica 100% dedicada é perfeita para trabalho remoto. Melhor investimento que fiz.',
-      rating: 5,
+      icone: <Headset size={26} />,
+      titulo: 'Atendimento presencial',
+      texto:
+        'Quatro lojas na cidade, de segunda a sábado, para contratar, resolver a fatura ' +
+        'ou pedir suporte olhando no olho.',
     },
   ];
 
   return (
     <section ref={ref} className="py-20 md:py-32 bg-[#3DD93D] opacity-0">
       <div className="container mx-auto px-4">
-        {/* Title */}
         <h2 className="text-3xl md:text-4xl font-black text-white mb-4 text-center">
           +20 mil clientes conectados em Campo Grande
         </h2>
         <p className="text-lg text-white/90 text-center mb-16 max-w-2xl mx-auto">
-          Veja o que nossos clientes dizem sobre a InternetMais
+          Campo Grande é a nossa casa: a rede é nossa, e quem atende também.
         </p>
 
-        {/* Depoimentos Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {depoimentos.map((depoimento, i) => (
+          {fatos.map((fato) => (
             <div
-              key={i}
+              key={fato.titulo}
               className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl card-hover"
             >
-              {/* Stars */}
-              <div className="flex gap-1 mb-4">
-                {[...Array(depoimento.rating)].map((_, j) => (
-                  <Star
-                    key={j}
-                    size={20}
-                    className="fill-[#F5C518] text-[#F5C518]"
-                  />
-                ))}
+              <div className="w-12 h-12 rounded-xl bg-[#3DD93D]/15 text-[#3DD93D] flex items-center justify-center mb-5">
+                {fato.icone}
               </div>
-
-              {/* Texto */}
-              <p className="text-gray-700 mb-6 leading-relaxed italic">
-                "{depoimento.texto}"
-              </p>
-
-              {/* Autor */}
-              <div>
-                <h4 className="font-bold text-[#0D1B3E]">
-                  {depoimento.nome}
-                </h4>
-                <p className="text-sm text-gray-600">
-                  {depoimento.cargo}
-                </p>
-              </div>
+              <h3 className="font-bold text-[#0D1B3E] text-lg mb-3">{fato.titulo}</h3>
+              <p className="text-gray-700 leading-relaxed">{fato.texto}</p>
             </div>
           ))}
         </div>

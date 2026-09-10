@@ -22,7 +22,28 @@ from pathlib import Path
 
 RAIZ = Path(__file__).resolve().parent.parent / "client" / "src"
 
+# Rotas que ninguém deve linkar, e o porquê. Sem esta lista o relatório acusa
+# duas rotas "órfãs" toda vez, e o ruído esconde uma órfã de verdade no dia
+# em que ela aparecer.
+ORFAS_DE_PROPOSITO = {
+    "/": "página inicial",
+    "/404": "página de erro",
+    "/admin/entrar": "área interna, não deve ser divulgada",
+    "/maisgloboplay": "landing a ser refeita; fora do menu por decisão",
+}
+
+# Arquivo vivo que ainda não tem consumidor, e o porquê. Diferente de código
+# abandonado: aqui é peça pronta esperando a tela que vai usá-la.
+SOLTOS_DE_PROPOSITO = {
+    "hooks/useSessao.ts": "hook de sessão pronto para o painel administrativo",
+}
+
 RE_IMPORT = re.compile(r"""import\s+(\w+)\s+from\s+["']([^"']+)["']""")
+# Qualquer forma de import ou reexport, só o especificador:
+#   import X from 'a'   import {a,b} from 'a'   import * as X from 'a'
+#   import 'a'          export {a} from 'a'    export * from 'a'
+RE_QUALQUER_IMPORT = re.compile(
+    r"""(?:import|export)\s*(?:[\w*\s{},]*?\s*from\s*)?["']([^"']+)["']""")
 RE_LAZY = re.compile(r"""(?:const\s+)?(\w+)\s*=\s*lazy\(\s*\(\)\s*=>\s*import\(\s*["']([^"']+)["']""")
 RE_USO = re.compile(r"<(\w+)[\s/>]")
 RE_ID = re.compile(r"""\bid=["']([A-Za-z][\w-]*)["']""")
@@ -45,7 +66,12 @@ def rel(p: Path) -> str:
 
 
 def carregar() -> dict[str, str]:
-    return {rel(f): f.read_text(encoding="utf-8") for f in RAIZ.rglob("*.tsx")}
+    """Inclui .ts além de .tsx: os barris de reexport (components/cinema/index.ts)
+    são .ts, e sem eles a cadeia Home -> cinema/index.ts -> Faixa.tsx some,
+    fazendo seis arquivos vivos aparecerem como mortos."""
+    arqs = list(RAIZ.rglob("*.tsx")) + list(RAIZ.rglob("*.ts"))
+    return {rel(f): f.read_text(encoding="utf-8") for f in arqs
+            if not f.name.endswith((".d.ts", ".test.ts", ".test.tsx"))}
 
 
 def resolver(origem: str, especificador: str) -> str | None:
@@ -64,25 +90,41 @@ def resolver(origem: str, especificador: str) -> str | None:
         alvo = "/".join(partes)
     else:
         return None
-    return alvo if alvo.endswith(".tsx") else alvo + ".tsx"
+    return alvo   # a extensão é decidida em `achar`, que conhece os módulos
 
 
 def main() -> int:
     mods = carregar()
 
+    def achar(base: str | None) -> str | None:
+        """Um import pode apontar para arquivo com ou sem extensão, ou para a
+        pasta cujo index reexporta o resto — é o caso de '@/components/cinema'."""
+        if not base:
+            return None
+        for cand in (base, base + ".tsx", base + ".ts",
+                     base + "/index.tsx", base + "/index.ts"):
+            if cand in mods:
+                return cand
+        return None
+
     def filhos(arq: str) -> set[str]:
+        """Toda aresta de import conta.
+
+        Antes daqui só o import default era reconhecido, e só se o nome
+        aparecesse como tag JSX. Isso descartava import nomeado e chamada de
+        hook — por isso lib/utils.ts, os hooks e o ThemeContext, usados no
+        projeto inteiro, apareciam como arquivos mortos."""
         txt = mods[arq]
-        importados: dict[str, str] = {}
-        for alias, esp in RE_IMPORT.findall(txt):
-            alvo = resolver(arq, esp)
-            if alvo in mods:
-                importados[alias] = alvo
-        for alias, esp in RE_LAZY.findall(txt):
-            alvo = resolver(arq, esp)
-            if alvo in mods:
-                importados[alias] = alvo
-        usados = set(RE_USO.findall(txt))
-        return {v for k, v in importados.items() if k in usados}
+        alvos: set[str] = set()
+        for esp in RE_QUALQUER_IMPORT.findall(txt):
+            alvo = achar(resolver(arq, esp))
+            if alvo and alvo != arq:
+                alvos.add(alvo)
+        for _, esp in RE_LAZY.findall(txt):
+            alvo = achar(resolver(arq, esp))
+            if alvo and alvo != arq:
+                alvos.add(alvo)
+        return alvos
 
     def fecho(arq: str, visto: set[str] | None = None) -> set[str]:
         visto = set() if visto is None else visto
@@ -96,8 +138,9 @@ def main() -> int:
     app = mods["App.tsx"]
     alias_para_arq: dict[str, str] = {}
     for alias, esp in RE_IMPORT.findall(app) + RE_LAZY.findall(app):
-        alvo = resolver("App.tsx", esp)
-        if alvo in mods:
+        # `resolver` devolve o caminho sem extensão; quem decide é `achar`.
+        alvo = achar(resolver("App.tsx", esp))
+        if alvo:
             alias_para_arq[alias] = alvo
 
     rotas: dict[str, str] = {}
@@ -173,26 +216,43 @@ def main() -> int:
             if d == r or (d.endswith("*") and r.startswith(d[:-1])):
                 return True
         return False
-    orfas = [r for r in rotas if r not in ("/", "/404") and not coberta(r)]
+    orfas, previstas = [], []
+    for r in rotas:
+        if coberta(r):
+            continue
+        (previstas if r in ORFAS_DE_PROPOSITO else orfas).append(r)
     for r in sorted(orfas):
         print(f"  {r}  ({rotas[r]})")
     if not orfas:
         print("  nenhuma")
+    for r in sorted(previstas):
+        print(f"  (de propósito) {r} — {ORFAS_DE_PROPOSITO[r]}")
 
     print("\n" + "=" * 78, "\nARQUIVOS NÃO ALCANÇADOS POR NENHUMA ROTA\n" + "=" * 78)
-    alcancados = {m for arv in arvore.values() for m in arv} | {"App.tsx"}
-    soltos = [m for m in sorted(mods) if m not in alcancados and not m.startswith("components/ui/")]
+    # ErrorBoundary e ThemeContext ficam acima das rotas, em App.tsx, e main.tsx
+    # é a raiz: nenhum deles pertence a uma rota, mas todos estão vivos.
+    alcancados = {m for arv in arvore.values() for m in arv}
+    for raiz in ("main.tsx", "App.tsx"):
+        if raiz in mods:
+            alcancados |= fecho(raiz)
+    todos = [m for m in sorted(mods)
+             if m not in alcancados and not m.startswith("components/ui/")]
+    soltos = [m for m in todos if m not in SOLTOS_DE_PROPOSITO]
     for m in soltos:
         print("  " + m)
     if not soltos:
         print("  nenhum")
+    for m in todos:
+        if m in SOLTOS_DE_PROPOSITO:
+            print(f"  (de propósito) {m} — {SOLTOS_DE_PROPOSITO[m]}")
 
     print("\n" + "=" * 78, f"\nEXTERNOS ({len(externos)}) E WHATSAPP ({len(whats)})\n" + "=" * 78)
     for e in sorted(externos) + sorted(whats):
         print("  " + e)
 
-    print(f"\n{len(set(quebrados))} link(s) quebrado(s), {len(orfas)} rota(s) órfã(s), {len(soltos)} arquivo(s) solto(s)")
-    return 1 if quebrados else 0
+    print(f"\n{len(set(quebrados))} link(s) quebrado(s), {len(orfas)} rota(s) órfã(s), "
+          f"{len(soltos)} arquivo(s) solto(s)")
+    return 1 if (quebrados or orfas or soltos) else 0
 
 
 if __name__ == "__main__":
