@@ -3,6 +3,7 @@
 import { Tv, Check, MessageCircle, Star, Film, Clapperboard } from 'lucide-react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { useViewPlanTracker } from '@/hooks/useViewPlanTracker';
+import CenaIlustrada from '@/components/CenaIlustrada';
 
 interface App {
   name: string;
@@ -113,13 +114,13 @@ export default function MaisGloboPlay() {
         {/* Faixa lateral esquerda estilo película */}
         <div className="absolute left-0 top-0 bottom-0 w-8 flex flex-col gap-3 py-4 opacity-10">
           {Array.from({ length: 30 }).map((_, i) => (
-            <div key={i} className="w-full h-5 bg-white rounded-sm flex-shrink-0" />
+            <div key={i} className="w-full h-5 bg-[#0A1730] rounded-sm flex-shrink-0" />
           ))}
         </div>
         {/* Faixa lateral direita estilo película */}
         <div className="absolute right-0 top-0 bottom-0 w-8 flex flex-col gap-3 py-4 opacity-10">
           {Array.from({ length: 30 }).map((_, i) => (
-            <div key={i} className="w-full h-5 bg-white rounded-sm flex-shrink-0" />
+            <div key={i} className="w-full h-5 bg-[#0A1730] rounded-sm flex-shrink-0" />
           ))}
         </div>
         {/* Brilho central suave */}
@@ -132,7 +133,7 @@ export default function MaisGloboPlay() {
       <div className="container mx-auto px-4 relative z-10">
         {/* Header */}
         <div className="text-center mb-10 animate-fade-in-down animate-delay-100">
-          <div className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-md px-6 py-3 rounded-full mb-6 border border-white/20">
+          <div className="inline-flex items-center gap-3 bg-[#0A1730]/10 backdrop-blur-md px-6 py-3 rounded-full mb-6 border border-white/20">
             <Clapperboard className="text-[#e50914]" size={22} />
             <span className="text-white font-bold">Mais GloboPlay</span>
           </div>
@@ -152,19 +153,25 @@ export default function MaisGloboPlay() {
           </p>
         </div>
 
+        <CenaIlustrada
+          nome="familia"
+          alt="Família reunida no sofá assistindo à televisão"
+          className="mx-auto mb-12 max-w-3xl"
+        />
+
         {/* Plans Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 animate-fade-in-up animate-delay-300">
           {planos.map((plano, i) => (
             <div
               key={plano.velocidade}
-              className={`relative rounded-2xl overflow-hidden transition-all duration-500 transform animate-scale-in hover:shadow-2xl hover:scale-105 ${
-                plano.popular ? 'md:scale-105 shadow-2xl' : 'shadow-lg'
+              className={`relative rounded-2xl overflow-hidden transition-all duration-500 transform animate-scale-in hover:shadow-[0_34px_90px_-26px_rgba(0,0,0,.95)] hover:scale-105 ${
+                plano.popular ? 'md:scale-105 shadow-[0_34px_90px_-26px_rgba(0,0,0,.95)]' : 'shadow-[0_18px_50px_-20px_rgba(0,0,0,.85)]'
               }`}
               style={{ animationDelay: `${0.1 + i * 0.1}s` }}
             >
               {/* Popular Badge */}
               {plano.popular && (
-                <div className="absolute top-0 right-0 bg-[#3DD93D] text-white px-4 py-2 rounded-bl-2xl font-bold text-sm animate-bounce z-20">
+                <div className="absolute top-0 right-0 bg-[#3DD93D] text-[#04170A] px-4 py-2 rounded-bl-2xl font-bold text-sm z-20">
                   MAIS POPULAR
                 </div>
               )}
@@ -175,11 +182,11 @@ export default function MaisGloboPlay() {
               {/* Card Background */}
               <div className={`p-8 h-full flex flex-col ${
                 plano.popular
-                  ? 'bg-gradient-to-br from-[#3DD93D] to-[#2BA82A]'
-                  : 'bg-white'
+                  ? 'bg-[#0C2313] ring-1 ring-[#3DD93D]'
+                  : 'bg-[#0A1730]'
               }`}>
                 {/* Velocity */}
-                <h3 className={`text-3xl font-black mb-2 ${plano.popular ? 'text-white' : 'text-[#0D1B3E]'}`}>
+                <h3 className={`text-3xl font-black mb-2 ${'text-[#E8F1E9]'}`}>
                   {plano.velocidade}
                 </h3>
 
@@ -192,22 +199,22 @@ export default function MaisGloboPlay() {
                   {plano.temDesconto && plano.precoComDesconto ? (
                     <div className="space-y-2">
                       <div className="flex items-center gap-2">
-                        <p className={`text-sm line-through opacity-60 ${plano.popular ? 'text-white' : 'text-gray-500'}`}>
+                        <p className={`text-sm line-through opacity-60 ${'text-[#93A69B]'}`}>
                           {plano.preco}
                         </p>
                         <span className="rounded-full bg-[#FF6B6B] px-2 py-1 text-xs font-bold text-white">
                           -R$ 20
                         </span>
                       </div>
-                      <p className={`text-4xl font-black ${plano.popular ? 'text-white' : 'text-[#3DD93D]'}`}>
+                      <p className={`text-4xl font-black ${'text-[#3DD93D]'}`}>
                         {plano.precoComDesconto}
                       </p>
-                      <p className={`text-xs ${plano.popular ? 'text-white/90' : 'text-gray-600'}`}>
+                      <p className={`text-xs ${plano.popular ? 'text-white/90' : 'text-[#93A69B]'}`}>
                         ✓ Já com desconto de pontualidade
                       </p>
                     </div>
                   ) : (
-                    <p className={`text-4xl font-black ${plano.popular ? 'text-white' : 'text-[#3DD93D]'}`}>
+                    <p className={`text-4xl font-black ${'text-[#3DD93D]'}`}>
                       {plano.preco}
                     </p>
                   )}
@@ -219,9 +226,9 @@ export default function MaisGloboPlay() {
                     <div key={idx} className="flex items-start gap-3">
                       <Check
                         size={16}
-                        className={`mt-0.5 flex-shrink-0 ${plano.popular ? 'text-white' : 'text-[#3DD93D]'}`}
+                        className={`mt-0.5 flex-shrink-0 ${'text-[#3DD93D]'}`}
                       />
-                      <span className={`text-sm ${plano.popular ? 'text-white/90' : 'text-gray-700'}`}>
+                      <span className={`text-sm ${plano.popular ? 'text-white/90' : 'text-[#CBD8CE]'}`}>
                         {feature}
                       </span>
                     </div>
@@ -233,7 +240,7 @@ export default function MaisGloboPlay() {
                   <div className="mb-6">
                     {plano.appsStandard && (
                       <div>
-                        <p className={`text-xs font-bold mb-3 ${plano.popular ? 'text-white' : 'text-[#3DD93D]'}`}>
+                        <p className={`text-xs font-bold mb-3 ${'text-[#3DD93D]'}`}>
                           Aplicativos inclusos
                         </p>
                         <div className="grid grid-cols-5 gap-2">
@@ -242,8 +249,8 @@ export default function MaisGloboPlay() {
                               key={idx}
                               className={`flex flex-col items-center justify-center p-1.5 rounded-lg transition-all duration-300 hover:scale-110 cursor-pointer ${
                                 plano.popular
-                                  ? 'bg-white/10 hover:bg-white/20'
-                                  : 'bg-gray-100 hover:bg-gray-200'
+                                  ? 'bg-[#0A1730]/10 hover:bg-[#0A1730]/20'
+                                  : 'bg-[#060E1E] hover:bg-white/10'
                               }`}
                               title={app.name}
                             >
@@ -264,7 +271,7 @@ export default function MaisGloboPlay() {
                               key={idx}
                               className={`flex flex-col items-center justify-center p-1.5 rounded-lg transition-all duration-300 hover:scale-110 cursor-pointer ${
                                 plano.popular
-                                  ? 'bg-white/10 hover:bg-white/20'
+                                  ? 'bg-[#0A1730]/10 hover:bg-[#0A1730]/20'
                                   : 'bg-red-50 border border-red-100 hover:bg-red-100'
                               }`}
                               title={app.name}
@@ -279,14 +286,14 @@ export default function MaisGloboPlay() {
                 )}
 
                 {/* GloboPlay Section */}
-                <div className={`mb-8 pt-5 border-t ${plano.popular ? 'border-white/20' : 'border-gray-100'}`}>
+                <div className={`mb-8 pt-5 border-t ${plano.popular ? 'border-white/20' : 'border-white/10'}`}>
                   <p className={`text-xs font-bold mb-4 ${plano.popular ? 'text-white' : 'text-[#e50914]'}`}>
                     🎬 INCLUSO
                   </p>
                   <div className="flex justify-center">
                     <div className={`rounded-2xl p-5 flex flex-col items-center justify-center ${
                       plano.popular
-                        ? 'bg-white/20 border-2 border-white/30'
+                        ? 'bg-[#0A1730]/20 border-2 border-white/30'
                         : 'bg-gradient-to-br from-red-50 to-rose-50 border-2 border-red-200'
                     }`}>
                       <img
@@ -294,7 +301,7 @@ export default function MaisGloboPlay() {
                         alt="GloboPlay"
                         className="h-20 w-20 object-contain mb-2"
                       />
-                      <p className={`text-sm font-bold ${plano.popular ? 'text-white' : 'text-gray-800'}`}>
+                      <p className={`text-sm font-bold ${'text-[#E8F1E9]'}`}>
                         GloboPlay
                       </p>
                       <span className="mt-1 inline-flex items-center gap-1 bg-gradient-to-r from-[#e50914] to-[#8b0000] text-white text-xs font-black px-3 py-1 rounded-full shadow-md">
@@ -320,9 +327,9 @@ export default function MaisGloboPlay() {
                       });
                     }
                   }}
-                  className={`mt-auto w-full inline-flex items-center justify-center gap-2 font-bold py-3 px-6 rounded-full transition-all duration-300 hover:shadow-lg hover:scale-105 ${
+                  className={`mt-auto w-full inline-flex items-center justify-center gap-2 font-bold py-3 px-6 rounded-full transition-all duration-300 hover:shadow-[0_18px_50px_-20px_rgba(0,0,0,.85)] hover:scale-105 ${
                     plano.popular
-                      ? 'bg-white text-[#3DD93D] hover:bg-gray-100'
+                      ? 'bg-[#3DD93D] text-[#04170A] hover:bg-[#2BA82A]'
                       : 'bg-gradient-to-r from-[#e50914] to-[#8b0000] text-white hover:opacity-90'
                   }`}
                 >

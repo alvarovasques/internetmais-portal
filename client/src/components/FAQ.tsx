@@ -95,10 +95,10 @@ export default function FAQ() {
     <section className="py-12 md:py-16 bg-gradient-to-b from-white to-gray-50">
       <div className="container mx-auto px-4">
         {/* Title */}
-        <h2 className="text-3xl md:text-4xl font-black text-[#0D1B3E] mb-4 text-center animate-fade-in-down animate-delay-100">
+        <h2 className="text-3xl md:text-4xl font-black text-[#E8F1E9] mb-4 text-center animate-fade-in-down animate-delay-100">
           Perguntas Frequentes
         </h2>
-        <p className="text-lg text-gray-600 text-center mb-12 max-w-2xl mx-auto animate-fade-in-up animate-delay-200">
+        <p className="text-lg text-[#93A69B] text-center mb-12 max-w-2xl mx-auto animate-fade-in-up animate-delay-200">
           Encontre respostas para as dúvidas mais comuns sobre nossos planos, instalação e suporte técnico
         </p>
 
@@ -113,8 +113,8 @@ export default function FAQ() {
               }}
               className={`px-6 py-2 rounded-full font-bold transition-all duration-300 ${
                 activeCategory === category
-                  ? 'bg-[#3DD93D] text-white shadow-lg scale-105'
-                  : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                  ? 'bg-[#3DD93D] text-white shadow-[0_18px_50px_-20px_rgba(0,0,0,.85)] scale-105'
+                  : 'bg-white/10 text-[#CBD8CE] hover:bg-white/15'
               }`}
             >
               {category === 'planos' && 'Planos'}
@@ -129,16 +129,16 @@ export default function FAQ() {
           {filteredItems.map((item, index) => (
             <div
               key={item.id}
-              className="border-2 border-gray-200 rounded-lg overflow-hidden hover:border-[#3DD93D] transition-all duration-300 hover:shadow-lg"
+              className="border-2 border-white/10 rounded-lg overflow-hidden hover:border-[#3DD93D] transition-all duration-300 hover:shadow-[0_18px_50px_-20px_rgba(0,0,0,.85)]"
               style={{
                 animation: `fadeInUp 0.5s ease-out ${index * 0.1}s both`,
               }}
             >
               <button
                 onClick={() => toggleItem(item.id)}
-                className="w-full px-6 py-4 flex items-center justify-between bg-white hover:bg-gray-50 transition-colors duration-300"
+                className="w-full px-6 py-4 flex items-center justify-between bg-[#0A1730] hover:bg-[#060E1E] transition-colors duration-300"
               >
-                <span className="text-left font-bold text-[#0D1B3E] text-lg">
+                <span className="text-left font-bold text-[#E8F1E9] text-lg">
                   {item.question}
                 </span>
                 <ChevronDown
@@ -152,7 +152,7 @@ export default function FAQ() {
               {/* Answer */}
               {openId === item.id && (
                 <div className="px-6 py-4 bg-gradient-to-r from-green-50 to-white border-t-2 border-[#3DD93D] animate-fade-in-down">
-                  <p className="text-gray-700 leading-relaxed">
+                  <p className="text-[#CBD8CE] leading-relaxed">
                     {item.answer}
                   </p>
                 </div>
@@ -163,7 +163,7 @@ export default function FAQ() {
 
         {/* CTA */}
         <div className="text-center mt-12 animate-fade-in-up animate-delay-500">
-          <p className="text-gray-600 mb-4">Não encontrou sua dúvida?</p>
+          <p className="text-[#93A69B] mb-4">Não encontrou sua dúvida?</p>
           <a
             href="https://wa.me/556730272500?text=Olá! Tenho uma dúvida que não está nas perguntas frequentes. Gostaria de falar com um representante da InternetMais."
             target="_blank"
@@ -176,7 +176,7 @@ export default function FAQ() {
                 });
               }
             }}
-            className="inline-flex items-center justify-center gap-2 bg-[#25D366] text-white font-bold py-3 px-8 rounded-full hover:bg-[#20ba5a] hover:shadow-lg hover:scale-105 transition-all duration-300"
+            className="inline-flex items-center justify-center gap-2 bg-[#25D366] text-white font-bold py-3 px-8 rounded-full hover:bg-[#20ba5a] hover:shadow-[0_18px_50px_-20px_rgba(0,0,0,.85)] hover:scale-105 transition-all duration-300"
           >
             <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
               <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421-7.403h-.004a9.87 9.87 0 00-4.255.949c-1.238.503-2.39 1.242-3.286 2.128-1.797 1.809-2.745 4.05-2.745 6.741 0 1.298.199 2.541.58 3.734L2.822 22l3.99-1.317c1.257.905 2.86 1.383 4.471 1.383 5.255 0 9.517-4.262 9.517-9.517 0-2.543-.991-4.953-2.792-6.754-1.802-1.8-4.165-2.792-6.754-2.792" />

@@ -1,0 +1,51 @@
+<svg viewBox="0 0 800 500" role="img" aria-labelledby="tf" xmlns="http://www.w3.org/2000/svg">
+<title id="tf">Família reunida no sofá da sala assistindo à televisão</title>
+
+  <defs>
+    <linearGradient id="telaf" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#C6FFC6"/><stop offset=".55" stop-color="#3DD93D"/>
+      <stop offset="1" stop-color="#0E6B22"/>
+    </linearGradient>
+    <radialGradient id="auraf" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#3DD93D" stop-opacity=".5"/>
+      <stop offset="1" stop-color="#3DD93D" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="chaof" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#081226"/><stop offset="1" stop-color="#03050A"/>
+    </linearGradient>
+  </defs>
+
+<rect width="800" height="500" fill="#03060C"/>
+<rect y="372" width="800" height="128" fill="url(#chaof)"/>
+<ellipse cx="400" cy="168" rx="310" ry="180" fill="url(#auraf)" opacity=".5"/>
+<rect x="130" y="30" width="540" height="316" fill="#050B16" opacity=".65"/>
+<rect x="264" y="52" width="272" height="158" rx="5" fill="#0A1730" stroke="#3DD93D" stroke-opacity=".42"/>
+<rect x="272" y="60" width="256" height="142" rx="2" fill="url(#telaf)" opacity=".93"/>
+<path d="M296 202 L344 128 L384 202Z" fill="#04220F" opacity=".45"/>
+<path d="M368 202 L428 110 L490 202Z" fill="#04220F" opacity=".34"/>
+<circle cx="480" cy="94" r="14" fill="#EAFFEA" opacity=".55"/>
+<rect x="386" y="210" width="28" height="26" fill="#0A1730"/>
+<rect x="352" y="234" width="96" height="8" rx="4" fill="#0A1730" stroke="#3DD93D" stroke-opacity=".26"/>
+<path d="M92 466 L92 236" stroke="#0F2038" stroke-width="5"/>
+<path d="M64 236 L120 236 L110 190 L74 190Z" fill="#0A1730" stroke="#3DD93D" stroke-opacity=".3"/>
+<ellipse cx="92" cy="290" rx="66" ry="88" fill="url(#auraf)" opacity=".2"/>
+<rect x="68" y="462" width="48" height="7" rx="3" fill="#0F2038"/>
+<path d="M198 420 V308 C198 295 227 295 240 285 L264 285 C277 295 306 295 306 308 V420 Z" fill="#060E1E" stroke="#3DD93D" stroke-opacity=".34" stroke-width="1.7"/><circle cx="252" cy="262" r="32" fill="#060E1E" stroke="#3DD93D" stroke-opacity=".34" stroke-width="1.7"/>
+<path d="M220 256 q32 -42 64 0 q-32 -21 -64 0Z" fill="#0A1730"/>
+<circle cx="474" cy="244" r="12" fill="#060E1E" stroke="#3DD93D" stroke-opacity=".34" stroke-width="1.7"/>
+<path d="M424 420 V311 C424 299 451 299 463 290 L485 290 C497 299 524 299 524 311 V420 Z" fill="#060E1E" stroke="#3DD93D" stroke-opacity=".34" stroke-width="1.7"/><circle cx="474" cy="268" r="30" fill="#060E1E" stroke="#3DD93D" stroke-opacity=".34" stroke-width="1.7"/>
+<path d="M317 420 V322 C317 313 340 313 348 307 L364 307 C372 313 395 313 395 322 V420 Z" fill="#060E1E" stroke="#3DD93D" stroke-opacity=".34" stroke-width="1.7"/><circle cx="356" cy="292" r="21" fill="#060E1E" stroke="#3DD93D" stroke-opacity=".34" stroke-width="1.7"/>
+<path d="M526 420 V326 C526 318 546 318 554 313 L566 313 C574 318 594 318 594 326 V420 Z" fill="#060E1E" stroke="#3DD93D" stroke-opacity=".34" stroke-width="1.7"/><circle cx="560" cy="300" r="18" fill="#060E1E" stroke="#3DD93D" stroke-opacity=".34" stroke-width="1.7"/>
+<rect x="112" y="348" width="576" height="72" rx="16" fill="#08122A" stroke="#3DD93D" stroke-opacity=".2"/>
+<rect x="90" y="396" width="620" height="70" rx="16" fill="#0A1730" stroke="#3DD93D" stroke-opacity=".24"/>
+<rect x="90" y="356" width="46" height="110" rx="16" fill="#0B1934" stroke="#3DD93D" stroke-opacity=".24"/>
+<rect x="664" y="356" width="46" height="110" rx="16" fill="#0B1934" stroke="#3DD93D" stroke-opacity=".24"/>
+<path d="M300 398 v66 M500 398 v66" stroke="#3DD93D" stroke-opacity=".16" stroke-width="1.4"/>
+<rect x="618" y="362" width="46" height="46" rx="9" transform="rotate(9 641 385)" fill="#0E2340" stroke="#3DD93D" stroke-opacity=".24"/>
+<ellipse cx="196" cy="452" rx="42" ry="20" fill="#060E1E" stroke="#3DD93D" stroke-opacity=".34" stroke-width="1.7"/>
+<circle cx="150" cy="440" r="18" fill="#060E1E" stroke="#3DD93D" stroke-opacity=".34" stroke-width="1.7"/>
+<path d="M136 434 q-12 10 -4 24 q10 2 12 -12Z" fill="#060E1E" stroke="#3DD93D" stroke-opacity=".34" stroke-width="1.7"/>
+<path d="M132 444 q-14 2 -16 -4 q8 -6 16 -2Z" fill="#060E1E" stroke="#3DD93D" stroke-opacity=".34" stroke-width="1.7"/>
+<path d="M234 446 q18 -6 14 -20" fill="none" stroke="#3DD93D" stroke-opacity=".3" stroke-width="4.5" stroke-linecap="round"/>
+<circle cx="140" cy="438" r="2.2" fill="#3DD93D" opacity=".85"/>
+</svg>

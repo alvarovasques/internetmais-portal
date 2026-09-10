@@ -5,21 +5,21 @@ export default function TelefoniaFixa() {
   const ref = useScrollAnimation();
 
   return (
-    <section ref={ref} id="telefonia-fixa" className="py-20 md:py-32 bg-white opacity-0">
+    <section ref={ref} id="telefonia-fixa" className="py-20 md:py-32 bg-[#0A1730] opacity-0">
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-16 animate-fade-in-down animate-delay-100">
-          <h2 className="text-3xl md:text-4xl font-black text-[#0D1B3E] mb-4">
+          <h2 className="text-3xl md:text-4xl font-black text-[#E8F1E9] mb-4">
             Telefonia Fixa
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg text-[#93A69B] max-w-2xl mx-auto">
             Mantenha-se conectado com nossa linha telefônica fixa de qualidade
           </p>
         </div>
 
         {/* Plan Card */}
         <div className="max-w-2xl mx-auto animate-scale-in animate-delay-200">
-          <div className="bg-gradient-to-br from-[#0D1B3E] to-[#1A5BA6] rounded-2xl p-8 md:p-12 text-white shadow-2xl">
+          <div className="bg-gradient-to-br from-[#0D1B3E] to-[#1A5BA6] rounded-2xl p-8 md:p-12 text-white shadow-[0_34px_90px_-26px_rgba(0,0,0,.95)]">
             {/* Icon */}
             <Phone size={48} className="text-[#3DD93D] mb-6" />
 
@@ -64,7 +64,7 @@ export default function TelefoniaFixa() {
                   });
                 }
               }}
-              className="w-full flex items-center justify-center gap-2 bg-white text-[#3DD93D] font-bold py-4 px-6 rounded-xl hover:shadow-lg hover:scale-105 transition-all duration-300"
+              className="w-full flex items-center justify-center gap-2 bg-[#3DD93D] text-[#04170A] font-bold py-4 px-6 rounded-xl hover:shadow-[0_18px_50px_-20px_rgba(0,0,0,.85)] hover:scale-105 transition-all duration-300"
             >
               <MessageCircle size={20} />
               Contratar Agora
@@ -73,17 +73,17 @@ export default function TelefoniaFixa() {
         </div>
 
         {/* Combo Info */}
-        <div className="mt-16 bg-[#F4F4F4] rounded-2xl p-8 animate-fade-in-up animate-delay-300">
-          <h3 className="text-xl font-bold text-[#0D1B3E] mb-6">Combos Especiais</h3>
+        <div className="mt-16 bg-[#060E1E] rounded-2xl p-8 animate-fade-in-up animate-delay-300">
+          <h3 className="text-xl font-bold text-[#E8F1E9] mb-6">Combos Especiais</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-white rounded-xl p-6 border-l-4 border-[#3DD93D]">
-              <h4 className="font-bold text-[#0D1B3E] mb-2">Internet + Fixo</h4>
-              <p className="text-gray-600 mb-3">Escolha qualquer plano de internet + telefone fixo</p>
+            <div className="bg-[#0A1730] rounded-xl p-6 border-l-4 border-[#3DD93D]">
+              <h4 className="font-bold text-[#E8F1E9] mb-2">Internet + Fixo</h4>
+              <p className="text-[#93A69B] mb-3">Escolha qualquer plano de internet + telefone fixo</p>
               <p className="text-lg font-bold text-[#3DD93D]">5% de desconto no combo</p>
             </div>
-            <div className="bg-white rounded-xl p-6 border-l-4 border-[#3DD93D]">
-              <h4 className="font-bold text-[#0D1B3E] mb-2">Internet + Móvel</h4>
-              <p className="text-gray-600 mb-3">Escolha qualquer plano de internet + chip 5G</p>
+            <div className="bg-[#0A1730] rounded-xl p-6 border-l-4 border-[#3DD93D]">
+              <h4 className="font-bold text-[#E8F1E9] mb-2">Internet + Móvel</h4>
+              <p className="text-[#93A69B] mb-3">Escolha qualquer plano de internet + chip 5G</p>
               <p className="text-lg font-bold text-[#3DD93D]">5% de desconto no combo</p>
             </div>
           </div>

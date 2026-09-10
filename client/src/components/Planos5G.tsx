@@ -70,7 +70,7 @@ export default function Planos5G() {
       <div className="container mx-auto px-4 relative z-10">
         {/* Header */}
         <div className="text-center mb-16 animate-fade-in-down animate-delay-100">
-          <div className="inline-flex items-center gap-2 bg-white/20 text-white px-4 py-2 rounded-full mb-6 font-bold backdrop-blur-sm">
+          <div className="inline-flex items-center gap-2 bg-[#0A1730]/20 text-white px-4 py-2 rounded-full mb-6 font-bold backdrop-blur-sm">
             <Smartphone size={18} />
             <span>SOMOS UMA OPERADORA 5G</span>
           </div>
@@ -89,20 +89,20 @@ export default function Planos5G() {
           {planos.map((plano, i) => (
             <div
               key={i}
-              className={`relative rounded-2xl overflow-hidden transition-all duration-300 animate-scale-in shadow-lg hover:shadow-xl`}
+              className={`relative rounded-2xl overflow-hidden transition-all duration-300 animate-scale-in shadow-[0_18px_50px_-20px_rgba(0,0,0,.85)] hover:shadow-[0_26px_70px_-24px_rgba(0,0,0,.9)]`}
               style={{ animationDelay: `${0.3 + i * 0.08}s` }}
             >
               {/* Popular Badge */}
               {plano.popular && (
-                <div className="absolute top-0 right-0 bg-[#F5C518] text-[#0D1B3E] px-4 py-2 rounded-bl-2xl font-black text-sm z-10">
+                <div className="absolute top-0 right-0 bg-[#F5C518] text-[#E8F1E9] px-4 py-2 rounded-bl-2xl font-black text-sm z-10">
                   TOP
                 </div>
               )}
 
               {/* Card Background */}
-              <div className={`p-6 h-full flex flex-col ${plano.popular ? 'bg-gradient-to-br from-white to-[#F4F4F4]' : 'bg-white'}`}>
+              <div className={`p-6 h-full flex flex-col ${plano.popular ? 'bg-gradient-to-br from-white to-[#F4F4F4]' : 'bg-[#0A1730]'}`}>
                 {/* Data Amount */}
-                <h3 className={`text-3xl font-black mb-1 ${plano.popular ? 'text-[#3DD93D]' : 'text-[#0D1B3E]'}`}>
+                <h3 className={`text-3xl font-black mb-1 ${plano.popular ? 'text-[#3DD93D]' : 'text-[#E8F1E9]'}`}>
                   {plano.gb}
                 </h3>
 
@@ -115,10 +115,10 @@ export default function Planos5G() {
 
                 {/* Price */}
                 <div className="mb-6">
-                  <p className={`text-3xl font-black ${plano.popular ? 'text-[#3DD93D]' : 'text-[#0D1B3E]'}`}>
+                  <p className={`text-3xl font-black ${plano.popular ? 'text-[#3DD93D]' : 'text-[#E8F1E9]'}`}>
                     {plano.preco}
                   </p>
-                  <p className="text-xs text-gray-600">por mês</p>
+                  <p className="text-xs text-[#93A69B]">por mês</p>
                 </div>
 
                 {/* Features */}
@@ -126,7 +126,7 @@ export default function Planos5G() {
                   {plano.features.map((feature, j) => (
                     <div key={j} className="flex items-start gap-2">
                       <Check size={16} className="text-[#3DD93D] flex-shrink-0 mt-0.5" />
-                      <span className="text-xs font-semibold text-gray-700 leading-tight">
+                      <span className="text-xs font-semibold text-[#CBD8CE] leading-tight">
                         {feature}
                       </span>
                     </div>
@@ -151,8 +151,8 @@ export default function Planos5G() {
                   }}
                   className={`w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl font-bold transition-all duration-300 text-sm ${
                     plano.popular
-                      ? 'bg-gradient-to-r from-[#3DD93D] to-[#2BA82A] text-white hover:shadow-lg hover:scale-105'
-                      : 'bg-[#3DD93D] text-white hover:shadow-lg hover:scale-105'
+                      ? 'bg-gradient-to-r from-[#3DD93D] to-[#2BA82A] text-white hover:shadow-[0_18px_50px_-20px_rgba(0,0,0,.85)] hover:scale-105'
+                      : 'bg-[#3DD93D] text-white hover:shadow-[0_18px_50px_-20px_rgba(0,0,0,.85)] hover:scale-105'
                   }`}
                 >
                   <MessageCircle size={16} />
@@ -164,23 +164,23 @@ export default function Planos5G() {
         </div>
 
         {/* Info Box */}
-        <div className="mt-16 bg-white/95 backdrop-blur-sm rounded-2xl p-8 animate-fade-in-up animate-delay-300">
+        <div className="mt-16 bg-[#0A1730]/95 backdrop-blur-sm rounded-2xl p-8 animate-fade-in-up animate-delay-300">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
-              <h4 className="font-bold text-[#0D1B3E] mb-2">Apps Ilimitados*</h4>
-              <p className="text-sm text-gray-600">WhatsApp, Waze e Maps com tráfego ilimitado</p>
+              <h4 className="font-bold text-[#E8F1E9] mb-2">Apps Ilimitados*</h4>
+              <p className="text-sm text-[#93A69B]">WhatsApp, Waze e Maps com tráfego ilimitado</p>
             </div>
             <div>
-              <h4 className="font-bold text-[#0D1B3E] mb-2">Portabilidade</h4>
-              <p className="text-sm text-gray-600">Ganhe bônus de dados ao trazer seu número</p>
+              <h4 className="font-bold text-[#E8F1E9] mb-2">Portabilidade</h4>
+              <p className="text-sm text-[#93A69B]">Ganhe bônus de dados ao trazer seu número</p>
             </div>
             <div>
-              <h4 className="font-bold text-[#0D1B3E] mb-2">Rede 5G</h4>
-              <p className="text-sm text-gray-600">Navegue com a velocidade mais rápida do mercado com cobertura nacional.</p>
+              <h4 className="font-bold text-[#E8F1E9] mb-2">Rede 5G</h4>
+              <p className="text-sm text-[#93A69B]">Navegue com a velocidade mais rápida do mercado com cobertura nacional.</p>
             </div>
           </div>
-          <div className="mt-6 pt-6 border-t border-gray-200">
-            <p className="text-xs text-gray-600"><span className="font-bold">*Apps Ilimitados:</span> WhatsApp, Waze e Maps sem consumo de dados. Requer saldo ativo no chip.</p>
+          <div className="mt-6 pt-6 border-t border-white/10">
+            <p className="text-xs text-[#93A69B]"><span className="font-bold">*Apps Ilimitados:</span> WhatsApp, Waze e Maps sem consumo de dados. Requer saldo ativo no chip.</p>
           </div>
         </div>
       </div>

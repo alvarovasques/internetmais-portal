@@ -1,6 +1,7 @@
 import { Wifi, Clock, Network } from 'lucide-react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { useViewPlanTracker } from '@/hooks/useViewPlanTracker';
+import CenaIlustrada from '@/components/CenaIlustrada';
 
 export default function Empresarial() {
   const ref = useScrollAnimation();
@@ -30,37 +31,43 @@ export default function Empresarial() {
       {/* Content */}
       <div className="container mx-auto px-4 relative z-10">
         {/* Title */}
-        <h2 className="text-3xl md:text-4xl font-black text-[#0D1B3E] mb-4 text-center">
+        <h2 className="text-3xl md:text-4xl font-black text-[#E8F1E9] mb-4 text-center">
           Sua empresa merece uma conexão à altura
         </h2>
-        <p className="text-lg text-[#0D1B3E]/85 text-center mb-4 max-w-2xl mx-auto">
+        <p className="text-lg text-[#E8F1E9]/85 text-center mb-4 max-w-2xl mx-auto">
           Planos corporativos, Suporte Técnico até 12h e estabilidade para o seu negócio.
         </p>
-        <p className="text-sm text-[#0D1B3E]/75 text-center mb-16 max-w-2xl mx-auto">
+        <p className="text-sm text-[#E8F1E9]/75 text-center mb-16 max-w-2xl mx-auto">
           Procurando por planos residenciais? Conheça{' '}
-          <a href="#mais-velocidade" className="font-bold text-[#0D1B3E] underline underline-offset-2 hover:text-[#0D1B3E]/70">
+          <a href="#mais-velocidade" className="font-bold text-[#E8F1E9] underline underline-offset-2 hover:text-[#E8F1E9]/70">
             Mais Velocidade
           </a>
           ,{' '}
-          <a href="#mais-aplicativos" className="font-bold text-[#0D1B3E] underline underline-offset-2 hover:text-[#0D1B3E]/70">
+          <a href="#mais-aplicativos" className="font-bold text-[#E8F1E9] underline underline-offset-2 hover:text-[#E8F1E9]/70">
             Mais Aplicativos
           </a>{' '}
           ou{' '}
-          <a href="#mais-globoplay" className="font-bold text-[#0D1B3E] underline underline-offset-2 hover:text-[#0D1B3E]/70">
+          <a href="#mais-globoplay" className="font-bold text-[#E8F1E9] underline underline-offset-2 hover:text-[#E8F1E9]/70">
             Mais GloboPlay
           </a>
           .
         </p>
+
+        <CenaIlustrada
+          nome="escritorio"
+          alt="Homem trabalhando em home office com internet de fibra"
+          className="mx-auto mb-12 max-w-3xl"
+        />
 
         {/* Plans Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
           {planos.map((plano, i) => (
             <div
               key={i}
-              className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl card-hover border-2 border-gray-100 hover:border-[#3DD93D]"
+              className="bg-[#0A1730] rounded-2xl p-8 shadow-[0_18px_50px_-20px_rgba(0,0,0,.85)] hover:shadow-[0_26px_70px_-24px_rgba(0,0,0,.9)] card-hover border-2 border-white/10 hover:border-[#3DD93D]"
             >
               {/* Velocidade */}
-              <h3 className="text-2xl font-black text-[#0D1B3E] mb-6">
+              <h3 className="text-2xl font-black text-[#E8F1E9] mb-6">
                 {plano.velocidade}
               </h3>
 
@@ -73,11 +80,11 @@ export default function Empresarial() {
               <div className="space-y-4 mb-8">
                 <div className="flex items-center gap-3">
                   <Clock size={20} className="text-[#3DD93D]" />
-                  <span className="text-gray-700 font-semibold">Suporte Técnico até 12h</span>
+                  <span className="text-[#CBD8CE] font-semibold">Suporte Técnico até 12h</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <Network size={20} className="text-[#3DD93D]" />
-                  <span className="text-gray-700 font-semibold">IP Dinâmico (PPoE)</span>
+                  <span className="text-[#CBD8CE] font-semibold">IP Dinâmico (PPoE)</span>
                 </div>
               </div>
 

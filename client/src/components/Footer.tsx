@@ -30,7 +30,7 @@ export default function Footer() {
                 { rotulo: 'Telefonia', href: '/#chip-5g' },
                 { rotulo: 'MaisTV', href: '/maistv' },
                 { rotulo: 'Sobre Nós', href: '/sobre-nos' },
-                { rotulo: 'Nossas Unidades', href: '/#lojas' },
+                { rotulo: 'Nossas Lojas', href: '/lojas' },
                 { rotulo: 'Internet nos Bairros', href: '/bairros' },
                 { rotulo: 'Trabalhe Conosco', href: '/vagas' },
                 {

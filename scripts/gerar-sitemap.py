@@ -47,6 +47,14 @@ def rotas() -> list[str]:
     return [r for r in achadas if ":" not in r and r not in NAO_INDEXAR]
 
 
+def lojas() -> list[str]:
+    """Os slugs das lojas, lidos de client/src/data/lojas.ts — a mesma fonte
+    que o app e o gerador de heads usam."""
+    txt = (RAIZ / "client/src/data/lojas.ts").read_text(encoding="utf-8")
+    bloco = txt[txt.index("export const LOJAS"):txt.index("export function acharLoja")]
+    return re.findall(r"slug:\s*'([^']+)'", bloco)
+
+
 def bairros() -> list[str]:
     d = json.loads((RAIZ / "client/src/data/bairros.json").read_text(encoding="utf-8"))
     return sorted(v["slug"] for v in d.values())
@@ -89,6 +97,10 @@ def main() -> None:
         )
         partes.append(url(r, freq, prio, img))
 
+    partes.append("  <!-- Lojas -->")
+    for sl in lojas():
+        partes.append(url(f"/lojas/{sl}", "monthly", "0.7"))
+
     partes.append("  <!-- Bairros atendidos -->")
     for s in bairros():
         partes.append(url(f"/bairro/{s}", "monthly", "0.5"))
@@ -99,7 +111,8 @@ def main() -> None:
     destino.write_text(saida, encoding="utf-8")
 
     total = saida.count("<loc>")
-    print(f"sitemap.xml: {total} URLs ({len(rotas())} páginas + {len(bairros())} bairros)")
+    print(f"sitemap.xml: {total} URLs ({len(rotas())} páginas + {len(lojas())} lojas "
+          f"+ {len(bairros())} bairros)")
     for r, motivo in NAO_INDEXAR.items():
         print(f"  fora do índice: {r} ({motivo})")
 

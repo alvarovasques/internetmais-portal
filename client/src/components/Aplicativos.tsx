@@ -83,7 +83,7 @@ export default function Aplicativos() {
                 <button
                   key={i}
                   onClick={() => setSelectedApp(app.name)}
-                  className={`bg-white border-2 rounded-lg p-1 text-center hover:shadow-lg transition-all duration-300 hover:scale-110 flex flex-col items-center justify-center min-h-[140px] cursor-pointer ${
+                  className={`bg-[#0A1730] border-2 rounded-lg p-1 text-center hover:shadow-[0_18px_50px_-20px_rgba(0,0,0,.85)] transition-all duration-300 hover:scale-110 flex flex-col items-center justify-center min-h-[140px] cursor-pointer ${
                     selectedApp === app.name ? 'border-[#3DD93D] ring-2 ring-[#3DD93D]' : 'border-gray-300'
                   }`}
                   title={app.name}
@@ -111,7 +111,7 @@ export default function Aplicativos() {
                 <button
                   key={i}
                   onClick={() => setSelectedApp(app.name)}
-                  className={`bg-white border-2 rounded-lg p-1 text-center hover:shadow-lg transition-all duration-300 hover:scale-110 flex flex-col items-center justify-center min-h-[140px] cursor-pointer ${
+                  className={`bg-[#0A1730] border-2 rounded-lg p-1 text-center hover:shadow-[0_18px_50px_-20px_rgba(0,0,0,.85)] transition-all duration-300 hover:scale-110 flex flex-col items-center justify-center min-h-[140px] cursor-pointer ${
                     selectedApp === app.name ? 'border-[#FF1744] ring-2 ring-[#FF1744]' : 'border-gray-300'
                   }`}
                   title={app.name}
@@ -138,7 +138,7 @@ export default function Aplicativos() {
               {inclusoApps.map((app, i) => (
                 <div
                   key={i}
-                  className="bg-white border-2 border-gray-300 rounded-lg p-1 text-center hover:shadow-lg transition-all duration-300 hover:scale-110 flex flex-col items-center justify-center min-h-[140px]"
+                  className="bg-[#0A1730] border-2 border-white/15 rounded-lg p-1 text-center hover:shadow-[0_18px_50px_-20px_rgba(0,0,0,.85)] transition-all duration-300 hover:scale-110 flex flex-col items-center justify-center min-h-[140px]"
                   title={app.name}
                 >
                   {app.name === 'MaisTV' ? (
@@ -175,7 +175,7 @@ export default function Aplicativos() {
                 });
               }
             }}
-            className="inline-flex items-center justify-center gap-2 bg-[#3DD93D] hover:bg-[#2BA82A] text-white font-bold py-4 px-8 rounded-full transition-all duration-300 hover:shadow-lg hover:scale-105"
+            className="inline-flex items-center justify-center gap-2 bg-[#3DD93D] hover:bg-[#2BA82A] text-white font-bold py-4 px-8 rounded-full transition-all duration-300 hover:shadow-[0_18px_50px_-20px_rgba(0,0,0,.85)] hover:scale-105"
           >
             <MessageCircle size={20} />
             Assine Agora {selectedApp && `- ${selectedApp}`}

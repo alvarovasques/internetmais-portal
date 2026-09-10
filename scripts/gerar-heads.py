@@ -67,6 +67,11 @@ FIXAS: dict[str, dict[str, str]] = {
         'titulo': 'Mais GloboPlay — Internet Mais',
         'desc': 'Internet de fibra com GloboPlay Premium incluso, em Campo Grande.',
     },
+    '/lojas': {
+        'titulo': 'Lojas da Internet Mais em Campo Grande — endereços e horários',
+        'desc': 'As quatro lojas da Internet Mais em Campo Grande, com endereço, horário '
+                'e telefone. Contratação, segunda via, troca de plano e suporte presencial.',
+    },
     '/admin/entrar': {'titulo': 'Entrar — Internet Mais', 'desc': 'Área interna.'},
     '/404': {'titulo': 'Página não encontrada — Internet Mais',
              'desc': 'A página que você procurou não existe neste site.'},
@@ -93,6 +98,51 @@ def chave(s: str) -> str:
     s = ''.join(c for c in s if not unicodedata.combining(c))
     s = re.sub(r'[^a-z0-9]+', ' ', s).strip()
     return re.sub(r'^(vila|jardim|conjunto|parque|residencial) ', '', s)
+
+
+def lojas() -> list[dict]:
+    """Lê as lojas de client/src/data/lojas.ts, a mesma fonte que o app usa.
+
+    Duplicar endereço aqui foi o que produziu quatro grafias diferentes do
+    mesmo nome no projeto — que é justamente o que atrapalha o casamento com
+    a ficha do Google Meu Negócio."""
+    txt = (RAIZ / 'client/src/data/lojas.ts').read_text(encoding='utf-8')
+    bloco = txt[txt.index('export const LOJAS'):txt.index('export function acharLoja')]
+    saida = []
+    for corpo in re.findall(r'\{([^{}]+)\}', bloco):
+        campo = dict(re.findall(r"(\w+):\s*'([^']*)'", corpo))
+        num = dict(re.findall(r"(\w+):\s*(-?\d+\.?\d*)", corpo))
+        if 'slug' in campo:
+            campo['lat'] = float(num.get('lat', 0))
+            campo['lng'] = float(num.get('lng', 0))
+            saida.append(campo)
+    return saida
+
+
+def ld_loja(l: dict) -> dict:
+    """Store, não LocalBusiness genérico, e com `parentOrganization` amarrando
+    na Organization da home pelo @id. Campos que dependem de dado que só a
+    operação tem (CEP, link do perfil) ficam de fora enquanto não existirem —
+    schema com CEP inventado é pior que schema sem CEP."""
+    endereco = {'@type': 'PostalAddress', 'streetAddress': l['logradouro'],
+                'addressLocality': 'Campo Grande', 'addressRegion': 'MS',
+                'addressCountry': 'BR'}
+    d = {
+        '@context': 'https://schema.org', '@type': 'Store',
+        '@id': f"{SITE}/lojas/{l['slug']}#loja",
+        'name': l['nome'], 'url': f"{SITE}/lojas/{l['slug']}",
+        'parentOrganization': {'@id': f'{SITE}/#organizacao'},
+        'telephone': '+556730272500', 'email': 'atendimento@internetmais.net',
+        'address': endereco,
+        'geo': {'@type': 'GeoCoordinates', 'latitude': l['lat'], 'longitude': l['lng']},
+        'openingHoursSpecification': [
+            {'@type': 'OpeningHoursSpecification',
+             'dayOfWeek': ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+             'opens': '08:00', 'closes': '18:00'},
+            {'@type': 'OpeningHoursSpecification', 'dayOfWeek': 'Saturday',
+             'opens': '08:00', 'closes': '12:00'}],
+    }
+    return d
 
 
 def coordenadas() -> dict[str, dict]:
@@ -236,6 +286,9 @@ def main() -> int:
         blocos = [org]
         if rota == '/bairros':
             blocos.append(ld_trilha([('Início', '/'), ('Bairros', '/bairros')]))
+        elif rota == '/lojas':
+            blocos.append(ld_trilha([('Início', '/'), ('Lojas', '/lojas')]))
+            blocos.extend(ld_loja(l) for l in lojas())
         elif rota == '/sobre-nos':
             blocos.append(ld_trilha([('Início', '/'), ('Sobre nós', '/sobre-nos')]))
         elif rota == '/maistv':
@@ -243,6 +296,17 @@ def main() -> int:
         elif rota == '/vagas':
             blocos.append(ld_trilha([('Início', '/'), ('Trabalhe conosco', '/vagas')]))
         gravar(rota, montar(base, rota, txt['titulo'], txt['desc'], blocos))
+        feitos += 1
+
+    for l in lojas():
+        titulo = f"Internet Mais {l['curto']} — endereço, horário e telefone em Campo Grande"
+        desc = (f"Loja da Internet Mais {l['curto']}, em {l['logradouro']}, Campo Grande. "
+                f"Contratação de internet de fibra, chip 5G e telefonia fixa, segunda via "
+                f"de fatura e suporte técnico presencial. Aberta de segunda a sábado.")
+        blocos = [org, ld_loja(l),
+                  ld_trilha([('Início', '/'), ('Lojas', '/lojas'),
+                             (l['curto'], f"/lojas/{l['slug']}")])]
+        gravar(f"/lojas/{l['slug']}", montar(base, f"/lojas/{l['slug']}", titulo, desc, blocos))
         feitos += 1
 
     sem_geo = []

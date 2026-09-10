@@ -53,13 +53,13 @@ export default function ProvaSocial() {
           {fatos.map((fato) => (
             <div
               key={fato.titulo}
-              className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl card-hover"
+              className="bg-[#0A1730] rounded-2xl p-8 shadow-[0_18px_50px_-20px_rgba(0,0,0,.85)] hover:shadow-[0_26px_70px_-24px_rgba(0,0,0,.9)] card-hover"
             >
               <div className="w-12 h-12 rounded-xl bg-[#3DD93D]/15 text-[#3DD93D] flex items-center justify-center mb-5">
                 {fato.icone}
               </div>
-              <h3 className="font-bold text-[#0D1B3E] text-lg mb-3">{fato.titulo}</h3>
-              <p className="text-gray-700 leading-relaxed">{fato.texto}</p>
+              <h3 className="font-bold text-[#E8F1E9] text-lg mb-3">{fato.titulo}</h3>
+              <p className="text-[#CBD8CE] leading-relaxed">{fato.texto}</p>
             </div>
           ))}
         </div>

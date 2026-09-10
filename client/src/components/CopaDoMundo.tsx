@@ -47,7 +47,7 @@ export default function TelecineCampanha() {
       {/* Ticker topo */}
       <div
         className="w-full py-2.5 overflow-hidden"
-        style={{ background: 'linear-gradient(90deg, #e50914, #b81d24)' }}
+        style={{ background: 'linear-gradient(90deg, #1E8A2E, #0E6B22)' }}
       >
         <div className="whitespace-nowrap animate-[marquee_25s_linear_infinite] inline-block">
           {[...Array(6)].map((_, i) => (
@@ -69,7 +69,7 @@ export default function TelecineCampanha() {
             />
             <span
               className="text-white font-black text-xs px-4 py-2 rounded-full uppercase tracking-widest shadow-lg"
-              style={{ background: 'linear-gradient(90deg, #e50914, #b81d24)' }}
+              style={{ background: 'linear-gradient(90deg, #1E8A2E, #0E6B22)' }}
             >
               Mês da Independência
             </span>
@@ -182,7 +182,7 @@ export default function TelecineCampanha() {
       {/* Ticker rodapé */}
       <div
         className="w-full py-2.5 overflow-hidden"
-        style={{ background: 'linear-gradient(90deg, #e50914, #b81d24)' }}
+        style={{ background: 'linear-gradient(90deg, #1E8A2E, #0E6B22)' }}
       >
         <div className="whitespace-nowrap animate-[marquee_25s_linear_infinite_reverse] inline-block">
           {[...Array(6)].map((_, i) => (

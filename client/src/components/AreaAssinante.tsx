@@ -27,13 +27,13 @@ export default function AreaAssinante() {
   ];
 
   return (
-    <section ref={ref} id="area-assinante" className="py-20 md:py-32 bg-[#F4F4F4] opacity-0">
+    <section ref={ref} id="area-assinante" className="py-20 md:py-32 bg-[#060E1E] opacity-0">
       <div className="container mx-auto px-4">
         {/* Title */}
-        <h2 className="text-3xl md:text-4xl font-black text-[#0D1B3E] mb-4 text-center">
+        <h2 className="text-3xl md:text-4xl font-black text-[#E8F1E9] mb-4 text-center">
           Central do Assinante
         </h2>
-        <p className="text-lg text-gray-700 text-center mb-16 max-w-2xl mx-auto">
+        <p className="text-lg text-[#CBD8CE] text-center mb-16 max-w-2xl mx-auto">
           Gerencie sua conta, faturas, pagamentos e solicite suporte técnico de forma rápida e segura.
         </p>
 
@@ -42,7 +42,7 @@ export default function AreaAssinante() {
           {features.map((feature, i) => (
             <div
               key={i}
-              className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl card-hover border-t-4 border-[#3DD93D]"
+              className="bg-[#0A1730] rounded-2xl p-8 shadow-[0_18px_50px_-20px_rgba(0,0,0,.85)] hover:shadow-[0_26px_70px_-24px_rgba(0,0,0,.9)] card-hover border-t-4 border-[#3DD93D]"
             >
               {/* Icon */}
               <div className="w-16 h-16 bg-[#3DD93D]/10 rounded-xl flex items-center justify-center mb-6">
@@ -50,12 +50,12 @@ export default function AreaAssinante() {
               </div>
 
               {/* Title */}
-              <h3 className="text-xl font-bold text-[#0D1B3E] mb-3">
+              <h3 className="text-xl font-bold text-[#E8F1E9] mb-3">
                 {feature.title}
               </h3>
 
               {/* Description */}
-              <p className="text-gray-600 leading-relaxed">
+              <p className="text-[#93A69B] leading-relaxed">
                 {feature.desc}
               </p>
             </div>
@@ -74,7 +74,7 @@ export default function AreaAssinante() {
             href="https://sistema.freewaynet.com.br/central_assinante_web/login"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 bg-white text-[#3DD93D] font-bold py-3 px-8 rounded-xl hover:shadow-lg hover:scale-105 transition-all duration-300"
+            className="inline-flex items-center justify-center gap-2 bg-[#3DD93D] text-[#04170A] font-bold py-3 px-8 rounded-xl hover:shadow-[0_18px_50px_-20px_rgba(0,0,0,.85)] hover:scale-105 transition-all duration-300"
           >
             <LogIn size={20} />
             Acessar Central do Assinante
@@ -83,11 +83,11 @@ export default function AreaAssinante() {
 
         {/* Support Info */}
         <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="bg-white rounded-2xl p-8 shadow-lg border-l-4 border-[#3DD93D]">
-            <h4 className="text-xl font-bold text-[#0D1B3E] mb-4">
+          <div className="bg-[#0A1730] rounded-2xl p-8 shadow-[0_18px_50px_-20px_rgba(0,0,0,.85)] border-l-4 border-[#3DD93D]">
+            <h4 className="text-xl font-bold text-[#E8F1E9] mb-4">
               Problemas de Conexão?
             </h4>
-            <p className="text-gray-600 mb-6">
+            <p className="text-[#93A69B] mb-6">
               Nossa equipe de suporte está pronta para ajudar você com qualquer problema técnico.
             </p>
             <a
@@ -100,11 +100,11 @@ export default function AreaAssinante() {
             </a>
           </div>
 
-          <div className="bg-white rounded-2xl p-8 shadow-lg border-l-4 border-[#1A5BA6]">
-            <h4 className="text-xl font-bold text-[#0D1B3E] mb-4">
+          <div className="bg-[#0A1730] rounded-2xl p-8 shadow-[0_18px_50px_-20px_rgba(0,0,0,.85)] border-l-4 border-[#1A5BA6]">
+            <h4 className="text-xl font-bold text-[#E8F1E9] mb-4">
               Dúvidas sobre sua Fatura?
             </h4>
-            <p className="text-gray-600 mb-6">
+            <p className="text-[#93A69B] mb-6">
               Consulte suas faturas, histórico de pagamentos e outras informações importantes.
             </p>
             <a

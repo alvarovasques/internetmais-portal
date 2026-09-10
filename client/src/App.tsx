@@ -25,6 +25,8 @@ const Vagas = lazy(() => import("./pages/Vagas"));
 const MaisTV = lazy(() => import("./pages/MaisTV"));
 const AdminLogin = lazy(() => import("./pages/AdminLogin"));
 const MaisGloboPlay = lazy(() => import("./pages/MaisGloboPlay"));
+const LojasPage = lazy(() => import("./pages/LojasPage"));
+const LojaPage = lazy(() => import("./pages/LojaPage"));
 
 /** O que aparece enquanto o pedaço da página está sendo baixado. */
 function Carregando() {
@@ -54,6 +56,7 @@ function Router() {
       '/sobre-nos': 'Sobre Nós - Internet Mais | Missão, Visão e Valores',
       '/vagas': 'Trabalhe Conosco - Internet Mais | Vagas em Campo Grande',
       '/admin/entrar': 'Acesso restrito - Internet Mais',
+      '/lojas': 'Lojas da Internet Mais em Campo Grande — endereços e horários',
     };
     // Só sobrescreve quando a rota está mapeada aqui. O efeito do App roda
     // depois do da página filha, então um fallback genérico apagaria o título
@@ -69,6 +72,8 @@ function Router() {
         <Route path="/" component={Home} />
         <Route path="/sobre-nos" component={SobreNos} />
         <Route path="/bairros" component={BairrosPage} />
+        <Route path="/lojas" component={LojasPage} />
+        <Route path="/lojas/:slug" component={LojaPage} />
         <Route path="/bairro/:slug" component={BairroPage} />
         <Route path="/vagas" component={Vagas} />
         <Route path="/maistv" component={MaisTV} />

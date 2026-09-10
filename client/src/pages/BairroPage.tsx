@@ -1,7 +1,9 @@
-import { useParams } from 'wouter';
+import { useParams, Link } from 'wouter';
 import { useEffect, useState } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import NotFound from '@/pages/NotFound';
+import { LOJAS, HORARIO, zap } from '@/data/lojas';
 import bairrosData from '@/data/bairros.json';
 import { Button } from '@/components/ui/button';
 import { ChevronRight, MapPin, Zap, Phone } from 'lucide-react';
@@ -105,171 +107,166 @@ export default function BairroPage() {
     updateMeta('description', bairroData.description);
     updateMeta('keywords', bairroData.keywords.join(', '));
 
-    // Add JSON-LD schemas
-    const schemaLocalBusiness = {
-      '@context': 'https://schema.org',
-      '@type': 'LocalBusiness',
-      name: `InternetMais - ${bairroName}`,
-      description: bairroData.description,
-      url: `https://internetmais.net/bairro/${bairroData.slug}`,
-      telephone: '+556730272500',
-      address: {
-        '@type': 'PostalAddress',
-        addressLocality: bairroName,
-        addressRegion: 'MS',
-        postalCode: '79000-000',
-        addressCountry: 'BR'
-      },
-      areaServed: {
-        '@type': 'City',
-        name: bairroName,
-        containedInPlace: {
-          '@type': 'City',
-          name: 'Campo Grande',
-          containedInPlace: {
-            '@type': 'State',
-            name: 'Mato Grosso do Sul'
-          }
-        }
-      },
-      priceRange: 'R$ 99,90 - R$ 499,90',
-      image: 'https://internetmais.net/og-image.jpg'
-    };
-
-    const schemaBreadcrumb = {
-      '@context': 'https://schema.org',
-      '@type': 'BreadcrumbList',
-      itemListElement: [
-        {
-          '@type': 'ListItem',
-          position: 1,
-          name: 'Home',
-          item: 'https://internetmais.net'
-        },
-        {
-          '@type': 'ListItem',
-          position: 2,
-          name: 'Bairros',
-          item: 'https://internetmais.net/bairros'
-        },
-        {
-          '@type': 'ListItem',
-          position: 3,
-          name: bairroName,
-          item: `https://internetmais.net/bairro/${bairroData.slug}`
-        }
-      ]
-    };
-
-    const removeScript = (id: string) => {
-      const existing = document.getElementById(id);
-      if (existing) existing.remove();
-    };
-
-    removeScript('schema-local-business');
-    removeScript('schema-breadcrumb');
-
-    const script1 = document.createElement('script');
-    script1.id = 'schema-local-business';
-    script1.type = 'application/ld+json';
-    script1.textContent = JSON.stringify(schemaLocalBusiness);
-    document.head.appendChild(script1);
-
-    const script2 = document.createElement('script');
-    script2.id = 'schema-breadcrumb';
-    script2.type = 'application/ld+json';
-    script2.textContent = JSON.stringify(schemaBreadcrumb);
-    document.head.appendChild(script2);
+    // O JSON-LD desta rota é gerado em build por scripts/gerar-heads.py e vai
+    // no HTML servido, não injetado aqui. Havia dois motivos para tirar daqui:
+    // robô de IA não executa JavaScript, então para eles este bloco não existia;
+    // e o que era emitido declarava `LocalBusiness` com CEP 79000-000, afirmando
+    // um estabelecimento comercial no bairro. Não existe: são quatro lojas.
+    // A rota agora declara `Service` com `areaServed`, que é a verdade.
   }, [bairroName, bairroData]);
 
-  if (!bairroData) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-3xl font-bold mb-4">Bairro não encontrado</h1>
-          <p className="text-gray-600">O bairro que você procura não está em nossa cobertura.</p>
-        </div>
-      </div>
-    );
-  }
+  // Slug fora da lista responde a página de erro, e não uma casca com HTTP 200:
+  // URL inexistente que responde 200 é soft-404 e polui o índice.
+  if (!bairroData) return <NotFound />;
+
+  // Quatro outros bairros, para o visitante que caiu aqui pela busca não ficar
+  // num beco: página de bairro sem ligação interna é ilha, e o Google trata
+  // ilha de 39 páginas parecidas como conteúdo raso.
+  const outros = Object.entries(bairrosData)
+    .filter(([nome]) => nome !== bairroName)
+    .slice(0, 4) as [string, BairroData][];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white" itemScope itemType="https://schema.org/LocalBusiness">
+    <div className="min-h-screen bg-[#04060A] text-[#E8F1E9]">
       <Header />
-      {/* Header */}
-      <div className="bg-gradient-to-r from-[#0D1B3E] to-[#1a2d5a] text-white py-16 px-4">
-        <div className="max-w-4xl mx-auto">
-          <div className="flex items-center gap-2 mb-4 text-sm">
-            <a href="/" className="hover:underline">Home</a>
-            <ChevronRight size={16} />
-            <span>{bairroName}</span>
-          </div>
-            <h1 className="text-4xl md:text-5xl font-bold mb-4" itemProp="name">
-            Internet Fibra {bairroName}
+
+      <div className="border-b border-white/10 bg-[#0A1730] px-4 py-16 md:py-20">
+        <div className="mx-auto max-w-4xl">
+          <nav aria-label="Você está aqui" className="mb-4 flex flex-wrap items-center gap-2 text-sm text-[#93A69B]">
+            <Link href="/" className="text-[#3DD93D] hover:underline">Início</Link>
+            <ChevronRight size={14} className="opacity-50" />
+            <Link href="/bairros" className="text-[#3DD93D] hover:underline">Bairros</Link>
+            <ChevronRight size={14} className="opacity-50" />
+            <span aria-current="page">{bairroName}</span>
+          </nav>
+          <h1 className="mb-4 text-4xl font-black leading-tight md:text-5xl">
+            Internet de fibra óptica {artigo} {bairroName}, Campo Grande
           </h1>
-          <p className="text-lg text-blue-100 mb-6">
-            {bairroData.description}
-          </p>
-          <Button 
+          <p className="mb-7 max-w-2xl text-lg text-[#C8D6CC]">{bairroData.description}</p>
+          <Button
             onClick={handleWhatsAppClick}
-            className="bg-[#3DD93D] hover:bg-[#2ba82a] text-black font-bold"
+            className="bg-[#3DD93D] font-bold text-[#04170A] hover:bg-[#2ba82a]"
           >
-            Contratar Agora
+            Ver se tem fibra na minha rua
           </Button>
         </div>
       </div>
 
-      {/* Main Content */}
-      <div className="max-w-4xl mx-auto px-4 py-16">
-        {/* Benefits */}
-        <div className="grid md:grid-cols-3 gap-8 mb-16">
-          <div className="bg-white p-6 rounded-lg shadow-md border-l-4 border-[#3DD93D]">
-            <Zap className="text-[#3DD93D] mb-4" size={32} />
-            <h3 className="font-bold text-lg mb-2">100% Fibra Óptica</h3>
-            <p className="text-gray-600">Conexão pura e estável com velocidades até 1Gbps</p>
+      <div className="mx-auto max-w-4xl px-4 py-16">
+        <div className="mb-14 grid gap-5 md:grid-cols-3">
+          <div className="rounded-lg border-l-4 border-[#3DD93D] bg-[#060E1E] p-6">
+            <Zap className="mb-4 text-[#3DD93D]" size={30} />
+            <h2 className="mb-2 text-lg font-bold">Fibra até o roteador</h2>
+            <p className="text-sm text-[#93A69B]">
+              Sem trecho de cabo metálico no caminho: a velocidade contratada é a que
+              chega no aparelho.
+            </p>
           </div>
-          <div className="bg-white p-6 rounded-lg shadow-md border-l-4 border-[#3DD93D]">
-            <MapPin className="text-[#3DD93D] mb-4" size={32} />
-            <h3 className="font-bold text-lg mb-2">Cobertura Local</h3>
-            <p className="text-gray-600">Atendimento especializado {artigo} {bairroName}</p>
+          <div className="rounded-lg border-l-4 border-[#3DD93D] bg-[#060E1E] p-6">
+            <MapPin className="mb-4 text-[#3DD93D]" size={30} />
+            <h2 className="mb-2 text-lg font-bold">Rede própria desde 2017</h2>
+            <p className="text-sm text-[#93A69B]">
+              {bairroName} está entre os 39 bairros de Campo Grande atendidos pela nossa
+              rede, cerca de 70% da cidade.
+            </p>
           </div>
-          <div className="bg-white p-6 rounded-lg shadow-md border-l-4 border-[#3DD93D]">
-            <Phone className="text-[#3DD93D] mb-4" size={32} />
-            <h3 className="font-bold text-lg mb-2">Suporte Técnico</h3>
-            <p className="text-gray-600">Atendimento humanizado sempre disponível</p>
+          <div className="rounded-lg border-l-4 border-[#3DD93D] bg-[#060E1E] p-6">
+            <Phone className="mb-4 text-[#3DD93D]" size={30} />
+            <h2 className="mb-2 text-lg font-bold">Atendimento com gente</h2>
+            <p className="text-sm text-[#93A69B]">
+              Suporte por WhatsApp e quatro lojas na cidade, de segunda a sábado.
+            </p>
           </div>
         </div>
 
-        {/* FAQ Section */}
-        <div className="mb-16">
-          <h2 className="text-3xl font-bold mb-8">Perguntas Frequentes</h2>
-          <div className="space-y-4">
+        <section className="mb-14">
+          <h2 className="mb-3 text-2xl font-black md:text-3xl">
+            Quanto custa a internet {artigo} {bairroName}?
+          </h2>
+          <p className="max-w-2xl text-[#CBD8CE]">
+            Os planos residenciais vão de R$ 89,90 a R$ 149,90 por mês, conforme a
+            velocidade e os aplicativos inclusos. O de entrada é o 400 Mega por R$ 89,90
+            com desconto de pontualidade, e o mais procurado é o 600 Mega por R$ 99,90.
+            Todos incluem MaisTV com mais de 160 canais e a instalação do Wi-Fi sem custo.
+            Para empresa, os planos começam em R$ 229,90 com suporte técnico em até 12 horas.
+          </p>
+          <p className="mt-4 max-w-2xl text-[#CBD8CE]">
+            A cobertura é confirmada rua a rua. Mande o endereço completo no WhatsApp e a
+            gente responde na hora se já tem fibra disponível e qual o prazo de instalação.
+          </p>
+        </section>
+
+        <section className="mb-14">
+          <h2 className="mb-6 text-2xl font-black md:text-3xl">Perguntas frequentes</h2>
+          <div className="divide-y divide-white/10 border-y border-white/10">
             {bairroData.faq.map((item, idx) => (
-              <details key={idx} className="bg-white p-6 rounded-lg shadow-md cursor-pointer">
-                <summary className="font-bold text-lg flex items-center justify-between">
+              <details key={idx} className="group py-1">
+                <summary className="flex cursor-pointer items-center justify-between gap-5 py-4 text-base font-bold">
                   {item.q}
-                  <ChevronRight size={20} />
+                  <ChevronRight
+                    size={18}
+                    className="shrink-0 text-[#3DD93D] transition-transform group-open:rotate-90"
+                  />
                 </summary>
-                <p className="mt-4 text-gray-600">{item.a}</p>
+                <p className="pb-4 text-[#93A69B]">{item.a}</p>
               </details>
             ))}
           </div>
-        </div>
+        </section>
 
-        {/* CTA Section */}
-        <div className="bg-gradient-to-r from-[#0D1B3E] to-[#1a2d5a] text-white p-12 rounded-lg text-center">
-          <h2 className="text-3xl font-bold mb-4">
-            Pronto para ter a melhor internet no {bairroName}?
+        <section className="mb-14">
+          <h2 className="mb-6 text-2xl font-black md:text-3xl">Onde resolver presencialmente</h2>
+          <div className="grid gap-4 sm:grid-cols-2">
+            {LOJAS.map((loja) => (
+              <Link
+                key={loja.slug}
+                href={`/lojas/${loja.slug}`}
+                className="block rounded-lg border border-white/10 bg-[#060E1E] p-5 transition hover:border-[#3DD93D]/50"
+              >
+                <h3 className="font-bold">{loja.curto}</h3>
+                <p className="mt-1 text-sm text-[#93A69B]">{loja.logradouro}</p>
+                <p className="mt-2 text-xs text-[#93A69B]">{HORARIO}</p>
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        <section className="mb-14">
+          <h2 className="mb-5 text-2xl font-black md:text-3xl">Outros bairros atendidos</h2>
+          <div className="flex flex-wrap gap-2">
+            {outros.map(([nome, dados]) => (
+              <Link
+                key={dados.slug}
+                href={`/bairro/${dados.slug}`}
+                className="rounded border border-white/12 px-4 py-2 text-sm text-[#CBD8CE] transition hover:border-[#3DD93D] hover:text-[#3DD93D]"
+              >
+                {nome}
+              </Link>
+            ))}
+            <Link
+              href="/bairros"
+              className="rounded border border-[#3DD93D]/40 px-4 py-2 text-sm font-bold text-[#3DD93D] transition hover:bg-[#3DD93D]/10"
+            >
+              Ver os 39 bairros
+            </Link>
+          </div>
+        </section>
+
+        <div className="rounded-lg border border-[#3DD93D]/25 bg-[#3DD93D]/5 p-10 text-center">
+          <h2 className="mb-4 text-2xl font-black md:text-3xl">
+            Pronto para ter fibra {artigo} {bairroName}?
           </h2>
-          <p className="text-lg mb-8 text-blue-100">
-            Planos a partir de R$ 99,90 com fibra óptica 100% pura
+          <p className="mx-auto mb-8 max-w-xl text-[#CBD8CE]">
+            Planos residenciais a partir de R$ 89,90 por mês, com Wi-Fi instalado sem custo
           </p>
-          <Button 
-            onClick={handleWhatsAppClick}
-            className="bg-[#3DD93D] hover:bg-[#2ba82a] text-black font-bold text-lg px-8 py-6"
+          <a
+            href={zap(`a cobertura ${artigo} ${bairroName}`)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-lg bg-[#3DD93D] px-8 py-4 text-lg font-bold text-[#04170A] transition hover:bg-[#2ba82a]"
           >
-            Contratar Agora
-          </Button>
+            Falar no WhatsApp
+          </a>
         </div>
       </div>
       <Footer />

@@ -39,24 +39,18 @@ export default function Header({ sobrePalco = false }: Props) {
 
   const comCorpo = rolou || mobileMenuOpen;
 
-  const corDoItem = sobrePalco
-    ? 'text-white/90 hover:text-[#3DD93D]'
-    : 'text-[#0D1B3E] hover:text-[#3DD93D]';
-  const fundoDoSubmenu = sobrePalco
-    ? 'bg-[#0B1730] ring-1 ring-white/10'
-    : 'bg-white';
-  const corDoSubitem = sobrePalco
-    ? 'text-white/80 hover:bg-[#3DD93D]/15 hover:text-[#3DD93D]'
-    : 'text-[#0D1B3E] hover:bg-[#3DD93D]/10 hover:text-[#3DD93D]';
-  const bordaDoMenuMovel = sobrePalco ? 'border-white/12' : 'border-gray-200';
-  const fundoDoGrupoMovel = sobrePalco ? 'bg-white/5' : 'bg-gray-50';
+  const corDoItem = 'text-white/90 hover:text-[#3DD93D]';
+  const fundoDoSubmenu = 'bg-[#0B1730] ring-1 ring-white/10';
+  const corDoSubitem = 'text-white/80 hover:bg-[#3DD93D]/15 hover:text-[#3DD93D]';
+  const bordaDoMenuMovel = 'border-white/12';
+  const fundoDoGrupoMovel = 'bg-white/5';
   const classeDoHeader = sobrePalco
     ? `sticky top-0 z-50 transition-[background-color,border-color,backdrop-filter] duration-500 ${
         comCorpo
           ? 'border-b border-white/10 bg-[#070E22]/85 backdrop-blur-xl'
           : 'border-b border-transparent bg-transparent'
       }`
-    : 'sticky top-0 z-50 bg-white shadow-md';
+    : 'sticky top-0 z-50 bg-[#070E22] border-b border-white/10';
 
   const navItems = [
     {
@@ -64,7 +58,7 @@ export default function Header({ sobrePalco = false }: Props) {
       href: '/sobre-nos',
       submenu: [
         { label: 'Missão, Visão e Valores', href: '/sobre-nos' },
-        { label: 'Nossas Lojas', href: '/#lojas' },
+        { label: 'Nossas Lojas', href: '/lojas' },
         { label: 'Internet nos Bairros', href: '/bairros' },
       ]
     },
@@ -200,11 +194,8 @@ export default function Header({ sobrePalco = false }: Props) {
             {/* Logo */}
             <a href="/" className="flex shrink-0 items-center gap-3 cursor-pointer">
               <img
-                src={
-                  sobrePalco
-                    ? '/images/marca/logo-internet-mais-claro.png'
-                    : '/images/marca/logo-internet-mais.png'
-                }
+                /* o header é escuro em todo o site, então sempre a versão clara */
+                src="/images/marca/logo-internet-mais-claro.png"
                 alt="InternetMais - Fibra Óptica, 5G e Internet Empresarial em Campo Grande"
                 /*
                   w-auto é obrigatório junto com width/height: dentro de um
@@ -305,7 +296,7 @@ export default function Header({ sobrePalco = false }: Props) {
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label={mobileMenuOpen ? 'Fechar o menu' : 'Abrir o menu'}
               aria-expanded={mobileMenuOpen}
-              className={`md:hidden ${sobrePalco ? 'text-white' : 'text-[#0D1B3E]'}`}
+              className="md:hidden text-white"
             >
               {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>

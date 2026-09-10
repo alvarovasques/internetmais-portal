@@ -110,3 +110,7 @@ temp/
 .webdev/
 
 .project-config.json
+
+# cache do Python dos scripts de build
+__pycache__/
+*.pyc

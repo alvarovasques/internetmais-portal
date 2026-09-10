@@ -1,0 +1,58 @@
+<svg viewBox="0 0 800 500" role="img" aria-labelledby="te" xmlns="http://www.w3.org/2000/svg">
+<title id="te">Homem trabalhando em home office diante do computador</title>
+
+  <defs>
+    <linearGradient id="telae" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#C6FFC6"/><stop offset=".55" stop-color="#3DD93D"/>
+      <stop offset="1" stop-color="#0E6B22"/>
+    </linearGradient>
+    <radialGradient id="aurae" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#3DD93D" stop-opacity=".5"/>
+      <stop offset="1" stop-color="#3DD93D" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="chaoe" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#081226"/><stop offset="1" stop-color="#03050A"/>
+    </linearGradient>
+  </defs>
+
+<rect width="800" height="500" fill="#03060C"/>
+<rect y="414" width="800" height="86" fill="url(#chaoe)"/>
+<ellipse cx="520" cy="222" rx="256" ry="156" fill="url(#aurae)" opacity=".42"/>
+<rect x="66" y="62" width="204" height="196" rx="3" fill="#071022" stroke="#3DD93D" stroke-opacity=".2"/>
+<rect x="74" y="72" width="188" height="9" rx="2" fill="#0C1B33" opacity=".9"/>
+<rect x="74" y="93" width="188" height="9" rx="2" fill="#0C1B33" opacity=".9"/>
+<rect x="74" y="114" width="188" height="9" rx="2" fill="#0C1B33" opacity=".9"/>
+<rect x="74" y="135" width="188" height="9" rx="2" fill="#0C1B33" opacity=".9"/>
+<rect x="74" y="156" width="188" height="9" rx="2" fill="#0C1B33" opacity=".9"/>
+<rect x="74" y="177" width="188" height="9" rx="2" fill="#0C1B33" opacity=".9"/>
+<rect x="74" y="198" width="188" height="9" rx="2" fill="#0C1B33" opacity=".9"/>
+<rect x="74" y="219" width="188" height="9" rx="2" fill="#0C1B33" opacity=".9"/>
+<rect x="74" y="240" width="188" height="9" rx="2" fill="#0C1B33" opacity=".9"/>
+<path d="M660 0 L660 116" stroke="#0F2038" stroke-width="3"/>
+<path d="M628 152 L692 152 L676 116 L644 116Z" fill="#0A1730" stroke="#3DD93D" stroke-opacity=".3"/>
+<ellipse cx="660" cy="212" rx="62" ry="82" fill="url(#aurae)" opacity=".18"/>
+<rect x="146" y="318" width="524" height="13" rx="4" fill="#0B1934" stroke="#3DD93D" stroke-opacity=".24"/>
+<path d="M168 331 v83 M648 331 v83" stroke="#0F2038" stroke-width="8"/>
+<rect x="172" y="340" width="118" height="66" rx="4" fill="#08122A" stroke="#3DD93D" stroke-opacity=".16"/>
+<path d="M182 362 h98 M182 384 h98" stroke="#3DD93D" stroke-opacity=".16" stroke-width="1.4"/>
+<rect x="432" y="140" width="216" height="138" rx="5" fill="#0A1730" stroke="#3DD93D" stroke-opacity=".42"/>
+<rect x="440" y="148" width="200" height="122" rx="2" fill="url(#telae)" opacity=".9"/>
+<rect x="450" y="160" width="84" height="7" rx="3" fill="#04220F" opacity=".5"/>
+<rect x="450" y="174" width="136" height="6" rx="3" fill="#04220F" opacity=".38"/>
+<path d="M452 258 l34 -42 l26 26 l30 -48 l42 64Z" fill="#04220F" opacity=".45"/>
+<path d="M530 278 h20 v22 h-20Z" fill="#0A1730"/>
+<rect x="504" y="300" width="72" height="8" rx="4" fill="#0A1730" stroke="#3DD93D" stroke-opacity=".26"/>
+<rect x="420" y="306" width="128" height="9" rx="3" fill="#0E2340" stroke="#3DD93D" stroke-opacity=".32"/>
+<path d="M584 294 h30 v24 h-30Z" fill="#0E2340" stroke="#3DD93D" stroke-opacity=".32"/>
+<path d="M614 300 q12 0 12 8 t-12 8" fill="none" stroke="#3DD93D" stroke-opacity=".3" stroke-width="3"/>
+<path d="M592 288 q4 -12 -2 -18 M604 288 q4 -12 -2 -18" fill="none" stroke="#3DD93D" stroke-opacity=".3" stroke-width="2.5"/>
+<rect x="266" y="240" width="36" height="164" rx="17" fill="#08122A" stroke="#3DD93D" stroke-opacity=".22"/>
+<path d="M320 404 v52" stroke="#0F2038" stroke-width="8" stroke-linecap="round"/>
+<path d="M320 456 L268 476 M320 456 L372 476 M320 456 L320 480" stroke="#0F2038" stroke-width="6" stroke-linecap="round"/>
+<path d="M300 414 q2 -84 54 -84 q44 0 50 44 l8 40Z" fill="#060E1E" stroke="#3DD93D" stroke-opacity=".34" stroke-width="1.7"/>
+<rect x="352" y="288" width="24" height="50" rx="11" fill="#060E1E" stroke="#3DD93D" stroke-opacity=".34" stroke-width="1.7"/>
+<circle cx="368" cy="270" r="33" fill="#060E1E" stroke="#3DD93D" stroke-opacity=".34" stroke-width="1.7"/>
+<path d="M338 258 q30 -32 62 -8 q-30 -8 -62 8Z" fill="#0A1730"/>
+<path d="M400 278 q11 4 9 15 q-2 9 -13 9" fill="none" stroke="#3DD93D" stroke-opacity=".3" stroke-width="2.5"/>
+<path d="M388 344 C420 356 452 340 474 316 L466 300 C446 322 418 334 392 324 Z" fill="#060E1E" stroke="#3DD93D" stroke-opacity=".34" stroke-width="1.7"/>
+</svg>
