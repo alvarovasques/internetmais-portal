@@ -75,24 +75,24 @@ export default function MaisGloboPlay() {
   const planos: Plano[] = [
     {
       velocidade: '400 Mega',
-      preco: 'R$ 129,90',
-      precoComDesconto: 'R$ 109,90',
+      preco: 'R$ 149,90',
+      precoComDesconto: 'R$ 129,90',
       temDesconto: true,
       popular: false,
       features: ['400 Mbps de velocidade', 'Instalação grátis*', 'MaisTV (+160 canais)', ...diferenciais]
     },
     {
       velocidade: '600 Mega',
-      preco: 'R$ 149,90',
-      precoComDesconto: 'R$ 129,90',
+      preco: 'R$ 169,90',
+      precoComDesconto: 'R$ 149,90',
       temDesconto: true,
       popular: true,
       features: ['600 Mbps de velocidade', 'Instalação grátis*', 'MaisTV (+160 canais)', ...diferenciais]
     },
     {
       velocidade: '800 Mega',
-      preco: 'R$ 169,90',
-      precoComDesconto: 'R$ 149,90',
+      preco: 'R$ 189,90',
+      precoComDesconto: 'R$ 169,90',
       temDesconto: true,
       popular: false,
       features: ['800 Mbps de velocidade', 'Instalação grátis*', 'MaisTV (+160 canais)', ...diferenciais]

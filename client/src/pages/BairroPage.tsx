@@ -184,7 +184,7 @@ export default function BairroPage() {
             Quanto custa a internet {artigo} {bairroName}?
           </h2>
           <p className="max-w-2xl text-[#CBD8CE]">
-            Os planos residenciais vão de R$ 89,90 a R$ 149,90 por mês, conforme a
+            Os planos residenciais vão de R$ 89,90 a R$ 169,90 por mês, conforme a
             velocidade e os aplicativos inclusos. O de entrada é o 400 Mega por R$ 89,90
             com desconto de pontualidade, e o mais procurado é o 600 Mega por R$ 99,90.
             Todos incluem MaisTV com mais de 160 canais e a instalação do Wi-Fi sem custo.
