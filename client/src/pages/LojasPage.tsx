@@ -87,7 +87,7 @@ export default function LojasPage() {
             <div className="rounded-lg border border-white/10 bg-[#060E1E] p-6">
               <h3 className="mb-2 font-bold">Horário</h3>
               <p className="text-sm text-[#93A69B]">
-                Segunda a sexta das 8h às 18h, sábado das 8h às 12h. Não abrimos aos domingos
+                Segunda a sexta das 7h30 às 17h30, sábado das 8h às 12h. Não abrimos aos domingos
                 e feriados.
               </p>
             </div>

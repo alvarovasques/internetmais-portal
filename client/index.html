@@ -244,12 +244,17 @@
 }
     </script>
     
-    <!-- LocalBusiness Principal — Sede Internet Mais -->
+    <!-- Organization — a empresa, com o @id que as páginas de loja referenciam -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Organization",
+      "@id": "https://internetmais.net/#organizacao",
       "name": "Internet Mais",
+      "sameAs": [
+        "https://www.instagram.com/internetmaisms/",
+        "https://www.facebook.com/InternetMaisMS"
+      ],
       "alternateName": "InternetMais",
       "image": "https://internetmais.net/images/marca/logo-internet-mais.png",
       "description": "Provedor de internet fibra óptica 100% pura, Chip 5G e serviços empresariais em Campo Grande, MS. Mais de 20 mil clientes satisfeitos.",
@@ -330,173 +335,6 @@
     }
     </script>
     
-    <!-- LocalBusiness Schema for Main Office -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "name": "Internet Mais - Loja Moreninhas",
-      "image": "https://internetmais.net/images/marca/logo-internet-mais.png",
-      "description": "Provedor de internet fibra óptica, chip 5G e serviços empresariais em Campo Grande",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Rua Palmácia, 836",
-        "addressLocality": "Campo Grande",
-        "addressRegion": "MS",
-        "postalCode": "79000-000",
-        "addressCountry": "BR"
-      },
-      "telephone": "+556730272500",
-      "email": "atendimento@internetmais.net",
-      "url": "https://internetmais.net",
-      "openingHoursSpecification": [
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-          "opens": "08:00",
-          "closes": "18:00"
-        },
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Saturday"],
-          "opens": "08:00",
-          "closes": "12:00"
-        }
-      ],
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": "-20.5551564",
-    "longitude": "-54.5795428"
-  },
-  "hasMap": "https://maps.google.com/?q=Rua+Palm%C3%A1cia,+836,+Campo+Grande,+MS",
-  "branch": [
-    {
-      "@type": "LocalBusiness",
-      "name": "Internet Mais - Loja Moreninhas",
-      "address": { "@type": "PostalAddress", "streetAddress": "Rua Palmácia, 836", "addressLocality": "Campo Grande", "addressRegion": "MS", "postalCode": "79065-140", "addressCountry": "BR" },
-      "geo": { "@type": "GeoCoordinates", "latitude": "-20.5551564", "longitude": "-54.5795428" },
-      "telephone": "+556730272500",
-      "openingHours": ["Mo-Fr 08:00-18:00", "Sa 08:00-12:00"]
-    },
-    {
-      "@type": "LocalBusiness",
-      "name": "Internet Mais - Loja Aero Rancho",
-      "address": { "@type": "PostalAddress", "streetAddress": "Avenida Rachel de Queiroz, 1468", "addressLocality": "Campo Grande", "addressRegion": "MS", "postalCode": "79084-070", "addressCountry": "BR" },
-      "geo": { "@type": "GeoCoordinates", "latitude": "-20.522835", "longitude": "-54.6444226" },
-      "telephone": "+556730272500",
-      "openingHours": ["Mo-Fr 08:00-18:00", "Sa 08:00-12:00"]
-    },
-    {
-      "@type": "LocalBusiness",
-      "name": "Internet Mais - Loja Julio de Castilho",
-      "address": { "@type": "PostalAddress", "streetAddress": "Avenida Julio de Castilho, 1666", "addressLocality": "Campo Grande", "addressRegion": "MS", "postalCode": "79103-531", "addressCountry": "BR" },
-      "geo": { "@type": "GeoCoordinates", "latitude": "-20.4613580", "longitude": "-54.6327050" },
-      "telephone": "+556730272500",
-      "openingHours": ["Mo-Fr 08:00-18:00", "Sa 08:00-12:00"]
-    },
-    {
-      "@type": "LocalBusiness",
-      "name": "Internet Mais - Loja Cafezais",
-      "address": { "@type": "PostalAddress", "streetAddress": "Av. dos Cafezais, 1985", "addressLocality": "Campo Grande", "addressRegion": "MS", "postalCode": "79072-244", "addressCountry": "BR" },
-      "geo": { "@type": "GeoCoordinates", "latitude": "-20.5464699", "longitude": "-54.5976988" },
-      "telephone": "+556730272500",
-      "openingHours": ["Mo-Fr 08:00-18:00", "Sa 08:00-12:00"]
-    }
-  ],
-      "areaServed": {
-        "@type": "City",
-        "name": "Campo Grande",
-        "addressRegion": "MS"
-      }
-    }
-    </script>
-    
-    <!-- LocalBusiness: Loja Aero Rancho -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "name": "Internet Mais - Loja Aero Rancho",
-      "image": "https://internetmais.net/images/marca/logo-internet-mais.png",
-      "description": "Loja Internet Mais no Aero Rancho — fibra óptica, chip 5G e atendimento presencial em Campo Grande, MS.",
-      "url": "https://internetmais.net",
-      "telephone": "+556730272500",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Avenida Rachel de Queiroz, 1468",
-        "addressLocality": "Campo Grande",
-        "addressRegion": "MS",
-        "postalCode": "79084-070",
-        "addressCountry": "BR"
-      },
-      "geo": { "@type": "GeoCoordinates", "latitude": "-20.522835", "longitude": "-54.6444226" },
-      "hasMap": "https://maps.google.com/?q=Avenida+Rachel+de+Queiroz+1468+Campo+Grande+MS",
-      "openingHoursSpecification": [
-        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:00", "closes": "18:00" },
-        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday"], "opens": "08:00", "closes": "12:00" }
-      ],
-      "priceRange": "R$89 - R$499",
-      "parentOrganization": { "@type": "Organization", "name": "Internet Mais", "url": "https://internetmais.net" }
-    }
-    </script>
-
-    <!-- LocalBusiness: Loja Julio de Castilho -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "name": "Internet Mais - Loja Julio de Castilho",
-      "image": "https://internetmais.net/images/marca/logo-internet-mais.png",
-      "description": "Loja Internet Mais no Julio de Castilho — fibra óptica, chip 5G e atendimento presencial em Campo Grande, MS.",
-      "url": "https://internetmais.net",
-      "telephone": "+556730272500",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Avenida Julio de Castilho, 1666",
-        "addressLocality": "Campo Grande",
-        "addressRegion": "MS",
-        "postalCode": "79103-531",
-        "addressCountry": "BR"
-      },
-      "geo": { "@type": "GeoCoordinates", "latitude": "-20.4613580", "longitude": "-54.6327050" },
-      "hasMap": "https://maps.google.com/?q=Avenida+Julio+de+Castilho+1666+Campo+Grande+MS",
-      "openingHoursSpecification": [
-        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:00", "closes": "18:00" },
-        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday"], "opens": "08:00", "closes": "12:00" }
-      ],
-      "priceRange": "R$89 - R$499",
-      "parentOrganization": { "@type": "Organization", "name": "Internet Mais", "url": "https://internetmais.net" }
-    }
-    </script>
-
-    <!-- LocalBusiness: Loja Cafezais -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "name": "Internet Mais - Loja Cafezais",
-      "image": "https://internetmais.net/images/marca/logo-internet-mais.png",
-      "description": "Loja Internet Mais nos Cafezais — fibra óptica, chip 5G e atendimento presencial em Campo Grande, MS.",
-      "url": "https://internetmais.net",
-      "telephone": "+556730272500",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Av. dos Cafezais, 1985",
-        "addressLocality": "Campo Grande",
-        "addressRegion": "MS",
-        "postalCode": "79072-244",
-        "addressCountry": "BR"
-      },
-      "geo": { "@type": "GeoCoordinates", "latitude": "-20.5464699", "longitude": "-54.5976988" },
-      "hasMap": "https://maps.google.com/?q=Av+dos+Cafezais+1985+Campo+Grande+MS",
-      "openingHoursSpecification": [
-        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:00", "closes": "18:00" },
-        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday"], "opens": "08:00", "closes": "12:00" }
-      ],
-      "priceRange": "R$89 - R$499",
-      "parentOrganization": { "@type": "Organization", "name": "Internet Mais", "url": "https://internetmais.net" }
-    }
-    </script>
 
     <!-- BreadcrumbList Schema -->
     <script type="application/ld+json">

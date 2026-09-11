@@ -100,6 +100,22 @@ def chave(s: str) -> str:
     return re.sub(r'^(vila|jardim|conjunto|parque|residencial) ', '', s)
 
 
+def horario(nome: str) -> str:
+    """Lê uma das constantes de horário de lojas.ts, a mesma que a tela mostra.
+
+    O horário do JSON-LD estava escrito à mão aqui e saiu meia hora diferente
+    do que a ficha do Google anuncia. Ler da mesma fonte que a tela impede a
+    divergência de voltar."""
+    txt = (RAIZ / 'client/src/data/lojas.ts').read_text(encoding='utf-8')
+    return re.search(rf"export const {nome} = '([^']+)'", txt).group(1)
+
+
+ABRE_SEMANA = horario('ABRE_SEMANA')
+FECHA_SEMANA = horario('FECHA_SEMANA')
+ABRE_SABADO = horario('ABRE_SABADO')
+FECHA_SABADO = horario('FECHA_SABADO')
+
+
 def lojas() -> list[dict]:
     """Lê as lojas de client/src/data/lojas.ts, a mesma fonte que o app usa.
 
@@ -121,12 +137,23 @@ def lojas() -> list[dict]:
 
 def ld_loja(l: dict) -> dict:
     """Store, não LocalBusiness genérico, e com `parentOrganization` amarrando
-    na Organization da home pelo @id. Campos que dependem de dado que só a
-    operação tem (CEP, link do perfil) ficam de fora enquanto não existirem —
-    schema com CEP inventado é pior que schema sem CEP."""
+    na Organization da home pelo @id.
+
+    O CEP e o link da ficha saíram do próprio Google Meu Negócio de cada loja,
+    então `postalCode`, `hasMap` e `sameAs` agora vão declarados. `sameAs`
+    apontando para a ficha é o que diz ao Google que esta página e aquela ficha
+    são o mesmo estabelecimento, em vez de dois negócios parecidos.
+
+    Quem não tiver CEP ou link continua saindo sem o campo: schema com CEP
+    inventado é pior que schema sem CEP."""
     endereco = {'@type': 'PostalAddress', 'streetAddress': l['logradouro'],
                 'addressLocality': 'Campo Grande', 'addressRegion': 'MS',
                 'addressCountry': 'BR'}
+    if l.get('bairro'):
+        endereco['addressLocality'] = 'Campo Grande'
+        endereco['streetAddress'] = f"{l['logradouro']} - {l['bairro']}"
+    if l.get('cep'):
+        endereco['postalCode'] = l['cep']
     d = {
         '@context': 'https://schema.org', '@type': 'Store',
         '@id': f"{SITE}/lojas/{l['slug']}#loja",
@@ -138,10 +165,13 @@ def ld_loja(l: dict) -> dict:
         'openingHoursSpecification': [
             {'@type': 'OpeningHoursSpecification',
              'dayOfWeek': ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-             'opens': '08:00', 'closes': '18:00'},
+             'opens': ABRE_SEMANA, 'closes': FECHA_SEMANA},
             {'@type': 'OpeningHoursSpecification', 'dayOfWeek': 'Saturday',
-             'opens': '08:00', 'closes': '12:00'}],
+             'opens': ABRE_SABADO, 'closes': FECHA_SABADO}],
     }
+    if l.get('perfilGoogle'):
+        d['hasMap'] = l['perfilGoogle']
+        d['sameAs'] = [l['perfilGoogle']]
     return d
 
 
@@ -160,6 +190,11 @@ def ld_organizacao() -> dict:
                        'Mato Grosso do Sul.',
         'areaServed': {'@type': 'City', 'name': 'Campo Grande',
                        'containedInPlace': {'@type': 'State', 'name': 'Mato Grosso do Sul'}},
+        # Só perfis conferidos. O JSON-LD antigo listava /internetmais nas três
+        # redes, e nenhum dos três é a conta da empresa. Do YouTube ainda não
+        # achamos o canal oficial, então ele não entra.
+        'sameAs': ['https://www.instagram.com/internetmaisms/',
+                   'https://www.facebook.com/InternetMaisMS'],
         'contactPoint': [{'@type': 'ContactPoint', 'telephone': '+556730272500',
                           'contactType': 'customer service', 'areaServed': 'BR',
                           'availableLanguage': 'pt-BR',
@@ -253,9 +288,13 @@ def montar(base: str, rota: str, titulo: str, desc: str, blocos: list[dict]) -> 
 
     # Fora da home, o JSON-LD da home não se aplica: ela declarava FAQ, planos e
     # as quatro lojas em toda rota. Cada página passa a levar só o que é dela.
-    if rota != '/':
-        h = re.sub(r'\s*<script type="application/ld\+json">.*?</script>', '', h,
-                   flags=re.S | re.I)
+    # Na home o JSON-LD escrito à mão continua (FAQ, planos, serviços) e os
+    # blocos gerados são acrescentados: as lojas saem daqui para o endereço, o
+    # CEP e o link da ficha virem de lojas.ts, e não de cópia no HTML.
+    if blocos:
+        if rota != '/':
+            h = re.sub(r'\s*<script type="application/ld\+json">.*?</script>', '', h,
+                       flags=re.S | re.I)
         marcado = '\n'.join(
             '    <script type="application/ld+json">' +
             json.dumps(b, ensure_ascii=False, separators=(',', ':')) + '</script>'
@@ -284,7 +323,11 @@ def main() -> int:
 
     for rota, txt in FIXAS.items():
         blocos = [org]
-        if rota == '/bairros':
+        if rota == '/':
+            # A home já declara a Organization no próprio index.html; aqui só
+            # entram as quatro lojas, da fonte única.
+            blocos = [ld_loja(l) for l in lojas()]
+        elif rota == '/bairros':
             blocos.append(ld_trilha([('Início', '/'), ('Bairros', '/bairros')]))
         elif rota == '/lojas':
             blocos.append(ld_trilha([('Início', '/'), ('Lojas', '/lojas')]))

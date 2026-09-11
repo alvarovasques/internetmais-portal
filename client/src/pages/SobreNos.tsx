@@ -2,6 +2,7 @@ import { Target, Eye, Heart, MapPin, Clock } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+import { LOJAS, HORARIO } from '@/data/lojas';
 
 export default function SobreNos() {
   const ref = useScrollAnimation();
@@ -24,28 +25,6 @@ export default function SobreNos() {
     },
   ];
 
-  const lojas = [
-    {
-      nome: 'Loja Moreninhas',
-      endereco: 'Rua Palmácia, 836',
-      horario: 'Seg-Sex: 8h-18h | Sab: 8h-12h'
-    },
-    {
-      nome: 'Loja Aero Rancho',
-      endereco: 'Avenida Rachel de Queiroz, 1468',
-      horario: 'Seg-Sex: 8h-18h | Sab: 8h-12h'
-    },
-    {
-      nome: 'Loja Julio de Castilho',
-      endereco: 'Avenida Julio de Castilho, 1666',
-      horario: 'Seg-Sex: 8h-18h | Sab: 8h-12h'
-    },
-    {
-      nome: 'Loja Cafezais',
-      endereco: 'Av. dos Cafezais, 1985 - Loja 06',
-      horario: 'Seg-Sex: 8h-18h | Sab: 8h-12h'
-    },
-  ];
 
   return (
     <div className="min-h-screen flex flex-col bg-white">
@@ -122,7 +101,7 @@ export default function SobreNos() {
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-              {lojas.map((loja, i) => (
+              {LOJAS.map((loja, i) => (
                 <div
                   key={i}
                   className="bg-white rounded-2xl p-5 shadow-lg hover:shadow-xl border-l-4 border-[#3DD93D] card-hover animate-fade-in-up"
@@ -130,15 +109,15 @@ export default function SobreNos() {
                 >
                   <MapPin size={28} className="text-[#3DD93D] mb-3" />
                   <h3 className="text-base font-bold text-[#0D1B3E] mb-2">
-                    {loja.nome}
+                    {loja.curto}
                   </h3>
                   <p className="text-xs md:text-sm text-gray-600 mb-3 font-semibold">
-                    {loja.endereco}
+                    {loja.logradouro}
                   </p>
                   <div className="flex items-start gap-2">
                     <Clock size={14} className="text-[#3DD93D] flex-shrink-0 mt-0.5" />
                     <p className="text-xs text-gray-600">
-                      {loja.horario}
+                      {HORARIO}
                     </p>
                   </div>
                 </div>

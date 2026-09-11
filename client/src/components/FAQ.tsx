@@ -64,7 +64,7 @@ const faqItems: FAQItem[] = [
     id: 'suporte-1',
     category: 'suporte',
     question: 'Como faço para entrar em contato com o suporte técnico?',
-    answer: 'Você pode nos contatar via WhatsApp, acessar a Central do Assinante, ou visitar uma de nossas lojas físicas. Nosso atendimento está disponível de segunda a sexta, das 8h às 18h.',
+    answer: 'Você pode nos contatar via WhatsApp, acessar a Central do Assinante, ou visitar uma de nossas lojas físicas. Nosso atendimento está disponível de segunda a sexta, das 7h30 às 17h30, e aos sábados das 8h às 12h.',
   },
   {
     id: 'suporte-2',
