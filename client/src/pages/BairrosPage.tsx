@@ -194,7 +194,7 @@ export default function BairrosPage() {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col bg-white">
+    <div className="min-h-screen flex flex-col bg-[#04060A] text-[#E8F1E9]">
       <Header />
       <main className="flex-1">
         {/* Header Section */}
@@ -214,13 +214,13 @@ export default function BairrosPage() {
             
             {/* Search Bar */}
             <div className="relative max-w-md">
-              <Search className="absolute left-3 top-3 text-gray-400" size={20} />
+              <Search className="absolute left-3 top-3 text-[#93A69B]" size={20} />
               <Input
                 type="text"
                 placeholder="Buscar bairro..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-10 py-2 bg-white text-gray-900"
+                className="pl-10 py-2 bg-[#060E1E] text-[#E8F1E9] border-white/10 placeholder:text-[#93A69B]"
               />
             </div>
           </div>
@@ -232,18 +232,18 @@ export default function BairrosPage() {
           <div className="mb-16">
             <h2 className="text-3xl font-bold mb-4">Mapa Interativo</h2>
             <div className="flex gap-4 mb-4">
-              <p className="text-gray-600 font-semibold">🏪 Nossas Lojas em Campo Grande</p>
+              <p className="text-[#93A69B] font-semibold">🏪 Nossas Lojas em Campo Grande</p>
             </div>
-            <div className="relative rounded-lg overflow-hidden shadow-lg h-[500px]">
+            <div className="relative rounded-lg overflow-hidden shadow-[0_18px_50px_-20px_rgba(0,0,0,.85)] h-[500px]">
               <div ref={mapContainer} className="w-full h-full" />
               {mapaFalhou && (
                 // Quem só queria o endereço da loja não pode ficar preso a um
                 // mapa que não carregou: os quatro endereços aparecem aqui.
-                <div className="absolute inset-0 bg-white flex flex-col items-center justify-center gap-4 p-8 text-center">
-                  <p className="font-bold text-[#0D1B3E] text-lg">
+                <div className="absolute inset-0 bg-[#0A1730] flex flex-col items-center justify-center gap-4 p-8 text-center">
+                  <p className="font-bold text-[#E8F1E9] text-lg">
                     Não foi possível carregar o mapa agora.
                   </p>
-                  <ul className="text-gray-700 text-sm space-y-1">
+                  <ul className="text-[#CBD8CE] text-sm space-y-1">
                     {locationsData.lojas.map((loja) => (
                       <li key={loja.name}>
                         <strong>{loja.name}</strong>
@@ -264,13 +264,13 @@ export default function BairrosPage() {
 
           {/* Stats */}
           <div className="grid md:grid-cols-2 gap-8 mb-16">
-            <div className="bg-white p-6 rounded-lg shadow-md border-l-4 border-[#3DD93D]">
+            <div className="bg-[#0A1730] p-6 rounded-lg shadow-md border-l-4 border-[#3DD93D]">
               <div className="text-4xl font-bold text-[#3DD93D] mb-2">+39</div>
-              <p className="text-gray-600">Bairros Atendidos</p>
+              <p className="text-[#93A69B]">Bairros Atendidos</p>
             </div>
-            <div className="bg-white p-6 rounded-lg shadow-md border-l-4 border-[#3DD93D]">
+            <div className="bg-[#0A1730] p-6 rounded-lg shadow-md border-l-4 border-[#3DD93D]">
               <div className="text-4xl font-bold text-[#3DD93D] mb-2">100%</div>
-              <p className="text-gray-600">Fibra Óptica Pura</p>
+              <p className="text-[#93A69B]">Fibra Óptica Pura</p>
             </div>
           </div>
 
@@ -282,32 +282,32 @@ export default function BairrosPage() {
             
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {filteredBairros.map(([bairroName, bairroInfo]) => (
-                <Link key={bairroInfo.slug} href={`/bairro/${bairroInfo.slug}`} className="group bg-white p-6 rounded-lg shadow-md hover:shadow-lg hover:border-[#3DD93D] border-2 border-transparent transition-all duration-300 block">
+                <Link key={bairroInfo.slug} href={`/bairro/${bairroInfo.slug}`} className="group bg-[#0A1730] p-6 rounded-lg shadow-md hover:shadow-[0_18px_50px_-20px_rgba(0,0,0,.85)] hover:border-[#3DD93D] border-2 border-transparent transition-all duration-300 block">
                     <div className="flex items-start justify-between mb-4">
                       <div>
-                        <h3 className="text-xl font-bold text-gray-900 group-hover:text-[#3DD93D] transition-colors">
+                        <h3 className="text-xl font-bold text-[#E8F1E9] group-hover:text-[#3DD93D] transition-colors">
                           {bairroName}
                         </h3>
-                        <div className="flex items-center gap-1 text-sm text-gray-500 mt-1">
+                        <div className="flex items-center gap-1 text-sm text-[#93A69B] mt-1">
                           <MapPin size={14} />
                           Campo Grande, MS
                         </div>
                       </div>
                     </div>
                     
-                    <p className="text-gray-600 text-sm mb-4 line-clamp-2">
+                    <p className="text-[#93A69B] text-sm mb-4 line-clamp-2">
                       {bairroInfo.description}
                     </p>
                     
                     {/* Keywords */}
                     <div className="flex flex-wrap gap-2 mb-4">
                       {bairroInfo.keywords.slice(0, 2).map((keyword, idx) => (
-                        <span key={idx} className="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded">
+                        <span key={idx} className="text-xs bg-[#3DD93D]/10 text-[#8FE39A] ring-1 ring-[#3DD93D]/25 px-2 py-1 rounded">
                           {keyword}
                         </span>
                       ))}
                       {bairroInfo.keywords.length > 2 && (
-                        <span className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">
+                        <span className="text-xs bg-[#060E1E] text-[#93A69B] px-2 py-1 rounded">
                           +{bairroInfo.keywords.length - 2}
                         </span>
                       )}
@@ -332,7 +332,7 @@ export default function BairrosPage() {
             </p>
             <button
               onClick={handleWhatsAppClick}
-              className="inline-flex items-center justify-center gap-2 bg-[#25D366] text-white font-bold py-3 px-8 rounded-full hover:bg-[#20ba5a] hover:shadow-lg hover:scale-105 transition-all duration-300"
+              className="inline-flex items-center justify-center gap-2 bg-[#25D366] text-white font-bold py-3 px-8 rounded-full hover:bg-[#20ba5a] hover:shadow-[0_18px_50px_-20px_rgba(0,0,0,.85)] hover:scale-105 transition-all duration-300"
             >
               <MessageCircle size={20} />
               Falar com um Especialista

@@ -101,7 +101,7 @@ export default function Vagas() {
   const selectedJobData = jobs?.find(j => j.id === selectedJob);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-[#04060A] text-[#E8F1E9]">
       <Header />
 
       {/* ── HERO ── */}
@@ -197,16 +197,16 @@ export default function Vagas() {
       </section>
 
       {/* ── VAGAS ── */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-[#060E1E]">
         <div className="container mx-auto px-4">
           <div className="text-center mb-14">
             <span className="inline-block bg-[#3DD93D]/15 text-[#3DD93D] text-sm font-bold px-4 py-1.5 rounded-full mb-4 border border-[#3DD93D]/30">
               Oportunidades abertas
             </span>
-            <h2 className="text-4xl font-black text-[#0D1B3E] mb-4">
+            <h2 className="text-4xl font-black text-[#E8F1E9] mb-4">
               Vagas Disponíveis
             </h2>
-            <p className="text-gray-500 max-w-xl mx-auto">
+            <p className="text-[#93A69B] max-w-xl mx-auto">
               Confira nossas oportunidades e candidate-se para a vaga que mais combina com você.
             </p>
           </div>
@@ -214,14 +214,14 @@ export default function Vagas() {
           {isLoading ? (
             <div className="flex flex-col items-center justify-center py-20 gap-4">
               <Loader2 className="animate-spin text-[#3DD93D]" size={48} />
-              <p className="text-gray-500">Carregando vagas...</p>
+              <p className="text-[#93A69B]">Carregando vagas...</p>
             </div>
           ) : jobs && jobs.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {jobs.map((job) => (
                 <div
                   key={job.id}
-                  className="group bg-white rounded-2xl border border-gray-100 hover:border-[#3DD93D]/40 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col"
+                  className="group bg-[#0A1730] rounded-2xl border border-white/10 hover:border-[#3DD93D]/40 shadow-sm hover:shadow-[0_26px_70px_-24px_rgba(0,0,0,.9)] transition-all duration-300 overflow-hidden flex flex-col"
                 >
                   {/* Topo colorido */}
                   <div className="h-2 bg-gradient-to-r from-[#3DD93D] to-[#2BA82A]" />
@@ -233,16 +233,16 @@ export default function Vagas() {
                         <Briefcase size={11} />
                         {rotuloTipo[job.tipo] ?? job.tipo}
                       </span>
-                      <Star size={16} className="text-gray-200 group-hover:text-[#3DD93D] transition-colors" />
+                      <Star size={16} className="text-[#CBD8CE] group-hover:text-[#3DD93D] transition-colors" />
                     </div>
 
                     {/* Título */}
-                    <h3 className="text-xl font-black text-[#0D1B3E] mb-2 group-hover:text-[#2BA82A] transition-colors">
+                    <h3 className="text-xl font-black text-[#E8F1E9] mb-2 group-hover:text-[#2BA82A] transition-colors">
                       {job.titulo}
                     </h3>
 
                     {/* Localização */}
-                    <div className="flex items-center gap-1.5 text-gray-400 text-sm mb-3">
+                    <div className="flex items-center gap-1.5 text-[#93A69B] text-sm mb-3">
                       <MapPin size={14} />
                       <span>{job.local ?? 'Campo Grande, MS'}</span>
                     </div>
@@ -250,20 +250,20 @@ export default function Vagas() {
                     {/* Salário */}
                     {job.salario && (
                       <div className="flex items-center gap-1.5 text-[#3DD93D] text-sm font-semibold mb-3">
-                        <span className="text-gray-400">💰</span>
+                        <span className="text-[#93A69B]">💰</span>
                         <span>{job.salario}</span>
                       </div>
                     )}
 
                     {/* Descrição */}
-                    <p className="text-gray-500 text-sm leading-relaxed line-clamp-3 flex-1 mb-6">
+                    <p className="text-[#93A69B] text-sm leading-relaxed line-clamp-3 flex-1 mb-6">
                       {job.descricao}
                     </p>
 
                     {/* CTA */}
                     <Button
                       onClick={() => setSelectedJob(job.id)}
-                      className="w-full bg-[#3DD93D] hover:bg-[#2BA82A] text-white font-bold rounded-xl py-5 flex items-center justify-center gap-2 transition-all group-hover:shadow-lg group-hover:shadow-[#3DD93D]/25"
+                      className="w-full bg-[#3DD93D] hover:bg-[#2BA82A] text-white font-bold rounded-xl py-5 flex items-center justify-center gap-2 transition-all group-hover:shadow-[0_18px_50px_-20px_rgba(0,0,0,.85)] group-hover:shadow-[#3DD93D]/25"
                     >
                       Candidatar-se
                       <ChevronRight size={16} />
@@ -277,8 +277,8 @@ export default function Vagas() {
               <div className="w-20 h-20 bg-[#3DD93D]/10 rounded-full flex items-center justify-center">
                 <Briefcase size={36} className="text-[#3DD93D]" />
               </div>
-              <h3 className="text-xl font-bold text-[#0D1B3E]">Nenhuma vaga no momento</h3>
-              <p className="text-gray-500 text-center max-w-sm">
+              <h3 className="text-xl font-bold text-[#E8F1E9]">Nenhuma vaga no momento</h3>
+              <p className="text-[#93A69B] text-center max-w-sm">
                 Não encontramos vagas abertas agora, mas fique de olho! Novas oportunidades
                 surgem com frequência.
               </p>
@@ -300,7 +300,7 @@ export default function Vagas() {
           </p>
           <a
             href="mailto:rh@internetmais.net"
-            className="inline-flex items-center gap-2 bg-[#3DD93D] hover:bg-[#2BA82A] text-white font-bold px-8 py-4 rounded-xl transition-all hover:shadow-lg hover:shadow-[#3DD93D]/30"
+            className="inline-flex items-center gap-2 bg-[#3DD93D] hover:bg-[#2BA82A] text-white font-bold px-8 py-4 rounded-xl transition-all hover:shadow-[0_18px_50px_-20px_rgba(0,0,0,.85)] hover:shadow-[#3DD93D]/30"
           >
             Enviar Currículo Espontâneo
             <ChevronRight size={18} />
@@ -319,10 +319,10 @@ export default function Vagas() {
                 <Briefcase size={20} className="text-[#3DD93D]" />
               </div>
               <div>
-                <DialogTitle className="text-xl font-black text-[#0D1B3E]">
+                <DialogTitle className="text-xl font-black text-[#E8F1E9]">
                   {selectedJobData?.titulo}
                 </DialogTitle>
-                <DialogDescription className="text-gray-500">
+                <DialogDescription className="text-[#93A69B]">
                   Preencha o formulário abaixo para enviar sua candidatura
                 </DialogDescription>
               </div>
@@ -333,7 +333,7 @@ export default function Vagas() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {/* Nome */}
               <div className="md:col-span-2">
-                <Label htmlFor="fullName" className="text-[#0D1B3E] font-semibold">
+                <Label htmlFor="fullName" className="text-[#E8F1E9] font-semibold">
                   Nome Completo *
                 </Label>
                 <Input
@@ -348,7 +348,7 @@ export default function Vagas() {
 
               {/* Email */}
               <div>
-                <Label htmlFor="email" className="text-[#0D1B3E] font-semibold">
+                <Label htmlFor="email" className="text-[#E8F1E9] font-semibold">
                   Email *
                 </Label>
                 <Input
@@ -364,7 +364,7 @@ export default function Vagas() {
 
               {/* Telefone */}
               <div>
-                <Label htmlFor="phone" className="text-[#0D1B3E] font-semibold">
+                <Label htmlFor="phone" className="text-[#E8F1E9] font-semibold">
                   Telefone *
                 </Label>
                 <Input
@@ -381,7 +381,7 @@ export default function Vagas() {
 
             {/* Currículo */}
             <div>
-              <Label htmlFor="curriculoUrl" className="text-[#0D1B3E] font-semibold">
+              <Label htmlFor="curriculoUrl" className="text-[#E8F1E9] font-semibold">
                 Link do currículo
               </Label>
               <Input
@@ -393,7 +393,7 @@ export default function Vagas() {
                 onChange={(e) => setFormData({ ...formData, curriculoUrl: e.target.value })}
                 className="mt-1"
               />
-              <p className="mt-1.5 text-xs text-gray-500">
+              <p className="mt-1.5 text-xs text-[#93A69B]">
                 Cole o link de um PDF no Drive, Dropbox ou do seu perfil no LinkedIn. Confira se o
                 link está aberto para quem tem o endereço.
               </p>
@@ -401,9 +401,9 @@ export default function Vagas() {
 
             {/* Carta de Apresentação */}
             <div>
-              <Label htmlFor="coverLetter" className="text-[#0D1B3E] font-semibold">
+              <Label htmlFor="coverLetter" className="text-[#E8F1E9] font-semibold">
                 Carta de Apresentação{' '}
-                <span className="text-gray-400 font-normal">(Opcional)</span>
+                <span className="text-[#93A69B] font-normal">(Opcional)</span>
               </Label>
               <Textarea
                 id="coverLetter"
@@ -421,7 +421,7 @@ export default function Vagas() {
                 type="button"
                 variant="outline"
                 onClick={() => setSelectedJob(null)}
-                className="flex-1 border-gray-200 hover:bg-gray-50"
+                className="flex-1 border-white/10 hover:bg-[#060E1E]"
               >
                 Cancelar
               </Button>

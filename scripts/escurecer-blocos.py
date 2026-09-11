@@ -23,7 +23,7 @@ import re
 import sys
 from pathlib import Path
 
-RAIZ = Path(__file__).resolve().parent.parent / 'client' / 'src' / 'components'
+RAIZ = Path(__file__).resolve().parent.parent / 'client' / 'src'
 
 # Paleta, igual à do protótipo aprovado.
 BREU = '#04060A'
@@ -58,9 +58,17 @@ TROCAS: list[tuple[str, str]] = [
 ]
 
 ARQUIVOS = [
-    'MaisVelocidade', 'MaisAplicativos', 'MaisGloboPlay', 'Empresarial',
-    'Diferenciais', 'Planos5G', 'TelefoniaFixa', 'Aplicativos',
-    'AreaAssinante', 'Lojas', 'FAQ', 'ProvaSocial',
+    'components/MaisVelocidade', 'components/MaisAplicativos',
+    'components/MaisGloboPlay', 'components/Empresarial',
+    'components/Diferenciais', 'components/Planos5G',
+    'components/TelefoniaFixa', 'components/Aplicativos',
+    'components/AreaAssinante', 'components/Lojas', 'components/FAQ',
+    'components/ProvaSocial',
+    # As páginas ficaram de fora na primeira passada e continuaram brancas
+    # embaixo de um cabeçalho escuro. São as quatro que ainda tinham painel
+    # claro; Home, /lojas, /lojas/<slug> e /bairro/<slug> já estão escuras, e
+    # MaisTV e Mais GloboPlay têm paleta própria de propósito.
+    'pages/SobreNos', 'pages/BairrosPage', 'pages/Vagas', 'pages/NotFound',
 ]
 
 
@@ -69,7 +77,11 @@ def trocar(linha: str) -> str:
         return linha
     for de, para in TROCAS:
         # \b não funciona com [ e #, então delimita pelo que cerca uma classe.
-        linha = re.sub(r'(?<![\w-])' + re.escape(de) + r'(?![\w-])', para, linha)
+        # A barra entra no delimitador porque `bg-white/10` não é `bg-white`:
+        # é o véu translúcido que a própria virada escura usa por cima do
+        # painel. Sem isso, rodar de novo comia o resultado da vez anterior e
+        # o script deixava de ser idempotente, que é o que a docstring promete.
+        linha = re.sub(r'(?<![\w-])' + re.escape(de) + r'(?![\w\-/])', para, linha)
     return linha
 
 
