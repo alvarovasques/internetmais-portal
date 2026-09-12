@@ -7,7 +7,6 @@ import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
 import { useHashNavigation } from "./hooks/useHashNavigation";
-import AvisoRede from "./components/AvisoRede";
 
 /**
  * Só a home entra no pacote inicial. As outras páginas viram pedaços separados,
@@ -102,9 +101,6 @@ function App() {
       >
         <TooltipProvider>
           <Toaster />
-          {/* Fora do <Router>, para o aviso de rede valer em qualquer rota e
-              não remontar a cada navegação. */}
-          <AvisoRede />
           <Router />
         </TooltipProvider>
       </ThemeProvider>
