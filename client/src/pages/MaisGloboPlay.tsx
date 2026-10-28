@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useId } from 'react';
 import { MessageCircle, Check, Star, Film, Clock, Shield, ChevronDown, Play, Tv, Zap } from 'lucide-react';
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
@@ -124,22 +124,38 @@ function CountdownTimer() {
   );
 }
 
+/**
+ * Pergunta do FAQ.
+ *
+ * Era um `<div onClick>` sem role, sem tabIndex, sem tecla e sem
+ * `aria-expanded`: quem usa teclado ou leitor de tela não abria nenhuma
+ * pergunta desta página, e as perguntas são sobre preço, cobrança e
+ * cancelamento. Agora o cabeçalho é um botão de verdade, dentro de um título,
+ * com o painel ligado por id.
+ */
 function FaqItem({ q, a }: { q: string; a: string }) {
   const [open, setOpen] = useState(false);
+  const id = useId();
   return (
-    <div
-      className="border border-white/10 rounded-xl overflow-hidden cursor-pointer"
-      onClick={() => setOpen(o => !o)}
-    >
-      <div className="flex items-center justify-between px-5 py-4 bg-white/5 hover:bg-white/10 transition-colors">
-        <span className="text-white font-semibold text-sm md:text-base pr-4">{q}</span>
-        <ChevronDown
-          size={18}
-          className={`text-white/60 flex-shrink-0 transition-transform duration-300 ${open ? 'rotate-180' : ''}`}
-        />
-      </div>
+    <div className="border border-white/10 rounded-xl overflow-hidden">
+      <h3>
+        <button
+          type="button"
+          aria-expanded={open}
+          aria-controls={`resposta-${id}`}
+          onClick={() => setOpen(o => !o)}
+          className="flex w-full items-center justify-between px-5 py-4 text-left bg-white/5 hover:bg-white/10 transition-colors"
+        >
+          <span className="text-white font-semibold text-sm md:text-base pr-4">{q}</span>
+          <ChevronDown
+            size={18}
+            aria-hidden="true"
+            className={`text-white/60 flex-shrink-0 transition-transform duration-300 ${open ? 'rotate-180' : ''}`}
+          />
+        </button>
+      </h3>
       {open && (
-        <div className="px-5 py-4 bg-white/[0.03] text-white/70 text-sm leading-relaxed">
+        <div id={`resposta-${id}`} className="px-5 py-4 bg-white/[0.03] text-white/80 text-sm leading-relaxed">
           {a}
         </div>
       )}
@@ -161,6 +177,7 @@ export default function MaisGloboPlayLP() {
       className="min-h-screen text-white"
       style={{ background: 'linear-gradient(160deg, #07070f 0%, #100718 50%, #07070f 100%)' }}
     >
+      <main id="conteudo" tabIndex={-1}>
 
       {/* ── BARRA URGÊNCIA ────────────────────────────────────────────── */}
       {PROMOCAO_ATIVA && (
@@ -406,6 +423,8 @@ export default function MaisGloboPlayLP() {
           GloboPlay e Telecine são marcas de seus respectivos proprietários. Promoção Sinal Aberto válida de 21 a 27/07/2026.
         </p>
       </footer>
+      </main>
+
 
     </div>
   );

@@ -59,11 +59,11 @@ export default function Planos5G() {
       <div className="absolute inset-0">
         <img
           src="/images/bg/young-urban-5g.webp"
-          alt="Chip 5G InternetMais com conectividade móvel de próxima geração em Campo Grande"
+          alt=""
           className="w-full h-full object-cover"
           loading="lazy"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#3DD93D]/90 via-[#3DD93D]/70 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0D1B3E]/95 via-[#0D1B3E]/80 to-transparent"></div>
       </div>
 
       {/* Content */}
@@ -76,7 +76,7 @@ export default function Planos5G() {
           </div>
 
           <h2 className="text-4xl md:text-5xl font-black text-white mb-6">
-            Chip InternetMais 5G
+            Chip Internet Mais 5G
           </h2>
 
           <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto">
@@ -94,15 +94,15 @@ export default function Planos5G() {
             >
               {/* Popular Badge */}
               {plano.popular && (
-                <div className="absolute top-0 right-0 bg-[#F5C518] text-[#E8F1E9] px-4 py-2 rounded-bl-2xl font-black text-sm z-10">
+                <div className="absolute top-0 right-0 bg-[#F5C518] text-[#08240A] px-4 py-2 rounded-bl-2xl font-black text-sm z-10">
                   TOP
                 </div>
               )}
 
               {/* Card Background */}
-              <div className={`p-6 h-full flex flex-col ${plano.popular ? 'bg-gradient-to-br from-white to-[#F4F4F4]' : 'bg-[#0A1730]'}`}>
+              <div className={`p-6 h-full flex flex-col ${plano.popular ? 'bg-[#0C2313] ring-1 ring-[#3DD93D]' : 'bg-[#0A1730]'}`}>
                 {/* Data Amount */}
-                <h3 className={`text-3xl font-black mb-1 ${plano.popular ? 'text-[#3DD93D]' : 'text-[#E8F1E9]'}`}>
+                <h3 className={`text-3xl font-black mb-1 text-[#E8F1E9]`}>
                   {plano.gb}
                 </h3>
 
@@ -115,10 +115,10 @@ export default function Planos5G() {
 
                 {/* Price */}
                 <div className="mb-6">
-                  <p className={`text-3xl font-black ${plano.popular ? 'text-[#3DD93D]' : 'text-[#E8F1E9]'}`}>
+                  <p className={`text-3xl font-black text-[#E8F1E9]`}>
                     {plano.preco}
                   </p>
-                  <p className="text-xs text-[#93A69B]">por mês</p>
+                  <p className="text-xs text-[#AFC0B6]">por mês</p>
                 </div>
 
                 {/* Features */}
@@ -135,7 +135,7 @@ export default function Planos5G() {
 
                 {/* CTA Button */}
                 <a
-                  href={`https://wa.me/556730272500?text=Ol%C3%A1!%20Gostaria%20de%20falar%20com%20um%20representante%20sobre%20o%20plano%20de%20${plano.gb}%20de%20dados%20do%20Chip%205G%20da%20InternetMais.`}
+                  href={`https://wa.me/556730272500?text=Ol%C3%A1!%20Gostaria%20de%20falar%20com%20um%20representante%20sobre%20o%20plano%20de%20${plano.gb}%20de%20dados%20do%20Chip%205G%20da%20Internet Mais.`}
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => {
@@ -151,8 +151,8 @@ export default function Planos5G() {
                   }}
                   className={`w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl font-bold transition-all duration-300 text-sm ${
                     plano.popular
-                      ? 'bg-gradient-to-r from-[#3DD93D] to-[#2BA82A] text-white hover:shadow-[0_18px_50px_-20px_rgba(0,0,0,.85)] hover:scale-105'
-                      : 'bg-[#3DD93D] text-white hover:shadow-[0_18px_50px_-20px_rgba(0,0,0,.85)] hover:scale-105'
+                      ? 'bg-gradient-to-r from-[#3DD93D] to-[#2BA82A] text-[#08240A] hover:shadow-[0_18px_50px_-20px_rgba(0,0,0,.85)] hover:scale-105'
+                      : 'bg-[#3DD93D] text-[#08240A] hover:shadow-[0_18px_50px_-20px_rgba(0,0,0,.85)] hover:scale-105'
                   }`}
                 >
                   <MessageCircle size={16} />

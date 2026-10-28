@@ -66,7 +66,7 @@ export default function PremioCDL() {
               <ExternalLink size={18} className="shrink-0" />
             </span>
 
-            <p className="mt-4 text-xs text-white/45">
+            <p className="mt-4 text-xs text-white/60">
               A votação acontece no site da CDL Campo Grande
             </p>
           </div>

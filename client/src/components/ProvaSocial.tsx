@@ -27,7 +27,7 @@ export default function ProvaSocial() {
       icone: <MapPin size={26} />,
       titulo: '39 bairros atendidos',
       texto:
-        'Cerca de 70% da cidade já tem cobertura de fibra da InternetMais, e a rede ' +
+        'Cerca de 70% da cidade já tem cobertura de fibra da Internet Mais, e a rede ' +
         'continua crescendo todo mês.',
     },
     {
@@ -42,10 +42,10 @@ export default function ProvaSocial() {
   return (
     <section ref={ref} className="py-20 md:py-32 bg-[#3DD93D] opacity-0">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-black text-white mb-4 text-center">
+        <h2 className="text-3xl md:text-4xl font-black text-[#08240A] mb-4 text-center">
           +20 mil clientes conectados em Campo Grande
         </h2>
-        <p className="text-lg text-white/90 text-center mb-16 max-w-2xl mx-auto">
+        <p className="text-lg text-[#08240A]/85 text-center mb-16 max-w-2xl mx-auto">
           Campo Grande é a nossa casa: a rede é nossa, e quem atende também.
         </p>
 

@@ -1,3 +1,4 @@
+import { zap } from '@/data/lojas';
 import { LogIn, FileText, CreditCard, Headphones } from 'lucide-react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
@@ -30,7 +31,7 @@ export default function AreaAssinante() {
     <section ref={ref} id="area-assinante" className="py-20 md:py-32 bg-[#060E1E] opacity-0">
       <div className="container mx-auto px-4">
         {/* Title */}
-        <h2 className="text-3xl md:text-4xl font-black text-[#E8F1E9] mb-4 text-center">
+        <h2 className="text-3xl md:text-4xl font-black text-[#E8F1E9] [text-shadow:0_2px_14px_rgba(3,8,20,.85)] mb-4 text-center">
           Central do Assinante
         </h2>
         <p className="text-lg text-[#CBD8CE] text-center mb-16 max-w-2xl mx-auto">
@@ -63,7 +64,7 @@ export default function AreaAssinante() {
         </div>
 
         {/* Login CTA */}
-        <div className="bg-gradient-to-r from-[#3DD93D] to-[#1A5BA6] rounded-2xl p-12 text-center">
+        <div className="bg-gradient-to-r from-[#0D1B3E] to-[#12376B] rounded-2xl p-12 text-center">
           <h3 className="text-2xl md:text-3xl font-black text-white mb-6">
             Já é assinante?
           </h3>
@@ -74,7 +75,7 @@ export default function AreaAssinante() {
             href="https://sistema.freewaynet.com.br/central_assinante_web/login"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 bg-[#3DD93D] text-[#04170A] font-bold py-3 px-8 rounded-xl hover:shadow-[0_18px_50px_-20px_rgba(0,0,0,.85)] hover:scale-105 transition-all duration-300"
+            className="inline-flex items-center justify-center gap-2 bg-[#3DD93D] text-[#08240A] font-bold py-3 px-8 rounded-full hover:shadow-[0_18px_50px_-20px_rgba(0,0,0,.85)] hover:scale-105 transition-all duration-300"
           >
             <LogIn size={20} />
             Acessar Central do Assinante
@@ -94,9 +95,9 @@ export default function AreaAssinante() {
               href="https://sistema.freewaynet.com.br/central_assinante_web/login"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[#3DD93D] font-bold hover:underline"
+              className="text-[#3DD93D] font-bold hover:underline inline-flex min-h-[24px] items-center"
             >
-              Abrir Chamado Técnico →
+              Abrir chamado na Central (precisa de login)
             </a>
           </div>
 
@@ -108,12 +109,12 @@ export default function AreaAssinante() {
               Consulte suas faturas, histórico de pagamentos e outras informações importantes.
             </p>
             <a
-              href="https://sistema.freewaynet.com.br/central_assinante_web/login"
+              href={zap('a minha fatura')}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[#1A5BA6] font-bold hover:underline"
+              className="text-[#3DD93D] font-bold hover:underline inline-flex min-h-[24px] items-center"
             >
-              Falar com Atendente →
+              Falar no WhatsApp
             </a>
           </div>
         </div>

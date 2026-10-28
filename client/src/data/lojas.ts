@@ -105,6 +105,6 @@ export function comoChegar(l: Loja): string {
 }
 
 export function zap(assunto: string): string {
-  const texto = `Olá! Gostaria de falar com um representante sobre ${assunto} da InternetMais.`;
+  const texto = `Olá! Gostaria de falar com um representante sobre ${assunto} da Internet Mais.`;
   return `https://wa.me/556730272500?text=${encodeURIComponent(texto)}`;
 }

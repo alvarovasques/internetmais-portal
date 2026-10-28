@@ -89,7 +89,7 @@ const categorias = [
 ];
 
 const estudios = [
-  { nome: 'Columbia Pictures', cor: '#E50914' },
+  { nome: 'Columbia Pictures', cor: '#FF7A80' },
   { nome: 'Sony Pictures', cor: '#0066CC' },
   { nome: 'Marvel Studios', cor: '#EC1D24' },
   { nome: 'Universal Pictures', cor: '#000000' },
@@ -249,6 +249,8 @@ export default function MaisTV() {
     <div className="min-h-screen bg-[#060d1a] text-white">
       <Header />
 
+      <main id="conteudo" tabIndex={-1}>
+
       {/* ─── HERO ─── */}
       <section
         ref={sectionRef}
@@ -287,7 +289,7 @@ export default function MaisTV() {
               ].map(s => (
                 <div key={s.num} className="flex items-baseline gap-1.5">
                   <span className="text-xl font-black text-[#3DD93D]">{s.num}</span>
-                  <span className="text-white/60 text-xs">{s.label}</span>
+                  <span className="text-white/70 text-xs">{s.label}</span>
                 </div>
               ))}
             </div>
@@ -315,7 +317,7 @@ export default function MaisTV() {
             {/* Dispositivos chips */}
             <div className="flex flex-wrap gap-2 mt-5">
               {['Celular', 'Smart TV', 'Fire Stick', 'Navegador', 'Set Top Box', 'Roku', 'Century'].map(d => (
-                <span key={d} className="bg-white/8 border border-white/15 text-white/60 text-xs px-2.5 py-1 rounded-full">{d}</span>
+                <span key={d} className="bg-white/8 border border-white/15 text-white/70 text-xs px-2.5 py-1 rounded-full">{d}</span>
               ))}
             </div>
           </div>
@@ -347,7 +349,7 @@ export default function MaisTV() {
             <h2 className="text-3xl md:text-4xl font-black text-white mb-3">
               +160 canais ao vivo. <span className="text-[#3DD93D]">Incluso.</span>
             </h2>
-            <p className="text-white/55 max-w-xl mx-auto text-sm">Dos canais abertos que você conhece às atrações exclusivas que vai descobrir.</p>
+            <p className="text-white/70 max-w-xl mx-auto text-sm">Dos canais abertos que você conhece às atrações exclusivas que vai descobrir.</p>
           </div>
 
           {/* Filtros de categoria */}
@@ -359,7 +361,7 @@ export default function MaisTV() {
                 className={`px-3.5 py-1.5 rounded-full text-xs font-bold transition-all duration-200 ${
                   activeCat === i
                     ? 'bg-[#3DD93D] text-[#060d1a]'
-                    : 'bg-white/8 border border-white/15 text-white/60 hover:border-[#3DD93D]/40 hover:text-white/80'
+                    : 'bg-white/8 border border-white/15 text-white/70 hover:border-[#3DD93D]/40 hover:text-white/80'
                 }`}
               >
                 {c.label}
@@ -385,14 +387,14 @@ export default function MaisTV() {
                     t.style.display = 'none';
                     const p = t.parentElement;
                     if (p) {
-                      p.innerHTML = `<span class="text-white/50 text-[9px] text-center leading-tight font-medium">${canal.nome}</span>`;
+                      p.innerHTML = `<span class="text-white/70 text-[9px] text-center leading-tight font-medium">${canal.nome}</span>`;
                     }
                   }}
                 />
               </div>
             ))}
           </div>
-          <p className="text-center text-white/30 text-xs mt-5">*Grade sujeita a alterações. Canais conforme disponibilidade regional.</p>
+          <p className="text-center text-white/70 text-xs mt-5">*Grade sujeita a alterações. Canais conforme disponibilidade regional.</p>
 
           <div className="text-center mt-8">
             <button
@@ -418,7 +420,7 @@ export default function MaisTV() {
             <h2 className="text-3xl md:text-4xl font-black text-white mb-3">
               Filmes e séries dos <span className="text-[#3DD93D]">maiores estúdios</span> do mundo.
             </h2>
-            <p className="text-white/55 max-w-xl mx-auto text-sm">Milhares de títulos para assistir quando e onde quiser. Sem precisar de outra assinatura.</p>
+            <p className="text-white/70 max-w-xl mx-auto text-sm">Milhares de títulos para assistir quando e onde quiser. Sem precisar de outra assinatura.</p>
           </div>
 
           {/* Estúdios */}
@@ -456,7 +458,7 @@ export default function MaisTV() {
               <div key={v.cat} className="bg-white/4 border border-white/10 rounded-2xl p-5 text-center hover:border-[#3DD93D]/40 hover:bg-[#3DD93D]/5 transition-all duration-200 group">
                 <div className="text-[#3DD93D]/70 group-hover:text-[#3DD93D] transition-colors mb-3 flex justify-center">{v.icon}</div>
                 <p className="text-white font-black text-base">{v.cat}</p>
-                <p className="text-white/45 text-xs mt-1">{v.sub}</p>
+                <p className="text-white/65 text-xs mt-1">{v.sub}</p>
               </div>
             ))}
           </div>
@@ -480,7 +482,7 @@ export default function MaisTV() {
             <h2 className="text-2xl md:text-3xl font-black text-white mb-2">
               Assista em <span className="text-[#3DD93D]">qualquer tela</span>, de qualquer lugar.
             </h2>
-            <p className="text-white/50 text-sm">7 dispositivos compatíveis. Você escolhe onde e quando assistir.</p>
+            <p className="text-white/70 text-sm">7 dispositivos compatíveis. Você escolhe onde e quando assistir.</p>
           </div>
           <div className="grid grid-cols-4 sm:grid-cols-7 gap-4 max-w-3xl mx-auto">
             {dispositivos.map(d => (
@@ -489,7 +491,7 @@ export default function MaisTV() {
                   {d.icon}
                 </div>
                 <p className="text-white/70 text-xs font-semibold text-center leading-tight">{d.nome}</p>
-                <p className="text-white/35 text-[10px] text-center leading-tight hidden sm:block">{d.sub}</p>
+                <p className="text-white/70 text-[10px] text-center leading-tight hidden sm:block">{d.sub}</p>
               </div>
             ))}
           </div>
@@ -504,7 +506,7 @@ export default function MaisTV() {
             <h2 className="text-3xl md:text-4xl font-black text-white mb-2">
               Assine e já está <span className="text-[#3DD93D]">incluso.</span>
             </h2>
-            <p className="text-white/50 text-sm">Leva menos de 5 minutos para você começar a assistir.</p>
+            <p className="text-white/70 text-sm">Leva menos de 5 minutos para você começar a assistir.</p>
           </div>
           <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
             {[
@@ -529,11 +531,11 @@ export default function MaisTV() {
             ].map((p, i) => (
               <div key={p.num} className="relative bg-white/4 border border-white/10 rounded-2xl p-6 hover:border-[#3DD93D]/40 transition-all duration-300 group">
                 <div className="flex items-center gap-3 mb-4">
-                  <span className="text-3xl font-black text-[#3DD93D]/20 leading-none">{p.num}</span>
+                  <span className="text-3xl font-black text-[#3DD93D]/55 leading-none">{p.num}</span>
                   <div className="text-[#3DD93D]/60 group-hover:text-[#3DD93D] transition-colors">{p.icon}</div>
                 </div>
                 <h3 className="text-base font-black text-white mb-2">{p.titulo}</h3>
-                <p className="text-white/55 text-sm leading-relaxed">{p.desc}</p>
+                <p className="text-white/70 text-sm leading-relaxed">{p.desc}</p>
                 {i < 2 && (
                   <div className="hidden md:block absolute top-1/2 -right-3 text-[#3DD93D]/40 text-lg font-black z-10">›</div>
                 )}
@@ -550,13 +552,13 @@ export default function MaisTV() {
             <h2 className="text-3xl md:text-4xl font-black text-white mb-2">
               Por que escolher a <span className="text-[#3DD93D]">Internet Mais?</span>
             </h2>
-            <p className="text-white/50 text-sm">Compare e veja a diferença.</p>
+            <p className="text-white/70 text-sm">Compare e veja a diferença.</p>
           </div>
           <div className="max-w-2xl mx-auto">
             <div className="grid grid-cols-3 gap-0 mb-0">
               <div />
               <div className="text-center bg-[#3DD93D] text-[#060d1a] font-black py-2.5 rounded-t-xl text-xs">Internet Mais</div>
-              <div className="text-center bg-white/8 text-white/50 font-bold py-2.5 rounded-t-xl text-xs">Outros provedores</div>
+              <div className="text-center bg-white/8 text-white/70 font-bold py-2.5 rounded-t-xl text-xs">Outros provedores</div>
             </div>
             {[
               { item: 'Fibra óptica de alta velocidade', nos: true, outros: true },
@@ -568,11 +570,11 @@ export default function MaisTV() {
             ].map((row, i, arr) => (
               <div key={row.item} className={`grid grid-cols-3 gap-0 ${i % 2 === 0 ? 'bg-white/4' : 'bg-white/[0.02]'} ${i === arr.length - 1 ? 'rounded-b-xl' : ''}`}>
                 <div className="px-4 py-3 text-white/70 text-xs font-medium border-r border-white/8">{row.item}</div>
-                <div className={`flex items-center justify-center py-3 border-r border-white/8 ${row.nos ? 'text-[#3DD93D]' : 'text-red-400'}`}>
+                <div className={`flex items-center justify-center py-3 border-r border-white/8 ${row.nos ? 'text-[#3DD93D]' : 'text-red-300'}`}>
                   <span className="text-base font-black">{row.nos ? '✓' : '✗'}</span>
                 </div>
-                <div className={`flex items-center justify-center py-3 ${row.outros ? 'text-[#3DD93D]' : 'text-red-400'}`}>
-                  {row.outros ? <span className="text-base font-black text-[#3DD93D]">✓</span> : <span className="text-xs text-red-400/80 font-semibold">Cobra à parte</span>}
+                <div className={`flex items-center justify-center py-3 ${row.outros ? 'text-[#3DD93D]' : 'text-red-300'}`}>
+                  {row.outros ? <span className="text-base font-black text-[#3DD93D]">✓</span> : <span className="text-xs text-red-300/80 font-semibold">Cobra à parte</span>}
                 </div>
               </div>
             ))}
@@ -600,7 +602,7 @@ export default function MaisTV() {
                 </button>
                 {openFaq === i && (
                   <div className="px-5 pb-4">
-                    <p className="text-white/60 text-sm leading-relaxed">{item.r}</p>
+                    <p className="text-white/70 text-sm leading-relaxed">{item.r}</p>
                   </div>
                 )}
               </div>
@@ -657,11 +659,11 @@ export default function MaisTV() {
               <div className="flex items-center justify-between mb-6">
                 <div>
                   <h2 className="text-white font-black text-xl leading-tight">Acessar MaisTV</h2>
-                  <p className="text-white/50 text-xs mt-0.5">Entre com suas credenciais de assinante</p>
+                  <p className="text-white/70 text-xs mt-0.5">Entre com suas credenciais de assinante</p>
                 </div>
                 <button
                   onClick={() => { setLoginOpen(false); setLoginError(''); }}
-                  className="text-white/40 hover:text-white transition-colors p-1 rounded-lg hover:bg-white/10"
+                  className="text-white/65 hover:text-white transition-colors p-1 rounded-lg hover:bg-white/10"
                   aria-label="Fechar"
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
@@ -699,8 +701,8 @@ export default function MaisTV() {
                 {/* Erro */}
                 {loginError && (
                   <div className="flex items-start gap-2 bg-red-500/10 border border-red-500/30 rounded-xl px-4 py-3">
-                    <svg className="w-4 h-4 text-red-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
-                    <p className="text-red-400 text-xs leading-relaxed">{loginError}</p>
+                    <svg className="w-4 h-4 text-red-300 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+                    <p className="text-red-300 text-xs leading-relaxed">{loginError}</p>
                   </div>
                 )}
 
@@ -730,7 +732,7 @@ export default function MaisTV() {
               </form>
 
               {/* Rodapé do modal */}
-              <p className="text-center text-white/35 text-xs mt-5">
+              <p className="text-center text-white/70 text-xs mt-5">
                 Não tem acesso ainda?{' '}
                 <button
                   onClick={() => { setLoginOpen(false); openWA('Modal Login', 'Olá! Quero assinar a Internet Mais e ter acesso à MaisTV inclusa.'); }}
@@ -743,6 +745,8 @@ export default function MaisTV() {
           </div>
         </div>
       )}
+
+      </main>
 
       <Footer />
     </div>

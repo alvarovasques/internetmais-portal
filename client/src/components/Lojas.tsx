@@ -58,7 +58,7 @@ export default function Lojas() {
                 });
               }
             }}
-            className="inline-flex items-center justify-center gap-2 bg-[#25D366] text-white font-bold py-3 px-6 rounded-full hover:bg-[#20ba5a] hover:shadow-[0_18px_50px_-20px_rgba(0,0,0,.85)] hover:scale-105 transition-all duration-300 animate-scale-in"
+            className="inline-flex items-center justify-center gap-2 bg-[#25D366] text-[#06240F] font-bold py-3 px-6 rounded-full hover:bg-[#20ba5a] hover:shadow-[0_18px_50px_-20px_rgba(0,0,0,.85)] hover:scale-105 transition-all duration-300 animate-scale-in"
           >
             <MessageCircle size={20} />
             Falar com um Especialista

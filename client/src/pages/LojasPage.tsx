@@ -22,7 +22,7 @@ export default function LojasPage() {
   return (
     <div className="flex min-h-screen flex-col bg-[#04060A] text-[#E8F1E9]">
       <Header />
-      <main className="flex-1">
+      <main id="conteudo" tabIndex={-1} className="flex-1">
         <section className="border-b border-white/10 bg-[#0A1730] px-4 py-16 md:py-24">
           <div className="mx-auto max-w-5xl">
             <nav aria-label="Você está aqui" className="mb-5 text-sm text-[#93A69B]">

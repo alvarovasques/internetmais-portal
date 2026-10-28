@@ -23,7 +23,7 @@ export default function AdminLogin() {
   });
 
   return (
-    <main className="min-h-screen flex items-center justify-center bg-[#0D1B3E] px-4">
+    <main id="conteudo" tabIndex={-1} className="min-h-screen flex items-center justify-center bg-[#0D1B3E] px-4">
       <form
         className="w-full max-w-sm bg-white rounded-2xl p-8 flex flex-col gap-5"
         onSubmit={e => {

@@ -200,14 +200,15 @@ export default function MaisGloboPlay() {
                     <div className="space-y-2">
                       <div className="flex items-center gap-2">
                         <p className={`text-sm line-through opacity-60 ${'text-[#93A69B]'}`}>
+                          <span className="sr-only">Preço sem o desconto de pontualidade: </span>
                           {plano.preco}
                         </p>
-                        <span className="rounded-full bg-[#FF6B6B] px-2 py-1 text-xs font-bold text-white">
+                        <span className="rounded-full bg-[#C62828] px-2 py-1 text-xs font-bold text-white">
                           -R$ 20
                         </span>
                       </div>
                       <p className={`text-4xl font-black ${'text-[#3DD93D]'}`}>
-                        {plano.precoComDesconto}
+                        <span className="sr-only">Com o desconto de pontualidade: </span>{plano.precoComDesconto}
                       </p>
                       <p className={`text-xs ${plano.popular ? 'text-white/90' : 'text-[#93A69B]'}`}>
                         ✓ Já com desconto de pontualidade
@@ -262,7 +263,7 @@ export default function MaisGloboPlay() {
                     )}
                     {plano.appsPremium && (
                       <div>
-                        <p className={`text-xs font-bold mb-3 ${plano.popular ? 'text-white' : 'text-[#e50914]'}`}>
+                        <p className={`text-xs font-bold mb-3 ${plano.popular ? 'text-white' : 'text-[#FF7A80]'}`}>
                           Escolha 1 em mais de 5 opções
                         </p>
                         <div className="grid grid-cols-5 gap-2">
@@ -287,21 +288,21 @@ export default function MaisGloboPlay() {
 
                 {/* GloboPlay Section */}
                 <div className={`mb-8 pt-5 border-t ${plano.popular ? 'border-white/20' : 'border-white/10'}`}>
-                  <p className={`text-xs font-bold mb-4 ${plano.popular ? 'text-white' : 'text-[#e50914]'}`}>
+                  <p className={`text-xs font-bold mb-4 ${plano.popular ? 'text-white' : 'text-[#FF7A80]'}`}>
                     🎬 INCLUSO
                   </p>
                   <div className="flex justify-center">
                     <div className={`rounded-2xl p-5 flex flex-col items-center justify-center ${
                       plano.popular
                         ? 'bg-[#0A1730]/20 border-2 border-white/30'
-                        : 'bg-gradient-to-br from-red-50 to-rose-50 border-2 border-red-200'
+                        : 'bg-[#0A1730] border-2 border-[#FF7A80]/40'
                     }`}>
                       <img
                         src="/images/apps/globoplay.png"
                         alt="GloboPlay"
                         className="h-20 w-20 object-contain mb-2"
                       />
-                      <p className={`text-sm font-bold ${'text-[#E8F1E9]'}`}>
+                      <p className="text-sm font-bold text-[#E8F1E9]">
                         GloboPlay
                       </p>
                       <span className="mt-1 inline-flex items-center gap-1 bg-gradient-to-r from-[#e50914] to-[#8b0000] text-white text-xs font-black px-3 py-1 rounded-full shadow-md">

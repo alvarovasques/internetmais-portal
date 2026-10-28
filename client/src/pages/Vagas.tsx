@@ -104,6 +104,8 @@ export default function Vagas() {
     <div className="min-h-screen bg-[#04060A] text-[#E8F1E9]">
       <Header />
 
+      <main id="conteudo" tabIndex={-1}>
+
       {/* ── HERO ── */}
       <section
         className="relative min-h-[600px] flex items-center justify-center overflow-hidden"
@@ -129,7 +131,7 @@ export default function Vagas() {
 
           <h1 className="text-5xl md:text-6xl font-black text-white mb-6 leading-tight">
             Trabalhe na{' '}
-            <span className="text-[#3DD93D]">InternetMais</span>
+            <span className="text-[#3DD93D]">Internet Mais</span>
           </h1>
           <p className="text-xl text-white/80 max-w-2xl mx-auto mb-10 leading-relaxed">
             Conectamos Campo Grande com fibra óptica de alta velocidade. Venha fazer parte
@@ -139,8 +141,8 @@ export default function Vagas() {
           {/* Stats rápidas */}
           <div className="flex flex-wrap justify-center gap-8 mt-8">
             {[
-              { value: '39+', label: 'Bairros Atendidos' },
-              { value: '10k+', label: 'Clientes Satisfeitos' },
+              { value: '39', label: 'Bairros Atendidos' },
+              { value: '+20 mil', label: 'Clientes Satisfeitos' },
               { value: '100%', label: 'Fibra Óptica' },
             ].map((stat) => (
               <div key={stat.label} className="text-center">
@@ -263,7 +265,7 @@ export default function Vagas() {
                     {/* CTA */}
                     <Button
                       onClick={() => setSelectedJob(job.id)}
-                      className="w-full bg-[#3DD93D] hover:bg-[#2BA82A] text-white font-bold rounded-xl py-5 flex items-center justify-center gap-2 transition-all group-hover:shadow-[0_18px_50px_-20px_rgba(0,0,0,.85)] group-hover:shadow-[#3DD93D]/25"
+                      className="w-full bg-[#3DD93D] hover:bg-[#2BA82A] text-[#08240A] font-bold rounded-xl py-5 flex items-center justify-center gap-2 transition-all group-hover:shadow-[0_18px_50px_-20px_rgba(0,0,0,.85)] group-hover:shadow-[#3DD93D]/25"
                     >
                       Candidatar-se
                       <ChevronRight size={16} />
@@ -300,13 +302,15 @@ export default function Vagas() {
           </p>
           <a
             href="mailto:rh@internetmais.net"
-            className="inline-flex items-center gap-2 bg-[#3DD93D] hover:bg-[#2BA82A] text-white font-bold px-8 py-4 rounded-xl transition-all hover:shadow-[0_18px_50px_-20px_rgba(0,0,0,.85)] hover:shadow-[#3DD93D]/30"
+            className="inline-flex items-center gap-2 bg-[#3DD93D] hover:bg-[#2BA82A] text-[#08240A] font-bold px-8 py-4 rounded-xl transition-all hover:shadow-[0_18px_50px_-20px_rgba(0,0,0,.85)] hover:shadow-[#3DD93D]/30"
           >
             Enviar Currículo Espontâneo
             <ChevronRight size={18} />
           </a>
         </div>
       </section>
+
+      </main>
 
       <Footer />
 
@@ -428,7 +432,7 @@ export default function Vagas() {
               <Button
                 type="submit"
                 disabled={isApplying}
-                className="flex-1 bg-[#3DD93D] hover:bg-[#2BA82A] text-white font-bold"
+                className="flex-1 bg-[#3DD93D] hover:bg-[#2BA82A] text-[#08240A] font-bold"
               >
                 {isApplying ? (
                   <>

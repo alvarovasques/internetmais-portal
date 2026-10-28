@@ -24,6 +24,37 @@ import {
  * carrossel que anda sozinho é um problema de acessibilidade conhecido, e quem
  * pediu menos movimento não deveria ter que correr atrás do texto.
  */
+/**
+ * As duas cores de véu.
+ *
+ * Sete quadros com exatamente a mesma máscara dão monotonia, então ela
+ * alterna. O que ela NÃO pode ser é o verde da marca: véu em #3DD93D derruba
+ * o contraste do botão de 10,2:1 para 1:1 — o botão deixa de existir — e o do
+ * título de 19:1 para 1,88:1. Verde aqui é a cor de AÇÃO, e área grande em
+ * verde rouba o destaque do único elemento que devia tê-lo.
+ *
+ * O verde escuro resolve: lê como mudança de clima, e o botão mantém 9,7:1
+ * contra ele, praticamente o mesmo do navy.
+ */
+const VEUS = {
+  navy: '7,14,34',
+  verde: '6,25,15',
+} as const;
+
+type Veu = keyof typeof VEUS;
+
+/** Os três gradientes do quadro, na cor daquele slide. */
+function atmosfera(veu: Veu) {
+  const c = VEUS[veu];
+  return {
+    // Celular: o texto fica sobre o meio da foto, então o véu sobe de baixo.
+    movel: `linear-gradient(to top, rgba(${c},.90) 0%, rgba(${c},.55) 42%, rgba(${c},.15) 100%)`,
+    // Desktop: cobre só a coluna do texto e morre antes dos 60% da largura.
+    coluna: `linear-gradient(to right, rgba(${c},.86) 0%, rgba(${c},.70) 18%, rgba(${c},.32) 42%, rgba(${c},0) 58%)`,
+    base: `linear-gradient(to top, rgba(${c},.55) 0%, rgba(${c},0) 38%, rgba(${c},.10) 100%)`,
+  };
+}
+
 export default function HeroSection() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [autoplay, setAutoplay] = useState(true);
@@ -44,17 +75,22 @@ export default function HeroSection() {
   const slides = [
     {
       id: 1,
+      veu: 'navy' as Veu,
       image: '/images/bg/hero-person-smartphone.webp',
       imageAlt: 'Pessoa segurando smartphone com fibra óptica 100% pura e chip 5G em Campo Grande',
       badge: 'FIBRA ÓPTICA + CHIP 5G',
       title: 'Fibra Óptica + Chip 5G. Tudo o que você precisa em um só lugar.',
       description: 'Mais de 20 mil clientes em Campo Grande. 100% fibra óptica com rede própria, infraestrutura e suporte local. E agora, somos também sua operadora de celular 5G.',
       cta: 'Quero Contratar Agora',
-      ctaMessage: 'Olá! Gostaria de contratar um plano de Fibra Óptica + Chip 5G da InternetMais.',
-      viewPlansLink: '#chip-5g'
+      ctaMessage: 'Olá! Gostaria de contratar um plano de Fibra Óptica + Chip 5G da Internet Mais.',
+      // "Ver Planos" apontava para #chip-5g: quem clicava querendo plano de
+      // fibra caía na tabela de GB e minutos de voz. Os planos de fibra ficam
+      // em #mais-velocidade.
+      viewPlansLink: '#mais-velocidade'
     },
     {
       id: 2,
+      veu: 'verde' as Veu,
       image: '/images/bg/carousel-velocidade.webp',
       imageAlt: 'Internet fibra óptica de máxima velocidade com latência ultra-baixa em Campo Grande',
       badge: 'MÁXIMA VELOCIDADE',
@@ -66,28 +102,31 @@ export default function HeroSection() {
     },
     {
       id: 3,
+      veu: 'navy' as Veu,
       image: '/images/bg/carousel-aplicativos.webp',
-      imageAlt: 'Família assistindo streaming com internet fibra e aplicativos inclusos InternetMais',
+      imageAlt: 'Família assistindo streaming com internet fibra e aplicativos inclusos Internet Mais',
       badge: 'TEMPO EM FAMÍLIA',
       title: 'Internet Mais Aplicativos',
       description: 'Aproveite os melhores aplicativos e serviços de streaming com sua família. Qualidade 4K, sem travamentos, sem limites.',
-      cta: 'Ver Aplicativos',
+      cta: 'Quero o Mais Aplicativos',
       ctaMessage: 'Olá! Gostaria de contratar Internet Mais Aplicativos com meus apps favoritos.',
       viewPlansLink: '#mais-aplicativos'
     },
     {
       id: 4,
+      veu: 'verde' as Veu,
       image: '/images/bg/carousel-5g.webp',
-      imageAlt: 'Chip 5G InternetMais com conectividade móvel de próxima geração em Campo Grande',
+      imageAlt: 'Chip 5G Internet Mais com conectividade móvel de próxima geração em Campo Grande',
       badge: 'OPERADORA 5G',
       title: 'Telefonia com Chip 5G',
       description: 'Conectividade móvel de próxima geração. Velocidade ultra-rápida, cobertura confiável e planos flexíveis para você.',
       cta: 'Contratar Chip 5G',
-      ctaMessage: 'Olá! Gostaria de falar com um representante sobre os planos de Chip 5G da InternetMais.',
+      ctaMessage: 'Olá! Gostaria de falar com um representante sobre os planos de Chip 5G da Internet Mais.',
       viewPlansLink: '#chip-5g'
     },
     {
       id: 5,
+      veu: 'navy' as Veu,
       image: '/images/bg/carousel-empresarial.webp',
       imageAlt: 'Internet empresarial com estabilidade garantida para negócios em Campo Grande',
       badge: 'PARA EMPRESAS',
@@ -99,17 +138,19 @@ export default function HeroSection() {
     },
     {
       id: 6,
+      veu: 'verde' as Veu,
       image: '/images/bg/chip-5g-mockup.webp',
-      imageAlt: 'Chip 5G InternetMais com melhor sinal e cobertura confiável em Campo Grande MS',
+      imageAlt: 'Chip 5G Internet Mais com melhor sinal e cobertura confiável em Campo Grande MS',
       badge: 'SOMOS UMA OPERADORA 5G',
-      title: 'Seu celular merece o melhor sinal. Conheça o Chip InternetMais 5G.',
+      title: 'Seu celular merece o melhor sinal. Conheça o Chip Internet Mais 5G.',
       description: 'Planos a partir de R$ 24,99/mês com apps ilimitados e bônus ao trazer sua portabilidade.',
       cta: 'Quero meu Chip 5G agora',
-      ctaMessage: 'Olá! Gostaria de contratar um plano de Chip 5G da InternetMais.',
+      ctaMessage: 'Olá! Gostaria de contratar um plano de Chip 5G da Internet Mais.',
       viewPlansLink: '#chip-5g'
     },
     {
       id: 7,
+      veu: 'navy' as Veu,
       image: '/images/bg/maistv-hero-bg.jpg',
       imageAlt: 'Família assistindo MaisTV com +160 canais ao vivo e filmes inclusos na Internet Mais',
       badge: 'INCLUSO EM TODOS OS PLANOS',
@@ -233,23 +274,20 @@ export default function HeroSection() {
             />
           </motion.div>
 
-          {/* Atmosfera.
+          {/* Atmosfera. A cor vem do slide: ver VEUS lá em cima.
 
               O véu existe para o título ser legível, não para esconder a foto.
               O anterior chegava a 100% de navy na borda esquerda e ainda 80% no
               meio do quadro: media 16:1 de contraste, três vezes o que a norma
-              pede, e em troca apagava a cena inteira — numa foto de família
-              sobravam a mãe e o resto virava vulto.
+              pede, e apagava a cena inteira. Agora cobre só a coluna do texto e
+              morre antes dos 60% da largura, dando 6,5:1 com o brilho do quadro
+              dobrado.
 
-              Agora o véu cobre só a coluna onde o texto pousa e morre antes dos
-              60% da largura. Medido sobre a caixa real do h1, dá 6,5:1, que
-              passa em AA com folga, e o brilho médio do quadro dobra.
-
-              No celular o texto não fica à esquerda, fica em cima do meio da
-              foto: ali o véu sobe de baixo, que é por onde o conteúdo entra. */}
-          <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(7,14,34,.90)_0%,rgba(7,14,34,.55)_42%,rgba(7,14,34,.15)_100%)] md:hidden" />
-          <div className="absolute inset-0 hidden md:block md:bg-[linear-gradient(to_right,rgba(7,14,34,.86)_0%,rgba(7,14,34,.70)_18%,rgba(7,14,34,.32)_42%,rgba(7,14,34,0)_58%)]" />
-          <div className="absolute inset-0 hidden md:block md:bg-[linear-gradient(to_top,rgba(7,14,34,.55)_0%,rgba(7,14,34,0)_38%,rgba(7,14,34,.10)_100%)]" />
+              No celular o texto não fica à esquerda, fica sobre o meio da foto:
+              ali o véu sobe de baixo, que é por onde o conteúdo entra. */}
+          <div className="absolute inset-0 md:hidden" style={{ backgroundImage: atmosfera(slide.veu).movel }} />
+          <div className="absolute inset-0 hidden md:block" style={{ backgroundImage: atmosfera(slide.veu).coluna }} />
+          <div className="absolute inset-0 hidden md:block" style={{ backgroundImage: atmosfera(slide.veu).base }} />
         </motion.div>
       </AnimatePresence>
 
@@ -354,10 +392,10 @@ export default function HeroSection() {
         ))}
       </div>
 
-      <div className="absolute right-4 top-24 z-30 text-sm font-bold text-white/70 md:right-8 md:top-28">
+      <div className="absolute right-4 top-24 z-30 rounded-full bg-[#070E22]/90 px-3 py-1 text-sm font-bold text-white backdrop-blur-sm md:right-8 md:top-28">
         <span className="tabular-nums">{String(currentSlide + 1).padStart(2, '0')}</span>
-        <span className="mx-1 text-white/30">/</span>
-        <span className="tabular-nums text-white/40">{String(slides.length).padStart(2, '0')}</span>
+        <span className="mx-1 text-white/55" aria-hidden="true">/</span>
+        <span className="tabular-nums text-white/75">{String(slides.length).padStart(2, '0')}</span>
       </div>
     </section>
   );

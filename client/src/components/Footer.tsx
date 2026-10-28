@@ -20,7 +20,7 @@ export default function Footer() {
 
           {/* Links Rápidos */}
           <div>
-            <h4 className="font-bold text-lg mb-4">Links Rápidos</h4>
+            <h2 className="font-bold text-lg mb-4">Links Rápidos</h2>
             <ul className="space-y-2">
               {[
                 { rotulo: 'Mais Velocidade', href: '/#mais-velocidade' },
@@ -49,7 +49,7 @@ export default function Footer() {
                     href={item.href}
                     target={item.externo ? '_blank' : undefined}
                     rel={item.externo ? 'noopener noreferrer' : undefined}
-                    className="text-gray-400 hover:text-[#3DD93D] transition-colors"
+                    className="inline-flex min-h-[24px] items-center text-gray-400 hover:text-[#3DD93D] transition-colors"
                   >
                     {item.rotulo}
                   </a>
@@ -60,7 +60,7 @@ export default function Footer() {
 
           {/* Contato */}
           <div>
-            <h4 className="font-bold text-lg mb-4">Contato</h4>
+            <h2 className="font-bold text-lg mb-4">Contato</h2>
             <ul className="space-y-2 text-gray-400">
               <li>
                 <a
@@ -102,23 +102,23 @@ export default function Footer() {
 
           {/* Redes Sociais */}
           <div>
-            <h4 className="font-bold text-lg mb-4">Redes Sociais</h4>
+            <h2 className="font-bold text-lg mb-4">Redes Sociais</h2>
             <div className="flex gap-4">
               <a
                 href="https://www.instagram.com/internetmaisms/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Internet Mais no Instagram"
-                className="text-gray-400 hover:text-[#3DD93D] transition-colors"
+                className="inline-flex min-h-[24px] items-center text-gray-400 hover:text-[#3DD93D] transition-colors"
               >
                 <Instagram size={24} />
               </a>
               <a
-                href="https://www.facebook.com/InternetMaisMS"
+                href="https://www.facebook.com/Internet MaisMS"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Internet Mais no Facebook"
-                className="text-gray-400 hover:text-[#3DD93D] transition-colors"
+                className="inline-flex min-h-[24px] items-center text-gray-400 hover:text-[#3DD93D] transition-colors"
               >
                 <Facebook size={24} />
               </a>
@@ -135,7 +135,7 @@ export default function Footer() {
                   }
                 }}
                 aria-label="Falar com a Internet Mais no WhatsApp"
-                className="text-gray-400 hover:text-[#25D366] transition-colors"
+                className="inline-flex min-h-[24px] items-center text-gray-400 hover:text-[#25D366] transition-colors"
               >
                 <MessageCircle size={24} />
               </a>
@@ -151,7 +151,7 @@ export default function Footer() {
               Internet Mais — Grupo Easy Net | Campo Grande/MS
             </p>
             <p>
-              © 2026 Internet Mais. Todos os direitos reservados.
+              © {new Date().getFullYear()} Internet Mais. Todos os direitos reservados.
             </p>
           </div>
         </div>

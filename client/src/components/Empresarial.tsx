@@ -25,7 +25,7 @@ export default function Empresarial() {
           className="w-full h-full object-cover"
           loading="lazy"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#3DD93D]/85 via-[#3DD93D]/70 to-white/50"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0D1B3E]/95 via-[#0D1B3E]/85 to-[#0D1B3E]/45"></div>
       </div>
 
       {/* Content */}

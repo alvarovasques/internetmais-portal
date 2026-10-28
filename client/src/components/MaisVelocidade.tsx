@@ -118,6 +118,7 @@ export default function MaisVelocidade() {
                     <div className="space-y-2">
                       <div className="flex items-center gap-2">
                         <p className={`text-sm line-through opacity-60 ${'text-[#93A69B]'}`}>
+                          <span className="sr-only">Preço sem o desconto de pontualidade: </span>
                           {plano.preco}
                         </p>
                         <div className="flex items-center gap-1 bg-[#3DD93D]/15 text-[#8FFF8F] ring-1 ring-[#3DD93D]/40 px-2 py-1 rounded-full text-xs font-bold">
@@ -126,7 +127,7 @@ export default function MaisVelocidade() {
                         </div>
                       </div>
                       <p className={`text-4xl font-black ${'text-[#3DD93D]'}`}>
-                        {plano.precoComDesconto}
+                        <span className="sr-only">Com o desconto de pontualidade: </span>{plano.precoComDesconto}
                       </p>
                       <p className={`text-xs ${'text-[#93A69B]'}`}>
                         ✓ Já com desconto de pontualidade

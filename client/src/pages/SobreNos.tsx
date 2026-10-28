@@ -30,7 +30,7 @@ export default function SobreNos() {
     <div className="min-h-screen flex flex-col bg-[#04060A] text-[#E8F1E9]">
       <Header />
 
-      <main className="flex-1">
+      <main id="conteudo" tabIndex={-1} className="flex-1">
         {/* Abertura */}
         <section className="pt-12 pb-2 md:pt-16">
           <div className="container mx-auto px-4">

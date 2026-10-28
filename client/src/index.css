@@ -50,9 +50,9 @@
   --color-internet-gold: #F5C518;
   
   --primary: var(--color-internet-green);
-  --primary-foreground: #ffffff;
+  --primary-foreground: #08240A;
   --sidebar-primary: var(--color-internet-green);
-  --sidebar-primary-foreground: #ffffff;
+  --sidebar-primary-foreground: #08240A;
   --chart-1: var(--color-internet-green);
   --chart-2: var(--color-internet-blue);
   --chart-3: #0D1B3E;
@@ -86,9 +86,9 @@
 
 .dark {
   --primary: var(--color-internet-green);
-  --primary-foreground: #ffffff;
+  --primary-foreground: #08240A;
   --sidebar-primary: var(--color-internet-green);
-  --sidebar-primary-foreground: #ffffff;
+  --sidebar-primary-foreground: #08240A;
   --background: oklch(0.141 0.005 285.823);
   --foreground: oklch(0.85 0.005 65);
   --card: oklch(0.21 0.006 285.885);
@@ -120,6 +120,13 @@
 }
 
 @layer base {
+  /* O cabeçalho é sticky com 104px no celular e 120px no desktop. Sem isto,
+     todo link para #mais-velocidade, #chip-5g e companhia rola a seção até o
+     topo da janela e o cabeçalho tapa justamente o título dela. */
+  html {
+    scroll-padding-top: 7.5rem;
+  }
+
   * {
     @apply border-border outline-ring/50;
   }
@@ -188,15 +195,15 @@
   
   /* InternetMais Custom Components */
   .btn-primary {
-    @apply bg-[#3DD93D] text-white font-bold py-3 px-6 rounded-xl hover:shadow-lg hover:scale-105 transition-all duration-300;
+    @apply bg-[#3DD93D] text-[#08240A] font-bold py-3 px-6 rounded-full hover:shadow-lg hover:scale-105 transition-all duration-300;
   }
   
   .btn-secondary {
-    @apply bg-transparent border-2 border-white text-white font-bold py-3 px-6 rounded-xl hover:bg-white hover:text-[#0D1B3E] transition-all duration-300;
+    @apply bg-transparent border-2 border-white text-white font-bold py-3 px-6 rounded-full hover:bg-white hover:text-[#0D1B3E] transition-all duration-300;
   }
   
   .btn-white {
-    @apply bg-white text-[#3DD93D] font-bold py-3 px-6 rounded-xl hover:shadow-lg hover:scale-105 transition-all duration-300;
+    @apply bg-white text-[#08240A] font-bold py-3 px-6 rounded-full hover:shadow-lg hover:scale-105 transition-all duration-300;
   }
   
   .section-title {
@@ -220,7 +227,7 @@
   }
   
   .gradient-green-navy {
-    background: linear-gradient(135deg, #3DD93D 0%, #0D1B3E 100%);
+    background: linear-gradient(135deg, #0D1B3E 0%, #0A2E14 62%, #1C6B23 100%);
   }
 }
 
@@ -388,4 +395,32 @@
 
 .animate-delay-500 {
   animation-delay: 0.5s;
+}
+
+/* Quem pede menos movimento no sistema.
+
+   Cuidado deliberado: nove seções da home começam em `opacity-0` e só ficam
+   visíveis porque a animação de entrada termina em `opacity: 1`. Um
+   `animation: none` geral apagaria metade da página. Por isso aqui a duração
+   é encurtada, não removida — o estado final continua sendo aplicado.
+
+   As quatro animações infinitas não revelam nada, então essas sim podem
+   parar de vez. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .animate-float,
+  .animate-glow-pulse,
+  .animate-pulse-badge,
+  .animate-wave-5g {
+    animation: none !important;
+  }
 }

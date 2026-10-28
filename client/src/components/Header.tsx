@@ -11,10 +11,16 @@ type Props = {
   sobrePalco?: boolean;
 };
 
+/** Id estável do submenu, para o aria-controls casar com o painel. */
+const idDoSubmenu = (r: string) =>
+  'submenu-' +
+  r.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-');
+
 export default function Header({ sobrePalco = false }: Props) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [rolou, setRolou] = useState(false);
   const [openSubmenu, setOpenSubmenu] = useState<string | null>(null);
+  const [submenuDesktop, setSubmenuDesktop] = useState<string | null>(null);
 
   // Modal de login MaisTV
   const [loginOpen, setLoginOpen] = useState(false);
@@ -186,7 +192,14 @@ export default function Header({ sobrePalco = false }: Props) {
 
   return (
     <>
-      <header className={classeDoHeader} data-tema={sobrePalco ? 'escuro' : undefined}>
+      <>
+      <a
+        href="#conteudo"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-[#3DD93D] focus:px-5 focus:py-3 focus:font-bold focus:text-[#08240A]"
+      >
+        Pular para o conteúdo
+      </a>
+    <header className={classeDoHeader} data-tema={sobrePalco ? 'escuro' : undefined}>
         <div className={`container mx-auto px-4 transition-[padding] duration-500 ${
           sobrePalco && comCorpo ? 'py-2' : 'py-4'
         }`}>
@@ -196,7 +209,7 @@ export default function Header({ sobrePalco = false }: Props) {
               <img
                 /* o header é escuro em todo o site, então sempre a versão clara */
                 src="/images/marca/logo-internet-mais-claro.png"
-                alt="InternetMais - Fibra Óptica, 5G e Internet Empresarial em Campo Grande"
+                alt="Internet Mais — página inicial"
                 /*
                   w-auto é obrigatório junto com width/height: dentro de um
                   flex, sem ele a largura vem do atributo (802px) e encolhe
@@ -215,8 +228,21 @@ export default function Header({ sobrePalco = false }: Props) {
 
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center gap-1">
-              {navItems.map((item) => (
-                <div key={item.label} className="relative group">
+              {navItems.map((item) => {
+                const temSubmenu = !!item.submenu && item.submenu.length > 0;
+                const aberto = submenuDesktop === item.label;
+                return (
+                <div
+                  key={item.label}
+                  className="relative"
+                  onMouseEnter={() => temSubmenu && setSubmenuDesktop(item.label)}
+                  onMouseLeave={() => setSubmenuDesktop(null)}
+                  onFocusCapture={() => temSubmenu && setSubmenuDesktop(item.label)}
+                  onBlurCapture={(e) => {
+                    if (!e.currentTarget.contains(e.relatedTarget as Node)) setSubmenuDesktop(null);
+                  }}
+                  onKeyDown={(e) => { if (e.key === 'Escape') setSubmenuDesktop(null); }}
+                >
                   {item.href ? (
                     <a
                       href={item.href}
@@ -225,29 +251,40 @@ export default function Header({ sobrePalco = false }: Props) {
                       className={`whitespace-nowrap text-sm font-semibold ${corDoItem} transition-colors px-3 py-2 rounded-lg flex items-center gap-1`}
                     >
                       {item.label}
-                      {item.submenu && item.submenu.length > 0 && (
-                        <ChevronDown size={16} className="group-hover:rotate-180 transition-transform" />
+                      {temSubmenu && (
+                        <ChevronDown size={16} aria-hidden="true" className={`transition-transform ${aberto ? 'rotate-180' : ''}`} />
                       )}
                     </a>
                   ) : (
                     <button
                       type="button"
                       aria-haspopup="true"
+                      aria-expanded={aberto}
+                      aria-controls={temSubmenu ? idDoSubmenu(item.label) : undefined}
+                      onClick={() => setSubmenuDesktop(aberto ? null : item.label)}
                       className={`whitespace-nowrap text-sm font-semibold ${corDoItem} transition-colors px-3 py-2 rounded-lg flex items-center gap-1`}
                     >
                       {item.label}
-                      <ChevronDown size={16} className="group-hover:rotate-180 transition-transform" />
+                      <ChevronDown size={16} aria-hidden="true" className={`transition-transform ${aberto ? 'rotate-180' : ''}`} />
                     </button>
                   )}
 
-                  {/* Desktop Submenu */}
-                  {item.submenu && item.submenu.length > 0 && (
-                    <div className={`absolute left-0 mt-0 w-48 ${fundoDoSubmenu} rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 py-2`}>
-                      {item.submenu.map((subitem) => (
+                  {/* Submenu do desktop.
+
+                      Antes isto era só `group-hover`, sem foco e sem clique, e
+                      os três pais sem href não tinham handler nenhum. Quem
+                      navegava por teclado não alcançava Lojas, Bairros, os três
+                      planos, Chip 5G, Telefonia nem MaisTV — o `visibility:
+                      hidden` tirava os links da ordem de tabulação. E como o
+                      corte é `md:` (768px), um tablet em paisagem recebia este
+                      menu sem ter hover: ali não abria para ninguém. */}
+                  {temSubmenu && aberto && (
+                    <div id={idDoSubmenu(item.label)} className={`absolute left-0 mt-0 w-48 ${fundoDoSubmenu} rounded-lg shadow-lg transition-all duration-200 py-2`}>
+                      {item.submenu!.map((subitem) => (
                         <a
                           key={subitem.label}
                           href={subitem.href}
-                          className={`block px-4 py-2 text-sm ${corDoSubitem} transition-colors`}
+                          className={`flex min-h-[44px] items-center px-4 py-2 text-sm ${corDoSubitem} transition-colors`}
                         >
                           {subitem.label}
                         </a>
@@ -255,7 +292,8 @@ export default function Header({ sobrePalco = false }: Props) {
                     </div>
                   )}
                 </div>
-              ))}
+                );
+              })}
             </nav>
 
             {/* Right CTAs */}
@@ -273,7 +311,7 @@ export default function Header({ sobrePalco = false }: Props) {
 
               {/* WhatsApp CTA */}
               <a
-                href="https://wa.me/556730272500?text=Olá!%20Quero%20conhecer%20os%20planos%20da%20InternetMais"
+                href="https://wa.me/556730272500?text=Olá!%20Quero%20conhecer%20os%20planos%20da%20Internet Mais"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => {
@@ -284,7 +322,7 @@ export default function Header({ sobrePalco = false }: Props) {
                     });
                   }
                 }}
-                className="flex items-center gap-2 bg-[#25D366] text-white font-bold py-2 px-4 rounded-full hover:bg-[#20ba5a] hover:shadow-lg hover:scale-105 transition-all duration-300"
+                className="flex items-center gap-2 bg-[#25D366] text-[#06240F] font-bold py-2 px-4 rounded-full hover:bg-[#20ba5a] hover:shadow-lg hover:scale-105 transition-all duration-300"
               >
                 <MessageCircle size={18} />
                 <span>WhatsApp</span>
@@ -296,6 +334,7 @@ export default function Header({ sobrePalco = false }: Props) {
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label={mobileMenuOpen ? 'Fechar o menu' : 'Abrir o menu'}
               aria-expanded={mobileMenuOpen}
+                aria-controls="menu-movel"
               className="md:hidden text-white"
             >
               {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -304,7 +343,7 @@ export default function Header({ sobrePalco = false }: Props) {
 
           {/* Mobile Navigation */}
           {mobileMenuOpen && (
-            <nav className={`md:hidden mt-4 pb-4 border-t ${bordaDoMenuMovel}`}>
+            <nav id="menu-movel" className={`md:hidden mt-4 pb-4 border-t ${bordaDoMenuMovel}`}>
               {navItems.map((item) => (
                 <div key={item.label}>
                   {item.submenu && item.submenu.length > 0 ? (
@@ -366,7 +405,7 @@ export default function Header({ sobrePalco = false }: Props) {
               </button>
 
               <a
-                href="https://wa.me/556730272500?text=Olá!%20Quero%20conhecer%20os%20planos%20da%20InternetMais"
+                href="https://wa.me/556730272500?text=Olá!%20Quero%20conhecer%20os%20planos%20da%20Internet Mais"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => {
@@ -377,7 +416,7 @@ export default function Header({ sobrePalco = false }: Props) {
                     });
                   }
                 }}
-                className="mt-2 flex items-center justify-center gap-2 bg-[#25D366] text-white font-bold py-2 px-4 rounded-full hover:bg-[#20ba5a] transition-all duration-300 w-full"
+                className="mt-2 flex items-center justify-center gap-2 bg-[#25D366] text-[#06240F] font-bold py-2 px-4 rounded-full hover:bg-[#20ba5a] transition-all duration-300 w-full"
               >
                 <MessageCircle size={18} />
                 <span>WhatsApp</span>
@@ -386,6 +425,7 @@ export default function Header({ sobrePalco = false }: Props) {
           )}
         </div>
       </header>
+    </>
 
       {/* Modal de Login MaisTV */}
       {loginOpen && (

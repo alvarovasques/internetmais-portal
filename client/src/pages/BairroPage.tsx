@@ -91,7 +91,7 @@ export default function BairroPage() {
     if (!bairroData) return;
 
     // Update document title and meta tags
-    document.title = `Internet Fibra em ${bairroName} - InternetMais`;
+    document.title = `Internet Fibra em ${bairroName} - Internet Mais`;
     
     // Update meta tags
     const updateMeta = (name: string, content: string) => {
@@ -129,6 +129,8 @@ export default function BairroPage() {
   return (
     <div className="min-h-screen bg-[#04060A] text-[#E8F1E9]">
       <Header />
+
+      <main id="conteudo" tabIndex={-1}>
 
       <div className="border-b border-white/10 bg-[#0A1730] px-4 py-16 md:py-20">
         <div className="mx-auto max-w-4xl">
@@ -269,6 +271,8 @@ export default function BairroPage() {
           </a>
         </div>
       </div>
+      </main>
+
       <Footer />
     </div>
   );

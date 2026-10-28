@@ -34,7 +34,7 @@ export default function NotFound() {
     <div className="flex min-h-screen flex-col bg-[#04060A] text-[#E8F1E9]">
       <Header />
 
-      <main className="flex-1">
+      <main id="conteudo" tabIndex={-1} className="flex-1">
         <section className="container mx-auto px-4 py-16 md:py-24">
           <div className="mx-auto max-w-2xl text-center">
             <p className="text-sm font-bold uppercase tracking-[0.2em] text-[#3DD93D]">

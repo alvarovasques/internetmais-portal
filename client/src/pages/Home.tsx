@@ -37,7 +37,7 @@ export default function Home() {
     <div className="relative flex min-h-screen flex-col">
       <Palco />
       <Header sobrePalco />
-      <main className="relative z-10">
+      <main id="conteudo" tabIndex={-1} className="relative z-10">
         <HeroSection />
 
         {/* Campanha com prazo, no lugar onde ficava o bloco do Mês da

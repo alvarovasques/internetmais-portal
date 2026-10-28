@@ -15,18 +15,18 @@ export default function BannerCTAFinal() {
           <h2 className="text-4xl md:text-5xl font-black text-white mb-6">
             Fibra Óptica + Chip 5G.
             <br />
-            <span className="text-[#F5C518]">Instale hoje, sem burocracia.</span>
+            <span className="text-[#3DD93D]">Instale hoje, sem burocracia.</span>
           </h2>
 
           {/* Subtitle */}
-          <p className="text-lg md:text-xl text-white/90 mb-12">
+          <p className="text-lg md:text-xl text-white/85 mb-12">
             Atendimento pelo WhatsApp, rápido e sem enrolação.
           </p>
 
           {/* CTA Button */}
           <a
             href={`https://wa.me/556730272500?text=${encodeURIComponent(
-              'Olá! Gostaria de contratar um plano de Fibra Óptica + Chip 5G da InternetMais. Qual é a melhor opção para mim?'
+              'Olá! Gostaria de contratar um plano de Fibra Óptica + Chip 5G da Internet Mais. Qual é a melhor opção para mim?'
             )}`}
             target="_blank"
             rel="noopener noreferrer"
@@ -38,7 +38,7 @@ export default function BannerCTAFinal() {
                 });
               }
             }}
-            className="inline-flex items-center justify-center gap-2 bg-white text-[#3DD93D] font-black py-4 px-8 rounded-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 text-lg"
+            className="inline-flex items-center justify-center gap-2 bg-[#0D1B3E] text-white font-black py-4 px-8 rounded-full hover:shadow-2xl hover:scale-105 transition-all duration-300 text-lg"
           >
             <MessageCircle size={24} />
             Contratar pelo WhatsApp
