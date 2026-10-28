@@ -91,7 +91,6 @@ PECAS = [
     ("bg/maistv-hero-netflix.webp",    (1920, 1080), (0.74, 0.62), 0.85, 0.06, 0.4, 2.4),
     ("bg/mais-velocidade-hero.webp",   (1920, 1080), (0.72, 0.46), 0.90, 0.12, 0.6, 2.4),
     ("bg/young-urban-5g.webp",         (1920, 1080), (0.75, 0.40), 0.95, 0.14, 0.6, 2.4),
-    ("bg/chip-5g-mockup.webp",         (1200, 1200), (0.50, 0.46), 1.00, 0.15, 0.5, 2.4),
     # office-modern tem a área calma à direita: a luz vai para a esquerda.
     ("bg/office-modern.webp",          (1920, 1080), (0.28, 0.44), 0.90, 0.09, 0.5, 2.4),
     ("bg/vagas-hero.webp",             (1920, 1080), (0.74, 0.34), 1.00, 0.13, 0.6, 2.4),

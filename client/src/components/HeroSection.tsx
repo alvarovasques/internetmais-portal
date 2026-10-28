@@ -139,18 +139,6 @@ export default function HeroSection() {
     {
       id: 6,
       veu: 'verde' as Veu,
-      image: '/images/bg/chip-5g-mockup.webp',
-      imageAlt: 'Chip 5G Internet Mais com melhor sinal e cobertura confiável em Campo Grande MS',
-      badge: 'SOMOS UMA OPERADORA 5G',
-      title: 'Seu celular merece o melhor sinal. Conheça o Chip Internet Mais 5G.',
-      description: 'Planos a partir de R$ 24,99/mês com apps ilimitados e bônus ao trazer sua portabilidade.',
-      cta: 'Quero meu Chip 5G agora',
-      ctaMessage: 'Olá! Gostaria de contratar um plano de Chip 5G da Internet Mais.',
-      viewPlansLink: '#chip-5g'
-    },
-    {
-      id: 7,
-      veu: 'navy' as Veu,
       image: '/images/bg/maistv-hero-bg.jpg',
       imageAlt: 'Família assistindo MaisTV com +160 canais ao vivo e filmes inclusos na Internet Mais',
       badge: 'INCLUSO EM TODOS OS PLANOS',

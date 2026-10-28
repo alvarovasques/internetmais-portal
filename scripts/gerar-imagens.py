@@ -147,14 +147,6 @@ IMAGENS = [
      "phone screen, laughing. Golden hour, residential street of Campo Grande. Warm, informal, "
      "real clothing. Subjects on the right, street on the left.", "documental"),
 
-    ("chip-5g-mockup", "bg/chip-5g-mockup.webp", "16:9", (1920, 1080),
-     "A young Brazilian man on the veranda of a house at dusk, leaning on the railing with "
-     "his phone raised, the screen lighting his face and hands from below. Behind him the "
-     "wide open sky of Campo Grande holds the last magenta and deep blue of sunset over low "
-     "rooftops and a water tank. He is in the right third, almost a silhouette edged by "
-     "screen light; the left of the frame is open sky and one dark veranda post, calm and "
-     "empty.", "cinema"),
-
     ("mais-aplicativos-bg", "bg/mais-aplicativos-bg.webp", "16:9", (1920, 1080),
      "Soft out of focus interior of a Brazilian living room at dusk, warm bokeh from a lamp and "
      "a TV, no recognizable objects. Very shallow depth of field, low contrast, muted colors. "
