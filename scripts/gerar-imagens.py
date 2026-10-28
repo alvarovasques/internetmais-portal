@@ -33,107 +33,149 @@ DESTINO = RAIZ / "client" / "public" / "images"
 MODELO = "gemini-3.1-flash-image"
 ENDPOINT = "https://generativelanguage.googleapis.com/v1beta/interactions"
 
-# Vale para todas: é o que impede o resultado de virar foto genérica de banco
-# de imagem ou de ganhar os vícios de imagem gerada.
-ESTILO = (
-    "Photorealistic documentary photograph, natural available light, "
-    "realistic skin texture, muted natural color, shot on a 35mm lens, "
-    "no text of any kind in the image."
-)
-NEGATIVO = (
-    "Avoid: text, watermark, logo, letters, numbers, UI overlay, neon glow, "
-    "circuit board overlay, holographic HUD, teal and orange grade, plastic skin, "
-    "extra fingers, distorted hands, stock photo smile, corporate handshake."
-)
+# Dois registros. O documental é o da maioria das peças: foto de gente real,
+# sem pose, que não parece banco de imagem. O cinema vale só para os sete
+# quadros do hero, que são a primeira coisa que a pessoa vê e precisam de
+# impacto: luz motivada de uma fonte só, sombra funda, grão fino.
+#
+# Nos dois a regra é a mesma: nada de verde na foto. Verde é a cor de AÇÃO
+# nesta identidade, reservada ao botão; foto com dominante verde come o
+# destaque do CTA que fica em cima dela.
+REGISTROS = {
+    "documental": (
+        "Photorealistic documentary photograph, natural available light, "
+        "realistic skin texture, muted natural color, shot on a 35mm lens, "
+        "no text of any kind in the image.",
+        "Avoid: text, watermark, logo, letters, numbers, UI overlay, neon glow, "
+        "circuit board overlay, holographic HUD, teal and orange grade, plastic skin, "
+        "extra fingers, distorted hands, stock photo smile, corporate handshake.",
+    ),
+    "cinema": (
+        "Cinematic still frame from a feature film, anamorphic wide framing, 40mm lens, "
+        "shallow depth of field, one motivated practical light source with deep falloff "
+        "into shadow, filmic contrast with a slightly lifted black point, soft halation "
+        "around practical lights, fine 35mm grain, realistic skin texture, restrained "
+        "palette of deep navy blue shadows against warm tungsten highlights, "
+        "no text of any kind in the image.",
+        "Avoid: text, watermark, logo, letters, numbers, UI overlay, neon rim light, "
+        "circuit board graphics, holographic HUD, teal and orange grade, green color cast, "
+        "anamorphic flare streaks, oversaturated color, HDR look, plastic skin, "
+        "extra fingers, distorted hands, stock photo smile, corporate handshake.",
+    ),
+}
 
-# (slug, arquivo destino, proporção, tamanho final em px, prompt)
+# O pro desenha luz e pele melhor e custa mais; vale nos sete do hero.
+MODELO_POR_REGISTRO = {"documental": MODELO, "cinema": "gemini-3-pro-image"}
+
+# (slug, arquivo destino, proporção, tamanho final em px, prompt, registro)
+#
+# Enquadramento: no hero o título pousa na metade ESQUERDA do quadro, sobre
+# um gradiente que escurece esse lado. Por isso todo prompt do hero manda o
+# assunto para a direita e pede os 40% da esquerda vazios. Sem isso a foto
+# briga com o h1 e não há gradiente que resolva.
 IMAGENS = [
     ("hero-person-smartphone", "bg/hero-person-smartphone.webp", "16:9", (1920, 1080),
-     "A Brazilian family of three in the living room of an ordinary middle-class house in "
-     "Campo Grande, late afternoon window light, warm and soft. The mother is on the sofa "
-     "with a smartphone, a teenager watches the TV in the background, a younger child uses a "
-     "tablet on the floor. Everyone relaxed, nobody posing. Simple furniture, a ceiling fan, "
-     "plants near the window. People on the right two thirds of the frame, the left third "
-     "calm and uncluttered so a headline can sit there."),
+     "Interior of an ordinary middle-class house in Campo Grande at blue hour. A mother "
+     "stands near the window with a phone, her face lit from below by the screen; behind her "
+     "a teenager sits on the sofa and a younger child lies on the floor, both softly lit by "
+     "a television just off frame. One warm tungsten lamp is the only practical light in the "
+     "room and the window still holds the last cold blue of dusk. Simple furniture, a "
+     "ceiling fan, plants. The family occupies the right half of the frame; the left forty "
+     "percent is a dark wall in deep navy shadow, empty and calm.", "cinema"),
 
     ("og-image", "marca/og-image.png", "16:9", (1200, 630),
      "Wide horizontal composition. On the left, a deep navy blue field with generous empty "
      "space. On the right, a warmly lit Brazilian living room at dusk, slightly out of focus, "
      "with a person holding a phone. The two halves meet in a clean vertical division, no "
-     "gradient blend, no glow."),
+     "gradient blend, no glow.", "documental"),
 
     ("carousel-velocidade", "bg/carousel-velocidade.webp", "16:9", (1920, 1080),
-     "A young Brazilian man in a home office corner of an apartment, mid videocall, laughing "
-     "at the screen. Two monitors, a mug, papers, an ordinary chair. Daylight from a window "
-     "on the left. Subject on the right side of the frame, calm space on the left."),
+     "A young Brazilian man alone at a desk late at night, leaning slightly forward, "
+     "absorbed, his face carved by the cold light of two monitors. Behind him a window shows "
+     "the blurred orange streetlights of a low Brazilian city. One warm desk lamp at the far "
+     "right edge. He sits in the right third of the frame; the left forty percent is the "
+     "unlit room in deep navy shadow, almost empty.", "cinema"),
 
     ("carousel-aplicativos", "bg/carousel-aplicativos.webp", "16:9", (1920, 1080),
-     "A Brazilian couple in their forties on a sofa at night, watching a film on a large TV, "
-     "the room lit only by the screen and one warm lamp. Popcorn bowl between them. The TV "
-     "content is blurred, no interface visible. Subjects on the right, dark calm space on the left."),
+     "A Brazilian couple in their forties on a sofa at night, seen from a low three quarter "
+     "angle, washed in the soft shifting light of a large television just off frame to the "
+     "right. A bowl of popcorn between them, a blanket, an ordinary living room, a warm lamp "
+     "far in the background. No screen and no interface visible. They sit in the right half; "
+     "the left forty percent is the dark room, a doorway and bare wall falling into deep "
+     "shadow.", "cinema"),
 
     ("carousel-5g", "bg/carousel-5g.webp", "16:9", (1920, 1080),
-     "A Brazilian woman in her thirties walking on a tree-lined residential street, looking at "
-     "her phone, unhurried. Late afternoon sun through the trees. Real Brazilian street: low "
-     "houses, a wall, a parked motorbike. Subject on the right third, street receding to the left."),
+     "A Brazilian woman in her thirties walking home along a residential street in Campo "
+     "Grande at golden hour, phone in one hand, unhurried, backlit by the low sun through "
+     "flowering yellow ipe trees. Low houses, a garden wall, a long shadow across the "
+     "asphalt. She is in the right third of the frame, rim lit, her face in soft shade; the "
+     "left of the frame is the empty street receding into warm shadow under the trees.", "cinema"),
 
     ("carousel-empresarial", "bg/carousel-empresarial.webp", "16:9", (1920, 1080),
-     "Interior of a small Brazilian business, a clinic reception or a neighborhood store, two "
-     "employees working, one at a computer. Daylight, practical furniture, nothing corporate "
-     "or glassy. Wide framing with calm wall space on the left."),
+     "Interior of a small Brazilian business at blue hour, a neighbourhood pharmacy or a "
+     "clinic reception, seen from inside. The owner stands behind the counter under warm "
+     "light, working at a computer; through the glass shopfront the street outside is cold "
+     "blue dusk with the headlights of a passing car. Practical and lived in, nothing "
+     "corporate, no glass tower. Counter and owner on the right; the left forty percent is "
+     "an interior wall and shelving falling into deep shadow.", "cinema"),
 
     ("maistv-hero-bg", "bg/maistv-hero-bg.jpg", "16:9", (1920, 1080),
-     "A living room at night seen from behind the sofa, a large TV glowing on the far wall, "
-     "silhouettes of two people watching. The screen content is soft and indistinct, no logos, "
-     "no interface. Warm lamp on one side. Deep shadows, cinematic, calm space on the left."),
+     "A dark living room seen from behind and slightly above the sofa, a large television "
+     "glowing on the far wall as the only strong light in the room, two silhouetted figures "
+     "watching it. The screen content is soft and indistinct, no interface, no logo, no "
+     "recognisable image. A warm lamp just out of frame on the right lays a thin edge of "
+     "light along the back of the sofa. Deep blacks, wide cinematic frame. The television "
+     "sits in the right half; the left of the frame is empty dark room.", "cinema"),
 
     ("maistv-channels-bg", "bg/maistv-channels-bg.webp", "16:9", (1920, 1080),
      "Very dark navy blue background with a subtle soft light falloff from the top right, like "
      "a screen glow in a dark room. Almost flat, no objects, no people, no pattern, no texture. "
-     "Extremely low contrast: this image sits behind content and must not compete with it."),
+     "Extremely low contrast: this image sits behind content and must not compete with it.", "documental"),
 
     ("maistv-hero-netflix", "bg/maistv-hero-netflix.webp", "16:9", (1920, 1080),
      "Close framing of a person's hands holding a TV remote, pointing away from camera towards "
      "a glowing screen out of focus in the background. Night, warm lamp light. Shallow depth of "
-     "field, hands in the lower right, dark calm area in the upper left."),
+     "field, hands in the lower right, dark calm area in the upper left.", "documental"),
 
     ("mais-velocidade-hero", "bg/mais-velocidade-hero.webp", "16:9", (1920, 1080),
      "A Brazilian teenager playing a video game in a bedroom, headset on, concentrated, lit by "
      "the monitor and one lamp. Ordinary bedroom, posters, unmade bed. Not an esports setup, no "
-     "RGB lighting. Subject on the right, dark calm space on the left."),
+     "RGB lighting. Subject on the right, dark calm space on the left.", "documental"),
 
     ("young-urban-5g", "bg/young-urban-5g.webp", "16:9", (1920, 1080),
      "Two young Brazilians sitting on the steps in front of a house, sharing something on a "
      "phone screen, laughing. Golden hour, residential street of Campo Grande. Warm, informal, "
-     "real clothing. Subjects on the right, street on the left."),
+     "real clothing. Subjects on the right, street on the left.", "documental"),
 
-    ("chip-5g-mockup", "bg/chip-5g-mockup.webp", "1:1", (1200, 1200),
-     "Product photograph of a SIM card and a modern smartphone lying on a light warm wooden "
-     "surface, seen slightly from above. Soft natural window light from the left, gentle "
-     "shadows. The SIM card is plain, no branding visible. Clean and minimal, generous empty "
-     "space around the objects."),
+    ("chip-5g-mockup", "bg/chip-5g-mockup.webp", "16:9", (1920, 1080),
+     "A young Brazilian man on the veranda of a house at dusk, leaning on the railing with "
+     "his phone raised, the screen lighting his face and hands from below. Behind him the "
+     "wide open sky of Campo Grande holds the last magenta and deep blue of sunset over low "
+     "rooftops and a water tank. He is in the right third, almost a silhouette edged by "
+     "screen light; the left of the frame is open sky and one dark veranda post, calm and "
+     "empty.", "cinema"),
 
     ("mais-aplicativos-bg", "bg/mais-aplicativos-bg.webp", "16:9", (1920, 1080),
      "Soft out of focus interior of a Brazilian living room at dusk, warm bokeh from a lamp and "
      "a TV, no recognizable objects. Very shallow depth of field, low contrast, muted colors. "
-     "This image sits behind a grid of app logos and must not compete for attention."),
+     "This image sits behind a grid of app logos and must not compete for attention.", "documental"),
 
     ("office-modern", "bg/office-modern.webp", "16:9", (1920, 1080),
      "Interior of a small commercial office in a Brazilian city, four or five people working at "
      "desks, daylight through venetian blinds. Practical, slightly cluttered, real: paper on "
      "desks, a water bottle, a wall calendar. Not a startup, not a glass tower. Calm space on "
-     "the right."),
+     "the right.", "documental"),
 
     ("vagas-hero", "bg/vagas-hero.webp", "16:9", (1920, 1080),
      "Two internet field technicians in work uniform on a residential street, one at the top of "
      "a ladder near a utility pole handling fiber cable, the other steadying the ladder and "
      "looking up. Bright morning light, blue sky, low Brazilian houses. Real work, no posing. "
-     "Subjects on the right, sky and street on the left."),
+     "Subjects on the right, sky and street on the left.", "documental"),
 
     ("vagas-benefits", "bg/vagas-benefits.webp", "16:9", (1920, 1080),
      "A small team of Brazilian coworkers around a table in a simple office kitchen, mid "
      "conversation over coffee, relaxed, mixed ages. Daylight, ordinary mugs, nobody posing. "
-     "Documentary framing with calm wall space on the left."),
+     "Documentary framing with calm wall space on the left.", "documental"),
 ]
 
 
@@ -182,10 +224,11 @@ def achar_imagem(no) -> bytes | None:
     return None
 
 
-def gerar(chave: str, prompt: str, proporcao: str) -> bytes:
+def gerar(chave: str, prompt: str, proporcao: str, registro: str) -> bytes:
+    estilo, negativo = REGISTROS[registro]
     corpo = json.dumps({
-        "model": MODELO,
-        "input": f"{prompt}\n\n{ESTILO}\n\n{NEGATIVO}",
+        "model": MODELO_POR_REGISTRO.get(registro, MODELO),
+        "input": f"{prompt}\n\n{estilo}\n\n{negativo}",
         "response_format": {
             "type": "image",
             "mime_type": "image/jpeg",
@@ -245,21 +288,24 @@ def main() -> None:
     p = argparse.ArgumentParser(description="Gera as imagens de marketing do portal.")
     p.add_argument("--forcar", action="store_true", help="refaz mesmo o que já existe")
     p.add_argument("--somente", help="gera só o slug informado")
+    p.add_argument("--registro", choices=sorted(REGISTROS), help="gera só as de um registro")
     p.add_argument("--listar", action="store_true", help="lista os slugs e sai")
     args = p.parse_args()
 
     if args.listar:
-        for slug, arquivo, prop, tam, _ in IMAGENS:
-            print(f"{slug:26} {arquivo:38} {prop:5} {tam[0]}x{tam[1]}")
+        for slug, arquivo, prop, tam, _, reg in IMAGENS:
+            print(f"{slug:26} {arquivo:38} {prop:5} {tam[0]}x{tam[1]}  {reg}")
         return
 
     chave = ler_chave()
     fila = [i for i in IMAGENS if not args.somente or i[0] == args.somente]
+    if args.registro:
+        fila = [i for i in fila if i[5] == args.registro]
     if args.somente and not fila:
         sys.exit(f"slug '{args.somente}' não existe. Use --listar para ver os nomes.")
 
     feitas = puladas = falhas = 0
-    for slug, arquivo, proporcao, tamanho, prompt in fila:
+    for slug, arquivo, proporcao, tamanho, prompt, registro in fila:
         destino = DESTINO / arquivo
         # Um placeholder gerado tem menos de 60 KB; imagem de verdade é maior.
         if destino.exists() and not args.forcar and destino.stat().st_size > 60_000:
@@ -267,10 +313,10 @@ def main() -> None:
             puladas += 1
             continue
 
-        print(f"→ {slug}: gerando {tamanho[0]}x{tamanho[1]}...", flush=True)
+        print(f"→ {slug}: gerando {tamanho[0]}x{tamanho[1]} ({registro})...", flush=True)
         for tentativa in (1, 2, 3):
             try:
-                bruto = gerar(chave, prompt, proporcao)
+                bruto = gerar(chave, prompt, proporcao, registro)
                 kb = salvar(bruto, destino, tamanho) // 1024
                 print(f"  gravado em {arquivo} ({kb} KB)")
                 feitas += 1

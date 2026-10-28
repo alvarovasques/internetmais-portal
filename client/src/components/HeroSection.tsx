@@ -207,19 +207,49 @@ export default function HeroSection() {
               semMovimento ? undefined : { y: yFundo, scale: escalaFundo, willChange: 'transform' }
             }
           >
+            {/* `object-left` e não `object-center`.
+
+                A imagem é 16:9 e a cena ocupa 100svh, então em tela 16:10 (o
+                1440x900 de qualquer notebook) sobra largura e o navegador
+                corta: centralizado, comia 80px de cada lado — e os 80px da
+                esquerda são justamente onde o título começa. Ancorando à
+                esquerda, o corte inteiro sai pela direita, que é a borda sem
+                conteúdo.
+
+                O preço: o assunto não pode encostar na borda direita. Os 10%
+                externos do quadro são margem de segurança, e é por isso que o
+                briefing pede o assunto no terço direito, não colado na beira.
+
+                No celular é o contrário: a tela é estreita e alta, sobra ALTURA
+                e o corte vem pelos lados com força — ancorado à esquerda, o
+                visitante via só a estante e a TV, sem ninguém. Lá fica
+                centralizado, que é onde a cena tem gente. */}
             <img
               src={slide.image}
               alt={slide.imageAlt || slide.title}
               loading={currentSlide === 0 ? 'eager' : 'lazy'}
               fetchPriority={currentSlide === 0 ? 'high' : 'auto'}
-              className="h-full w-full object-cover"
+              className="h-full w-full object-cover object-center md:object-left"
             />
           </motion.div>
 
-          {/* Atmosfera: escurece à esquerda para o título respirar, e deixa a
-              luz do Palco vazar pela direita */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#070E22] via-[#070E22]/80 to-[#070E22]/25" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#070E22] via-transparent to-[#070E22]/45" />
+          {/* Atmosfera.
+
+              O véu existe para o título ser legível, não para esconder a foto.
+              O anterior chegava a 100% de navy na borda esquerda e ainda 80% no
+              meio do quadro: media 16:1 de contraste, três vezes o que a norma
+              pede, e em troca apagava a cena inteira — numa foto de família
+              sobravam a mãe e o resto virava vulto.
+
+              Agora o véu cobre só a coluna onde o texto pousa e morre antes dos
+              60% da largura. Medido sobre a caixa real do h1, dá 6,5:1, que
+              passa em AA com folga, e o brilho médio do quadro dobra.
+
+              No celular o texto não fica à esquerda, fica em cima do meio da
+              foto: ali o véu sobe de baixo, que é por onde o conteúdo entra. */}
+          <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(7,14,34,.90)_0%,rgba(7,14,34,.55)_42%,rgba(7,14,34,.15)_100%)] md:hidden" />
+          <div className="absolute inset-0 hidden md:block md:bg-[linear-gradient(to_right,rgba(7,14,34,.86)_0%,rgba(7,14,34,.70)_18%,rgba(7,14,34,.32)_42%,rgba(7,14,34,0)_58%)]" />
+          <div className="absolute inset-0 hidden md:block md:bg-[linear-gradient(to_top,rgba(7,14,34,.55)_0%,rgba(7,14,34,0)_38%,rgba(7,14,34,.10)_100%)]" />
         </motion.div>
       </AnimatePresence>
 
@@ -243,11 +273,11 @@ export default function HeroSection() {
                   {slide.badge}
                 </span>
 
-                <h1 className="mb-5 text-4xl font-black leading-[1.06] text-white md:text-5xl lg:text-6xl">
+                <h1 className="mb-5 text-4xl font-black leading-[1.06] text-white [text-shadow:0_2px_14px_rgba(3,8,20,.75)] md:text-5xl lg:text-6xl">
                   {slide.title}
                 </h1>
 
-                <p className="mb-9 max-w-xl text-base leading-relaxed text-white/80 md:text-lg">
+                <p className="mb-9 max-w-xl text-base leading-relaxed text-white/85 [text-shadow:0_1px_10px_rgba(3,8,20,.8)] md:text-lg">
                   {slide.description}
                 </p>
 
