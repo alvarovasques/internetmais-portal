@@ -84,7 +84,7 @@ export default function Empresarial() {
                 </div>
                 <div className="flex items-center gap-3">
                   <Network size={20} className="text-[#3DD93D]" />
-                  <span className="text-[#CBD8CE] font-semibold">IP Dinâmico (PPoE)</span>
+                  <span className="text-[#CBD8CE] font-semibold">IP Dinâmico (PPPoE)</span>
                 </div>
               </div>
 

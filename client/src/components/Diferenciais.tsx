@@ -7,12 +7,12 @@ export default function Diferenciais() {
     {
       icon: Zap,
       title: 'Ultra Velocidade',
-      desc: 'Fibra óptica 100% dedicada, sem divisão de sinal',
+      desc: 'Fibra óptica até a sua casa, com rede própria desde 2017',
     },
     {
       icon: Shield,
       title: 'Sinal Estável',
-      desc: 'Sem quedas, sem oscilação. Conexão que você pode confiar',
+      desc: 'Rede própria monitorada 24h. Quando cai, quem conserta é o nosso time',
     },
     {
       icon: Headphones,
