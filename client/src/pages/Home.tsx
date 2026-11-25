@@ -1,6 +1,5 @@
 import Header from '@/components/Header';
 import HeroSection from '@/components/HeroSection';
-import PremioCDL from '@/components/PremioCDL';
 import MaisVelocidade from '@/components/MaisVelocidade';
 import MaisAplicativos from '@/components/MaisAplicativos';
 import MaisGloboPlay from '@/components/MaisGloboPlay';
@@ -39,13 +38,6 @@ export default function Home() {
       <Header sobrePalco />
       <main id="conteudo" tabIndex={-1} className="relative z-10">
         <HeroSection />
-
-        {/* Campanha com prazo, no lugar onde ficava o bloco do Mês da
-            Independência: fica logo abaixo do hero enquanto a votação estiver
-            aberta, e sai daqui quando encerrar. */}
-        <Faixa variante="plena">
-          <PremioCDL />
-        </Faixa>
 
         <Faixa variante="plena">
           <MaisVelocidade />
